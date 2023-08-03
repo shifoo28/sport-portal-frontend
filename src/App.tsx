@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
+import NewsCards from "./Sport News/NewsCards";
 
 function App() {
-  return (
-    <div className=""> App</div>
-  );
+  return <NewsCards />;
 }
 
 export default App;

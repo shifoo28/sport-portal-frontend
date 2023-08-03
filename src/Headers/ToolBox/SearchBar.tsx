@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchBar = () => {
   return (
-    <label className="relative block focus:bg-slate-200 mr-1">
+    <label className="relative block focus:bg-slate-200">
       <input
         className="focus:w-full w-14 pr-5 focus:outline-none"
         placeholder="Gözleg..."

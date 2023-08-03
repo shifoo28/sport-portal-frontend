@@ -12,10 +12,10 @@ const SelectLang = () => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="flex items-center justify-center ml-1">
+    <div className="flex items-center justify-center">
       <Menu open={open} handler={() => setOpen(!open)}>
         <MenuHandler>
-          <Button className="flex items-center capitalize tracking-normal">
+          <Button className="flex items-center capitalize tracking-normal px-0">
             <img src={tmflag} /> TM
             <svg
               width="8"
