@@ -1,8 +1,12 @@
 import React from "react";
-import NewsCards from "./Sport News/NewsCards";
+import NewsCards from "./Sport News";
 
 function App() {
-  return <NewsCards />;
+  return (
+    <div className="w-full flex justify-center">
+      <NewsCards />
+    </div>
+  );
 }
 
 export default App;

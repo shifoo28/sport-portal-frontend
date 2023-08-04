@@ -16,7 +16,7 @@ const SelectLang = () => {
       <Menu open={open} handler={() => setOpen(!open)}>
         <MenuHandler>
           <Button className="flex items-center capitalize tracking-normal px-0">
-            <img src={tmflag} /> TM
+            <img src={tmflag} />TM
             <svg
               width="8"
               height="3"
@@ -36,7 +36,7 @@ const SelectLang = () => {
             </svg>
           </Button>
         </MenuHandler>
-        <MenuList className="overflow-visible">
+        <MenuList className="overflow-visible p-1 gap-1">
           <MenuItem>TM</MenuItem>
           <MenuItem>RU</MenuItem>
         </MenuList>
