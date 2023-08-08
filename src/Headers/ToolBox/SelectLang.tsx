@@ -15,8 +15,9 @@ const SelectLang = () => {
     <div className="flex items-center justify-center">
       <Menu open={open} handler={() => setOpen(!open)}>
         <MenuHandler>
-          <Button className="flex items-center capitalize tracking-normal px-0">
-            <img src={tmflag} />TM
+          <Button className="flex items-center capitalize tracking-normal px-0 outline-none">
+            <img src={tmflag} />
+            <p className="text-xs font-sofiasans">TM</p>
             <svg
               width="8"
               height="3"
@@ -36,9 +37,11 @@ const SelectLang = () => {
             </svg>
           </Button>
         </MenuHandler>
-        <MenuList className="overflow-visible p-1 gap-1">
-          <MenuItem>TM</MenuItem>
-          <MenuItem>RU</MenuItem>
+        <MenuList
+          className="overflow-visible p-1 gap-1 text-xs font-sofiasans outline-none rounded-none"
+        >
+          <MenuItem className="hover:text-[#08F] rounded-none flex items-center justify-center">TM</MenuItem>
+          <MenuItem className="hover:text-[#08F] rounded-none flex items-center justify-center">RU</MenuItem>
         </MenuList>
       </Menu>
     </div>

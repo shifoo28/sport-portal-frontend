@@ -10,7 +10,7 @@ const SearchBar = () => {
       />
       <span className="absolute inset-y-0 right-0 flex items-center ">
         <svg
-          className="h-4 w-4 fill-black"
+          className="h-4 w-4 fill-[#393939]"
           x="0px"
           y="0px"
           width="30"
