@@ -9,7 +9,8 @@ module.exports = {
       },
       fontFamily: {
         oswald: ["Oswald"],
-        sofiasans:["Sofia Sans"]
+        sofiasans:["Sofia Sans"],
+        sofia:["Sofia"]
       },
     },
     screens: {
