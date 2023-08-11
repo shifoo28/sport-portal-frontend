@@ -8,6 +8,7 @@ import BaseCategories from "./Headers/BaseCategory/BaseCategories";
 import Footer from "./Footer";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -15,17 +16,19 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <div className="flex justify-center">
-        <div className="max-w-[1440px]">
-          <Banner />
-          <ToolBox />
-          <div className="border border-b-0"></div>
-          <BaseCategories />
-          <div className="border border-b-0"></div>
-          <App />
-          <Footer />
+      <BrowserRouter>
+        <div className="flex justify-center">
+          <div className="max-w-[1440px]">
+            <Banner />
+            <ToolBox />
+            <div className="border border-b-0"></div>
+            <BaseCategories />
+            <div className="border border-b-0"></div>
+            <App />
+            <Footer />
+          </div>
         </div>
-      </div>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
