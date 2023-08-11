@@ -1,7 +1,7 @@
 import React from "react";
 import { HeaderWithCategories } from "./Headers";
 import SportNewsBody from "./SportNewsBody";
-import AllNewsBody from "./AllNewsBody";
+import FilterNews from "./FilterNews";
 
 const index = () => {
   return (
@@ -12,7 +12,7 @@ const index = () => {
           <SportNewsBody />
         </div>
         <div className="flex flex-col max-w-[270px] w-full">
-          <AllNewsBody />
+          <FilterNews />
         </div>
       </div>
     </div>

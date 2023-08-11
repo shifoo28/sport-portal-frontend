@@ -1,6 +1,6 @@
 import React from "react";
-import nextSvg from "../assets/svg/next.svg";
-import prevSvg from "../assets/svg/prev.svg";
+import nextSvg from "../../assets/svg/next.svg";
+import prevSvg from "../../assets/svg/prev.svg";
 
 const categories = [
   { name: "Hemmesi", active: true },

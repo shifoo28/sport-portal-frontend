@@ -5,7 +5,7 @@ import WorldSportNews from "../../components/World Sport News";
 
 const HomePage = () => {
   return (
-    <div className="w-full flex flex-col justify-center pb-20">
+    <div className="w-full flex flex-col justify-center">
       <NewsCards />
       <WorldSportNews />
       <VideoNews />

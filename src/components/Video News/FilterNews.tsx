@@ -1,6 +1,6 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 
-const allNews = [
+const filteredNews = [
   {
     id: 0,
     title: "Gluten-Free Almond Cake with Berries",
@@ -51,14 +51,14 @@ const allNews = [
   },
 ];
 
-const AllNewsBody = () => {
+const FilterNews = () => {
   const [activeTab, setActiveTab] = useState(false);
 
   return (
-    <Fragment>
-      <div className="flex justify-between h-11 font-oswald w-full cursor-pointer">
+    <div>
+      <div className="flex justify-between h-11 font-oswald w-[270px] cursor-pointer">
         <div
-          className={`flex items-center border-b text-sm font-semibold w-full ${
+          className={`flex items-center border-b text-sm w-full ${
             !activeTab
               ? "border-red-600 text-red-600"
               : "border-black w-full text-black"
@@ -68,7 +68,7 @@ const AllNewsBody = () => {
           Täzeler
         </div>
         <div
-          className={`flex items-center justify-end text-sm border-b w-full font-semibold ${
+          className={`flex items-center justify-end text-sm border-b w-full ${
             activeTab
               ? "border-red-600 text-red-600"
               : "border-black w-full text-black"
@@ -78,10 +78,8 @@ const AllNewsBody = () => {
           Köp okalanlar
         </div>
       </div>
-
-      {/* All News Body */}
       <div className="pt-5">
-        {allNews.map((e) => {
+        {filteredNews.map((e) => {
           return (
             <div key={e.id} className="flex justify-between items-center pb-4">
               <div className="h-[70px] w-[70px] relative">
@@ -92,14 +90,16 @@ const AllNewsBody = () => {
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">
                 <p className="font-sofiasans text-[8px]">{e.date}</p>
-                <p className="font-oswald text-[15px] leading-5 cursor-pointer">{e.title}</p>
+                <p className="font-oswald text-[15px] leading-5 cursor-pointer">
+                  {e.title}
+                </p>
               </div>
             </div>
           );
         })}
       </div>
-    </Fragment>
+    </div>
   );
 };
 
-export default AllNewsBody;
+export default FilterNews;

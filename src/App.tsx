@@ -1,25 +1,20 @@
 import React from "react";
 import HomePage from "./pages/home";
-import Footer from "./components/Footer";
-import Banner from "./Headers/Banner";
-import BaseCategories from "./Headers/BaseCategory/BaseCategories";
-import ToolBox from "./Headers/ToolBox";
 import { Route, Routes } from "react-router-dom";
+import NF404 from "./pages/404";
+import NewsDetails from "./pages/NewsDetails";
+import { NEWS_DETAILS_PAGE, VIDEO_DETAILS_PAGE } from "./tools/links";
+import VideoDetails from "./pages/VideoDetails";
+import BaseCategories from "./pages/BaseCategories";
 
 function App() {
   return (
     <Routes>
-      <div className="flex justify-center">
-        <div className="max-w-[1440px]">
-          <Banner />
-          <ToolBox />
-          <div className="border border-b-0"></div>
-          <BaseCategories />
-          <div className="border border-b-0"></div>
-          <Route element={<HomePage />} path="/" />
-          <Footer />
-        </div>
-      </div>
+      <Route element={<HomePage />} path="/" />
+      <Route element={<NewsDetails />} path={NEWS_DETAILS_PAGE} />
+      <Route element={<VideoDetails />} path={VIDEO_DETAILS_PAGE} />
+      <Route element={<BaseCategories />} path={VIDEO_DETAILS_PAGE} />
+      <Route element={<NF404 />} path="*" />
     </Routes>
   );
 }

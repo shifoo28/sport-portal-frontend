@@ -4,7 +4,8 @@ import AdsCard from "./AdsCard";
 
 const news = [
   {
-    imgLink: "http://localhost:3000/images/news/news_1.png",
+    id: 0,
+    imgLink: "http://localhost:3000/images/news/news_11.png",
     cardMaxWidth: 456,
     cardHeight: 579,
     title:
@@ -14,6 +15,7 @@ const news = [
     cardSize: "max",
   },
   {
+    id: 1,
     imgLink: "http://localhost:3000/images/news/news_2.png",
     cardMaxWidth: 234,
     cardHeight: 278,
@@ -24,6 +26,7 @@ const news = [
     cardSize: "min",
   },
   {
+    id: 2,
     imgLink: "http://localhost:3000/images/news/news_3.png",
     cardMaxWidth: 234,
     cardHeight: 278,
@@ -33,6 +36,7 @@ const news = [
     cardSize: "min",
   },
   {
+    id: 3,
     imgLink: "http://localhost:3000/images/news/news_4.png",
     cardMaxWidth: 484,
     cardHeight: 278,
@@ -45,18 +49,22 @@ const news = [
 ];
 const ads = [
   {
+    id: 0,
     imgLink: "http://localhost:3000/images/ads/ads_1.png",
     title: "Alem Sport magazin",
   },
   {
+    id: 1,
     imgLink: "http://localhost:3000/images/ads/ads_2.png",
     title: "Фирменный магазин 'Nike'",
   },
   {
+    id: 2,
     imgLink: "http://localhost:3000/images/ads/ads_3.png",
     title: "Hattrick Store",
   },
   {
+    id: 3,
     imgLink: "http://localhost:3000/images/ads/ads_4.png",
     title: "Lotto Sport magazin",
   },

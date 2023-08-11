@@ -1,5 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { NEWS_DETAILS_PAGE } from "../../tools/links";
 
 type CardData = {
   imgLink: string;
@@ -47,6 +49,7 @@ const NewsCard: React.FC<CardData> = ({
     default:
       break;
   }
+  const navigate = useNavigate();
 
   return (
     <figure className={`relative w-full h-full m-0`}>
@@ -63,6 +66,9 @@ const NewsCard: React.FC<CardData> = ({
         className={`absolute text-white ${
           bottom + " " + titleMaxWidth
         } left-0 w-full cursor-pointer ml-4`}
+        onClick={() =>
+          navigate(NEWS_DETAILS_PAGE, { state: { date, title } })
+        }
       >
         <Typography className="font-sofiasans text-[10px] max-w-[131px]">
           {date}
