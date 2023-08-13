@@ -59,7 +59,7 @@ const SportNewsBody = () => {
         </div>
         <div
           className="absolute top-24 left-1/2 cursor-pointer"
-          onClick={() => linkTo}
+          onClick={linkTo}
         >
           <img src={playVideoSvg} />
         </div>
@@ -71,7 +71,7 @@ const SportNewsBody = () => {
           </p>
           <p
             className={`font-oswald text-4xl cursor-pointer`}
-            onClick={() => linkTo}
+            onClick={linkTo}
           >
             Интервью с футболистом сборной Туркменистана Русланом Мингазовым
           </p>

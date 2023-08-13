@@ -1,14 +1,16 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import { SPORTS } from "../../tools/links";
-import Sports from "./Sports";
+import { useLocation } from "react-router-dom";
+import { BASE_CATEGORIES } from "../../tools/links";
+import AllBaseCategories from "./AllBaseCategories";
+import Federations from "./Federations";
 
 const BaseCategories = () => {
-  return (
-    <Routes>
-      <Route element={<Sports />} path={SPORTS} />
-      <Route element={<BaseCategories />} path="*" />
-    </Routes>
+  const location = useLocation();
+
+  return location.pathname.length <= BASE_CATEGORIES.length + 1 ? (
+    <AllBaseCategories />
+  ) : (
+    <Federations pathname={location.pathname.slice(BASE_CATEGORIES.length)} />
   );
 };
 

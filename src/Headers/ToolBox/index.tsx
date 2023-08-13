@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import SelectLang from "./SelectLang";
 import Account from "./Account";
+import { useNavigate } from "react-router-dom";
 
 const index = () => {
   const months = [
@@ -33,6 +34,8 @@ const index = () => {
   let date = d.getDate();
   let day = days[d.getDay()];
 
+  const navigate = useNavigate();
+
   return (
     <section className="w-full h-16 font-sofiasans text-xs">
       <div className="mx-32 flex justify-between max-w-[1170px]">
@@ -40,7 +43,10 @@ const index = () => {
           <div>{day + ", " + date + " " + month + " " + year + "ý"}</div>
           <div>15°C Aşgabat</div>
         </div>
-        <div className="flex items-center">
+        <div
+          className="flex items-center cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           <img
             src="/icons/toolbox/logo.png"
             className="w-12 h-14 object-cover"

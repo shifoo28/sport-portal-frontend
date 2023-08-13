@@ -15,7 +15,7 @@ const SelectLang = () => {
     <div className="flex items-center justify-center">
       <Menu open={open} handler={() => setOpen(!open)}>
         <MenuHandler>
-          <Button className="flex items-center capitalize tracking-normal px-0 outline-none">
+          <Button className="flex items-center capitalize tracking-normal px-0 outline-none shadow-none">
             <img src={tmflag} />
             <p className="text-xs font-sofiasans">TM</p>
             <svg
