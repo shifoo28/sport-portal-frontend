@@ -50,7 +50,7 @@ const Detail = () => {
   return (
     <div className="flex flex-col items-center justify-between gap-5 w-full">
       <div className="flex items-center">
-        <p className="text-[26px] font-oswald capitalize max-w-[570px] text-center">
+        <p className="text-[26px] font-oswald capitalize max-w-[570px] text-center text-[#0F1A42]">
           {title}
         </p>
       </div>

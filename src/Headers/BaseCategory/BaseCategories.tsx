@@ -1,6 +1,5 @@
 import React from "react";
 import NavList from "./NavList";
-import SportNews from "./SportNews";
 import turkmenistansporttv from "./svg/turkmenistansporttv.svg";
 import logoyoutube from "./svg/logoyoutube.svg";
 import yousport from "./svg/yousport.svg";
@@ -31,9 +30,6 @@ const BaseCategories = () => {
           </div>
           <div className="w-max flex flex-col">
             <NavList />
-          </div>
-          <div >
-            <SportNews />
           </div>
         </div>
       </nav>

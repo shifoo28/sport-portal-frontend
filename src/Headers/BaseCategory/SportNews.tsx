@@ -1,24 +1,29 @@
-import React from "react";
 import {
+  Popover,
+  PopoverHandler,
   Button,
+  PopoverContent,
   List,
   ListItem,
-  Popover,
-  PopoverContent,
-  PopoverHandler,
 } from "@material-tailwind/react";
-import { useLocation } from "react-router-dom";
+import React from "react";
 
-const SportNews = () => {
-  let popoverHandlerColor = "";
-  const location = useLocation();
-  location.pathname;
-  
+const SportNews = ({
+  activeTab,
+  linkTo,
+}: {
+  activeTab: number;
+  linkTo: (l: string, tab: number) => void;
+}) => {
   return (
     <Popover placement="bottom-end">
       <PopoverHandler>
         <Button className="flex items-center gap-2 px-0 shadow-none">
-          <p className={`normal-case text-sm ${popoverHandlerColor}`}>
+          <p
+            className={`normal-case text-sm ${
+              activeTab === 0 ? "text-[#08F]" : "text-black"
+            }`}
+          >
             Sport täzelikler
           </p>
           <svg width="10" height="5" viewBox="0 0 10 5" fill="none">
@@ -32,18 +37,42 @@ const SportNews = () => {
       </PopoverHandler>
       <PopoverContent className="bg-white border font-oswald max-w-[116px] w-full flex justify-center">
         <List className="text-xs">
-          <ListItem className="hover:text-[#08F]">- Futbol</ListItem>
-          <ListItem className="hover:text-[#08F]">- MMA</ListItem>
-          <ListItem className="hover:text-[#08F]">- Agyr atletika</ListItem>
-          <ListItem className="hover:text-[#08F]">- Woleýbol</ListItem>
-          <ListItem className="hover:text-[#08F]">- Tennis</ListItem>
-          <ListItem className="hover:text-[#08F]">- Suwda ýüzmek</ListItem>
-          <ListItem className="hover:text-[#08F]">- Ýeňil atletika</ListItem>
-          <ListItem className="hover:text-[#08F]">- Stol tennis</ListItem>
-          <ListItem className="hover:text-[#08F]">- Badminton</ListItem>
-          <ListItem className="hover:text-[#08F]">- Küşt</ListItem>
-          <ListItem className="hover:text-[#08F]">- Göreş</ListItem>
-          <ListItem className="hover:text-[#08F]">- Bodybuilding</ListItem>
+          <ListItem className="hover:text-[#08F]" onClick={() => linkTo("", 0)}>
+            - Futbol
+          </ListItem>
+          <ListItem className="hover:text-[#08F]" onClick={() => linkTo("", 0)}>
+            - MMA
+          </ListItem>
+          <ListItem className="hover:text-[#08F]" onClick={() => linkTo("", 0)}>
+            - Agyr atletika
+          </ListItem>
+          <ListItem className="hover:text-[#08F]" onClick={() => linkTo("", 0)}>
+            - Woleýbol
+          </ListItem>
+          <ListItem className="hover:text-[#08F]" onClick={() => linkTo("", 0)}>
+            - Tennis
+          </ListItem>
+          <ListItem className="hover:text-[#08F]" onClick={() => linkTo("", 0)}>
+            - Suwda ýüzmek
+          </ListItem>
+          <ListItem className="hover:text-[#08F]" onClick={() => linkTo("", 0)}>
+            - Ýeňil atletika
+          </ListItem>
+          <ListItem className="hover:text-[#08F]" onClick={() => linkTo("", 0)}>
+            - Stol tennis
+          </ListItem>
+          <ListItem className="hover:text-[#08F]" onClick={() => linkTo("", 0)}>
+            - Badminton
+          </ListItem>
+          <ListItem className="hover:text-[#08F]" onClick={() => linkTo("", 0)}>
+            - Küşt
+          </ListItem>
+          <ListItem className="hover:text-[#08F]" onClick={() => linkTo("", 0)}>
+            - Göreş
+          </ListItem>
+          <ListItem className="hover:text-[#08F]" onClick={() => linkTo("", 0)}>
+            - Bodybuilding
+          </ListItem>
         </List>
       </PopoverContent>
     </Popover>

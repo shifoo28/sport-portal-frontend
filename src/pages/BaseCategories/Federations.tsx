@@ -111,7 +111,7 @@ const Federations = ({ pathname }: { pathname: string }) => {
   return (
     <div className="w-full max-w-[1170px] mx-32 pt-7 font-oswald">
       <div className="flex flex-col w-full items-center">
-        <p className="text-[50px] text-center max-w-[975px] w-full capitalize">
+        <p className="text-[50px] text-center max-w-[975px] w-full capitalize text-[#0F1A42]">
           {bcfInformation[indexComponent].title}
         </p>
         <div className="flex flex-col gap-8 w-full pt-10">
