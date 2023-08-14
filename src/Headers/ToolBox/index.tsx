@@ -2,9 +2,8 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import SelectLang from "./SelectLang";
 import Account from "./Account";
-import { useNavigate } from "react-router-dom";
 
-const index = () => {
+const index = ({ navigate }: { navigate: (l: string) => void }) => {
   const months = [
     "Ýanwar",
     "Fewral",
@@ -34,18 +33,18 @@ const index = () => {
   let date = d.getDate();
   let day = days[d.getDay()];
 
-  const navigate = useNavigate();
-
   return (
     <section className="w-full h-16 font-sofiasans text-xs">
-      <div className="mx-32 flex justify-between max-w-[1170px]">
-        <div className="flex flex-col justify-around">
+      <div className="mx-32 flex justify-between max-w-[1170px] h-full">
+        <div className="flex flex-col justify-around w-full">
           <div>{day + ", " + date + " " + month + " " + year + "ý"}</div>
           <div>15°C Aşgabat</div>
         </div>
         <div
           className="flex items-center cursor-pointer"
-          onClick={() => navigate("/")}
+          onClick={() => {
+            navigate("/");
+          }}
         >
           <img
             src="/icons/toolbox/logo.png"
@@ -58,7 +57,7 @@ const index = () => {
             <p className="text-[#08F] text-4xl font-oswald uppercase">Portal</p>
           </span>
         </div>
-        <div className="flex flex-col justify-around items-end">
+        <div className="flex flex-col justify-around items-end w-full">
           <span className="flex items-center gap-2">
             <SearchBar />|<SelectLang />
           </span>

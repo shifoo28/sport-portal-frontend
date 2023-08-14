@@ -52,7 +52,10 @@ const NewsCard: React.FC<CardData> = ({
   const navigate = useNavigate();
 
   return (
-    <figure className={`relative w-full h-full m-0`}>
+    <figure
+      className={`relative w-full h-full m-0 cursor-pointer`}
+      onClick={() => navigate(NEWS_DETAILS_PAGE, { state: { date, title } })}
+    >
       <img
         className={`h-full w-full object-cover object-center transition hover:duration-300  ease-in-out`}
         src={imgLink}
@@ -65,10 +68,7 @@ const NewsCard: React.FC<CardData> = ({
       <figcaption
         className={`absolute text-white ${
           bottom + " " + titleMaxWidth
-        } left-0 w-full cursor-pointer ml-4`}
-        onClick={() =>
-          navigate(NEWS_DETAILS_PAGE, { state: { date, title } })
-        }
+        } left-0 w-full ml-4`}
       >
         <Typography className="font-sofiasans text-[10px] max-w-[131px]">
           {date}

@@ -1,21 +1,28 @@
 import React from "react";
 
-const index = () => {
+const index = ({ navigate }: { navigate: (l: string) => void }) => {
   return (
     <div className="pt-20">
       <div className="bg-[#393939] text-[#FFFFFF] flex w-full font-sofiasans">
         <div className="flex justify-between mx-32 max-w-[1170px] w-full h-[300px] gap-5">
           <div className="w-full flex flex-col justify-center items-center gap-2">
-            <img
-              src="/icons/footer/logo.png"
-              className="w-12 h-14 object-cover"
-            />
-            <span className="flex">
-              <p className="text-4xl font-oswald uppercase">Sport</p>
-              <p className="text-[#08F] text-4xl font-oswald uppercase">
-                Portal
-              </p>
-            </span>
+            <div
+              className="flex flex-col items-center gap-2 cursor-pointer"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              <img
+                src="/icons/footer/logo.png"
+                className="w-12 h-14 object-cover"
+              />
+              <span className="flex">
+                <p className="text-4xl font-oswald uppercase">Sport</p>
+                <p className="text-[#08F] text-4xl font-oswald uppercase">
+                  Portal
+                </p>
+              </span>
+            </div>
             <p className="text-sm text-center max-w-[200px]">
               Sportuň ähli görnüşlerine degişli täzelikleri özünde jemleýän
               platforma.

@@ -6,10 +6,11 @@ import {
   MenuList,
 } from "@material-tailwind/react";
 import tmflag from "./svg/tmflag.svg";
-import React from "react";
+import React, { useState } from "react";
 
 const SelectLang = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [lang, setLang] = useState("TM");
 
   return (
     <div className="flex items-center justify-center">
@@ -17,7 +18,7 @@ const SelectLang = () => {
         <MenuHandler>
           <Button className="flex items-center capitalize tracking-normal px-0 outline-none shadow-none">
             <img src={tmflag} />
-            <p className="text-xs font-sofiasans">TM</p>
+            <p className="text-xs font-sofiasans text-black px-[2px]">{lang}</p>
             <svg
               width="8"
               height="3"
@@ -37,11 +38,19 @@ const SelectLang = () => {
             </svg>
           </Button>
         </MenuHandler>
-        <MenuList
-          className="overflow-visible p-1 gap-1 text-xs font-sofiasans outline-none rounded-none"
-        >
-          <MenuItem className="hover:text-[#08F] rounded-none flex items-center justify-center">TM</MenuItem>
-          <MenuItem className="hover:text-[#08F] rounded-none flex items-center justify-center">RU</MenuItem>
+        <MenuList className="overflow-visible p-1 gap-1 text-xs font-sofiasans outline-none rounded-none">
+          <MenuItem
+            className="hover:text-[#08F] rounded-none flex items-center justify-center"
+            onClick={() => setLang("TM")}
+          >
+            TM
+          </MenuItem>
+          <MenuItem
+            className="hover:text-[#08F] rounded-none flex items-center justify-center"
+            onClick={() => setLang("RU")}
+          >
+            RU
+          </MenuItem>
         </MenuList>
       </Menu>
     </div>

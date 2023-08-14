@@ -81,7 +81,10 @@ const FilterNews = () => {
       <div className="pt-5">
         {filteredNews.map((e) => {
           return (
-            <div key={e.id} className="flex justify-between items-center pb-4">
+            <div
+              key={e.id}
+              className="flex justify-between items-center pb-4 cursor-pointer"
+            >
               <div className="h-[70px] w-[70px] relative">
                 <img
                   src={e.imgLink}
@@ -90,9 +93,7 @@ const FilterNews = () => {
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">
                 <p className="font-sofiasans text-[8px]">{e.date}</p>
-                <p className="font-oswald text-[15px] leading-5 cursor-pointer">
-                  {e.title}
-                </p>
+                <p className="font-oswald text-[15px] leading-5">{e.title}</p>
               </div>
             </div>
           );

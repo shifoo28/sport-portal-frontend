@@ -1,6 +1,6 @@
 import React from "react";
-import nextSvg from "../../assets/svg/next.svg";
-import prevSvg from "../../assets/svg/prev.svg";
+import nextAbleSvg from "../../assets/svg/nextAble.svg";
+import prevDisableSvg from "../../assets/svg/prevDisable.svg";
 
 const categories = [
   { name: "Hemmesi", active: true },
@@ -32,8 +32,14 @@ export const HeaderWithCategories = () => {
           );
         })}
         <div className="flex gap-3">
-          <img src={prevSvg} className="bg-[#0E2165] h-6 w-6 cursor-pointer" />
-          <img src={nextSvg} className="bg-[#0E2165] h-6 w-6 cursor-pointer" />
+          <img
+            src={prevDisableSvg}
+            className="bg-[#0E2165] h-6 w-6 cursor-pointer"
+          />
+          <img
+            src={nextAbleSvg}
+            className="bg-[#0E2165] h-6 w-6 cursor-pointer"
+          />
         </div>
       </div>
     </div>
