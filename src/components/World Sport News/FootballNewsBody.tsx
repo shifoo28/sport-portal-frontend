@@ -48,6 +48,42 @@ const clubs = [
     title: "Arsenal",
     logo: "/images/world_news/arsenal.png",
   },
+  {
+    id: 0,
+    place: 1,
+    title: "Manchester United",
+    logo: "/images/world_news/mu.png",
+  },
+  {
+    id: 1,
+    place: 2,
+    title: "Manchester City",
+    logo: "/images/world_news/mancity.png",
+  },
+  {
+    id: 2,
+    place: 3,
+    title: "Liverpool",
+    logo: "/images/world_news/liverpool.png",
+  },
+  {
+    id: 3,
+    place: 4,
+    title: "Chelsea F.C",
+    logo: "/images/world_news/chelsea.png",
+  },
+  {
+    id: 4,
+    place: 5,
+    title: "West Ham United",
+    logo: "/images/world_news/westham.png",
+  },
+  {
+    id: 5,
+    place: 5,
+    title: "Arsenal",
+    logo: "/images/world_news/arsenal.png",
+  },
 ];
 
 const cempionat = [
@@ -133,7 +169,7 @@ const FootballNewsBody = () => {
               onClick={() => handleOpen(e.id)}
             >
               <img src={e.imgLink} />
-              <p className="font-sofiasans text-sm flex justify-start w-full ml-3">
+              <p className="font-sofiasans text-sm font-normal flex justify-start w-full ml-3">
                 {e.title}
               </p>
             </AccordionHeader>
@@ -141,49 +177,66 @@ const FootballNewsBody = () => {
               <div
                 className={`${
                   open != e.id ? "hidden" : ""
-                } flex flex-col gap-1 font-sofiasans`}
+                } font-sofiasans text-xs`}
               >
-                <div className="flex justify-between items-center text-[#636363] text-xs mx-2">
+                <div className="flex justify-between items-center text-[#636363] ml-2 mr-4">
                   <div>Toparlar</div>
-                  <div className="flex gap-[12px]">
-                    <p className="flex justify-center items-center">Ý</p>
-                    <p className="flex justify-center items-center">D</p>
-                    <p className="flex justify-center items-center">U</p>
-                    <p className="flex justify-center items-center">Utuk</p>
+                  <div className="flex">
+                    <p className="flex justify-center items-center w-[23px]">
+                      Ý
+                    </p>
+                    <p className="flex justify-center items-center w-[23px]">
+                      D
+                    </p>
+                    <p className="flex justify-center items-center w-[23px]">
+                      U
+                    </p>
+                    <p className="flex justify-center items-center w-[27px]">
+                      Utuk
+                    </p>
                   </div>
                 </div>
-                {e.clubs.map((e) => {
-                  return (
-                    <div
-                      className={`flex rounded-md p-1 justify-between ${
-                        e.place < 5 ? "bg-[#F2F0F9]" : "bg-[#FEE6EB]"
-                      } 
+                <div className=" overflow-auto max-h-[190px]">
+                  <div className={`flex flex-col gap-1 pr-1`}>
+                    {e.clubs.map((e) => {
+                      return (
+                        <div
+                          className={`flex rounded-md p-1 justify-between ${
+                            e.place < 5 ? "bg-[#F2F0F9]" : "bg-[#FEE6EB]"
+                          } 
                       `}
-                    >
-                      <div className="flex">
-                        <p className="pr-2 text">{e.place}</p>
-                        <img src={e.logo} className="h-5 w-5 object-cover" />
-                        <p className="text-xs flex items-center pl-1 w-full">
-                          {e.title}
-                        </p>
-                      </div>
-                      <div className="flex text-xs justify-between items-center pr-1">
-                        <p className="flex justify-center items-center w-[23px]">
-                          {Math.floor(Math.random() * 20) + 11}
-                        </p>
-                        <p className="flex justify-center items-center w-[23px]">
-                          {Math.floor(Math.random() * 10)}
-                        </p>
-                        <p className="flex justify-center items-center w-[23px]">
-                          {Math.floor(Math.random() * 10)}
-                        </p>
-                        <p className="flex justify-center items-center w-[23px]">
-                          {Math.floor(Math.random() * 40) + 11}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
+                        >
+                          <div className="flex">
+                            <p className="pr-2">{e.place}</p>
+                            <div className="h-5 w-7 flex justify-center items-center">
+                              <img
+                                src={e.logo}
+                                className="w-full h-full object-contain"
+                              />
+                            </div>
+                            <p className="flex items-center pl-1 w-full">
+                              {e.title}
+                            </p>
+                          </div>
+                          <div className="flex justify-between items-center pr-1">
+                            <p className="flex justify-center items-center w-[23px]">
+                              {Math.floor(Math.random() * 20) + 11}
+                            </p>
+                            <p className="flex justify-center items-center w-[23px]">
+                              {Math.floor(Math.random() * 10)}
+                            </p>
+                            <p className="flex justify-center items-center w-[23px]">
+                              {Math.floor(Math.random() * 10)}
+                            </p>
+                            <p className="flex justify-center items-center w-[27px]">
+                              {Math.floor(Math.random() * 40) + 11}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </AccordionBody>
           </Accordion>

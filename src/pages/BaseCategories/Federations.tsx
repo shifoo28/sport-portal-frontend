@@ -29,8 +29,9 @@ import {
   SPORTSHOPS,
   COMPETITIONS,
 } from "../../tools/links";
+import { useSelector } from "react-redux";
 
-const federations = [
+export const federations = [
   {
     id: 0,
     title: "TÜRKMENISTANYŇ BASKETBOL FEDERASIÝASY",
@@ -77,7 +78,7 @@ const bcfComponents = [
   SportShops,
   Competitions,
 ];
-const bcfInformation = [
+export const bcfInformation = [
   {
     link: SPORTS,
     title:
@@ -107,6 +108,8 @@ const Federations = ({ pathname }: { pathname: string }) => {
   const [open, setOpen] = React.useState(3);
   const handleOpen = (value: number) =>
     setOpen(open === value ? federations.length : value);
+  const fsports = useSelector((state: any) => state.federations.fsports);
+  console.log(fsports);
 
   return (
     <div className="w-full max-w-[1170px] mx-32 pt-7 font-oswald">

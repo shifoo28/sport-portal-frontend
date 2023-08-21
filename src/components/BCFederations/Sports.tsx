@@ -1,4 +1,6 @@
 import React from "react";
+import { GET_FEDERATION_SPORTS } from "../../redux/types";
+import { useDispatch } from "react-redux";
 
 interface IE {
   id?: number;
@@ -32,6 +34,9 @@ const data = [
 ];
 
 const Sports = ({ open }: { open: number }) => {
+  const dispatch = useDispatch();
+  dispatch({ type: GET_FEDERATION_SPORTS });
+
   return (
     <div
       className={`w-full h-max flex justify-between p-8 font-sofiasans text-xl gap-10`}

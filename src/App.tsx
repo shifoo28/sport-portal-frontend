@@ -7,16 +7,24 @@ import NewsDetails from "./pages/NewsDetails";
 import {
   BASE_CATEGORIES,
   NEWS_DETAILS_PAGE,
+  SPORT_NEWS_ALL,
   VIDEO_DETAILS_PAGE,
 } from "./tools/links";
 import VideoDetails from "./pages/VideoDetails";
 import BaseCategories from "./pages/BaseCategories";
 import Footer from "./components/Footer";
-import Banner from "./Headers";
-import ToolBox from "./Headers/ToolBox";
-import BaseCategoriesList from "./Headers/BaseCategory/BaseCategoriesList";
+import Banner from "./components/Headers";
+import BaseCategoriesList from "./components/Headers/BaseCategory";
+import ToolBox from "./components/Headers/ToolBox";
+import SportNewsAll from "./pages/SportNewsAll";
+import Navbar from "./components/Navbar";
+import { useDispatch } from "react-redux";
+import { GET_MAIN } from "./redux/types";
 
 const App = () => {
+  const dispatch = useDispatch();
+  dispatch({ type: GET_MAIN });
+
   return (
     <Routes>
       <Route
@@ -54,6 +62,14 @@ const App = () => {
       <Route
         element={
           <TemplateApp>
+            <SportNewsAll />
+          </TemplateApp>
+        }
+        path={SPORT_NEWS_ALL}
+      />
+      <Route
+        element={
+          <TemplateApp>
             <NF404 />
           </TemplateApp>
         }
@@ -67,15 +83,21 @@ const TemplateApp = ({ children }: { children: JSX.Element }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex justify-center">
+    <div
+      className="flex justify-center"
+      onScroll={() => {
+        console.log(window.scrollY);
+      }}
+    >
       <div className="max-w-[1440px]">
         <Banner />
         <ToolBox navigate={navigate} />
         <div className="border border-b-0"></div>
         <BaseCategoriesList />
         <div className="border border-b-0"></div>
+        <Navbar />
         {children}
-        <Footer navigate={navigate}/>
+        <Footer navigate={navigate} />
       </div>
     </div>
   );

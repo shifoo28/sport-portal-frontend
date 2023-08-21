@@ -1,12 +1,8 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-
-const defText = `
-    Şu günler Koreýa Respublikasynyň Çinju şäherinde Agyr atletika boýunça Aziýa çempionaty geçirilýär. Häzire çenli ýaryşda türkmen türgenleri dört medala eýe çykdylar. Has takygy, 64 kilograma çenli agram derejede ýaryşa gatnaşan Medine Amanowa itekläp götermekde 117 kilogram (kiçi kümüş medal), silterläp götermekde 90 kilogram (kiçi bürünç medal) we iki görnüşiň jemi boýunça 207 kilogram (uly kümüş medal) netije görkezip, Türkmenistanyň ýygyndysynyň hasabyna üç medal goşmagy başardy. Bu agram derejede altyn medallaryň üçüsini (itekläp götermekde 118 kilogram, silterläp götermekde 93 kilogram, iki görnüşiň jemi boýunça 211 kilogram) hem mongoliýaly Anuin Ganzoriging özüniňki etdi. Itekläp götermekde (109 kilogram) we iki görnüşiň jemi boýunça (194 kilogram) bürünç medala eýranly Fatima Kişewarz mynasyp boldy. Silterläp götermekdäki kümüş medal bolsa 91 kilogram netije görkezen gazagystanly Karina Goriçýewa nesip etdi.
-    
-    Türkmenistanly ýene bir türgen Bunýad Raşidow bolsa 67 kilograma çenli erkekleriň arasyndaky ýaryşda silterläp götermekde 140 kilogram netije bilen kiçi bürünç medala mynasyp boldy. Itekläp götermekde 162 kilogram agyrlygy göteren Bunýad Raşidow iki görnüşiň jemi boýunça 302 kilogram netije bilen bäşinji orundan ýer aldy.\n Ýeri gelende bellesek, 5-nji maýda badalga alan Agyr atletika boýunça 
-    
-    Aziýa çempionaty 13-nji maýa çenli dowam eder. Ýaryşda Türkmenistana 16 türgen wekilçilik edýär.`;
+import { useLocation, useNavigate } from "react-router-dom";
+import { SPORT_NEWS_ALL } from "../../tools/links";
+import { useSelector } from "react-redux";
+import { urlBack } from "../../redux/apiCalls";
 
 const sameNews = [
   {
@@ -39,19 +35,20 @@ const sameNews = [
 ];
 
 const Detail = () => {
+  const navigate = useNavigate();
   const location = useLocation();
-  const {
-    date,
-    title,
-    imgLink = "/images/news/news_11.png",
-    text = defText,
-    views = 35.328,
-  } = location.state;
+  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const { newsId } = location.state;
+
+  const data = useSelector((state: any) =>
+    state.home.local.find((e: any) => e.id === newsId)
+  );
+
   return (
     <div className="flex flex-col items-center justify-between gap-5 w-full">
       <div className="flex items-center">
         <p className="text-[26px] font-oswald capitalize max-w-[570px] text-center text-[#0F1A42]">
-          {title}
+          {prefLang === "Tm" ? data.nameTm : data.nameRu}
         </p>
       </div>
       <div className="max-w-[700px] max-h-[500px]">
@@ -73,16 +70,19 @@ const Detail = () => {
                 stroke-linejoin="round"
               />
             </svg>
-            {views}
+            {data.views}
           </p>
-          <p>{date}</p>
+          <p>{data.location}</p>
         </div>
         <div>
-          <img src={imgLink} className="object-cover" />
+          <img
+            src={urlBack + data.imagePath}
+            className="object-cover"
+          />
         </div>
       </div>
       <p className="w-full h-max text-justify font-sofiasans text-base whitespace-pre-line">
-        {text}
+        {prefLang === "Tm" ? data.textTm : data.textRu}
       </p>
       <div className="flex flex-col w-full pt-20">
         <div className="flex justify-between w-full font-oswald h-max">
@@ -90,7 +90,12 @@ const Detail = () => {
             Meňzeş täzelikler
           </p>
           <div className="border-b border-black flex justify-end w-full">
-            <button className="text-base bg-[#077EE6] text-white h-11 w-36">
+            <button
+              className="text-base bg-[#077EE6] text-white h-11 w-36"
+              onClick={() => {
+                navigate(SPORT_NEWS_ALL);
+              }}
+            >
               Hemmesini görmek
             </button>
           </div>
@@ -101,7 +106,9 @@ const Detail = () => {
               <div className="flex flex-col w-[195px] gap-2">
                 <img src={e.imgLink} className="object-cover h-[145px]" />
                 <p className="text-[10px] font-sofiasans">{e.date}</p>
-                <p className="text-sm font-oswald font-semibol cursor-pointer">{e.title}</p>
+                <p className="text-sm font-oswald font-semibol cursor-pointer">
+                  {e.title}
+                </p>
               </div>
             );
           })}

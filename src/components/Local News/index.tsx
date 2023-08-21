@@ -1,52 +1,8 @@
 import React from "react";
 import NewsCard from "./NewsCard";
 import AdsCard from "./AdsCard";
+import { useSelector } from "react-redux";
 
-const news = [
-  {
-    id: 0,
-    imgLink: "http://localhost:3000/images/news/news_11.png",
-    cardMaxWidth: 456,
-    cardHeight: 579,
-    title:
-      "Türkmenistanly agyr atletikaçylar Aziýa çempionatynda dört medala mynasyp boldular",
-    date: "Koreýa Respublikasy - 08 Maý 2023ý.",
-    category: "Agyr atletika",
-    cardSize: "max",
-  },
-  {
-    id: 1,
-    imgLink: "http://localhost:3000/images/news/news_2.png",
-    cardMaxWidth: 234,
-    cardHeight: 278,
-    title:
-      "Türkmenistanly pälwanlar guşakly göreş boýunça Aziýanyň çempionatyna gatnaşarlar",
-    date: "Özbegistan - 05 Maý 2023ý.",
-    category: "Göreş",
-    cardSize: "min",
-  },
-  {
-    id: 2,
-    imgLink: "http://localhost:3000/images/news/news_3.png",
-    cardMaxWidth: 234,
-    cardHeight: 278,
-    title: "Paralimpiýa oýunlaryna türkmenistanly türgenleriň taýynlygy",
-    date: "BAE - 20 Maý 2023ý.",
-    category: "Pawerlifting",
-    cardSize: "min",
-  },
-  {
-    id: 3,
-    imgLink: "http://localhost:3000/images/news/news_4.png",
-    cardMaxWidth: 484,
-    cardHeight: 278,
-    title:
-      "Ruslan Mingazow Gonkongyň futbol çempionatynyň iň gowy oýunçysy boldy",
-    date: "Gonkong - 23 Maý 2023ý.",
-    category: "Futbol",
-    cardSize: "mid",
-  },
-];
 const ads = [
   {
     id: 0,
@@ -71,54 +27,69 @@ const ads = [
 ];
 
 const NewsCards = () => {
+  const news = useSelector((state: any) => state.home.local);
+  const prefLang = useSelector((state: any) => state.main.prefLang);
+
   return (
     <div className="w-full flex mt-9 mx-32 h-max max-w-[1170px]">
       <div className="flex justify-between w-full ">
         <div className="w-[440px] h-[570px]">
           <NewsCard
-            imgLink={news[0].imgLink}
-            cardMaxWidth={news[0].cardMaxWidth}
-            cardHeight={news[0].cardHeight}
-            title={news[0].title}
-            date={news[0].date}
-            category={news[0].category}
-            cardSize={news[0].cardSize}
+            id={news[0].id}
+            imgLink={news[0].imagePath}
+            title={prefLang === "Tm" ? news[0].nameTm : news[0].nameRu}
+            date={news[0].location}
+            category={
+              prefLang === "Tm"
+                ? news[0].category.nameTm
+                : news[0].category.nameRu
+            }
+            cardSize="max"
           />
         </div>
         <div className="flex flex-col justify-between">
           <div className="flex justify-between">
-            <div className="w-[231px] max-h-[275px]">
+            <div className="w-[231px] h-[275px]">
               <NewsCard
-                imgLink={news[1].imgLink}
-                cardMaxWidth={news[1].cardMaxWidth}
-                cardHeight={news[1].cardHeight}
-                title={news[1].title}
-                date={news[1].date}
-                category={news[1].category}
-                cardSize={news[1].cardSize}
+                id={news[1].id}
+                imgLink={news[1].imagePath}
+                title={prefLang === "Tm" ? news[1].nameTm : news[1].nameRu}
+                date={news[1].location}
+                category={
+                  prefLang === "Tm"
+                    ? news[1].category.nameTm
+                    : news[1].category.nameRu
+                }
+                cardSize="min"
               />
             </div>
-            <div className="w-[231px] max-h-[275px]">
+            <div className="w-[231px] h-[275px]">
               <NewsCard
-                imgLink={news[2].imgLink}
-                cardMaxWidth={news[2].cardMaxWidth}
-                cardHeight={news[2].cardHeight}
-                title={news[2].title}
-                date={news[2].date}
-                category={news[2].category}
-                cardSize={news[2].cardSize}
+                id={news[2].id}
+                imgLink={news[2].imagePath}
+                title={prefLang === "Tm" ? news[2].nameTm : news[2].nameRu}
+                date={news[2].location}
+                category={
+                  prefLang === "Tm"
+                    ? news[2].category.nameTm
+                    : news[2].category.nameRu
+                }
+                cardSize="min"
               />
             </div>
           </div>
-          <div className="max-w-[484px] max-h-[278px]">
+          <div className="w-[484px] h-[278px]">
             <NewsCard
-              imgLink={news[3].imgLink}
-              cardMaxWidth={news[3].cardMaxWidth}
-              cardHeight={news[3].cardHeight}
-              title={news[3].title}
-              date={news[3].date}
-              category={news[3].category}
-              cardSize={news[3].cardSize}
+              id={news[3].id}
+              imgLink={news[3].imagePath}
+              title={prefLang === "Tm" ? news[3].nameTm : news[3].nameRu}
+              date={news[3].location}
+              category={
+                prefLang === "Tm"
+                  ? news[3].category.nameTm
+                  : news[3].category.nameRu
+              }
+              cardSize="mid"
             />
           </div>
         </div>

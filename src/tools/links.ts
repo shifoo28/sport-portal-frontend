@@ -12,3 +12,6 @@ export const HEALTHCARE = "/health_care";
 export const HEALTHYFOOD = "/healthy_food";
 export const SPORTSHOPS = "/sport_shops";
 export const COMPETITIONS = "/competitions";
+
+// Sport News All
+export const SPORT_NEWS_ALL = "/sport_news_all";

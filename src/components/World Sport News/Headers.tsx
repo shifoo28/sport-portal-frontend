@@ -1,6 +1,6 @@
 import React from "react";
-import nextAbleSvg from "../../assets/svg/nextAble.svg";
-import prevDisableSvg from "../../assets/svg/prevDisable.svg";
+import nextSvg from "../../assets/svg/next.svg";
+import prevSvg from "../../assets/svg/prev.svg";
 
 const categories = [
   { name: "Hemmesi", active: true },
@@ -13,7 +13,7 @@ const categories = [
 export const HeaderWithCategories = () => {
   return (
     <div className="h-11 flex justify-between font-oswald">
-      <div className="max-w-[180px] w-full border-b-red-600 border-b text-2xl text-red-600 font-semibold">
+      <div className="max-w-[180px] w-full border-b-red-600 border-b text-2xl text-red-600">
         Dünýä täzelikler
       </div>
       <div
@@ -32,22 +32,22 @@ export const HeaderWithCategories = () => {
           );
         })}
         <div className="flex gap-3">
-          <img src={prevDisableSvg} className="bg-[#0E2165] h-6 w-6 cursor-pointer" />
-          <img src={nextAbleSvg} className="bg-[#0E2165] h-6 w-6 cursor-pointer" />
+          <img src={prevSvg} className="bg-[#6E748C] h-6 w-6 cursor-pointer" />
+          <img src={nextSvg} className="bg-[#0E2165] h-6 w-6 cursor-pointer" />
         </div>
       </div>
     </div>
   );
 };
 
-export const HeaderWithoutCategories = () => {
+export const HeaderWithoutCategories = ({ title }: { title?: string }) => {
   return (
     <div className="flex h-11 font-oswald w-full">
       <div
-        className="flex items-center max-w-[150px] w-full border-b border-[#0088FF] text-[#0088FF] 
-                  text-sm font-semibold"
+        className={`flex items-center max-w-[150px] w-full border-b border-[#0088FF] text-[#0088FF] 
+                  text-sm`}
       >
-        Futbol Statistika
+        {title ? title : "Futbol Statistika"}
       </div>
       <span className="border-b border-black w-full"></span>
     </div>

@@ -2,6 +2,8 @@ import React from "react";
 import playVideoSvg from "./svg/playvideo.svg";
 import { useNavigate } from "react-router-dom";
 import { VIDEO_DETAILS_PAGE } from "../../tools/links";
+import { useSelector } from "react-redux";
+import { urlBack } from "../../redux/apiCalls";
 
 const videoNews = [
   {
@@ -35,15 +37,11 @@ const videoNews = [
 
 const SportNewsBody = () => {
   const navigate = useNavigate();
+  const news = useSelector((state: any) => state.home.video);
+  const prefLang = useSelector((state: any) => state.main.prefLang);
 
   const linkTo = () => {
-    navigate(VIDEO_DETAILS_PAGE, {
-      state: {
-        date: "Hong Kong - 11 Iyul 2023",
-        title:
-          "Интервью с футболистом сборной Туркменистана Русланом Мингазовым",
-      },
-    });
+    navigate(VIDEO_DETAILS_PAGE, { state: { index: 0 } });
   };
 
   return (
@@ -52,10 +50,17 @@ const SportNewsBody = () => {
         className="relative h-[400px] w-full font-sofiasans cursor-pointer"
         onClick={linkTo}
       >
-        <img src="/images/video_news/news_1.png" />
+        <img
+          src={urlBack + "/" + news[0].imagePath}
+          className="object-cover h-full w-full"
+        />
         <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 to-black/50 " />
         <div className="absolute top-6 left-6 h-5 bg-[#FE4A51] w-max text-white text-[9px] flex items-center">
-          <p className="px-3">Futbol</p>
+          <p className="px-3">
+            {prefLang === "Tm"
+              ? news[0].category.nameTm
+              : news[0].category.nameRu}
+          </p>
         </div>
         <div className="absolute top-24 left-1/2">
           <img src={playVideoSvg} />
@@ -67,7 +72,7 @@ const SportNewsBody = () => {
             Hong Kong - 11 Iyul 2023
           </p>
           <p className={`font-oswald text-4xl`}>
-            Интервью с футболистом сборной Туркменистана Русланом Мингазовым
+            {prefLang === "Tm" ? news[0].nameTm : news[0].nameRu}
           </p>
         </div>
       </div>
@@ -75,7 +80,10 @@ const SportNewsBody = () => {
         <div className="flex justify-between">
           {videoNews.map((e) => {
             return (
-              <div className="flex flex-col max-w-[270px] w-full cursor-pointer" key={e.id}>
+              <div
+                className="flex flex-col max-w-[270px] w-full cursor-pointer"
+                key={e.id}
+              >
                 <div className="relative h-[200px]">
                   <img src={e.imgLink} className="object-cover" />
                   <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 to-black/50 " />

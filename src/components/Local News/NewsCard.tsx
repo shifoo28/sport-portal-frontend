@@ -2,11 +2,11 @@ import { Typography } from "@material-tailwind/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { NEWS_DETAILS_PAGE } from "../../tools/links";
+import { urlBack } from "../../redux/apiCalls";
 
 type CardData = {
+  id: string;
   imgLink: string;
-  cardMaxWidth: number;
-  cardHeight: number;
   title: string;
   date: string;
   category: string;
@@ -14,6 +14,7 @@ type CardData = {
 };
 
 const NewsCard: React.FC<CardData> = ({
+  id,
   category,
   date,
   title,
@@ -54,12 +55,11 @@ const NewsCard: React.FC<CardData> = ({
   return (
     <figure
       className={`relative w-full h-full m-0 cursor-pointer`}
-      onClick={() => navigate(NEWS_DETAILS_PAGE, { state: { date, title } })}
+      onClick={() => navigate(NEWS_DETAILS_PAGE, { state: { newsId: id } })}
     >
       <img
         className={`h-full w-full object-cover object-center transition hover:duration-300  ease-in-out`}
-        src={imgLink}
-        alt="nature image"
+        src={urlBack + imgLink}
       />
       <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 via-black/50 " />
       <div className="absolute top-6 left-6 h-5 bg-[#08F] w-max text-white text-[9px] flex items-center">

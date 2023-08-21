@@ -1,5 +1,6 @@
 import React from "react";
 import rating from "./svg/rating.svg";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const data = [
   {
@@ -104,10 +105,13 @@ const data = [
 ];
 
 const Athlete = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <div className="text-[#0F1A42] font-sofiasans px-8 pt-8">
       <div className="w-full h-[410px] overflow-auto">
-        <table className="w-full">
+        <table className="w-full max-w-[99%]">
           <thead className="">
             <tr className="h-[13px] text-[11px] border border-[#0088FF]">
               <td className="" align="center">
@@ -141,13 +145,13 @@ const Athlete = () => {
                   <td className="p-2 font-semibold" align="center">
                     {athlete.id + 1}
                   </td>
-                  <td className="p-2 font-semibold" align="center">
+                  <td className="p-2 font-semibold cursor-pointer" align="center">
                     <img
                       src={athlete.imgLink}
                       className="w-[60px] h-[60px] object-cover"
                     />
                   </td>
-                  <td className="p-2 font-semibold" align="center">
+                  <td className="p-2 font-semibold cursor-pointer" align="center">
                     {athlete.name}
                   </td>
                   <td className="p-2 font-semibold" align="center">
@@ -179,8 +183,13 @@ const Athlete = () => {
           </tbody>
         </table>
       </div>
-      <div className="px-[52px] py-2 flex justify-end">
-        <button className="bg-[#077EE6] text-white h-[44px] w-[148px] font-oswald text-base">
+      <div className="px-[15px] py-1 flex justify-end">
+        <button
+          className="bg-[#077EE6] text-white h-[44px] w-[148px] font-oswald text-base"
+          onClick={() => {
+            navigate(location.pathname + "/all");
+          }}
+        >
           Hemmesini görmek
         </button>
       </div>
