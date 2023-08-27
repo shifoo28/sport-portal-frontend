@@ -141,17 +141,33 @@ const Athlete = () => {
           <tbody className="text-base">
             {data.map((athlete) => {
               return (
-                <tr className="border border-[#0088FF]">
+                <tr className="border border-[#0088FF]" key={athlete.id}>
                   <td className="p-2 font-semibold" align="center">
                     {athlete.id + 1}
                   </td>
-                  <td className="p-2 font-semibold cursor-pointer" align="center">
+                  <td
+                    className="p-2 font-semibold cursor-pointer"
+                    align="center"
+                    onClick={() =>
+                      navigate(location.pathname + "/id", {
+                        state: { id: athlete.id },
+                      })
+                    }
+                  >
                     <img
                       src={athlete.imgLink}
                       className="w-[60px] h-[60px] object-cover"
                     />
                   </td>
-                  <td className="p-2 font-semibold cursor-pointer" align="center">
+                  <td
+                    className="p-2 font-semibold cursor-pointer"
+                    align="center"
+                    onClick={() =>
+                      navigate(location.pathname + "/id", {
+                        state: { id: athlete.id },
+                      })
+                    }
+                  >
                     {athlete.name}
                   </td>
                   <td className="p-2 font-semibold" align="center">

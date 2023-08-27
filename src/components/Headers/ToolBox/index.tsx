@@ -2,43 +2,75 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import SelectLang from "./SelectLang";
 import Account from "./Account";
+import { useSelector } from "react-redux";
 
-const index = ({ navigate }: { navigate: (l: string) => void }) => {
-  const months = [
-    "Ýanwar",
-    "Fewral",
-    "Mart",
-    "Aprel",
-    "Maý",
-    "Iýun",
-    "Iýul",
-    "Awgust",
-    "Sentýabr",
-    "Oktýabr",
-    "Noýabr",
-    "Dekabr",
-  ];
-  const days = [
-    "Ýekşenbe",
-    "Duşenbe",
-    "Sişenbe",
-    "Çarşenbe",
-    "Penşenbe",
-    "Anna",
-    "Şenbe",
-  ];
+const monthsTm = [
+  "Ýanwar",
+  "Fewral",
+  "Mart",
+  "Aprel",
+  "Maý",
+  "Iýun",
+  "Iýul",
+  "Awgust",
+  "Sentýabr",
+  "Oktýabr",
+  "Noýabr",
+  "Dekabr",
+];
+const monthsRu = [
+  "Январь",
+  "Февраль",
+  "Март",
+  "Апрель",
+  "Май",
+  "Июнь",
+  "Июль",
+  "Август",
+  "Сентябрь",
+  "Октябрь",
+  "Ноябрь",
+  "Декабрь",
+];
+const daysTm = [
+  "Ýekşenbe",
+  "Duşenbe",
+  "Sişenbe",
+  "Çarşenbe",
+  "Penşenbe",
+  "Anna",
+  "Şenbe",
+];
+const daysRu = [
+  "Воскресенье",
+  "Понедельник",
+  "Вторник",
+  "Среда",
+  "Четверг",
+  "Пятница",
+  "Суббота",
+];
+
+const index = ({
+  navigate,
+  prefLang,
+}: {
+  navigate: (l: string) => void;
+  prefLang: string;
+}) => {
   const d = new Date();
-  let year = d.getFullYear();
-  let month = months[d.getMonth()];
+  let year = `${d.getFullYear()}${prefLang === "Tm" ? "ý" : "г"}`;
+  let month =
+    prefLang === "Tm" ? monthsTm[d.getMonth()] : monthsRu[d.getMonth()];
   let date = d.getDate();
-  let day = days[d.getDay()];
+  let day = prefLang === "Tm" ? daysTm[d.getDay()] : daysRu[d.getDay()];
 
   return (
     <section className="w-full h-16 font-sofiasans text-xs">
       <div className="mx-32 flex justify-between max-w-[1170px] h-full">
         <div className="flex flex-col justify-around w-full">
-          <div>{day + ", " + date + " " + month + " " + year + "ý"}</div>
-          <div>15°C Aşgabat</div>
+          <div>{day + ", " + date + " " + month + " " + year}</div>
+          <div>{prefLang === "Tm" ? "15°C Aşgabat" : "В Ашхабаде 15°C"}</div>
         </div>
         <div
           className="flex items-center cursor-pointer"
@@ -59,9 +91,9 @@ const index = ({ navigate }: { navigate: (l: string) => void }) => {
         </div>
         <div className="flex flex-col justify-around items-end w-full">
           <span className="flex items-center gap-2">
-            <SearchBar />|<SelectLang />
+            <SearchBar prefLang={prefLang} />|<SelectLang />
           </span>
-          <Account />
+          <Account prefLang={prefLang} />
         </div>
       </div>
     </section>

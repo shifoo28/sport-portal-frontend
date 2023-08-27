@@ -6,6 +6,7 @@ import Federations from "./Federations";
 import FederationAll from "./FederationAll";
 import { useDispatch } from "react-redux";
 import { GET_FEDERATIONS } from "../../redux/types";
+import BCFDetail from "../../components/Details/BCFDetail";
 
 const BaseCategories = () => {
   const dispatch = useDispatch();
@@ -14,11 +15,13 @@ const BaseCategories = () => {
   const uri = location.pathname.slice(BASE_CATEGORIES.length);
 
   return uri.includes("all") ? (
-    <FederationAll uri={uri} />
+    <FederationAll />
+  ) : uri.includes("id") ? (
+    <BCFDetail />
   ) : uri.length < 2 ? (
     <AllBaseCategories />
   ) : (
-    <Federations pathname={uri} />
+    <Federations />
   );
 };
 

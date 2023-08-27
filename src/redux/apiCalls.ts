@@ -1,5 +1,8 @@
+import axios from "axios";
+
 export const urlBack = "http://localhost:3012/";
 
+// GETTERS
 export async function fetchMain() {
   try {
     const res = await fetch(urlBack);
@@ -45,6 +48,19 @@ export async function fetchFederationSports() {
     const res = await fetch(urlBack + "federation-page/sports");
 
     return res.json();
+  } catch (error) {
+    throw error;
+  }
+}
+
+// SETTERS
+export async function patchNewsDetailsViews(id: string, categoryId: string) {
+  try {
+    const res = await axios.patch(urlBack + "news-details/" + id, null, {
+      params: { categoryId },
+    });
+
+    return res.data;
   } catch (error) {
     throw error;
   }

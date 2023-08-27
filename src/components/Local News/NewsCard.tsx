@@ -33,6 +33,7 @@ const NewsCard: React.FC<CardData> = ({
         bottom = "bottom-7";
       }
       break;
+
     case "mid":
       {
         textSize = "text-xl";
@@ -40,6 +41,7 @@ const NewsCard: React.FC<CardData> = ({
         bottom = "bottom-6";
       }
       break;
+
     case "min":
       {
         textSize = "text-sm";
@@ -47,6 +49,7 @@ const NewsCard: React.FC<CardData> = ({
         bottom = "bottom-2";
       }
       break;
+
     default:
       break;
   }
@@ -57,10 +60,12 @@ const NewsCard: React.FC<CardData> = ({
       className={`relative w-full h-full m-0 cursor-pointer`}
       onClick={() => navigate(NEWS_DETAILS_PAGE, { state: { newsId: id } })}
     >
-      <img
-        className={`h-full w-full object-cover object-center transition hover:duration-300  ease-in-out`}
-        src={urlBack + imgLink}
-      />
+      <div className="w-full h-full">
+        <img
+          className={`h-full w-full object-cover object-center`}
+          src={urlBack + imgLink}
+        />
+      </div>
       <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 via-black/50 " />
       <div className="absolute top-6 left-6 h-5 bg-[#08F] w-max text-white text-[9px] flex items-center">
         <p className="px-3">{category}</p>

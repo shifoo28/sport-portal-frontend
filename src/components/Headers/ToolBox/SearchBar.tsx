@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-const SearchBar = () => {
+const SearchBar = ({ prefLang }: { prefLang: string }) => {
+  const [searchText, setSearchText] = useState("");
+
   return (
-    <label className="relative block focus:bg-[#D1E1EE]">
+    <label className="relative block">
       <input
-        className="focus:w-full w-14 pr-5 focus:outline-none"
-        placeholder="Gözleg..."
+        className="focus:w-full w-14 pr-5 focus:outline-none focus:bg-[#DEE8F0]"
+        placeholder={prefLang === "Tm" ? "Gözleg..." : "Поиск..."}
         type="text"
+        value={searchText}
+        onChange={(e) => setSearchText(e.target.value)}
       />
       <span className="absolute inset-y-0 right-0 flex items-center ">
         <svg

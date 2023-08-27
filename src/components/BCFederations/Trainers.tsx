@@ -1,6 +1,7 @@
 import React from "react";
 import rating from "./svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const data = [
   {
@@ -190,6 +191,7 @@ const data = [
 const Trainers = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const prefLang = useSelector((state: any) => state.main.prefLang);
 
   return (
     <div className="flex flex-col gap-[5px]">
@@ -197,7 +199,10 @@ const Trainers = () => {
         <div className="w-full h-[395px] grid grid-cols-3 gap-4 justify-between overflow-auto">
           {data.map((trainer) => {
             return (
-              <div className="max-w-[345px] h-[120px] flex border border-[#0088FF] scroll-mt-6">
+              <div
+                className="max-w-[345px] h-[120px] flex border border-[#0088FF] scroll-mt-6"
+                key={trainer.id}
+              >
                 <img src={trainer.imgLink} className="object-cover w-[95px]" />
                 <div className="pl-2 font-sofiasans flex flex-col justify-around w-full">
                   <p className="text-[#0F1A42] font-semibold">{trainer.name}</p>
@@ -237,7 +242,7 @@ const Trainers = () => {
             navigate(location.pathname + "/all");
           }}
         >
-          Hemmesini görmek
+          {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
         </button>
       </div>
     </div>

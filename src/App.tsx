@@ -18,8 +18,8 @@ import BaseCategoriesList from "./components/Headers/BaseCategory";
 import ToolBox from "./components/Headers/ToolBox";
 import SportNewsAll from "./pages/SportNewsAll";
 import Navbar from "./components/Navbar";
-import { useDispatch } from "react-redux";
-import { GET_MAIN } from "./redux/types";
+import { useDispatch, useSelector } from "react-redux";
+import { GET_LOCAL_NEWS, GET_MAIN, GET_VIDEO_NEWS } from "./redux/types";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -80,18 +80,17 @@ const App = () => {
 };
 
 const TemplateApp = ({ children }: { children: JSX.Element }) => {
+  const dispatch = useDispatch();
+  dispatch({ type: GET_LOCAL_NEWS });
+  dispatch({ type: GET_VIDEO_NEWS });
+  const prefLang = useSelector((state: any) => state.main.prefLang);
   const navigate = useNavigate();
 
   return (
-    <div
-      className="flex justify-center"
-      onScroll={() => {
-        console.log(window.scrollY);
-      }}
-    >
+    <div className="flex justify-center">
       <div className="max-w-[1440px]">
         <Banner />
-        <ToolBox navigate={navigate} />
+        <ToolBox navigate={navigate} prefLang={prefLang} />
         <div className="border border-b-0"></div>
         <BaseCategoriesList />
         <div className="border border-b-0"></div>

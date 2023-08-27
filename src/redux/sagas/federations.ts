@@ -13,7 +13,6 @@ function* getFederations() {
   try {
     // @ts-ignore
     const federations = yield call(fetchFederations);
-    console.log(federations);
 
     yield put({ type: GET_FEDERATIONS_SUCCESS, payload: federations });
   } catch (error: any) {
@@ -25,7 +24,6 @@ function* getFederationSports() {
   try {
     // @ts-ignore
     const fsports = yield call(fetchFederationSports);
-    console.log(fsports);
 
     yield put({ type: GET_FEDERATION_SPORTS_SUCCESS, payload: fsports });
   } catch (error: any) {

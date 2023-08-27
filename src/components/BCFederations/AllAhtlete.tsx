@@ -1,5 +1,6 @@
 import React from "react";
 import rating from "./svg/rating.svg";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const data = [
   {
@@ -137,6 +138,10 @@ const data = [
 ];
 
 const AllAhtlete = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { pathname } = location;
+
   return (
     <div className="w-full">
       <table className="w-full max-w-[99%]">
@@ -173,13 +178,29 @@ const AllAhtlete = () => {
                 <td className="p-2 font-semibold" align="center">
                   {athlete.id + 1}
                 </td>
-                <td className="p-2 font-semibold cursor-pointer" align="center">
+                <td
+                  className="p-2 font-semibold cursor-pointer"
+                  align="center"
+                  onClick={() =>
+                    navigate(pathname.slice(0, pathname.length - 4) + "/id", {
+                      state: { id: athlete.id },
+                    })
+                  }
+                >
                   <img
                     src={athlete.imgLink}
                     className="w-[60px] h-[60px] object-cover"
                   />
                 </td>
-                <td className="p-2 font-semibold cursor-pointer" align="center">
+                <td
+                  className="p-2 font-semibold cursor-pointer"
+                  align="center"
+                  onClick={() =>
+                    navigate(pathname.slice(0, pathname.length - 4) + "/id", {
+                      state: { id: athlete.id },
+                    })
+                  }
+                >
                   {athlete.name}
                 </td>
                 <td className="p-2 font-semibold" align="center">

@@ -2,12 +2,30 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { urlBack } from "../../redux/apiCalls";
+import playvideo from "../../components/Video News/svg/playvideo.svg";
 
 const VideoDetails = () => {
   const location = useLocation();
   const { index } = location.state;
   const newVideo = useSelector((state: any) => state.home.video[index]);
   const prefLang = useSelector((state: any) => state.main.prefLang);
+
+  const now = new Date().getTime();
+  const updated = new Date(newVideo.updatedAt).getTime();
+  const postedAt = now - updated;
+  const uploaded = Math.round(postedAt / 1000 / 60 / 60 / 24)
+    ? `${Math.round(postedAt / 1000 / 60 / 60 / 24)} ${
+        prefLang === "Tm" ? "gün öň" : "дня(день) назад"
+      }`
+    : Math.round(postedAt / 1000 / 60 / 60)
+    ? `${Math.round(postedAt / 1000 / 60 / 60)} ${
+        prefLang === "Tm" ? "sagat öň" : "час(а) назад"
+      }`
+    : Math.round(postedAt / 1000 / 60)
+    ? `${Math.round(postedAt / 1000 / 60)} ${
+        prefLang === "Tm" ? "minut öň" : "минут(ы) назад"
+      }`
+    : `${prefLang === "Tm" ? "1 minut öň" : "1 минуту назад"}`;
 
   return (
     <div className="flex w-full max-w-[1170px] mx-32 pt-7">
@@ -36,9 +54,9 @@ const VideoDetails = () => {
                   stroke-linejoin="round"
                 />
               </svg>
-              {35.328}
+              {newVideo.views}
             </p>
-            <p className="font-sofiasans text-base">{`2 sagat mundan öň`}</p>
+            <p className="font-sofiasans text-base">{uploaded}</p>
           </div>
           <video
             src={urlBack + "/" + newVideo.videoPath}
@@ -48,6 +66,101 @@ const VideoDetails = () => {
           >
             Your browser doesn't support this video!
           </video>
+        </div>
+        <div className="w-full pt-24 flex flex-col gap-8">
+          <div className="flex justify-between font-oswald">
+            <div className="border-b border-[#F65050] w-52">
+              <p className="text-2xl text-[#F65050] my-1">
+                {prefLang === "Tm" ? "Meňzeş täzelikler" : "Подобные новости"}
+              </p>
+            </div>
+            <div className="w-full border-b border-black flex justify-end">
+              <button className="text-sm bg-[#077EE6] text-white h-full px-3">
+                {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
+              </button>
+            </div>
+          </div>
+          <div className="flex justify-between font-oswald text-2xl">
+            <div className="flex flex-col justify-between cursor-pointer">
+              <div className="h-[400px] w-[660px] relative">
+                <img
+                  src={playvideo}
+                  className="absolute top-[160px] left-[300px]"
+                />
+                <img
+                  src="/images/video_news/news_1.png"
+                  className="object-cover h-full"
+                />
+              </div>
+              <p className="text-xs font-sofiasans">Floyd Miles 3 Days Ago</p>
+              <p className="font-semibold max-w-[550px]">
+                Charge Two Devices at the Same Time With This Magnetic Wireless
+                Charging Dock
+              </p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="flex h-[165px] gap-4">
+                <div className="relative w-[182px] h-full">
+                  <img
+                    src={playvideo}
+                    className="absolute w-[38px] h-[38px] top-[40%] left-[40%]"
+                  />
+                  <img
+                    src="/images/video_news/news_2.png"
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <div className="flex flex-col justify-center gap-4">
+                  <p className="text-xs font-sofiasans">
+                    Jacob Jones 3 Days Ago
+                  </p>
+                  <p className="max-w-[290px] font-semibold">
+                    Tiny moon rover could be a stepping stone to Mars
+                  </p>
+                </div>
+              </div>
+              <div className="flex h-[165px] gap-4">
+                <div className="relative w-[182px] h-full">
+                  <img
+                    src={playvideo}
+                    className="absolute w-[38px] h-[38px] top-[40%] left-[40%]"
+                  />
+                  <img
+                    src="/images/video_news/news_3.png"
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <div className="flex flex-col justify-center gap-4">
+                  <p className="text-xs font-sofiasans">
+                    Jacob Jones 3 Days Ago
+                  </p>
+                  <p className="max-w-[290px] font-semibold">
+                    Tiny moon rover could be a stepping stone to Mars
+                  </p>
+                </div>
+              </div>
+              <div className="flex h-[165px] gap-4">
+                <div className="relative w-[182px] h-full">
+                  <img
+                    src={playvideo}
+                    className="absolute w-[38px] h-[38px] top-[40%] left-[40%]"
+                  />
+                  <img
+                    src="/images/video_news/news_4.png"
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <div className="flex flex-col justify-center gap-4">
+                  <p className="text-xs font-sofiasans">
+                    Jacob Jones 3 Days Ago
+                  </p>
+                  <p className="max-w-[290px] font-semibold">
+                    Tiny moon rover could be a stepping stone to Mars
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

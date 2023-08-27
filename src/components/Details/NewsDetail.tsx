@@ -1,8 +1,9 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SPORT_NEWS_ALL } from "../../tools/links";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { urlBack } from "../../redux/apiCalls";
+import { PATCH_SPORT_NEWS_VIEWS } from "../../redux/types";
 
 const sameNews = [
   {
@@ -34,15 +35,20 @@ const sameNews = [
   },
 ];
 
-const Detail = () => {
+const NewsDetail = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const prefLang = useSelector((state: any) => state.main.prefLang);
   const { newsId } = location.state;
-
   const data = useSelector((state: any) =>
     state.home.local.find((e: any) => e.id === newsId)
   );
+
+  dispatch({
+    type: PATCH_SPORT_NEWS_VIEWS,
+    payload: { newsId, categoryId: data.categoryId },
+  });
 
   return (
     <div className="flex flex-col items-center justify-between gap-5 w-full">
@@ -75,10 +81,7 @@ const Detail = () => {
           <p>{data.location}</p>
         </div>
         <div>
-          <img
-            src={urlBack + data.imagePath}
-            className="object-cover"
-          />
+          <img src={urlBack + data.imagePath} className="object-cover" />
         </div>
       </div>
       <p className="w-full h-max text-justify font-sofiasans text-base whitespace-pre-line">
@@ -118,4 +121,4 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+export default NewsDetail;

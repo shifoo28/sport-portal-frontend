@@ -175,22 +175,26 @@ const SportNewsAll = () => {
     <div className="w-full mx-32 max-w-[1170px]">
       <div className="w-full flex justify-between gap-8 pt-8">
         <div className="w-[445px]">
-          <HeaderWithoutCategories
-            title={
-              prefLang == "Tm" ? "Toparlar Statistika" : "Статистика команды"
-            }
-          />
+          <div className="flex h-11 font-oswald w-full">
+            <div
+              className={`flex items-center max-w-[150px] w-full border-b border-[#0088FF] text-[#0088FF] 
+                  text-sm`}
+            >
+              {prefLang == "Tm" ? "Toparlar Statistika" : "Статистика команды"}
+            </div>
+            <span className="border-b border-black w-full"></span>
+          </div>
           <FootballNewsBody />
         </div>
         <div className="w-full">
-            <div className="flex h-11 font-oswald text-2xl w-full">
-              <div
-                className={`flex items-center max-w-[160px] w-full border-b border-[#F65050] text-[#F65050]`}
-              >
-                {prefLang == "Tm" ? "Futbol  täzelikler" : "Новости футбола"}
-              </div>
-              <span className="border-b border-black w-full"></span>
+          <div className="flex h-11 font-oswald text-2xl w-full">
+            <div
+              className={`flex items-center max-w-[160px] w-full border-b border-[#F65050] text-[#F65050]`}
+            >
+              {prefLang == "Tm" ? "Futbol  täzelikler" : "Новости футбола"}
             </div>
+            <span className="border-b border-black w-full"></span>
+          </div>
           <div className="grid grid-cols-4 w-full pt-5 gap-4">
             {news.map((i) => {
               return (

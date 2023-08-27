@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
-const filteredNews = [
+let filteredNews = [
   {
     id: 0,
     title: "Gluten-Free Almond Cake with Berries",
@@ -52,7 +53,12 @@ const filteredNews = [
 ];
 
 const FilterNews = () => {
+  const prefLang = useSelector((state: any) => state.main.prefLang);
   const [activeTab, setActiveTab] = useState(false);
+  const changeTab = (activate: boolean) => {
+    setActiveTab(activate);
+    filteredNews = filteredNews.reverse();
+  };
 
   return (
     <div>
@@ -63,9 +69,9 @@ const FilterNews = () => {
               ? "border-red-600 text-red-600"
               : "border-black w-full text-black"
           }`}
-          onClick={() => setActiveTab(false)}
+          onClick={() => changeTab(false)}
         >
-          Täzeler
+          {prefLang === "Tm" ? "Täzeler" : "Новые"}
         </div>
         <div
           className={`flex items-center justify-end text-sm border-b w-full ${
@@ -73,9 +79,9 @@ const FilterNews = () => {
               ? "border-red-600 text-red-600"
               : "border-black w-full text-black"
           }`}
-          onClick={() => setActiveTab(true)}
+          onClick={() => changeTab(true)}
         >
-          Köp okalanlar
+          {prefLang === "Tm" ? "Köp okalanlar" : "Самые читаемые"}
         </div>
       </div>
       <div className="pt-5">
