@@ -1,41 +1,14 @@
 import React from "react";
-import { GET_FEDERATION_SPORTS } from "../../redux/types";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { IFSports } from "../../pages/BaseCategories/Federations/interface";
 
-interface IE {
-  id?: number;
-  president?: string;
-  leader?: string;
-  creation?: string;
-  location?: string;
-  tel?: string;
-  fax?: string;
-  email?: string;
-  web?: string;
-}
-
-const data = [
-  {},
-  {},
-  {},
-  {
-    president: "Arslan Kyýasowiç Aynazarow",
-    leader: "Mergen Guwançmyradowiç Orazow",
-    creation: "1992-nji ýyl",
-    location: "Aşgabat şäheri, A.Nyýazow köçe, 245 jaý",
-    tel: "(+993 12) 36-26-60",
-    fax: "(+993 12) 36-34-33",
-    email: "tkm@the-afc.com",
-    web: "http://tff.com.tm/ http://www.jankoyer.com.tm/",
-  },
-  {},
-  {},
-  {},
-];
-
-const Sports = ({ open }: { open: number }) => {
-  const dispatch = useDispatch();
-  dispatch({ type: GET_FEDERATION_SPORTS });
+const Sports = ({ open }: { open: string }) => {
+  const fsports: IFSports[] = useSelector(
+    (state: any) => state.federations.fsports
+  );
+  const data: IFSports | undefined = fsports.find(
+    (fs) => fs.federation.id === open
+  );
 
   return (
     <div
@@ -43,18 +16,27 @@ const Sports = ({ open }: { open: number }) => {
     >
       <div className="flex w-full">
         <div className="flex flex-col justify-between w-full">
-          <p>Prezidenti: {data[open]?.president}</p>
-          <p>Baş tälimçi: {data[open]?.leader}</p>
-          <p>Döredilen ýyly: {data[open]?.creation}</p>
-          <p>Ýerleşýän ýeri: {data[open]?.location}</p>
+          <p>Prezidenti: {data?.president}</p>
+          <p>Baş tälimçi: {data?.leader}</p>
+          <p>Döredilen ýyly: {data?.founded}</p>
+          <p>Ýerleşýän ýeri: {data?.location}</p>
         </div>
         <div className="h-[150px] border-r border-[#40A6FF]" />
       </div>
       <div className="flex flex-col justify-between w-full">
-        <p>Telefon: {data[open]?.tel}</p>
-        <p>Faks: {data[open]?.fax}</p>
-        <p>E-mail: {data[open]?.email}</p>
-        <p>Web: {data[open]?.web}</p>
+        <p>Telefon: {data?.tel}</p>
+        <p>Faks: {data?.fax}</p>
+        <p>E-mail: {data?.email}</p>
+        <p className="flex gap-3">
+          Web:{" "}
+          {data?.web.split(";").map((e, i) => {
+            return (
+              <a href={e} className="hover:underline" target="_blank" key={i}>
+                {e}
+              </a>
+            );
+          })}
+        </p>
       </div>
     </div>
   );

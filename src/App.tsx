@@ -85,7 +85,7 @@ const TemplateApp = ({ children }: { children: JSX.Element }) => {
   dispatch({ type: GET_VIDEO_NEWS });
   const prefLang = useSelector((state: any) => state.main.prefLang);
   const navigate = useNavigate();
-
+ 
   return (
     <div className="flex justify-center">
       <div className="max-w-[1440px]">

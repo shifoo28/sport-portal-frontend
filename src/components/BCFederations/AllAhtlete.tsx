@@ -1,5 +1,5 @@
 import React from "react";
-import rating from "./svg/rating.svg";
+import rating from "../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const data = [
@@ -219,7 +219,7 @@ const AllAhtlete = () => {
                   </div>
                 </td>
                 <td className="p-2 font-semibold" align="center">
-                  <img src={rating} />
+                  <img src={rating} className="h-[15px]" />
                 </td>
                 <td className="p-2 font-semibold" align="center">
                   <p className="bg-[#CCE6D8] text-[#00843D] px-2 flex items-center rounded-md w-max text-[10px]">

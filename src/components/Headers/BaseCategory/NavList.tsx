@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import SportNews from "./SportNews";
 import {
   SPORTS,
   TRAINERS,
@@ -12,7 +11,9 @@ import {
   COMPETITIONS,
   BASE_CATEGORIES,
 } from "../../../tools/links";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { activateTab } from "../../../redux/actions/main";
+import SportNewsList from "./SportNewsList";
 
 const links = [
   SPORTS,
@@ -26,30 +27,33 @@ const links = [
 ];
 
 const NavList = () => {
-  const navigate = useNavigate();
   const location = useLocation();
-  const [activeTab, setActiveTab] = useState(0);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const linkTo = (l: string, tab: number) => {
+    dispatch(activateTab(tab));
     navigate(BASE_CATEGORIES + l);
-    setActiveTab(tab);
   };
 
   useEffect(() => {
-    setActiveTab(
-      links.indexOf(location.pathname.slice(BASE_CATEGORIES.length)) + 1
+    dispatch(
+      activateTab(
+        links.indexOf(location.pathname.slice(BASE_CATEGORIES.length)) + 1
+      )
     );
   }, [location.pathname]);
-  const navlist: [] = useSelector((state: any) => state.main.base_categories);
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const { active_tab, base_categories, prefLang } = useSelector(
+    (state: any) => state.main
+  );
 
   return (
     <div className="hidden w-full md:flex justify-end text-sm">
-      {navlist.map((nav: any, index) => {
+      {base_categories.map((nav: any, index: number) => {
         return prefLang === "Tm" ? (
           <p
             key={nav.id}
             className={`pr-5 cursor-pointer ${
-              activeTab === index + 1 ? "text-[#0088FF]" : "text-[#0F1A42]"
+              active_tab === index + 1 ? "text-[#0088FF]" : "text-[#0F1A42]"
             }`}
             onClick={() => linkTo(links[index], index + 1)}
           >
@@ -59,7 +63,7 @@ const NavList = () => {
           <p
             key={nav.id}
             className={`pr-5 cursor-pointer ${
-              activeTab === index + 1 ? "text-[#0088FF]" : "text-[#0F1A42]"
+              active_tab === index + 1 ? "text-[#0088FF]" : "text-[#0F1A42]"
             }`}
             onClick={() => linkTo(links[index], index + 1)}
           >
@@ -67,7 +71,7 @@ const NavList = () => {
           </p>
         );
       })}
-      <SportNews activeTab={activeTab} linkTo={linkTo} />
+      <SportNewsList activeTab={active_tab} />
     </div>
   );
 };

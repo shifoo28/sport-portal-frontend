@@ -7,24 +7,26 @@ import {
   ListItem,
 } from "@material-tailwind/react";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SPORT_NEWS_ALL } from "../../../tools/links";
+import { useNavigate } from "react-router-dom";
+import { activateTab } from "../../../redux/actions/main";
 
-const SportNews = ({
-  activeTab,
-  linkTo,
-}: {
-  activeTab: number;
-  linkTo: (l: string, tab: number) => void;
-}) => {
+const SportNewsList = ({ activeTab }: { activeTab: number }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { prefLang, sport_categories } = useSelector(
     (state: any) => state.main
   );
+  const linkTo = (l: string, tab: number) => {
+    dispatch(activateTab(tab));
+    navigate(l);
+  };
 
   return (
     <Popover placement="bottom-end">
       <PopoverHandler>
-        <Button className="flex items-center gap-2 px-0 shadow-none">
+        <Button className="flex items-center gap-2 shadow-none p-0">
           <p
             className={`normal-case text-sm ${
               activeTab === 0 ? "text-[#08F]" : "text-black"
@@ -68,4 +70,4 @@ const SportNews = ({
   );
 };
 
-export default SportNews;
+export default SportNewsList;

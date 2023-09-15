@@ -1,236 +1,67 @@
 import React from "react";
-import rating from "./svg/rating.svg";
+import rating from "../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { IFTrainers } from "../../redux/interfaces/federations";
+import { urlBack } from "../../redux/apiCalls";
 
-const data = [
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-  {
-    id: 0,
-    name: "Mergen Orazow",
-    yygyndy: "Milli",
-    rating: 0.0,
-    imgLink: "/images/federations/trainer_1.jfif",
-    info: {
-      age: 38,
-      job: "Milli erkek futbol toparynyň baş tälimçisi",
-      home: "Bekrewe, Aşgabat",
-      sportLevel: "Halkara derejeli tälimçi",
-      experience: 16,
-    },
-  },
-];
-
-const Trainers = () => {
+const Trainers = ({ open }: { open: string }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const prefLang = useSelector((state: any) => state.main.prefLang);
+  const ftrainers: IFTrainers[] = useSelector(
+    (state: any) => state.federations.ftrainers
+  );
+  const trainers = ftrainers.filter((t) => t.federationId === open);
 
   return (
     <div className="flex flex-col gap-[5px]">
       <div className="pt-8 px-8">
         <div className="w-full h-[395px] grid grid-cols-3 gap-4 justify-between overflow-auto">
-          {data.map((trainer) => {
+          {trainers.map((trainer, index) => {
             return (
-              <div
+              <button
                 className="max-w-[345px] h-[120px] flex border border-[#0088FF] scroll-mt-6"
-                key={trainer.id}
+                key={index}
+                onClick={() =>
+                  navigate(location.pathname + "/id", {
+                    state: { id: trainer.id, who: "trainer" },
+                  })
+                }
               >
-                <img src={trainer.imgLink} className="object-cover w-[95px]" />
+                <img
+                  src={urlBack + trainer.imagePath}
+                  className="object-cover w-[95px] h-full"
+                />
                 <div className="pl-2 font-sofiasans flex flex-col justify-around w-full">
-                  <p className="text-[#0F1A42] font-semibold">{trainer.name}</p>
-                  <div className="font-sofiasans text-[10px] text-[#182135]">
+                  <p className="text-[#0F1A42] font-semibold text-left">
+                    {trainer.name}
+                  </p>
+                  <div className="font-sofiasans text-[10px] text-[#182135] overflow-hidden">
                     <p className="h-[14px] flex items-center">
-                      Ýaşy: {trainer.info.age}
+                      Ýaşy: {trainer.age}
                     </p>
                     <p className="h-[14px] flex items-center">
-                      Doglan ýeri: {trainer.info.home}
+                      Doglan ýeri: {trainer.birthPlace}
                     </p>
                     <p className="h-[14px] flex items-center">
-                      Sport derejesi: {trainer.info.sportLevel}
+                      Sport derejesi: {trainer.sportLevel}
                     </p>
                     <p className="h-[14px] flex items-center">
-                      Iş wezipesi: {trainer.info.job}
+                      Iş wezipesi: {trainer.job}
                     </p>
                     <p className="h-[14px] flex items-center">
-                      Iş tejribesi: {trainer.info.experience} ýyl
+                      Iş tejribesi: {trainer.experience} ýyl
                     </p>
                   </div>
                   <div className="flex w-full justify-between">
                     <div className="bg-[#CCE6D8] text-[#00843D] px-2 flex items-center justify-center rounded-md">
                       MILLI
                     </div>
-                    <img src={rating} className="" />
+                    <img src={rating} className="h-[15px] pr-1" />
                   </div>
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>

@@ -165,7 +165,7 @@ const FootballNewsBody = () => {
             }
           >
             <AccordionHeader
-              className="border-0"
+              className="border-0 p-0"
               onClick={() => handleOpen(e.id)}
             >
               <img src={e.imgLink} />

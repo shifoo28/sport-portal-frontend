@@ -2,37 +2,19 @@ import { IFederations, IFederationsState } from "../interfaces/federations";
 import {
   GET_FEDERATIONS_FAILED,
   GET_FEDERATIONS_SUCCESS,
+  GET_FEDERATION_ATHLETES_FAILED,
+  GET_FEDERATION_ATHLETES_SUCCESS,
   GET_FEDERATION_SPORTS_FAILED,
   GET_FEDERATION_SPORTS_SUCCESS,
+  GET_FEDERATION_TRAINERS_FAILED,
+  GET_FEDERATION_TRAINERS_SUCCESS,
 } from "../types";
 
 const initialState: IFederationsState = {
-  federations: [
-    {
-      id: "",
-      nameTm: "",
-      nameRu: "",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ],
-  fsports: [
-    {
-      id: "",
-      tel: "",
-      fax: "",
-      web: "",
-      email: "",
-      leader: "",
-      founded: "",
-      location: "",
-      president: "",
-      federationId: "",
-      federation: { id: "", nameTm: "", nameRu: "" },
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ],
+  federations: [],
+  fsports: [],
+  ftrainers: [],
+  fathletes: [],
   message: "",
 };
 
@@ -53,6 +35,18 @@ export default function federations(
       return { ...state, ...payload };
 
     case GET_FEDERATIONS_FAILED:
+      return { ...state, message: payload.message };
+
+    case GET_FEDERATION_TRAINERS_SUCCESS:
+      return { ...state, ...payload };
+
+    case GET_FEDERATION_TRAINERS_FAILED:
+      return { ...state, message: payload.message };
+
+    case GET_FEDERATION_ATHLETES_SUCCESS:
+      return { ...state, ...payload };
+
+    case GET_FEDERATION_ATHLETES_FAILED:
       return { ...state, message: payload.message };
 
     default:

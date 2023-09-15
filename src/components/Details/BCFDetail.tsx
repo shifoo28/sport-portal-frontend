@@ -1,11 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import footballSvg from "../../pages/BaseCategories/svg/futbol.svg";
-import rating from "../../components/BCFederations/svg/rating.svg";
+import rating from "../../assets/svg/rating.svg";
+import { useSelector } from "react-redux";
 
 const BCFDetail = () => {
+  const prefLang = useSelector((state: any) => state.main.prefLang);
   const location = useLocation();
-  const { id } = location.state;
+  const { id, who } = location.state;
 
   return (
     <div className="mx-40 flex pt-14 justify-between">
@@ -48,7 +50,7 @@ const BCFDetail = () => {
       </div>
       <div className="max-w-[870px] w-full flex flex-col gap-5">
         <div className="flex justify-between">
-          <p className="font-oswald text-[50px] text-[#0088FF] capitalize">
+          <p className="font-oswald text-[50px] text-[#0088FF] uppercase">
             RUSLAN MINGAZOW
           </p>
           <img src={footballSvg} />
@@ -95,9 +97,13 @@ const BCFDetail = () => {
           </div>
         </div>
         <div className="flex justify-between pt-3">
-          <p className="bg-[#CAE4D6] text-[#00843D] uppercase text-[32px] px-5 rounded-sm">Milli</p>
-          <img src={rating} className="h-full"/>
-          <button className="bg-[#077EE6] text-white font-oswald text-lg px-3 h-10">Hemmesini görmek</button>
+          <p className="bg-[#CAE4D6] text-[#00843D] uppercase text-[32px] px-5 rounded-sm">
+            Milli
+          </p>
+          <img src={rating} className="h-full" />
+          <button className="bg-[#077EE6] text-white font-oswald text-lg px-3">
+            {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
+          </button>
         </div>
       </div>
     </div>

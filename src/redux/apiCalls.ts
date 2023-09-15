@@ -53,6 +53,26 @@ export async function fetchFederationSports() {
   }
 }
 
+export async function fetchFederationTrainers() {
+  try {
+    const res = await fetch(urlBack + "federation-page/trainers");
+
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function fetchFederationAthletes() {
+  try {
+    const res = await fetch(urlBack + "federation-page/athletes");
+
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+}
+
 // SETTERS
 export async function patchNewsDetailsViews(id: string, categoryId: string) {
   try {

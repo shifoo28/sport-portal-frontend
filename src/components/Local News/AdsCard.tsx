@@ -6,7 +6,7 @@ type Props = {
   title: string;
 };
 
-const AdsCard: FC<Props> = ({ imgLink, title }) => {
+const AdsCard: FC<Props> = ({ imgLink, title }) => {  
   return (
     <figure className={`relative`}>
       <img

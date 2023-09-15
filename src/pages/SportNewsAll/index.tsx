@@ -1,6 +1,5 @@
 import React from "react";
 import FootballNewsBody from "../../components/World Sport News/FootballNewsBody";
-import { HeaderWithoutCategories } from "../../components/World Sport News/Headers";
 import { useSelector } from "react-redux";
 
 const news = [

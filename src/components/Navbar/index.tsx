@@ -14,7 +14,7 @@ import {
   SPORTSHOPS,
   COMPETITIONS,
 } from "../../tools/links";
-import SportNews from "../Headers/BaseCategory/SportNews";
+import SportNews from "../Headers/BaseCategory/SportNewsList";
 import { useSelector } from "react-redux";
 
 const links = [
@@ -29,9 +29,7 @@ const links = [
 ];
 
 const Navbar = () => {
-  const { prefLang, base_categories, sport_categories } = useSelector(
-    (state: any) => state.main
-  );
+  const { prefLang, base_categories } = useSelector((state: any) => state.main);
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(0);
@@ -115,7 +113,7 @@ const Navbar = () => {
             </p>
           );
         })}
-        <SportNews activeTab={activeTab} linkTo={linkTo} />
+        <SportNews activeTab={activeTab} />
       </div>
     </div>
   );

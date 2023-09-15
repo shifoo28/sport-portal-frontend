@@ -1,8 +1,11 @@
 import React from "react";
-import rating from "./svg/rating.svg";
+import rating from "../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { IFAthletes } from "../../redux/interfaces/federations";
+import { urlBack } from "../../redux/apiCalls";
 
-const data = [
+export const a = [
   {
     id: 0,
     imgLink: "/images/federations/athlete_1.jfif",
@@ -13,6 +16,36 @@ const data = [
     club: "Kitchee",
     rating: 4.5,
     made: "MILLI",
+    age: 31,
+    birthPlace: "Aşgabat",
+    experience: 15,
+    sportLevel: "Halkara derejeli sport ussady",
+    workedAt: [
+      "2007-2009Aşgabat",
+      "2009-2014Skonto Rīga",
+      "2014-2016Jablonec",
+      "2016-2019Slavia Prague",
+      "2017→ Mladá Boleslav",
+      "2018-2019→ Příbram",
+      "2019-2020-Irtysh Pavlodar 2020-Shakhter Karagandy",
+      "2021-2022Caspiy",
+      "2022-Kitchee",
+    ],
+    badges: [
+      "2008-Türkmenistanyň çempiony",
+      "2008-Türkmenistanyň Superkubok ýeňijisi",
+      "2010-Latwiýanyň çempiony",
+      "2012-2013 Latwiýa kubok kümüş medal ýeňijisi",
+      "2013-Latwiýanyň Superkubok ýeňijisi",
+      "2014/15-2015/16 Çehiýanyň kubok finalisti",
+      "2016/17-Çehiýanyň çempiony",
+      "2015-Türkmenistanyň iň gowy futbolçysy",
+      "2022/23-Hong Kong Premýer ligasynyň iň gowy futbolçysy",
+    ],
+    jobs: [
+      "Milli futbol toparynyň oýunçysy",
+      "Hong Kong Kitchee toparynyň hüjümçisi",
+    ],
   },
   {
     id: 1,
@@ -46,6 +79,36 @@ const data = [
     club: "Kitchee",
     rating: 4.5,
     made: "MILLI",
+    age: 31,
+    birthPlace: "Aşgabat",
+    experience: 15,
+    sportLevel: "Halkara derejeli sport ussady",
+    workedAt: [
+      "2007-2009Aşgabat",
+      "2009-2014Skonto Rīga",
+      "2014-2016Jablonec",
+      "2016-2019Slavia Prague",
+      "2017→ Mladá Boleslav",
+      "2018-2019→ Příbram",
+      "2019-2020-Irtysh Pavlodar 2020-Shakhter Karagandy",
+      "2021-2022Caspiy",
+      "2022-Kitchee",
+    ],
+    badges: [
+      "2008-Türkmenistanyň çempiony",
+      "2008-Türkmenistanyň Superkubok ýeňijisi",
+      "2010-Latwiýanyň çempiony",
+      "2012-2013 Latwiýa kubok kümüş medal ýeňijisi",
+      "2013-Latwiýanyň Superkubok ýeňijisi",
+      "2014/15-2015/16 Çehiýanyň kubok finalisti",
+      "2016/17-Çehiýanyň çempiony",
+      "2015-Türkmenistanyň iň gowy futbolçysy",
+      "2022/23-Hong Kong Premýer ligasynyň iň gowy futbolçysy",
+    ],
+    jobs: [
+      "Milli futbol toparynyň oýunçysy",
+      "Hong Kong Kitchee toparynyň hüjümçisi",
+    ],
   },
   {
     id: 4,
@@ -79,6 +142,36 @@ const data = [
     club: "Kitchee",
     rating: 4.5,
     made: "MILLI",
+    age: 31,
+    birthPlace: "Aşgabat",
+    experience: 15,
+    sportLevel: "Halkara derejeli sport ussady",
+    workedAt: [
+      "2007-2009Aşgabat",
+      "2009-2014Skonto Rīga",
+      "2014-2016Jablonec",
+      "2016-2019Slavia Prague",
+      "2017→ Mladá Boleslav",
+      "2018-2019→ Příbram",
+      "2019-2020-Irtysh Pavlodar 2020-Shakhter Karagandy",
+      "2021-2022Caspiy",
+      "2022-Kitchee",
+    ],
+    badges: [
+      "2008-Türkmenistanyň çempiony",
+      "2008-Türkmenistanyň Superkubok ýeňijisi",
+      "2010-Latwiýanyň çempiony",
+      "2012-2013 Latwiýa kubok kümüş medal ýeňijisi",
+      "2013-Latwiýanyň Superkubok ýeňijisi",
+      "2014/15-2015/16 Çehiýanyň kubok finalisti",
+      "2016/17-Çehiýanyň çempiony",
+      "2015-Türkmenistanyň iň gowy futbolçysy",
+      "2022/23-Hong Kong Premýer ligasynyň iň gowy futbolçysy",
+    ],
+    jobs: [
+      "Milli futbol toparynyň oýunçysy",
+      "Hong Kong Kitchee toparynyň hüjümçisi",
+    ],
   },
   {
     id: 7,
@@ -103,10 +196,29 @@ const data = [
     made: "U23",
   },
 ];
+const flags = [
+  { flag: "/images/federations/flag_2.png", key: "kitchee" },
+  { flag: "/images/federations/flag_1.png", key: "ahal" },
+  { flag: "/images/federations/flag_1.png", key: "arkadag" },
+];
+const sportTypes = [
+  { name: "Futbol", key: "futbol" },
+  { name: "Atletika", key: "atletika" },
+  { name: "Stol Tennis", key: "stol tennis" },
+  { name: "Basketbol", key: "basketbol" },
+  { name: "Agyr Atletika", key: "agyr atletika" },
+  { name: "Boks", key: "boks" },
+  { name: "Welosiped", key: "welosiped" },
+];
 
-const Athlete = () => {
+const Athlete = ({ open }: { open: string }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  // const prefLang = useSelector((state: any) => state.main.prefLang);
+  const fathletes: IFAthletes[] = useSelector(
+    (state: any) => state.federations.fathletes
+  );
+  const athletes = fathletes.filter((fa) => fa.federationId === open);
 
   return (
     <div className="text-[#0F1A42] font-sofiasans px-8 pt-8">
@@ -139,11 +251,11 @@ const Athlete = () => {
             </tr>
           </thead>
           <tbody className="text-base">
-            {data.map((athlete) => {
+            {athletes.map((athlete, index) => {
               return (
                 <tr className="border border-[#0088FF]" key={athlete.id}>
                   <td className="p-2 font-semibold" align="center">
-                    {athlete.id + 1}
+                    {index + 1}
                   </td>
                   <td
                     className="p-2 font-semibold cursor-pointer"
@@ -155,12 +267,12 @@ const Athlete = () => {
                     }
                   >
                     <img
-                      src={athlete.imgLink}
+                      src={urlBack + athlete.imagePath}
                       className="w-[60px] h-[60px] object-cover"
                     />
                   </td>
                   <td
-                    className="p-2 font-semibold cursor-pointer"
+                    className="p-2 font-semibold cursor-pointer capitalize"
                     align="center"
                     onClick={() =>
                       navigate(location.pathname + "/id", {
@@ -168,10 +280,16 @@ const Athlete = () => {
                       })
                     }
                   >
-                    {athlete.name}
+                    {athlete.name.toLocaleLowerCase()}
                   </td>
                   <td className="p-2 font-semibold" align="center">
-                    {athlete.sportType}
+                    {
+                      sportTypes.find((st) =>
+                        athlete.federation.nameTm
+                          .toLocaleLowerCase()
+                          .includes(st.key)
+                      )?.name
+                    }
                   </td>
                   <td className="p-2 font-semibold" align="center">
                     {athlete.position}
@@ -179,14 +297,18 @@ const Athlete = () => {
                   <td className="p-2 font-semibold" align="center">
                     <div className="flex gap-1 w-max">
                       <img
-                        src={athlete.flagImg}
+                        src={
+                          flags.find((f) =>
+                            athlete.club.toLocaleLowerCase().includes(f.key)
+                          )?.flag
+                        }
                         className="w-[26px] h-[18px] object-cover"
                       />
                       {athlete.club}
                     </div>
                   </td>
                   <td className="p-2 font-semibold" align="center">
-                    <img src={rating} />
+                    <img src={rating} className="h-[15px]" />
                   </td>
                   <td className="p-2 font-semibold" align="center">
                     <p className="bg-[#CCE6D8] text-[#00843D] px-2 flex items-center rounded-md w-max text-[10px]">
