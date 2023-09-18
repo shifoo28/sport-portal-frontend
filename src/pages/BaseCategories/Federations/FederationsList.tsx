@@ -12,10 +12,10 @@ import futbolSvg from "../svg/futbol.svg";
 import agyratletSvg from "../svg/agyratlet.svg";
 import boksSvg from "../svg/boks.svg";
 import welosipedSvg from "../svg/welosiped.svg";
-import { IFederation } from "./interface";
 import Athlete from "../../../components/BCFederations/Athlete";
 import Sports from "../../../components/BCFederations/Sports";
 import Trainers from "../../../components/BCFederations/Trainers";
+import { IFederations } from "../../../redux/interfaces/federations";
 
 export const fSvg = [
   {
@@ -59,7 +59,7 @@ const FederationsList = ({ indexComponent }: { indexComponent: number }) => {
   const [open, setOpen] = useState("");
   const handleOpen = (value: string) => setOpen(open === value ? "" : value);
   const prefLang = useSelector((state: any) => state.main.prefLang);
-  const federations: IFederation[] = useSelector(
+  const federations: IFederations[] = useSelector(
     (state: any) => state.federations.federations
   );
   const setSvg = (e: any) => {

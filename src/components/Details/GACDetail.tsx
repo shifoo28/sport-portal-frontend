@@ -1,7 +1,5 @@
 import React from "react";
-import ListofFacility, {
-  tbodyTm,
-} from "../BCFederations/GymsandClubs/ListofFacility";
+import ListofFacility, { tbodyTm } from "../BCFederations/GymsandClubs/List";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import location from "../../assets/svg/location.svg";

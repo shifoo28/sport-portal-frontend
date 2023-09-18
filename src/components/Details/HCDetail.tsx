@@ -1,13 +1,20 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { doctors } from "../BCFederations/HealthCare";
 import { useSelector } from "react-redux";
 import rating from "../../assets/svg/rating.svg";
+import { RootState } from "../../redux/store";
+import { IHCDepartment } from "../../redux/interfaces/federations";
+import { urlBack } from "../../redux/apiCalls";
 
 const HCDetail = () => {
   const location = useLocation();
-  const { id } = location.state;
-  const data = doctors.find((d) => d.id === id);
+  const { employeeId, departmentId } = location.state;
+
+  const departments: IHCDepartment[] = useSelector(
+    (state: RootState) => state.federations.hcdepartments
+  );
+  const department = departments.find((d) => d.id === departmentId);  
+  const employee = department?.employees.find((e) => e.id === employeeId);
   const prefLang = useSelector((state: any) => state.main.prefLang);
 
   return (
@@ -15,7 +22,7 @@ const HCDetail = () => {
       <div className="max-w-[1100px] flex justify-between w-full">
         <div className="flex flex-col gap-2">
           <img
-            src={data?.imagePath}
+            src={urlBack + employee?.imagePath}
             className="w-[210px] h-[235px] object-cover object-center"
           />
           <div className="flex justify-between items-center">
@@ -45,43 +52,45 @@ const HCDetail = () => {
                   stroke-linejoin="round"
                 />
               </svg>
-              {35.834}
+              {employee?.views}
             </p>
             <img src={"/images/bcfdetail/socials.png"} />
           </div>
         </div>
         <div className="max-w-[850px] w-full flex flex-col">
-          <p className="font-oswald text-[50px] text-[#0088FF]">{data?.name}</p>
+          <p className="font-oswald text-[50px] text-[#0088FF]">
+            {employee?.name}
+          </p>
           <div className="font-sofiasans text-3xl">
             <p>
               {prefLang === "Tm"
-                ? `Ýaşy: ${data?.age}`
-                : `Возраст: ${data?.age}`}
+                ? `Ýaşy: ${employee?.age}`
+                : `Возраст: ${employee?.age}`}
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Iş ýeri: ${data?.workAt}`
-                : `Место работы: ${data?.workAt}`}
+                ? `Iş ýeri: ${employee?.workAt}`
+                : `Место работы: ${employee?.workAt}`}
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Iş bölümi: ${data?.department}`
-                : `Кафедра: ${data?.department}`}
+                ? `Iş bölümi: ${department?.nameTm}`
+                : `Кафедра: ${department?.nameRu}`}
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Iş tejribesi: ${data?.experience}ýyl`
-                : `Опыт работы: ${data?.experience}г`}
+                ? `Iş tejribesi: ${employee?.experience}ýyl`
+                : `Опыт работы: ${employee?.experience}г`}
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Iş wezipesi: ${data?.job}`
-                : `Должность: ${data?.job}`}
+                ? `Iş wezipesi: ${employee?.job}`
+                : `Должность: ${employee?.job}`}
             </p>
           </div>
           <div className="flex justify-between pt-10">
             <span></span>
-            <img src={rating} className="h-full"/>
+            <img src={rating} className="h-full" />
             <button className="bg-[#077EE6] text-white h-11 font-oswald px-4">
               {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
             </button>

@@ -63,10 +63,34 @@ export interface IFAthletes {
   federationId: string;
   federation: { id: string; nameTm: string; nameRu: string };
 }
+export interface IHCEmployee {
+  id: string;
+  name: string;
+  job: string;
+  age: number;
+  workAt: string;
+  departmentId: string;
+  experience: number;
+  views: number;
+  rating: number;
+  imagePath: string;
+  links: {};
+  createdAt: string;
+  updatedAt: string;
+}
+export interface IHCDepartment {
+  id: string;
+  nameTm: string;
+  nameRu: string;
+  createdAt: Date;
+  updatedAt: Date;
+  employees: IHCEmployee[];
+}
 export interface IFederationsState {
   federations?: IFederations[];
   fsports?: IFSports[];
   ftrainers?: IFTrainers[];
   fathletes?: IFAthletes[];
+  hcdepartments?: IHCDepartment[];
   message: string;
 }

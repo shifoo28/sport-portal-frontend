@@ -73,6 +73,26 @@ export async function fetchFederationAthletes() {
   }
 }
 
+export async function fetchHCDepartments() {
+  try {
+    const res = await fetch(urlBack + "federation-page/health_care");
+
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function fetchCompetitions() {
+  try {
+    const res = await fetch(urlBack + "competition-page");
+
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+}
+
 // SETTERS
 export async function patchNewsDetailsViews(id: string, categoryId: string) {
   try {

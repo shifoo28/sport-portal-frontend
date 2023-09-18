@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { IFSports } from "../../pages/BaseCategories/Federations/interface";
+import { IFSports } from "../../redux/interfaces/federations";
 
 const Sports = ({ open }: { open: string }) => {
   const fsports: IFSports[] = useSelector(

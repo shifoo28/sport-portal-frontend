@@ -202,7 +202,7 @@ export const tbodyTm = [
   },
 ];
 
-const ListofFacility = () => {
+const List = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -335,4 +335,4 @@ const ListofFacility = () => {
   );
 };
 
-export default ListofFacility;
+export default List;

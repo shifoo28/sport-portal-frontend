@@ -29,12 +29,13 @@ const initialState: IMainState = {
     },
   ],
   message: "",
+  prefLang: "",
 };
 
 export default function main(state: IMainState = initialState, action: IMain) {
-  const payload = action.payload;
+  const { payload, type } = action;
 
-  switch (action.type) {
+  switch (type) {
     case GET_MAIN_SUCCESS:
       return {
         ...state,

@@ -21,19 +21,6 @@ const arrow = (
   </svg>
 );
 
-// {
-//   prefLang === "Tm" ? "Sport görnüşler" : "Виды спорта";
-// }
-// {
-//   prefLang === "Tm" ? "Sport desgalar" : "Спортивные сооружения";
-// }
-// {
-//   prefLang === "Tm" ? "Şäherler" : "Города";
-// }
-// {
-//   prefLang === "Tm" ? "Toparlar" : "Команды";
-// }
-
 const Filter = () => {
   const prefLang = useSelector((state: any) => state.main.prefLang);
 

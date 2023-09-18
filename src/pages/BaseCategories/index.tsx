@@ -14,7 +14,7 @@ import FederationAll from "./FederationAll";
 import { useDispatch } from "react-redux";
 import { GET_FEDERATIONS } from "../../redux/types";
 import BCFDetail from "../../components/Details/BCFDetail";
-import GymsAndClubs from "../../components/BCFederations/GymsandClubs/GymsAndClubs";
+import GymsAndClubs from "../../components/BCFederations/GymsandClubs";
 import HealthCare from "../../components/BCFederations/HealthCare";
 import HealthyFood from "../../components/BCFederations/HealthyFood";
 import SportShops from "../../components/BCFederations/SportShops";

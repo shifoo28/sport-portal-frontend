@@ -8,6 +8,8 @@ import {
   GET_FEDERATION_SPORTS_SUCCESS,
   GET_FEDERATION_TRAINERS_FAILED,
   GET_FEDERATION_TRAINERS_SUCCESS,
+  GET_HEALTH_CARE_DEPARTMENTS_FAILED,
+  GET_HEALTH_CARE_DEPARTMENTS_SUCCESS,
 } from "../types";
 
 const initialState: IFederationsState = {
@@ -15,6 +17,7 @@ const initialState: IFederationsState = {
   fsports: [],
   ftrainers: [],
   fathletes: [],
+  hcdepartments: [],
   message: "",
 };
 
@@ -47,6 +50,12 @@ export default function federations(
       return { ...state, ...payload };
 
     case GET_FEDERATION_ATHLETES_FAILED:
+      return { ...state, message: payload.message };
+
+    case GET_HEALTH_CARE_DEPARTMENTS_SUCCESS:
+      return { ...state, ...payload };
+
+    case GET_HEALTH_CARE_DEPARTMENTS_FAILED:
       return { ...state, message: payload.message };
 
     default:

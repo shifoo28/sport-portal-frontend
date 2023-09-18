@@ -9,4 +9,5 @@ export interface IMainState {
   base_categories: { id: string; nameTm: string; nameRu: string }[];
   sport_categories: { id: string; nameTm: string; nameRu: string }[];
   message: string;
+  prefLang: string;
 }
