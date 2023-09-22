@@ -3,6 +3,14 @@ export interface ICAction {
   payload: any;
 }
 
+export interface ICompetitionType {
+  id: number;
+  nameTm: string;
+  nameRu: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface ICompetition {
   id: string;
   nameTm: string;
@@ -14,10 +22,11 @@ export interface ICompetition {
   imagePath: string;
   typeId: number;
   competitionType: { id: number; nameTm: string; nameRu: string };
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface ICompetitionState {
   competitions: ICompetition[];
+  competitionTypes: ICompetitionType[];
 }

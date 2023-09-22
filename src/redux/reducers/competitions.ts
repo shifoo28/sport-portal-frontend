@@ -1,7 +1,10 @@
 import { ICAction, ICompetitionState } from "../interfaces/competitions";
 import { GET_COMPETITIONS_FAILED, GET_COMPETITIONS_SUCCESS } from "../types";
 
-const initialState: ICompetitionState = { competitions: [] };
+const initialState: ICompetitionState = {
+  competitions: [],
+  competitionTypes: [],
+};
 
 export default function competitions(
   state: ICompetitionState = initialState,

@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import { Popover, PopoverHandler, PopoverContent } from "@material-tailwind/react";
+import {
+  Popover,
+  PopoverHandler,
+  PopoverContent,
+  List,
+  ListItem,
+} from "@material-tailwind/react";
+import { ICompetitionState } from "../../../redux/interfaces/competitions";
 
 const arrow = (
   <svg
@@ -17,9 +24,71 @@ const arrow = (
     />
   </svg>
 );
+const countries = [
+  {
+    id: 0,
+    nameTm: "Türkmenistan",
+    nameRu: "Туркменистан",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 1,
+    nameTm: "Aşgabat",
+    nameRu: "Ашхабад",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 2,
+    nameTm: "Lebap",
+    nameRu: "Лебап",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 3,
+    nameTm: "Ahal",
+    nameRu: "Ахал",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 4,
+    nameTm: "Mary",
+    nameRu: "Мари",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 5,
+    nameTm: "Daşoguz",
+    nameRu: "Дашогуз",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 6,
+    nameTm: "Balkan",
+    nameRu: "Балкан",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+];
 
 const Filter = () => {
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const { competitions, competitionTypes }: ICompetitionState = useSelector(
+    (state: RootState) => state.competitions
+  );
+  const [filterType, setFilterType] = useState({
+    id: 0,
+    nameTm: "Hemmesi",
+    nameRu: "Все они",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  });
+  const [filterCountry, setFilterCountry] = useState(countries[0]);
 
   return (
     <div className="w-full border border-[#0088FF] p-12 flex flex-col gap-9">
@@ -60,11 +129,23 @@ const Filter = () => {
                   type="button"
                   className="p-0 bg-[#0088FF] flex justify-between max-w-[310px] w-full h-[45px] font-sofiasans text-base px-7 items-center"
                 >
-                  <p>-</p>
+                  <p>
+                    {prefLang === "Tm" ? filterType.nameTm : filterType.nameRu}
+                  </p>
                   {arrow}
                 </button>
               </PopoverHandler>
-              <PopoverContent>q</PopoverContent>
+              <PopoverContent>
+                <List>
+                  {competitionTypes.map((t, i) => {
+                    return (
+                      <ListItem key={i} onClick={() => setFilterType(t)}>
+                        {prefLang === "Tm" ? t.nameTm : t.nameRu}
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              </PopoverContent>
             </Popover>
             <Popover placement="bottom">
               <PopoverHandler>
@@ -74,13 +155,23 @@ const Filter = () => {
                 >
                   <p>
                     {prefLang === "Tm"
-                      ? "Sport desgalar"
-                      : "Спортивные сооружения"}
+                      ? filterCountry.nameTm
+                      : filterCountry.nameRu}
                   </p>
                   {arrow}
                 </button>
               </PopoverHandler>
-              <PopoverContent>q</PopoverContent>
+              <PopoverContent>
+                <List>
+                  {countries.map((c, i) => {
+                    return (
+                      <ListItem key={i} onClick={() => setFilterCountry(c)}>
+                        {prefLang === "Tm" ? c.nameTm : c.nameRu}
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              </PopoverContent>
             </Popover>
           </div>
         </div>

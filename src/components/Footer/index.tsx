@@ -1,91 +1,85 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import clock from "../../assets/footer/clock.svg";
+import info from "../../assets/footer/info.svg";
+import location from "../../assets/footer/location.svg";
+import mail from "../../assets/footer/mail.svg";
+import tel from "../../assets/footer/tel.svg";
 
-const index = ({ navigate }: { navigate: (l: string) => void }) => {
+const Footer = () => {
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+
   return (
     <div className="pt-20">
-      <div className="bg-[#393939] text-[#FFFFFF] flex w-full font-sofiasans">
-        <div className="flex justify-between mx-32 max-w-[1170px] w-full h-[300px] gap-5">
-          <div className="w-full flex flex-col justify-center items-center gap-2">
-            <div
-              className="flex flex-col items-center gap-2 cursor-pointer"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              <img
-                src="/icons/footer/logo.png"
-                className="w-12 h-14 object-cover"
-              />
-              <span className="flex">
-                <p className="text-4xl font-oswald uppercase">Sport</p>
-                <p className="text-[#08F] text-4xl font-oswald uppercase">
-                  Portal
-                </p>
-              </span>
+      <div className="bg-[#393939] text-[#FFFFFF] flex flex-col w-full font-sofiasans">
+        <div className="w-full flex mt-5">
+          <div className="w-full border-b" />
+          <p className="font-oswald text-2xl text-center border-b border-[#0088FF] min-w-[200px]">
+            {prefLang === "Tm" ? "Habarlaşmak üçin" : "Свяжитесь с нами"}
+          </p>
+          <div className="w-full border-b" />
+        </div>
+        <div className="flex flex-col justify-between items-center mx-32 my-5 max-w-[1170px] w-full gap-5 font-sofiasans">
+          {/* Information */}
+          <div className="flex gap-3">
+            <div className="flex justify-center items-center gap-1">
+              <img src={location} alt="" />
+              <p>
+                {prefLang === "Tm"
+                  ? "Aşgabat şäheri Atatürk köçesi Sport we Turizm işewürlik merkezi"
+                  : "Улица Ататюрка, Ашхабад, Спортивно-туристический Бизнес-центр"}
+              </p>
             </div>
-            <p className="text-sm text-center max-w-[200px]">
-              Sportuň ähli görnüşlerine degişli täzelikleri özünde jemleýän
-              platforma.
-            </p>
+            <div className="flex justify-center items-center gap-1">
+              <img src={mail} alt="" />
+              <p className="underline">sportportal-tm@olympic.tm</p>
+            </div>
+            <div className="flex justify-center items-center gap-1">
+              <img src={tel} alt="" />
+              <p>+99312123456</p>
+            </div>
+            <div className="flex justify-center items-center gap-1">
+              <img src={clock} alt="" />
+              <p>
+                {prefLang === "Tm"
+                  ? "Du-Ýe: 9:00 - 22:00"
+                  : "Пон-Вос: 9:00 - 22:00"}
+              </p>
+            </div>
+            <div className="flex justify-center items-center gap-1">
+              <img src={info} alt="" />
+              <p>{prefLang === "Tm" ? "Biz barada" : "О компании"}</p>
+            </div>
+          </div>
+
+          {/* Mobile Apps */}
+          <div className="flex h-[42px] gap-6">
             <img
-              src={"/icons/footer/social.png"}
-              className="max-w-[235px] w-full h-10 cursor-pointer"
+              src="/images/footer/google-play.png"
+              alt=""
+              className="w-[138px]"
+            />
+            <img
+              src="/images/footer/app-store.png"
+              alt=""
+              className="w-[138px]"
             />
           </div>
-          <div className="w-full flex flex-col justify-center items-center gap-3">
-            <div className="flex w-full font-oswald text-2xl">
-              <div className="border-b border-[#0088FF]">Surat</div>
-              <div className="border-b border-white w-full" />
-            </div>
-            <div className="max-x-[270px] w-full h-[176px] cursor-pointer">
-              <img src={"/images/footer/gallery.png"} />
-            </div>
-          </div>
-          <div className="w-full flex flex-col justify-center items-center gap-3">
-            <div className="flex w-full font-oswald text-2xl">
-              <div className="border-b border-[#0088FF]">Taglar</div>
-              <div className="border-b border-white w-full" />
-            </div>
-            <div className="max-x-[270px] w-full h-[176px]">
-              <img src={"/icons/footer/tags.png"} />
-            </div>
-          </div>
-          <div className="w-full flex flex-col justify-center items-center gap-5">
-            <div className="flex w-full font-oswald text-2xl">
-              <div className="border-b border-[#0088FF]">Registrasiýa</div>
-              <div className="border-b border-white w-full" />
-            </div>
-            <div className="flex flex-col font-sofiasans gap-4">
-              <p className="text-sm text-justify">
-                Iň täze habarlar, teklipler we ýörite bildirişler bilen
-                täzelenmek.
-              </p>
-              <form
-                action=""
-                method="post"
-                className="flex flex-col w-full gap-3"
-              >
-                <input
-                  type="email"
-                  name=""
-                  id=""
-                  className="h-10 outline-none font-sofiasans text-sm text-black pl-5"
-                  placeholder="Email ýazyň..."
-                />
-                <button
-                  type="submit"
-                  onClick={(e) => e.preventDefault()}
-                  className="bg-[#077EE6] h-10 font-sofia text-lg"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
+
+          {/* Links */}
+          <img src="/icons/footer/social.png" alt="" className="h-[23px]" />
+
+          {/* Policy */}
+          <p className="text-sm">
+            {prefLang === "Tm"
+              ? "© Copyright 2023. Ähli hukuklar goralan."
+              : "© Copyright 2023. Все права защищены."}
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
-export default index;
+export default Footer;

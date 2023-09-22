@@ -7,7 +7,7 @@ export async function fetchMain() {
   try {
     const res = await fetch(urlBack);
 
-    return res.json();
+    return (await res.json()).data;
   } catch (error) {
     throw error;
   }
@@ -17,7 +17,7 @@ export async function fetchLocalNews() {
   try {
     const res = await fetch(urlBack + "main-page/local");
 
-    return res.json();
+    return (await res.json()).data;
   } catch (error) {
     throw error;
   }
@@ -27,7 +27,7 @@ export async function fetchVideoNews() {
   try {
     const res = await fetch(urlBack + "main-page/video");
 
-    return res.json();
+    return (await res.json()).data;
   } catch (error) {
     throw error;
   }
@@ -37,7 +37,7 @@ export async function fetchFederations() {
   try {
     const res = await fetch(urlBack + "federation-page");
 
-    return res.json();
+    return (await res.json()).data;
   } catch (error) {
     throw error;
   }
@@ -47,7 +47,7 @@ export async function fetchFederationSports() {
   try {
     const res = await fetch(urlBack + "federation-page/sports");
 
-    return res.json();
+    return (await res.json()).data;
   } catch (error) {
     throw error;
   }
@@ -57,7 +57,7 @@ export async function fetchFederationTrainers() {
   try {
     const res = await fetch(urlBack + "federation-page/trainers");
 
-    return res.json();
+    return (await res.json()).data;
   } catch (error) {
     throw error;
   }
@@ -67,7 +67,7 @@ export async function fetchFederationAthletes() {
   try {
     const res = await fetch(urlBack + "federation-page/athletes");
 
-    return res.json();
+    return (await res.json()).data;
   } catch (error) {
     throw error;
   }
@@ -77,7 +77,7 @@ export async function fetchHCDepartments() {
   try {
     const res = await fetch(urlBack + "federation-page/health_care");
 
-    return res.json();
+    return (await res.json()).data;
   } catch (error) {
     throw error;
   }
@@ -87,7 +87,7 @@ export async function fetchCompetitions() {
   try {
     const res = await fetch(urlBack + "competition-page");
 
-    return res.json();
+    return (await res.json()).data;
   } catch (error) {
     throw error;
   }
