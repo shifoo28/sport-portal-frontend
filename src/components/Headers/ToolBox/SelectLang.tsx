@@ -19,7 +19,7 @@ const SelectLang = () => {
   useEffect(() => {
     langs[0] = { ...langs[0], flag: tmflag };
     langs[1] = { ...langs[1], flag: ruflag };
-    setPrefLang(0)
+    setPrefLang(0);
   }, [langs]);
 
   const [lang, setLang] = useState(langs[0]);
@@ -32,7 +32,7 @@ const SelectLang = () => {
     <div className="flex items-center justify-center">
       <Menu open={open} handler={() => setOpen(!open)}>
         <MenuHandler>
-          <Button className="flex items-center justify-center capitalize tracking-normal p-0 outline-none shadow-none">
+          <Button className="flex items-center justify-center capitalize tracking-normal p-0 outline-none shadow-none rounded-none">
             <img src={lang.flag} />
             <p className="text-xs font-sofiasans text-black px-[2px]">
               {lang.name}

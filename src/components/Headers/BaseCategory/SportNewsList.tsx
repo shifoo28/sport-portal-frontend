@@ -26,7 +26,7 @@ const SportNewsList = ({ activeTab }: { activeTab: number }) => {
   return (
     <Popover placement="bottom-end">
       <PopoverHandler>
-        <Button className="flex items-center gap-2 shadow-none p-0">
+        <Button className="flex items-center gap-2 shadow-none p-0 font-oswald">
           <p
             className={`normal-case text-sm ${
               activeTab === 0 ? "text-[#08F]" : "text-black"
@@ -43,8 +43,8 @@ const SportNewsList = ({ activeTab }: { activeTab: number }) => {
           </svg>
         </Button>
       </PopoverHandler>
-      <PopoverContent className="bg-white border font-oswald max-w-[116px] w-full flex justify-center">
-        <List className="text-xs">
+      <PopoverContent className="bg-white border max-w-[116px] w-full flex justify-center rounded-none">
+        <List className="text-xs font-oswald">
           {sport_categories.map((sc: any) => {
             return prefLang === "Tm" ? (
               <ListItem

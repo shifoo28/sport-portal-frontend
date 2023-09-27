@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import {
@@ -9,6 +9,8 @@ import {
   ListItem,
 } from "@material-tailwind/react";
 import { ICompetitionState } from "../../../redux/interfaces/competitions";
+import Datepicker from "react-tailwindcss-datepicker";
+import { DateValueType } from "react-tailwindcss-datepicker/dist/types";
 
 const arrow = (
   <svg
@@ -78,7 +80,7 @@ const countries = [
 
 const Filter = () => {
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const { competitions, competitionTypes }: ICompetitionState = useSelector(
+  const { competitionTypes }: ICompetitionState = useSelector(
     (state: RootState) => state.competitions
   );
   const [filterType, setFilterType] = useState({
@@ -89,13 +91,23 @@ const Filter = () => {
     updatedAt: new Date(),
   });
   const [filterCountry, setFilterCountry] = useState(countries[0]);
+  const [filterDate, setFilterDate] = useState<DateValueType>({
+    startDate: null,
+    endDate: null,
+  });
+  const handleFilterDate = (newDate: DateValueType) => {
+    setFilterDate(newDate);
+  };
+  const searchCompetition = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   return (
-    <div className="w-full border border-[#0088FF] p-12 flex flex-col gap-9">
-      <p className="text-[#182135] font-sofiasans text-3xl">
+    <div className="w-full border border-[#0088FF] p-12 flex flex-col gap-9 font-sofiasans">
+      <p className="text-[#182135] text-3xl">
         {prefLang === "Tm" ? "Filter" : "Фильтровать"}
       </p>
-      <form className="flex w-full gap-9">
+      <form className="flex w-full gap-9" onSubmit={searchCompetition}>
         <div className="w-full flex flex-col gap-8">
           <label htmlFor="" className="flex border border-[#0088FF] px-8 py-5">
             <input
@@ -127,19 +139,21 @@ const Filter = () => {
               <PopoverHandler>
                 <button
                   type="button"
-                  className="p-0 bg-[#0088FF] flex justify-between max-w-[310px] w-full h-[45px] font-sofiasans text-base px-7 items-center"
+                  className="p-0 bg-[#0088FF] flex justify-between max-w-[310px] w-full h-[68px] font-sofiasans text-xl px-7 items-center"
                 >
-                  <p>
-                    {prefLang === "Tm" ? filterType.nameTm : filterType.nameRu}
-                  </p>
+                  {prefLang === "Tm" ? filterType.nameTm : filterType.nameRu}
                   {arrow}
                 </button>
               </PopoverHandler>
-              <PopoverContent>
-                <List>
+              <PopoverContent className="rounded-none max-w-[310px] w-full">
+                <List className="p-0">
                   {competitionTypes.map((t, i) => {
                     return (
-                      <ListItem key={i} onClick={() => setFilterType(t)}>
+                      <ListItem
+                        key={i}
+                        onClick={() => setFilterType(t)}
+                        className="hover:bg-blue-100 rounded-none w-full px-2"
+                      >
                         {prefLang === "Tm" ? t.nameTm : t.nameRu}
                       </ListItem>
                     );
@@ -151,21 +165,23 @@ const Filter = () => {
               <PopoverHandler>
                 <button
                   type="button"
-                  className="p-0 bg-[#0088FF] flex justify-between max-w-[310px] w-full h-[45px] font-sofiasans text-base px-7 items-center"
+                  className="p-0 bg-[#0088FF] flex justify-between max-w-[310px] w-full h-[68px] font-sofiasans text-xl px-7 items-center"
                 >
-                  <p>
-                    {prefLang === "Tm"
-                      ? filterCountry.nameTm
-                      : filterCountry.nameRu}
-                  </p>
+                  {prefLang === "Tm"
+                    ? filterCountry.nameTm
+                    : filterCountry.nameRu}
                   {arrow}
                 </button>
               </PopoverHandler>
-              <PopoverContent>
-                <List>
+              <PopoverContent className="rounded-none max-w-[310px] w-full">
+                <List className="p-0">
                   {countries.map((c, i) => {
                     return (
-                      <ListItem key={i} onClick={() => setFilterCountry(c)}>
+                      <ListItem
+                        key={i}
+                        onClick={() => setFilterCountry(c)}
+                        className="hover:bg-blue-100 rounded-none w-full px-2"
+                      >
                         {prefLang === "Tm" ? c.nameTm : c.nameRu}
                       </ListItem>
                     );
@@ -174,8 +190,31 @@ const Filter = () => {
               </PopoverContent>
             </Popover>
           </div>
+          <button
+            type="submit"
+            className="h-[68px] bg-[#0F1A42] text-white text-[32px] font-semibold"
+          >
+            {prefLang === "Tm" ? "GÖZLEMEK" : "ПОИСК"}
+          </button>
         </div>
-        <div className="max-w-[284px] w-full"></div>
+        <div className="max-w-[284px] w-full">
+          {/* <Calendar /> */}
+          <Datepicker
+            useRange={false}
+            value={filterDate}
+            onChange={handleFilterDate}
+            placeholder={
+              prefLang === "Tm"
+                ? "Sene aralygynda saýlaň!"
+                : "Выберите диапазон дат!"
+            }
+            i18n={prefLang === "Tm" ? "tk" : "ru"}
+            popoverDirection="down"
+            readOnly={true}
+            startWeekOn={'mon'}
+            inputClassName={`rounded-none w-full py-6 pl-8 outline-none border border-[#0088FF]`}
+          />
+        </div>
       </form>
     </div>
   );

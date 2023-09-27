@@ -17,6 +17,8 @@ export interface ICompetition {
   nameRu: string;
   textTm: string;
   textRu: string;
+  dateStart: Date;
+  endDate: Date;
   location: string;
   views: number;
   imagePath: string;
