@@ -21,6 +21,7 @@ import Navbar from "./components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_LOCAL_NEWS, GET_MAIN, GET_VIDEO_NEWS } from "./redux/types";
 import Login from "./pages/Login";
+import AboutUs from "./pages/AboutUs";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,14 @@ const App = () => {
   return (
     <Routes>
       <Route element={<Login />} path="/login" />
+      <Route
+        element={
+          <TemplateApp>
+            <AboutUs />
+          </TemplateApp>
+        }
+        path="/aboutus"
+      />
       <Route
         element={
           <TemplateApp>

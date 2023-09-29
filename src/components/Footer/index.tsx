@@ -6,8 +6,11 @@ import info from "../../assets/footer/info.svg";
 import location from "../../assets/footer/location.svg";
 import mail from "../../assets/footer/mail.svg";
 import tel from "../../assets/footer/tel.svg";
+import { useNavigate } from "react-router-dom";
+import { ABOUTUS } from "../../tools/links";
 
 const Footer = () => {
+  const navigate = useNavigate();
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
 
   return (
@@ -47,7 +50,10 @@ const Footer = () => {
                   : "Пон-Вос: 9:00 - 22:00"}
               </p>
             </div>
-            <div className="flex justify-center items-center gap-1">
+            <div
+              className="flex justify-center items-center gap-1 cursor-pointer"
+              onClick={() => navigate(ABOUTUS)}
+            >
               <img src={info} alt="" />
               <p>{prefLang === "Tm" ? "Biz barada" : "О нас"}</p>
             </div>
