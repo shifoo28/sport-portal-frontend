@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import Item from "./Item";
 
-const competes = [
+export const competes = [
   {
     id: "1",
     nameTm:

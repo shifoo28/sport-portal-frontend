@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
-let filteredNews = [
+export let dummyData = [
   {
     id: 0,
     title: "Gluten-Free Almond Cake with Berries",
@@ -57,12 +57,12 @@ const FilterNews = () => {
   const [activeTab, setActiveTab] = useState(false);
   const changeTab = (activate: boolean) => {
     setActiveTab(activate);
-    filteredNews = filteredNews.reverse();
+    dummyData = dummyData.reverse();
   };
 
   return (
-    <div>
-      <div className="flex justify-between h-11 font-oswald w-[270px] cursor-pointer">
+    <div className="w-[270px] min-w-[270px]">
+      <div className="flex justify-between h-11 font-oswald cursor-pointer">
         <div
           className={`flex items-center border-b text-sm w-full ${
             !activeTab
@@ -85,7 +85,7 @@ const FilterNews = () => {
         </div>
       </div>
       <div className="pt-5">
-        {filteredNews.map((e) => {
+        {dummyData.map((e) => {
           return (
             <div
               key={e.id}

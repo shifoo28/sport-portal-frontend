@@ -145,7 +145,7 @@ const Filter = () => {
                   {arrow}
                 </button>
               </PopoverHandler>
-              <PopoverContent className="rounded-none max-w-[310px] w-full">
+              <PopoverContent className="rounded-none max-w-[310px] w-full border border-[#0088FF]">
                 <List className="p-0">
                   {competitionTypes.map((t, i) => {
                     return (
@@ -173,7 +173,7 @@ const Filter = () => {
                   {arrow}
                 </button>
               </PopoverHandler>
-              <PopoverContent className="rounded-none max-w-[310px] w-full">
+              <PopoverContent className="rounded-none max-w-[310px] w-full border border-[#0088FF]">
                 <List className="p-0">
                   {countries.map((c, i) => {
                     return (
@@ -197,7 +197,7 @@ const Filter = () => {
             {prefLang === "Tm" ? "GÖZLEMEK" : "ПОИСК"}
           </button>
         </div>
-        <div className="max-w-[284px] w-full">
+        <div className="max-w-[314px] w-full">
           {/* <Calendar /> */}
           <Datepicker
             useRange={false}

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { urlBack } from "../../redux/apiCalls";
 import { PATCH_SPORT_NEWS_VIEWS } from "../../redux/types";
 
-const sameNews = [
+export const sameNews = [
   {
     id: 0,
     date: "Tibilisi - 17 Apr 2023",

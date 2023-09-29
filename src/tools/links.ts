@@ -1,3 +1,5 @@
+export const DOMAIN = "http://localhost:3000";
+export const LOGIN = "/login";
 // Sport News
 export const NEWS_DETAILS_PAGE = "news/details/";
 export const VIDEO_DETAILS_PAGE = "videos/details/";

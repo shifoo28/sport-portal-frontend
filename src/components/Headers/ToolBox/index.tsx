@@ -3,8 +3,9 @@ import SearchBar from "./SearchBar";
 import SelectLang from "./SelectLang";
 import Account from "./Account";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const monthsTm = [
+export const monthsTm = [
   "Ýanwar",
   "Fewral",
   "Mart",
@@ -18,7 +19,7 @@ const monthsTm = [
   "Noýabr",
   "Dekabr",
 ];
-const monthsRu = [
+export const monthsRu = [
   "Январь",
   "Февраль",
   "Март",
@@ -32,7 +33,7 @@ const monthsRu = [
   "Ноябрь",
   "Декабрь",
 ];
-const daysTm = [
+export const daysTm = [
   "Ýekşenbe",
   "Duşenbe",
   "Sişenbe",
@@ -41,7 +42,7 @@ const daysTm = [
   "Anna",
   "Şenbe",
 ];
-const daysRu = [
+export const daysRu = [
   "Воскресенье",
   "Понедельник",
   "Вторник",
@@ -51,13 +52,9 @@ const daysRu = [
   "Суббота",
 ];
 
-const index = ({
-  navigate,
-  prefLang,
-}: {
-  navigate: (l: string) => void;
-  prefLang: string;
-}) => {
+const ToolBox = () => {
+  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const navigate = useNavigate();
   const d = new Date();
   let year = `${d.getFullYear()}${prefLang === "Tm" ? "ý" : "г"}`;
   let month =
@@ -100,4 +97,4 @@ const index = ({
   );
 };
 
-export default index;
+export default ToolBox;

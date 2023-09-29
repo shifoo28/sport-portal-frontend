@@ -49,7 +49,7 @@ const Footer = () => {
             </div>
             <div className="flex justify-center items-center gap-1">
               <img src={info} alt="" />
-              <p>{prefLang === "Tm" ? "Biz barada" : "О компании"}</p>
+              <p>{prefLang === "Tm" ? "Biz barada" : "О нас"}</p>
             </div>
           </div>
 
