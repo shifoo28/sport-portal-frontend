@@ -13,6 +13,7 @@ import {
   GET_FEDERATION_TRAINERS,
 } from "../../../redux/types";
 import FederationsList from "./FederationsList";
+import { RootState } from "../../../redux/store";
 
 export const bcfInformation = [
   {
@@ -41,11 +42,12 @@ export const bcfInformation = [
 const Federations = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const pathname = location.pathname.slice(BASE_CATEGORIES.length);
-  const indexComponent = bcfInformation.findIndex((info) =>
+  let indexComponent = bcfInformation.findIndex((info) =>
     pathname.includes(info.link)
   );
+  if (indexComponent < 0) indexComponent = 0;
   indexComponent === 0
     ? dispatch({ type: GET_FEDERATION_SPORTS })
     : indexComponent === 1

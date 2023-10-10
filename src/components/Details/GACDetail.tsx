@@ -8,6 +8,7 @@ import email from "../../assets/svg/email.svg";
 import link from "../../assets/svg/link.svg";
 import left from "../BCFederations/GymsandClubs/svg/left.svg";
 import right from "../BCFederations/GymsandClubs/svg/right.svg";
+import { RootState } from "../../redux/store";
 
 const images = [
   { id: 0, imagePath: "/images/gac/sc_1.png" },
@@ -18,7 +19,7 @@ const images = [
 ];
 
 const GACDetail = () => {
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const { state } = useLocation();
   const { id } = state;
   const data = tbodyTm.find((b) => b.id === id);

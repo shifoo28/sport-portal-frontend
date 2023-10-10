@@ -25,7 +25,7 @@ const Component = () => {
   const { pathname } = useLocation();
   const prefLang = useSelector((state: any) => state.main.prefLang);
   const hcdepartmnts: IHCDepartment[] = useSelector(
-    (state: RootState) => state.federations.hcdepartments
+    (state: RootState) => state.federations.health_care_departments
   );
 
   const [open, setOpen] = React.useState("");

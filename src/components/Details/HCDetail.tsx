@@ -11,7 +11,7 @@ const HCDetail = () => {
   const { employeeId, departmentId } = location.state;
 
   const departments: IHCDepartment[] = useSelector(
-    (state: RootState) => state.federations.hcdepartments
+    (state: RootState) => state.federations.health_care_departments
   );
   const department = departments.find((d) => d.id === departmentId);  
   const employee = department?.employees.find((e) => e.id === employeeId);

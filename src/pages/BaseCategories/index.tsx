@@ -8,23 +8,20 @@ import {
   HEALTHYFOOD,
   SPORTSHOPS,
 } from "../../tools/links";
-import AllBaseCategories from "./AllBaseCategories";
 import Federations from "./Federations";
-import FederationAll from "./FederationAll";
-import { useDispatch } from "react-redux";
-import { GET_FEDERATIONS } from "../../redux/types";
 import BCFDetail from "../../components/Details/BCFDetail";
 import GymsAndClubs from "../../components/BCFederations/GymsandClubs";
 import HealthCare from "../../components/BCFederations/HealthCare";
 import HealthyFood from "../../components/BCFederations/HealthyFood";
-import SportShops from "../../components/BCFederations/SportShops";
 import Competitions from "../../components/BCFederations/Competitions";
+import AllCategories from "./AllCategories";
+import Shop from "../../components/BCFederations/Shop";
 
 const components = [
   GymsAndClubs,
   HealthCare,
   HealthyFood,
-  SportShops,
+  Shop,
   Competitions,
 ];
 const separateLinks = [
@@ -36,8 +33,6 @@ const separateLinks = [
 ];
 
 const BaseCategories = () => {
-  const dispatch = useDispatch();
-  dispatch({ type: GET_FEDERATIONS });
   const location = useLocation();
   const uri = location.pathname.slice(BASE_CATEGORIES.length);
   const indexLink = separateLinks.findIndex((i) => uri.includes(i));
@@ -45,11 +40,9 @@ const BaseCategories = () => {
   return indexLink >= 0 ? (
     createElement(components[indexLink])
   ) : uri.includes("all") ? (
-    <FederationAll />
+    <AllCategories />
   ) : uri.includes("id") ? (
     <BCFDetail />
-  ) : uri.length < 2 ? (
-    <AllBaseCategories />
   ) : (
     <Federations />
   );

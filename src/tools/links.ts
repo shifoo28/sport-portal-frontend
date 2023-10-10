@@ -1,4 +1,4 @@
-export const DOMAIN = "http://localhost:3000";
+export const APP_ADDRESS = "http://localhost:3000";
 export const LOGIN = "/login";
 export const ABOUTUS = "/aboutus";
 // Sport News

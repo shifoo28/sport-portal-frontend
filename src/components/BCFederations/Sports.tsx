@@ -1,15 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { IFSports } from "../../redux/interfaces/federations";
 
-const Sports = ({ open }: { open: string }) => {
-  const fsports: IFSports[] = useSelector(
-    (state: any) => state.federations.fsports
-  );
-  const data: IFSports | undefined = fsports.find(
-    (fs) => fs.federation.id === open
-  );
-
+const Sports = ({ data }: { data: IFSports }) => {
   return (
     <div
       className={`w-full h-max flex justify-between p-8 font-sofiasans text-xl gap-10`}

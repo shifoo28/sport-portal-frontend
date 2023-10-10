@@ -1,12 +1,11 @@
 import React from "react";
-import { DOMAIN } from "../../tools/links";
 
 const Login = () => {
   return (
     <div className="flex justify-center items-center flex-col h-screen w-screen bg-[#e9edf3] font-sofiasans gap-6">
       <form className="flex flex-col justify-center items-center bg-white border-2 p-8 gap-6 max-w-[472px] w-full rounded-md">
         <img
-          src={DOMAIN + "/icons/toolbox/logo.png"}
+          src="/icons/toolbox/logo.png"
           alt=""
           className="w-[63px] h-[73px]"
         />

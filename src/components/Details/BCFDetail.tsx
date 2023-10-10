@@ -1,11 +1,11 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import footballSvg from "../../pages/BaseCategories/svg/futbol.svg";
 import rating from "../../assets/svg/rating.svg";
 import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const BCFDetail = () => {
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const location = useLocation();
   const { id, who } = location.state;
 
@@ -53,7 +53,7 @@ const BCFDetail = () => {
           <p className="font-oswald text-[50px] text-[#0088FF] uppercase">
             RUSLAN MINGAZOW
           </p>
-          <img src={footballSvg} />
+          <img src="" alt="" />
         </div>
         <div className="font-sofiasans text-2xl">
           <p>Ýaşy: 31 </p>

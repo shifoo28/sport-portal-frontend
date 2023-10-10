@@ -1,8 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import {
-  GET_FEDERATIONS,
-  GET_FEDERATIONS_FAILED,
-  GET_FEDERATIONS_SUCCESS,
   GET_FEDERATION_ATHLETES,
   GET_FEDERATION_ATHLETES_SUCCESS,
   GET_FEDERATION_SPORTS,
@@ -19,20 +16,8 @@ import {
   fetchFederationAthletes,
   fetchFederationSports,
   fetchFederationTrainers,
-  fetchFederations,
   fetchHCDepartments,
 } from "../apiCalls";
-
-function* getFederations() {
-  try {
-    // @ts-ignore
-    const federations = yield call(fetchFederations);
-
-    yield put({ type: GET_FEDERATIONS_SUCCESS, payload: federations });
-  } catch (error: any) {
-    yield put({ type: GET_FEDERATIONS_FAILED, message: error.message });
-  }
-}
 
 function* getFederationSports() {
   try {
@@ -82,10 +67,6 @@ function* getHCDepartments() {
       message: error.message,
     });
   }
-}
-
-export function* federationsSaga() {
-  yield takeLatest(GET_FEDERATIONS, getFederations);
 }
 
 export function* fsportsSaga() {

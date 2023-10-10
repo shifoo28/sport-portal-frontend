@@ -1,201 +1,9 @@
 import React from "react";
 import rating from "../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { IFAthletes } from "../../redux/interfaces/federations";
 import { urlBack } from "../../redux/apiCalls";
 
-export const a = [
-  {
-    id: 0,
-    imgLink: "/images/federations/athlete_1.jfif",
-    name: "Ruslan Mingazow",
-    sportType: "Futbol",
-    position: "Hüjümçi",
-    flagImg: "/images/federations/flag_2.png",
-    club: "Kitchee",
-    rating: 4.5,
-    made: "MILLI",
-    age: 31,
-    birthPlace: "Aşgabat",
-    experience: 15,
-    sportLevel: "Halkara derejeli sport ussady",
-    workedAt: [
-      "2007-2009Aşgabat",
-      "2009-2014Skonto Rīga",
-      "2014-2016Jablonec",
-      "2016-2019Slavia Prague",
-      "2017→ Mladá Boleslav",
-      "2018-2019→ Příbram",
-      "2019-2020-Irtysh Pavlodar 2020-Shakhter Karagandy",
-      "2021-2022Caspiy",
-      "2022-Kitchee",
-    ],
-    badges: [
-      "2008-Türkmenistanyň çempiony",
-      "2008-Türkmenistanyň Superkubok ýeňijisi",
-      "2010-Latwiýanyň çempiony",
-      "2012-2013 Latwiýa kubok kümüş medal ýeňijisi",
-      "2013-Latwiýanyň Superkubok ýeňijisi",
-      "2014/15-2015/16 Çehiýanyň kubok finalisti",
-      "2016/17-Çehiýanyň çempiony",
-      "2015-Türkmenistanyň iň gowy futbolçysy",
-      "2022/23-Hong Kong Premýer ligasynyň iň gowy futbolçysy",
-    ],
-    jobs: [
-      "Milli futbol toparynyň oýunçysy",
-      "Hong Kong Kitchee toparynyň hüjümçisi",
-    ],
-  },
-  {
-    id: 1,
-    imgLink: "/images/federations/athlete_2.png",
-    name: "Arslanmyrat Amanow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Ahal",
-    rating: 4.5,
-    made: "MILLI",
-  },
-  {
-    id: 2,
-    imgLink: "/images/federations/athlete_3.png",
-    name: "Daýanç Meredow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Arkadag",
-    rating: 4.5,
-    made: "U23",
-  },
-  {
-    id: 3,
-    imgLink: "/images/federations/athlete_1.jfif",
-    name: "Ruslan Mingazow",
-    sportType: "Futbol",
-    position: "Hüjümçi",
-    flagImg: "/images/federations/flag_2.png",
-    club: "Kitchee",
-    rating: 4.5,
-    made: "MILLI",
-    age: 31,
-    birthPlace: "Aşgabat",
-    experience: 15,
-    sportLevel: "Halkara derejeli sport ussady",
-    workedAt: [
-      "2007-2009Aşgabat",
-      "2009-2014Skonto Rīga",
-      "2014-2016Jablonec",
-      "2016-2019Slavia Prague",
-      "2017→ Mladá Boleslav",
-      "2018-2019→ Příbram",
-      "2019-2020-Irtysh Pavlodar 2020-Shakhter Karagandy",
-      "2021-2022Caspiy",
-      "2022-Kitchee",
-    ],
-    badges: [
-      "2008-Türkmenistanyň çempiony",
-      "2008-Türkmenistanyň Superkubok ýeňijisi",
-      "2010-Latwiýanyň çempiony",
-      "2012-2013 Latwiýa kubok kümüş medal ýeňijisi",
-      "2013-Latwiýanyň Superkubok ýeňijisi",
-      "2014/15-2015/16 Çehiýanyň kubok finalisti",
-      "2016/17-Çehiýanyň çempiony",
-      "2015-Türkmenistanyň iň gowy futbolçysy",
-      "2022/23-Hong Kong Premýer ligasynyň iň gowy futbolçysy",
-    ],
-    jobs: [
-      "Milli futbol toparynyň oýunçysy",
-      "Hong Kong Kitchee toparynyň hüjümçisi",
-    ],
-  },
-  {
-    id: 4,
-    imgLink: "/images/federations/athlete_2.png",
-    name: "Arslanmyrat Amanow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Ahal",
-    rating: 4.5,
-    made: "MILLI",
-  },
-  {
-    id: 5,
-    imgLink: "/images/federations/athlete_3.png",
-    name: "Daýanç Meredow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Arkadag",
-    rating: 4.5,
-    made: "U23",
-  },
-  {
-    id: 6,
-    imgLink: "/images/federations/athlete_1.jfif",
-    name: "Ruslan Mingazow",
-    sportType: "Futbol",
-    position: "Hüjümçi",
-    flagImg: "/images/federations/flag_2.png",
-    club: "Kitchee",
-    rating: 4.5,
-    made: "MILLI",
-    age: 31,
-    birthPlace: "Aşgabat",
-    experience: 15,
-    sportLevel: "Halkara derejeli sport ussady",
-    workedAt: [
-      "2007-2009Aşgabat",
-      "2009-2014Skonto Rīga",
-      "2014-2016Jablonec",
-      "2016-2019Slavia Prague",
-      "2017→ Mladá Boleslav",
-      "2018-2019→ Příbram",
-      "2019-2020-Irtysh Pavlodar 2020-Shakhter Karagandy",
-      "2021-2022Caspiy",
-      "2022-Kitchee",
-    ],
-    badges: [
-      "2008-Türkmenistanyň çempiony",
-      "2008-Türkmenistanyň Superkubok ýeňijisi",
-      "2010-Latwiýanyň çempiony",
-      "2012-2013 Latwiýa kubok kümüş medal ýeňijisi",
-      "2013-Latwiýanyň Superkubok ýeňijisi",
-      "2014/15-2015/16 Çehiýanyň kubok finalisti",
-      "2016/17-Çehiýanyň çempiony",
-      "2015-Türkmenistanyň iň gowy futbolçysy",
-      "2022/23-Hong Kong Premýer ligasynyň iň gowy futbolçysy",
-    ],
-    jobs: [
-      "Milli futbol toparynyň oýunçysy",
-      "Hong Kong Kitchee toparynyň hüjümçisi",
-    ],
-  },
-  {
-    id: 7,
-    imgLink: "/images/federations/athlete_2.png",
-    name: "Arslanmyrat Amanow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Ahal",
-    rating: 4.5,
-    made: "MILLI",
-  },
-  {
-    id: 8,
-    imgLink: "/images/federations/athlete_3.png",
-    name: "Daýanç Meredow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Arkadag",
-    rating: 4.5,
-    made: "U23",
-  },
-];
 const flags = [
   { flag: "/images/federations/flag_2.png", key: "kitchee" },
   { flag: "/images/federations/flag_1.png", key: "ahal" },
@@ -211,14 +19,10 @@ const sportTypes = [
   { name: "Welosiped", key: "welosiped" },
 ];
 
-const Athlete = ({ open }: { open: string }) => {
+const Athlete = ({ data }: { data: IFAthletes[] }) => {
   const navigate = useNavigate();
   const location = useLocation();
   // const prefLang = useSelector((state: any) => state.main.prefLang);
-  const fathletes: IFAthletes[] = useSelector(
-    (state: any) => state.federations.fathletes
-  );
-  const athletes = fathletes.filter((fa) => fa.federationId === open);
 
   return (
     <div className="text-[#0F1A42] font-sofiasans px-8 pt-8">
@@ -251,7 +55,7 @@ const Athlete = ({ open }: { open: string }) => {
             </tr>
           </thead>
           <tbody className="text-base">
-            {athletes.map((athlete, index) => {
+            {data?.map((athlete, index) => {
               return (
                 <tr className="border border-[#0088FF]" key={athlete.id}>
                   <td className="p-2 font-semibold" align="center">
@@ -285,7 +89,7 @@ const Athlete = ({ open }: { open: string }) => {
                   <td className="p-2 font-semibold" align="center">
                     {
                       sportTypes.find((st) =>
-                        athlete.federation.nameTm
+                        athlete.federation?.nameTm
                           .toLocaleLowerCase()
                           .includes(st.key)
                       )?.name

@@ -1,10 +1,14 @@
 import {
+  List,
+  ListItem,
   Popover,
   PopoverContent,
   PopoverHandler,
 } from "@material-tailwind/react";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { ISportType } from "../../../redux/interfaces/gymsclubs";
 
 const arrow = (
   <svg
@@ -20,9 +24,24 @@ const arrow = (
     />
   </svg>
 );
+let sport_types = [
+  {
+    id: "0",
+    nameTm: "Sport görnüşler",
+    nameRu: "Виды спорта",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+];
 
 const Filter = () => {
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const sportTypes: ISportType[] = useSelector(
+    (state: RootState) => state.gymsclubs.filters[0]?.filters
+  );
+  sport_types.push(...sportTypes);
+
+  const [sportTypesFilter, setSportTypesFilter] = useState(sport_types[0]);
 
   return (
     <form className="border border-[#0088FF] max-w-[1170px] w-full px-9 py-10 font-sofiasans flex flex-col gap-7">
@@ -63,17 +82,35 @@ const Filter = () => {
       </p>
       <div className="py-3 text-white font-sofiasans flex justify-between">
         <div className="w-full gap-9 flex flex-col">
-          <Popover placement="bottom">
+          <Popover>
             <PopoverHandler>
               <button
                 type="button"
                 className="p-0 bg-[#0088FF] flex justify-between max-w-[310px] w-full h-[45px] font-sofiasans text-base px-7 items-center"
               >
-                <p>{prefLang === "Tm" ? "Sport görnüşler" : "Виды спорта"}</p>
+                <p>
+                  {prefLang === "Tm"
+                    ? sportTypesFilter.nameTm
+                    : sportTypesFilter.nameRu}
+                </p>
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent>q</PopoverContent>
+            <PopoverContent>
+              <List>
+                {sport_types?.map((st, i) => {
+                  return (
+                    <ListItem
+                      key={i}
+                      onClick={() => setSportTypesFilter(st)}
+                      className=""
+                    >
+                      {prefLang === "Tm" ? st.nameTm : st.nameRu}
+                    </ListItem>
+                  );
+                })}
+              </List>
+            </PopoverContent>
           </Popover>
           <Popover placement="bottom">
             <PopoverHandler>

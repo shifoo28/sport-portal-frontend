@@ -4,21 +4,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IFTrainers } from "../../redux/interfaces/federations";
 import { urlBack } from "../../redux/apiCalls";
+import { RootState } from "../../redux/store";
 
-const Trainers = ({ open }: { open: string }) => {
+const Trainers = ({ data }: { data: IFTrainers[] }) => {
+  console.log(data);
+  
   const navigate = useNavigate();
   const location = useLocation();
-  const prefLang = useSelector((state: any) => state.main.prefLang);
-  const ftrainers: IFTrainers[] = useSelector(
-    (state: any) => state.federations.ftrainers
-  );
-  const trainers = ftrainers.filter((t) => t.federationId === open);
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
 
   return (
     <div className="flex flex-col gap-[5px]">
       <div className="pt-8 px-8">
         <div className="w-full h-[395px] grid grid-cols-3 gap-4 justify-between overflow-auto">
-          {trainers.map((trainer, index) => {
+          {data.map((trainer, index) => {
             return (
               <button
                 className="max-w-[345px] h-[120px] flex border border-[#0088FF] scroll-mt-6"

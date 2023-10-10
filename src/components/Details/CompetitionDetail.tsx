@@ -4,17 +4,18 @@ import { dummyData as data } from "../Video News/FilterNews";
 import { useDispatch, useSelector } from "react-redux";
 import { sameNews } from "./NewsDetail";
 import { competes } from "../BCFederations/Competitions/List";
-import { BASE_CATEGORIES, DOMAIN, SPORTS } from "../../tools/links";
+import { BASE_CATEGORIES, APP_ADDRESS, SPORTS } from "../../tools/links";
 import { activateTab } from "../../redux/actions/main";
+import { RootState } from "../../redux/store";
 
 const CompetitionDetail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const { state, pathname } = useLocation();
   const competition = competes[state.competitionId];
   const linkTo = () => {
-    navigate(DOMAIN + BASE_CATEGORIES + SPORTS);
+    navigate(APP_ADDRESS + BASE_CATEGORIES + SPORTS);
     dispatch(activateTab(2));
   };
 

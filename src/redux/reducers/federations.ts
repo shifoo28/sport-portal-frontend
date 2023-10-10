@@ -1,7 +1,5 @@
 import { IFederations, IFederationsState } from "../interfaces/federations";
 import {
-  GET_FEDERATIONS_FAILED,
-  GET_FEDERATIONS_SUCCESS,
   GET_FEDERATION_ATHLETES_FAILED,
   GET_FEDERATION_ATHLETES_SUCCESS,
   GET_FEDERATION_SPORTS_FAILED,
@@ -13,12 +11,10 @@ import {
 } from "../types";
 
 const initialState: IFederationsState = {
-  federations: [],
-  fsports: [],
-  ftrainers: [],
-  fathletes: [],
-  hcdepartments: [],
-  message: "",
+  federation_sports: [],
+  federation_trainers: [],
+  federation_athletes: [],
+  health_care_departments: [],
 };
 
 export default function federations(
@@ -29,31 +25,25 @@ export default function federations(
 
   switch (type) {
     case GET_FEDERATION_SPORTS_SUCCESS:
-      return { ...state, ...payload };
+      return { ...state, federation_sports: payload };
 
     case GET_FEDERATION_SPORTS_FAILED:
       return { ...state, message: payload.message };
 
-    case GET_FEDERATIONS_SUCCESS:
-      return { ...state, ...payload };
-
-    case GET_FEDERATIONS_FAILED:
-      return { ...state, message: payload.message };
-
     case GET_FEDERATION_TRAINERS_SUCCESS:
-      return { ...state, ...payload };
+      return { ...state, federation_trainers: payload };
 
     case GET_FEDERATION_TRAINERS_FAILED:
       return { ...state, message: payload.message };
 
     case GET_FEDERATION_ATHLETES_SUCCESS:
-      return { ...state, ...payload };
+      return { ...state, federation_athletes: payload };
 
     case GET_FEDERATION_ATHLETES_FAILED:
       return { ...state, message: payload.message };
 
     case GET_HEALTH_CARE_DEPARTMENTS_SUCCESS:
-      return { ...state, ...payload };
+      return { ...state, health_care_departments: payload };
 
     case GET_HEALTH_CARE_DEPARTMENTS_FAILED:
       return { ...state, message: payload.message };

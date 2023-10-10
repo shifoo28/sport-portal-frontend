@@ -1,15 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Filter from "./Filter";
 import ListofFacility from "./List";
 import GMap from "./Map";
 import { useLocation } from "react-router-dom";
 import GACDetail from "../../Details/GACDetail";
+import { GET_GYMS_AND_CLUBS_FILTER } from "../../../redux/types";
+import { RootState } from "../../../redux/store";
 
 const GymsAndClubs = () => {
-  const location = useLocation();
-  const { pathname } = location;
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const dispatch = useDispatch();
+  dispatch({ type: GET_GYMS_AND_CLUBS_FILTER });
+
+  const { pathname } = useLocation();
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
 
   if (pathname.includes("detail")) {
     return <GACDetail />;

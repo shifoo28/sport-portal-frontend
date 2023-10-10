@@ -11,7 +11,6 @@ import {
   VIDEO_DETAILS_PAGE,
 } from "./tools/links";
 import VideoDetails from "./pages/VideoDetails";
-import BaseCategories from "./pages/BaseCategories";
 import Footer from "./components/Footer";
 import Banner from "./components/Headers";
 import BaseCategoriesList from "./components/Headers/BaseCategory";
@@ -22,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { GET_LOCAL_NEWS, GET_MAIN, GET_VIDEO_NEWS } from "./redux/types";
 import Login from "./pages/Login";
 import AboutUs from "./pages/AboutUs";
+import BaseCategories from "./pages/BaseCategories";
 
 const App = () => {
   const dispatch = useDispatch();

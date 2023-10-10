@@ -6,6 +6,10 @@ export interface IFederations {
   id: string;
   nameTm: string;
   nameRu: string;
+  imagePath: string;
+  fsports: IFSports;
+  ftrainers: IFTrainers[];
+  fathlete: IFAthletes[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -49,7 +53,6 @@ export interface IFAthletes {
   age: number;
   birthPlace: string;
   experience: number;
-  default: 0;
   sportLevel: string;
   workedAt: string[];
   badges: string[];
@@ -87,10 +90,8 @@ export interface IHCDepartment {
   employees: IHCEmployee[];
 }
 export interface IFederationsState {
-  federations?: IFederations[];
-  fsports?: IFSports[];
-  ftrainers?: IFTrainers[];
-  fathletes?: IFAthletes[];
-  hcdepartments?: IHCDepartment[];
-  message: string;
+  federation_sports?: IFederations[];
+  federation_trainers?: IFederations[];
+  federation_athletes?: IFederations[];
+  health_care_departments?: IHCDepartment[];
 }

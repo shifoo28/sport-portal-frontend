@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { VIDEO_DETAILS_PAGE } from "../../tools/links";
 import { useSelector } from "react-redux";
 import { urlBack } from "../../redux/apiCalls";
+import { RootState } from "../../redux/store";
 
 const videoNews = [
   {
@@ -37,8 +38,8 @@ const videoNews = [
 
 const SportNewsBody = () => {
   const navigate = useNavigate();
-  const news = useSelector((state: any) => state.home.video);
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const news = useSelector((state: RootState) => state.home.video_news);
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
 
   const linkTo = () => {
     navigate(VIDEO_DETAILS_PAGE, { state: { index: 0 } });
@@ -51,15 +52,15 @@ const SportNewsBody = () => {
         onClick={linkTo}
       >
         <img
-          src={urlBack + "/" + news[0].imagePath}
+          src={urlBack + "/" + news[0]?.imagePath}
           className="object-cover h-full w-full"
         />
         <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 to-black/50 " />
         <div className="absolute top-6 left-6 h-5 bg-[#FE4A51] w-max text-white text-[9px] flex items-center">
           <p className="px-3">
             {prefLang === "Tm"
-              ? news[0].category.nameTm
-              : news[0].category.nameRu}
+              ? news[0]?.category?.nameTm
+              : news[0]?.category?.nameRu}
           </p>
         </div>
         <div className="absolute top-24 left-1/2">
@@ -72,7 +73,7 @@ const SportNewsBody = () => {
             Hong Kong - 11 Iyul 2023
           </p>
           <p className={`font-oswald text-4xl`}>
-            {prefLang === "Tm" ? news[0].nameTm : news[0].nameRu}
+            {prefLang === "Tm" ? news[0]?.nameTm : news[0]?.nameRu}
           </p>
         </div>
       </div>

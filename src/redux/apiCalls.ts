@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const urlBack = "http://localhost:3012/";
+export const urlBack = "http://10.10.73.40/";
 
 // GETTERS
 export async function fetchMain() {
@@ -15,7 +15,7 @@ export async function fetchMain() {
 
 export async function fetchLocalNews() {
   try {
-    const res = await fetch(urlBack + "main-page/local");
+    const res = await fetch(urlBack + "main-page/Local");
 
     return (await res.json()).data;
   } catch (error) {
@@ -25,17 +25,7 @@ export async function fetchLocalNews() {
 
 export async function fetchVideoNews() {
   try {
-    const res = await fetch(urlBack + "main-page/video");
-
-    return (await res.json()).data;
-  } catch (error) {
-    throw error;
-  }
-}
-
-export async function fetchFederations() {
-  try {
-    const res = await fetch(urlBack + "federation-page");
+    const res = await fetch(urlBack + "main-page/Video");
 
     return (await res.json()).data;
   } catch (error) {
@@ -66,6 +56,16 @@ export async function fetchFederationTrainers() {
 export async function fetchFederationAthletes() {
   try {
     const res = await fetch(urlBack + "federation-page/athletes");
+
+    return (await res.json()).data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function fetchGymsClubsFilters() {
+  try {
+    const res = await fetch(urlBack + "gyms-and-clubs-page/filters?lang=Tm");
 
     return (await res.json()).data;
   } catch (error) {

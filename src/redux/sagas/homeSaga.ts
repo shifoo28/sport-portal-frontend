@@ -34,6 +34,7 @@ function* getVideoNews() {
 export function* localNewsSaga() {
   yield takeLatest(GET_LOCAL_NEWS, getLocalNews);
 }
-export function* videoNewsSaga() {    
+
+export function* videoNewsSaga() {
   yield takeLatest(GET_VIDEO_NEWS, getVideoNews);
 }

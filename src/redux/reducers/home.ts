@@ -8,93 +8,22 @@ import {
 } from "../types";
 
 const initialState: IHomeState = {
-  local: [
-    {
-      id: "",
-      textTm: "",
-      textRu: "",
-      views: 0,
-      nameTm: "",
-      nameRu: "",
-      location: "",
-      imagePath: "",
-      categoryId: "",
-      category: { nameTm: "", nameRu: "" },
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      id: "",
-      textTm: "",
-      textRu: "",
-      views: 0,
-      nameTm: "",
-      nameRu: "",
-      location: "",
-      imagePath: "",
-      categoryId: "",
-      category: { nameTm: "", nameRu: "" },
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      id: "",
-      textTm: "",
-      textRu: "",
-      views: 0,
-      nameTm: "",
-      nameRu: "",
-      location: "",
-      imagePath: "",
-      categoryId: "",
-      category: { nameTm: "", nameRu: "" },
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      id: "",
-      textTm: "",
-      textRu: "",
-      views: 0,
-      nameTm: "",
-      nameRu: "",
-      location: "",
-      imagePath: "",
-      categoryId: "",
-      category: { nameTm: "", nameRu: "" },
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ],
-  video: [
-    {
-      id: "",
-      views: 0,
-      nameTm: "",
-      nameRu: "",
-      imagePath: "",
-      videoPath: "",
-      categoryId: "",
-      category: { nameTm: "", nameRu: "" },
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ],
-  message: "",
+  local_news: [],
+  video_news: [],
 };
 
 export default function home(state: IHomeState = initialState, action: IMain) {
-  const payload = action.payload;
+  const { payload, type } = action;
 
-  switch (action.type) {
+  switch (type) {
     case GET_LOCAL_NEWS_SUCCESS:
-      return { ...state, ...payload };
+      return { ...state, local_news: payload };
 
     case GET_LOCAL_NEWS_FAILED:
       return { ...state, message: payload.message };
 
     case GET_VIDEO_NEWS_SUCCESS:
-      return { ...state, ...payload };
+      return { ...state, video_news: payload };
 
     case GET_VIDEO_NEWS_FAILED:
       return { ...state, message: payload.message };

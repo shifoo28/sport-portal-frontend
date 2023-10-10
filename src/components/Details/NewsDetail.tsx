@@ -4,6 +4,7 @@ import { SPORT_NEWS_ALL } from "../../tools/links";
 import { useDispatch, useSelector } from "react-redux";
 import { urlBack } from "../../redux/apiCalls";
 import { PATCH_SPORT_NEWS_VIEWS } from "../../redux/types";
+import { RootState } from "../../redux/store";
 
 export const sameNews = [
   {
@@ -39,10 +40,10 @@ const NewsDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const { newsId } = location.state;
-  const data = useSelector((state: any) =>
-    state.home.local.find((e: any) => e.id === newsId)
+  const data = useSelector((state: RootState) =>
+    state.home.local_news.find((e: any) => e.id === newsId)
   );
 
   dispatch({
