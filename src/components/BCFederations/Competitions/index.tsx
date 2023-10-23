@@ -1,6 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GET_COMPETITIONS } from "../../../redux/types";
+import {
+  GET_COMPETITIONS,
+  GET_COMPETITION_FILTERS,
+} from "../../../redux/types";
 import { RootState } from "../../../redux/store";
 import Filter from "./Filter";
 import List from "./List";
@@ -29,13 +32,16 @@ const Component = () => {
 const Competitions = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+
   if (pathname.includes("id")) {
-    return <CompetitionDetail />;
+    return <CompetitionDetail />; // Opens Detailed page
   } else {
     dispatch({ type: GET_COMPETITIONS });
+    dispatch({ type: GET_COMPETITION_FILTERS, payload: prefLang });
 
     return <Component />;
-  } // Goes to Detail Page
+  }
 };
 
 export default Competitions;

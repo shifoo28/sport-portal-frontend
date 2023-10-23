@@ -4,6 +4,7 @@ import competition from "./svg/competition.svg";
 import actitvity from "./svg/actitvity.svg";
 import training from "./svg/training.svg";
 import { useLocation, useNavigate } from "react-router-dom";
+import { urlBack } from "../../../redux/apiCalls";
 
 const icons = [
   { key: "bäsleşik", svg: competition },
@@ -11,7 +12,7 @@ const icons = [
   { key: "sport okuw", svg: training },
 ];
 
-const Item = ({ data, l }: { data: ICompetition; l: string }) => {
+const Item = ({ data, lang }: { data: ICompetition; lang: string }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const linkTo = () => {
@@ -28,41 +29,41 @@ const Item = ({ data, l }: { data: ICompetition; l: string }) => {
           <img
             src={
               icons.find((i) =>
-                data.competitionType.nameTm.toLocaleLowerCase().includes(i.key)
+                data.competitionType?.nameTm.toLocaleLowerCase().includes(i.key)
               )?.svg
             }
             alt=""
           />
           <p className="text-xl font-semibold">
-            {l === "Tm"
-              ? data.competitionType.nameTm
-              : data.competitionType.nameRu}
+            {lang === "Tm"
+              ? data.competitionType?.nameTm
+              : data.competitionType?.nameRu}
           </p>
         </div>
         <div>
           <img
-            src={"http://localhost:3000/" + data.imagePath}
+            src={urlBack + data.imagePath}
             alt=""
             className="w-full h-[200px] object-cover object-center"
           />
         </div>
       </div>
       <p className="text-[10px] text-start">
-        {data.location +
+        {`${lang === "Tm" ? data.locationTm : data.locationRu}` +
           " - " +
-          data.dateStart.getDay() +
+          new Date(data.dateStart).getDay() +
           "." +
-          data.dateStart.getMonth() +
+          new Date(data.dateStart).getMonth() +
           "~" +
-          data.endDate.getDay() +
+          new Date(data.dateEnd).getDay() +
           "." +
-          data.endDate.getMonth() +
+          new Date(data.dateEnd).getMonth() +
           "." +
-          data.endDate.getFullYear()}
-        {l === "Tm" ? "ý" : "г"}
+          new Date(data.dateEnd).getFullYear()}
+        {lang === "Tm" ? "ý" : "г"}
       </p>
       <p className="font-oswald text-sm text-left hover:underline hover:decoration-blue-500">
-        {l === "Tm" ? data.nameTm : data.nameRu}
+        {lang === "Tm" ? data.nameTm : data.nameRu}
       </p>
     </div>
   );

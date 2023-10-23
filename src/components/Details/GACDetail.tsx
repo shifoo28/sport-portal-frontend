@@ -1,5 +1,5 @@
-import React from "react";
-import ListofFacility, { tbodyTm } from "../BCFederations/GymsandClubs/List";
+import React, { useState } from "react";
+import ListofFacility from "../BCFederations/GymsandClubs/List";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import location from "../../assets/svg/location.svg";
@@ -9,20 +9,24 @@ import link from "../../assets/svg/link.svg";
 import left from "../BCFederations/GymsandClubs/svg/left.svg";
 import right from "../BCFederations/GymsandClubs/svg/right.svg";
 import { RootState } from "../../redux/store";
-
-const images = [
-  { id: 0, imagePath: "/images/gac/sc_1.png" },
-  { id: 1, imagePath: "/images/gac/sc_2.png" },
-  { id: 2, imagePath: "/images/gac/sc_3.jfif" },
-  { id: 3, imagePath: "/images/gac/sc_4.png" },
-  { id: 4, imagePath: "/images/gac/sc_5.jfif" },
-];
+import { IGymsAndClubs } from "../../redux/interfaces/gymsclubs";
+import { urlBack } from "../../redux/apiCalls";
 
 const GACDetail = () => {
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const { state } = useLocation();
-  const { id } = state;
-  const data = tbodyTm.find((b) => b.id === id);
+  const gymsclubs: IGymsAndClubs[] = useSelector(
+    (state: RootState) => state.gymsclubs.gymsclubs
+  );
+  const data = gymsclubs.find((b) => b.id === state.id);
+  const images = [
+    data?.imagePath1,
+    data?.imagePath2,
+    data?.imagePath3,
+    data?.imagePath4,
+    data?.imagePath5,
+  ];
+  const [indexImage, setIndexImage] = useState(0);
 
   return (
     <div className="mx-32 flex flex-col pt-7 max-w-[1170px]">
@@ -39,33 +43,31 @@ const GACDetail = () => {
           <div className="flex flex-col border border-[#0088FF] p-5 font-sofiasans gap-7">
             <p className="flex text-sm gap-7 text-[#182135]">
               <img src={location} />
-              Aşgabat şäher, Atatürk Oguzhan köçäniň çatrygy
+              {prefLang === "Tm" ? data?.locationTm : data?.locationRu}
             </p>
             <p className="flex text-sm gap-7 text-[#182135]">
               <img src={call} />
               <div>
-                <p>+99312212658</p>
-                <p>+99312212674</p>
+                {data?.tel.map((t, i) => {
+                  return <p key={i}>{t}</p>;
+                })}
               </div>
             </p>
             <p className="flex text-sm gap-7 text-[#182135]">
               <img src={email} />
-              aziada2017@gmail.com
+              {data?.email}
             </p>
             <p className="flex text-sm gap-7 text-[#182135]">
               <img src={link} />
-              <a
-                href="https://aziada2017.tm/gyshky-sport-toplumy"
-                className="hover:underline"
-              >
-                https://aziada2017.tm/gyshky-sport-toplumy
+              <a href={data?.link} className="hover:underline">
+                {data?.link}
               </a>
             </p>
           </div>
           <div className="flex flex-col bg-[#0088FF] text-white py-5 gap-4 font-semibold">
             <div className="flex">
               <p className="flex justify-center items-center max-w-[70px] w-full">
-                6
+                {data?.sportsTm.length}
               </p>
               <p className="w-full">
                 {prefLang === "Tm" ? "Sport görnüşi" : "Видов спорта"}
@@ -116,34 +118,34 @@ const GACDetail = () => {
                 stroke-linejoin="round"
               />
             </svg>
-            {35.834}
+            {data?.views}
           </p>
           <div className="relative max-w-[850px]">
-            <img src={images[0].imagePath} className="max-w-[850px]" />
-            <button className="absolute top-[50%] left-7">
+            <img src={urlBack + images[indexImage]} className="w-[850px]" />
+            <button
+              className="absolute top-[50%] left-7"
+              onClick={() => setIndexImage((indexImage - 1) % 5)}
+            >
               <img src={right} />
             </button>
-            <button className="absolute top-[50%] right-7">
+            <button
+              className="absolute top-[50%] right-7"
+              onClick={() => setIndexImage((indexImage + 1) % 5)}
+            >
               <img src={left} />
             </button>
           </div>
           <div className="flex justify-between w-full pt-5">
-            <img
-              src={images[1].imagePath}
-              className="w-[195px] h-[145px] object-cover"
-            />
-            <img
-              src={images[2].imagePath}
-              className="w-[195px] h-[145px] object-cover"
-            />
-            <img
-              src={images[3].imagePath}
-              className="w-[195px] h-[145px] object-cover"
-            />
-            <img
-              src={images[4].imagePath}
-              className="w-[195px] h-[145px] object-cover"
-            />
+            {images.map((im, i) => {
+              return (
+                i != indexImage && (
+                  <img
+                    src={urlBack + im}
+                    className="w-[195px] h-[145px] object-cover"
+                  />
+                )
+              );
+            })}
           </div>
         </div>
       </div>

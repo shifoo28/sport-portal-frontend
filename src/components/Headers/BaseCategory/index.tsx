@@ -1,38 +1,36 @@
 import React from "react";
 import NavList from "./NavList";
-import turkmenistansporttv from "./svg/turkmenistansporttv.svg";
 import logoyoutube from "./svg/logoyoutube.svg";
-import yousport from "./svg/yousport.svg";
 import logoLive from "./svg/logolive.svg";
-import live from "./svg/live.svg";
 import wertical from "./svg/wertical.svg";
 
 const BaseCategoriesList = () => {
   return (
     <section className="w-full h-9">
       <nav className="font-oswald text-sm h-full mx-32 flex justify-between max-w-[1170px]">
-        <div className="flex items-center justify-between h-full w-full">
-          <div className="flex gap-3 items-center">
-            <span className="flex cursor-pointer pr-1">
+        <div className="flex items-center justify-between h-full w-full gap-2">
+          <div className="flex items-center justify-between font-oswald text-xs max-w-[250px] w-full">
+            <div className="flex cursor-pointer items-center">
               <img
                 src="/icons/basecategory/logo_tst.png"
                 className="w-6 h-5 pr-1"
               />
-              <img src={turkmenistansporttv} />
-            </span>
-            <span className="flex cursor-pointer pr-1">
+              <p className="flex flex-col leading-[8px]">
+                <p className="text-[#00843D]">TÜRKMENISTAN</p>
+                <p className="text-[#BFB55C] text-[8px] text-right">SPORT TV</p>
+              </p>
+            </div>
+            <div className="flex items-center cursor-pointer pr-1">
               <img src={logoyoutube} className="w-6 h-6 pr-1" />
-              <img src={yousport} />
-            </span>
-            <span className="flex cursor-pointer pr-1">
+              <p className="text-[#0F1A42]">YOUSPORT</p>
+            </div>
+            <div className="flex cursor-pointer pr-1 items-center">
               <img src={logoLive} className="w-7 h-7 pr-1" />
-              <img src={live} />
-            </span>
+              <p className="text-[#F44336]">LIVE</p>
+            </div>
           </div>
           <img src={wertical} />
-          <div className="w-max flex flex-col">
-            <NavList />
-          </div>
+          <NavList />
         </div>
       </nav>
     </section>

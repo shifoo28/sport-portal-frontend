@@ -8,15 +8,11 @@ import {
   GET_FEDERATION_TRAINERS,
   GET_FEDERATION_TRAINERS_FAILED,
   GET_FEDERATION_TRAINERS_SUCCESS,
-  GET_HEALTH_CARE_DEPARTMENTS,
-  GET_HEALTH_CARE_DEPARTMENTS_FAILED,
-  GET_HEALTH_CARE_DEPARTMENTS_SUCCESS,
 } from "../types";
 import {
   fetchFederationAthletes,
   fetchFederationSports,
   fetchFederationTrainers,
-  fetchHCDepartments,
 } from "../apiCalls";
 
 function* getFederationSports() {
@@ -52,23 +48,6 @@ function* getFederationAthletes() {
   }
 }
 
-function* getHCDepartments() {
-  try {
-    // @ts-ignore
-    const hcdepartments = yield call(fetchHCDepartments);
-
-    yield put({
-      type: GET_HEALTH_CARE_DEPARTMENTS_SUCCESS,
-      payload: hcdepartments,
-    });
-  } catch (error: any) {
-    yield put({
-      type: GET_HEALTH_CARE_DEPARTMENTS_FAILED,
-      message: error.message,
-    });
-  }
-}
-
 export function* fsportsSaga() {
   yield takeLatest(GET_FEDERATION_SPORTS, getFederationSports);
 }
@@ -79,8 +58,4 @@ export function* ftrainersSaga() {
 
 export function* fathletesSaga() {
   yield takeLatest(GET_FEDERATION_ATHLETES, getFederationAthletes);
-}
-
-export function* hcdepartmentsSaga() {
-  yield takeLatest(GET_HEALTH_CARE_DEPARTMENTS, getHCDepartments);
 }

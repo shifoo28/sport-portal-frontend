@@ -13,22 +13,26 @@ export interface ICompetitionType {
 
 export interface ICompetition {
   id: string;
+  views: number;
+  typeId: number;
   nameTm: string;
   nameRu: string;
   textTm: string;
   textRu: string;
+  dateEnd: Date;
   dateStart: Date;
-  endDate: Date;
-  location: string;
-  views: number;
   imagePath: string;
-  typeId: number;
+  locationTm: string;
+  locationRu: string;
   competitionType: { id: number; nameTm: string; nameRu: string };
   createdAt: Date;
   updatedAt: Date;
 }
-
+export interface ICompetitionFilter {
+  name: string;
+  filters: string[];
+}
 export interface ICompetitionState {
   competitions: ICompetition[];
-  competitionTypes: ICompetitionType[];
+  filters: ICompetitionFilter[];
 }

@@ -3,17 +3,17 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import rating from "../../assets/svg/rating.svg";
 import { RootState } from "../../redux/store";
-import { IHCDepartment } from "../../redux/interfaces/federations";
 import { urlBack } from "../../redux/apiCalls";
+import { IHCDepartment } from "../../redux/interfaces/hcdepartment";
 
 const HCDetail = () => {
   const location = useLocation();
   const { employeeId, departmentId } = location.state;
 
   const departments: IHCDepartment[] = useSelector(
-    (state: RootState) => state.federations.health_care_departments
+    (state: RootState) => state.healthcare.health_care_departments
   );
-  const department = departments.find((d) => d.id === departmentId);  
+  const department = departments.find((d) => d.id === departmentId);
   const employee = department?.employees.find((e) => e.id === employeeId);
   const prefLang = useSelector((state: any) => state.main.prefLang);
 
@@ -59,7 +59,7 @@ const HCDetail = () => {
         </div>
         <div className="max-w-[850px] w-full flex flex-col">
           <p className="font-oswald text-[50px] text-[#0088FF]">
-            {employee?.name}
+            {prefLang === "Tm" ? employee?.nameTm : employee?.nameRu}
           </p>
           <div className="font-sofiasans text-3xl">
             <p>
@@ -69,8 +69,8 @@ const HCDetail = () => {
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Iş ýeri: ${employee?.workAt}`
-                : `Место работы: ${employee?.workAt}`}
+                ? `Iş ýeri: ${employee?.workAtTm}`
+                : `Место работы: ${employee?.workAtRu}`}
             </p>
             <p>
               {prefLang === "Tm"
@@ -84,8 +84,8 @@ const HCDetail = () => {
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Iş wezipesi: ${employee?.job}`
-                : `Должность: ${employee?.job}`}
+                ? `Iş wezipesi: ${employee?.jobTm}`
+                : `Должность: ${employee?.jobRu}`}
             </p>
           </div>
           <div className="flex justify-between pt-10">

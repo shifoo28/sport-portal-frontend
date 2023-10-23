@@ -1,17 +1,25 @@
 import React from "react";
 import { IFSports } from "../../redux/interfaces/federations";
 
-const Sports = ({ data }: { data: IFSports }) => {
+const Sports = ({ data, prefLang }: { data: IFSports; prefLang: string }) => {
   return (
     <div
       className={`w-full h-max flex justify-between p-8 font-sofiasans text-xl gap-10`}
     >
       <div className="flex w-full">
         <div className="flex flex-col justify-between w-full">
-          <p>Prezidenti: {data?.president}</p>
-          <p>Baş tälimçi: {data?.leader}</p>
+          <p>
+            Prezidenti:{" "}
+            {prefLang === "Tm" ? data?.presidentTm : data?.presidentRu}
+          </p>
+          <p>
+            Baş tälimçi: {prefLang === "Tm" ? data?.leaderTm : data?.leaderRu}
+          </p>
           <p>Döredilen ýyly: {data?.founded}</p>
-          <p>Ýerleşýän ýeri: {data?.location}</p>
+          <p>
+            Ýerleşýän ýeri:{" "}
+            {prefLang === "Tm" ? data?.locationTm : data?.locationRu}
+          </p>
         </div>
         <div className="h-[150px] border-r border-[#40A6FF]" />
       </div>

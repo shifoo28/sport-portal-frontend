@@ -3,6 +3,8 @@ import rating from "../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IFAthletes } from "../../redux/interfaces/federations";
 import { urlBack } from "../../redux/apiCalls";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 const flags = [
   { flag: "/images/federations/flag_2.png", key: "kitchee" },
@@ -22,7 +24,7 @@ const sportTypes = [
 const Athlete = ({ data }: { data: IFAthletes[] }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  // const prefLang = useSelector((state: any) => state.main.prefLang);
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
 
   return (
     <div className="text-[#0F1A42] font-sofiasans px-8 pt-8">
@@ -39,9 +41,9 @@ const Athlete = ({ data }: { data: IFAthletes[] }) => {
               <td className="" align="center">
                 Ady we familiýasy
               </td>
-              <td className="" align="center">
+              {/* <td className="" align="center">
                 Sport görnüşi
-              </td>
+              </td> */}
               <td className="" align="center">
                 Orny
               </td>
@@ -54,7 +56,7 @@ const Athlete = ({ data }: { data: IFAthletes[] }) => {
               <td className="" align="center"></td>
             </tr>
           </thead>
-          <tbody className="text-base">
+          <tbody className="text-base lowercase">
             {data?.map((athlete, index) => {
               return (
                 <tr className="border border-[#0088FF]" key={athlete.id}>
@@ -84,26 +86,28 @@ const Athlete = ({ data }: { data: IFAthletes[] }) => {
                       })
                     }
                   >
-                    {athlete.name.toLocaleLowerCase()}
+                    {prefLang === "Tm" ? athlete.nameTm : athlete.nameRu}
                   </td>
-                  <td className="p-2 font-semibold" align="center">
+                  {/* <td className="p-2 font-semibold" align="center">
                     {
                       sportTypes.find((st) =>
                         athlete.federation?.nameTm
-                          .toLocaleLowerCase()
+                          ?.toLocaleLowerCase()
                           .includes(st.key)
                       )?.name
                     }
+                  </td> */}
+                  <td className="p-2 font-semibold capitalize" align="center">
+                    {prefLang === "Tm"
+                      ? athlete.positionTm
+                      : athlete.positionRu}
                   </td>
                   <td className="p-2 font-semibold" align="center">
-                    {athlete.position}
-                  </td>
-                  <td className="p-2 font-semibold" align="center">
-                    <div className="flex gap-1 w-max">
+                    <div className="flex gap-1 w-max capitalize">
                       <img
                         src={
                           flags.find((f) =>
-                            athlete.club.toLocaleLowerCase().includes(f.key)
+                            athlete.club?.toLocaleLowerCase().includes(f.key)
                           )?.flag
                         }
                         className="w-[26px] h-[18px] object-cover"
@@ -114,9 +118,9 @@ const Athlete = ({ data }: { data: IFAthletes[] }) => {
                   <td className="p-2 font-semibold" align="center">
                     <img src={rating} className="h-[15px]" />
                   </td>
-                  <td className="p-2 font-semibold" align="center">
+                  <td className="p-2 font-semibold uppercase" align="center">
                     <p className="bg-[#CCE6D8] text-[#00843D] px-2 flex items-center rounded-md w-max text-[10px]">
-                      {athlete.made}
+                      {prefLang === "Tm" ? athlete.madeTm : athlete.madeRu}
                     </p>
                   </td>
                 </tr>

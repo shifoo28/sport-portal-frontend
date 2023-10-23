@@ -10,11 +10,12 @@ import ruflag from "./svg/ruflag.svg";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLangAction } from "../../../redux/actions/main";
+import { RootState } from "../../../redux/store";
 
 const SelectLang = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const langs = useSelector((state: any) => state.main.lang);
+  const langs = useSelector((state: RootState) => state.main.langs);
 
   useEffect(() => {
     langs[0] = { ...langs[0], flag: tmflag };

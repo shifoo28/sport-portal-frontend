@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import Filter from "./Filter";
 import PopularItems from "./PopularItems";
 import NewItems from "./NewItems";
+import Filter from "./Filter";
 
 const Shop = () => {
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
@@ -23,3 +23,5 @@ const Shop = () => {
 };
 
 export default Shop;
+
+// https://www.youtube.com/watch?v=6nmWGfwxOgY&t=363s

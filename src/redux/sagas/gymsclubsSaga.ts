@@ -3,13 +3,17 @@ import {
   GET_GYMS_AND_CLUBS_FILTER,
   GET_GYMS_AND_CLUBS_FILTER_FAILED,
   GET_GYMS_AND_CLUBS_FILTER_SUCCESS,
+  POST_GYMS_AND_CLUBS_FILTER,
+  POST_GYMS_AND_CLUBS_FILTER_FAILED,
+  POST_GYMS_AND_CLUBS_FILTER_SUCCESS,
 } from "../types";
-import { fetchGymsClubsFilters } from "../apiCalls";
+import { fetchGymsClubsFilters, filterGymsClubs } from "../apiCalls";
+import { IGymsClubs } from "../interfaces/gymsclubs";
 
-function* getGymsClubsFilter() {
+function* getGymsClubsFilter(action: IGymsClubs) {
   try {
     // @ts-ignore
-    const filters = yield call(fetchGymsClubsFilters);
+    const filters = yield call(fetchGymsClubsFilters, action.payload);
 
     yield put({ type: GET_GYMS_AND_CLUBS_FILTER_SUCCESS, payload: filters });
   } catch (error: any) {
@@ -19,7 +23,23 @@ function* getGymsClubsFilter() {
     });
   }
 }
+function* postGymsClubsFilter(action: IGymsClubs) {
+  try {
+    // @ts-ignore
+    const gymsclubs = yield call(filterGymsClubs, action.payload);
+
+    yield put({ type: POST_GYMS_AND_CLUBS_FILTER_SUCCESS, payload: gymsclubs });
+  } catch (error: any) {
+    yield put({
+      type: POST_GYMS_AND_CLUBS_FILTER_FAILED,
+      payload: error.message,
+    });
+  }
+}
 
 export function* gymsclubsSaga() {
   yield takeLatest(GET_GYMS_AND_CLUBS_FILTER, getGymsClubsFilter);
+}
+export function* gymsclubspostfilterSaga() {
+  yield takeLatest(POST_GYMS_AND_CLUBS_FILTER, postGymsClubsFilter);
 }

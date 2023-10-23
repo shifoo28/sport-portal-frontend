@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const urlBack = "http://10.10.73.40/";
 
-// GETTERS
+// GET REQUESTS
 export async function fetchMain() {
   try {
     const res = await fetch(urlBack);
@@ -63,9 +63,11 @@ export async function fetchFederationAthletes() {
   }
 }
 
-export async function fetchGymsClubsFilters() {
+export async function fetchGymsClubsFilters(lang: string) {
   try {
-    const res = await fetch(urlBack + "gyms-and-clubs-page/filters?lang=Tm");
+    const res = await fetch(
+      urlBack + `gyms-and-clubs-page/filters?lang=${lang}`
+    );
 
     return (await res.json()).data;
   } catch (error) {
@@ -73,11 +75,13 @@ export async function fetchGymsClubsFilters() {
   }
 }
 
-export async function fetchHCDepartments() {
+export async function fetchHCDepartments(lang: string) {
   try {
-    const res = await fetch(urlBack + "federation-page/health_care");
+    const res = await axios.get(urlBack + "hcdepartment-page/health_care", {
+      params: { lang },
+    });
 
-    return (await res.json()).data;
+    return res.data.data;
   } catch (error) {
     throw error;
   }
@@ -93,7 +97,29 @@ export async function fetchCompetitions() {
   }
 }
 
-// SETTERS
+export async function fetchCompetitionFilters(lang: string) {
+  try {
+    const res = await axios.get(urlBack + "competition-page/filters", {
+      params: { lang },
+    });
+
+    return res.data.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function fetchShopFilters() {
+  try {
+    const res = await fetch(urlBack + "shop/filters");
+
+    return (await res.json()).data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+// PATCH REQUESTS
 export async function patchNewsDetailsViews(id: string, categoryId: string) {
   try {
     const res = await axios.patch(urlBack + "news-details/" + id, null, {
@@ -101,6 +127,30 @@ export async function patchNewsDetailsViews(id: string, categoryId: string) {
     });
 
     return res.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+// POST REQUESTS
+export async function filterGymsClubs(params: object) {
+  try {
+    const res = await axios.post(urlBack + "gyms-and-clubs-page/filter", null, {
+      params,
+    });
+
+    return res.data.data;
+  } catch (error) {
+    throw error;
+  }
+}
+export async function filterCompetitions(params: object) {
+  try {
+    const res = await axios.post(urlBack + "competition-page/filter", null, {
+      params,
+    });
+
+    return res.data.data;
   } catch (error) {
     throw error;
   }

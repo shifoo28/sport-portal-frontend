@@ -1,5 +1,5 @@
-import React, { useState, FormEvent } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, FormEvent, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import {
   Popover,
@@ -8,9 +8,9 @@ import {
   List,
   ListItem,
 } from "@material-tailwind/react";
-import { ICompetitionState } from "../../../redux/interfaces/competitions";
 import Datepicker from "react-tailwindcss-datepicker";
 import { DateValueType } from "react-tailwindcss-datepicker/dist/types";
+import { POST_COMPETITION_FILTER } from "../../../redux/types";
 
 const arrow = (
   <svg
@@ -26,80 +26,55 @@ const arrow = (
     />
   </svg>
 );
-const countries = [
-  {
-    id: 0,
-    nameTm: "Türkmenistan",
-    nameRu: "Туркменистан",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: 1,
-    nameTm: "Aşgabat",
-    nameRu: "Ашхабад",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: 2,
-    nameTm: "Lebap",
-    nameRu: "Лебап",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: 3,
-    nameTm: "Ahal",
-    nameRu: "Ахал",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: 4,
-    nameTm: "Mary",
-    nameRu: "Мари",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: 5,
-    nameTm: "Daşoguz",
-    nameRu: "Дашогуз",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: 6,
-    nameTm: "Balkan",
-    nameRu: "Балкан",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
 
 const Filter = () => {
+  // Hooks
+  const dispatch = useDispatch();
+
+  // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const { competitionTypes }: ICompetitionState = useSelector(
-    (state: RootState) => state.competitions
+  const competitionTypes: string[] = useSelector(
+    (state: RootState) => state.competitions.filters[0]?.filters
   );
-  const [filterType, setFilterType] = useState({
-    id: 0,
-    nameTm: "Hemmesi",
-    nameRu: "Все они",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  });
-  const [filterCountry, setFilterCountry] = useState(countries[0]);
+  const locations: string[] = useSelector(
+    (state: RootState) => state.competitions.filters[1]?.filters
+  );
+
+  // useState
+  const [searchString, setSearchString] = useState("");
+  const [filterType, setFilterType] = useState("");
+  const [filterLocation, setFilterCountry] = useState("");
   const [filterDate, setFilterDate] = useState<DateValueType>({
     startDate: null,
     endDate: null,
   });
+
+  // useEffect
+  useEffect(() => {
+    setFilterCountry(prefLang === "Tm" ? "Türkmenistan" : "Туркменистан");
+    setFilterType(prefLang === "Tm" ? "Hemmesi" : "Все они");
+  }, [prefLang]);
+
+  // Functions
   const handleFilterDate = (newDate: DateValueType) => {
     setFilterDate(newDate);
   };
   const searchCompetition = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch({
+      type: POST_COMPETITION_FILTER,
+      payload: {
+        lang: prefLang,
+        name: searchString,
+        competitionTypes: competitionTypes.includes(filterType)
+          ? filterType
+          : undefined,
+        locations: locations.includes(filterLocation)
+          ? filterLocation
+          : undefined,
+        date: filterDate,
+      },
+    });
   };
 
   return (
@@ -112,12 +87,14 @@ const Filter = () => {
           <label htmlFor="" className="flex border border-[#0088FF] px-8 py-5">
             <input
               type="text"
+              value={searchString}
               placeholder={
                 prefLang === "Tm"
                   ? "Ýurdumyzda geçirilýän bäsleşikleri gözle..."
                   : "Поиск соревнований, проводимых в стране..."
               }
               className="w-full font-sofiasans text-base outline-none"
+              onChange={(e) => setSearchString(e.target.value)}
             />
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
               <path
@@ -141,20 +118,20 @@ const Filter = () => {
                   type="button"
                   className="p-0 bg-[#0088FF] flex justify-between max-w-[310px] w-full h-[68px] font-sofiasans text-xl px-7 items-center"
                 >
-                  {prefLang === "Tm" ? filterType.nameTm : filterType.nameRu}
+                  {filterType}
                   {arrow}
                 </button>
               </PopoverHandler>
               <PopoverContent className="rounded-none max-w-[310px] w-full border border-[#0088FF]">
                 <List className="p-0">
-                  {competitionTypes.map((t, i) => {
+                  {competitionTypes?.map((t, i) => {
                     return (
                       <ListItem
                         key={i}
                         onClick={() => setFilterType(t)}
                         className="hover:bg-blue-100 rounded-none w-full px-2"
                       >
-                        {prefLang === "Tm" ? t.nameTm : t.nameRu}
+                        {t}
                       </ListItem>
                     );
                   })}
@@ -167,22 +144,20 @@ const Filter = () => {
                   type="button"
                   className="p-0 bg-[#0088FF] flex justify-between max-w-[310px] w-full h-[68px] font-sofiasans text-xl px-7 items-center"
                 >
-                  {prefLang === "Tm"
-                    ? filterCountry.nameTm
-                    : filterCountry.nameRu}
+                  {filterLocation}
                   {arrow}
                 </button>
               </PopoverHandler>
               <PopoverContent className="rounded-none max-w-[310px] w-full border border-[#0088FF]">
                 <List className="p-0">
-                  {countries.map((c, i) => {
+                  {locations?.map((c, i) => {
                     return (
                       <ListItem
                         key={i}
                         onClick={() => setFilterCountry(c)}
                         className="hover:bg-blue-100 rounded-none w-full px-2"
                       >
-                        {prefLang === "Tm" ? c.nameTm : c.nameRu}
+                        {c}
                       </ListItem>
                     );
                   })}
@@ -211,7 +186,7 @@ const Filter = () => {
             i18n={prefLang === "Tm" ? "tk" : "ru"}
             popoverDirection="down"
             readOnly={true}
-            startWeekOn={'mon'}
+            startWeekOn={"mon"}
             inputClassName={`rounded-none w-full py-6 pl-8 outline-none border border-[#0088FF]`}
           />
         </div>

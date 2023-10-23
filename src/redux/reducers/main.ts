@@ -8,26 +8,9 @@ import {
 
 const initialState: IMainState = {
   active_tab: 0,
-  lang: [
-    {
-      id: "",
-      name: "",
-    },
-  ],
-  base_categories: [
-    {
-      id: "",
-      nameTm: "",
-      nameRu: "",
-    },
-  ],
-  sport_categories: [
-    {
-      id: "",
-      nameTm: "",
-      nameRu: "",
-    },
-  ],
+  langs: [{ id: "", name: "" }],
+  base_categories: [],
+  sport_categories: [],
   message: "",
   prefLang: "",
 };
@@ -39,7 +22,7 @@ export default function main(state: IMainState = initialState, action: IMain) {
     case GET_MAIN_SUCCESS:
       return {
         ...state,
-        lang: payload.lang,
+        langs: payload.lang,
         base_categories: payload.base_categories,
         sport_categories: payload.sport_categories,
       };

@@ -14,6 +14,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { activateTab } from "../../../redux/actions/main";
 import SportNewsList from "./SportNewsList";
+import { RootState } from "../../../redux/store";
 
 const links = [
   SPORTS,
@@ -43,31 +44,21 @@ const NavList = () => {
     );
   }, [location.pathname]);
   const { active_tab, base_categories, prefLang } = useSelector(
-    (state: any) => state.main
+    (state: RootState) => state.main
   );
 
   return (
-    <div className="hidden w-full md:flex justify-end text-sm">
+    <div className="w-full flex justify-between text-sm items-center">
       {base_categories.map((nav: any, index: number) => {
-        return prefLang === "Tm" ? (
+        return (
           <p
             key={nav.id}
-            className={`pr-5 cursor-pointer ${
+            className={`cursor-pointer ${
               active_tab === index + 1 ? "text-[#0088FF]" : "text-[#0F1A42]"
             }`}
             onClick={() => linkTo(links[index], index + 1)}
           >
-            {nav.nameTm}
-          </p>
-        ) : (
-          <p
-            key={nav.id}
-            className={`pr-5 cursor-pointer ${
-              active_tab === index + 1 ? "text-[#0088FF]" : "text-[#0F1A42]"
-            }`}
-            onClick={() => linkTo(links[index], index + 1)}
-          >
-            {nav.nameRu}
+            {prefLang === "Tm" ? nav.nameTm : nav.nameRu}
           </p>
         );
       })}

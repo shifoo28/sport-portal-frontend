@@ -3,21 +3,31 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { dummyData as data } from "../Video News/FilterNews";
 import { useDispatch, useSelector } from "react-redux";
 import { sameNews } from "./NewsDetail";
-import { competes } from "../BCFederations/Competitions/List";
 import { BASE_CATEGORIES, APP_ADDRESS, SPORTS } from "../../tools/links";
 import { activateTab } from "../../redux/actions/main";
 import { RootState } from "../../redux/store";
+import { ICompetition } from "../../redux/interfaces/competitions";
+import { urlBack } from "../../redux/apiCalls";
 
 const CompetitionDetail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const { state, pathname } = useLocation();
-  const competition = competes[state.competitionId];
+
+  // useSelector
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const competitions: ICompetition[] = useSelector(
+    (state: RootState) => state.competitions.competitions
+  );
+
+  // Functions
   const linkTo = () => {
     navigate(APP_ADDRESS + BASE_CATEGORIES + SPORTS);
     dispatch(activateTab(2));
   };
+
+  // Operations
+  const competition = competitions.find((c) => c.id === state.competitionId);
 
   return (
     <div className="mx-32 max-w-[1170px] pt-8 flex gap-12 font-sofiasans">
@@ -26,7 +36,7 @@ const CompetitionDetail = () => {
       </div>
       <div className="w-full flex flex-col items-center gap-5">
         <p className="font-oswald text-[26px] text-[#0F1A42] text-center max-w-[700px] capitalize">
-          {prefLang === "Tm" ? competition.nameTm : competition.nameRu}
+          {prefLang === "Tm" ? competition?.nameTm : competition?.nameRu}
         </p>
         <div className="max-w-[700px]">
           <div className="flex justify-between items-center text-xs">
@@ -53,23 +63,25 @@ const CompetitionDetail = () => {
                   stroke-linejoin="round"
                 />
               </svg>
-              {competition.views}
+              {competition?.views}
             </p>
             <p>
-              {competition.location}
+              {prefLang === "Tm"
+                ? competition?.locationTm
+                : competition?.locationRu}
               {" - "}
-              {competition.dateStart.getDay()}
+              {new Date(competition?.dateStart || "1").getDay()}
               {"-"}
-              {competition.endDate.getDay()}
-              {"/"} {competition.endDate.getMonth()}
-              {"/"} {competition.endDate.getFullYear()}
+              {new Date(competition?.dateEnd || "1").getDay()}
+              {"/"} {new Date(competition?.dateEnd || "1").getMonth()}
+              {"/"} {new Date(competition?.dateEnd || "1").getFullYear()}
               {prefLang === "Tm" ? "ý" : "г"}
             </p>
           </div>
-          <img src={"http://localhost:3000/" + competition.imagePath} alt="" />
+          <img src={urlBack + competition?.imagePath} alt="" />
         </div>
         <p className="text-justify">
-          {prefLang === "Tm" ? competition.textTm : competition.textRu}
+          {prefLang === "Tm" ? competition?.textTm : competition?.textRu}
         </p>
         <button
           className="uppercase bg-[#0F1A42] text-white font-sofiasans font-semibold h-11 px-5"

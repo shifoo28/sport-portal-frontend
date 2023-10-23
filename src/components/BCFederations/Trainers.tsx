@@ -7,8 +7,6 @@ import { urlBack } from "../../redux/apiCalls";
 import { RootState } from "../../redux/store";
 
 const Trainers = ({ data }: { data: IFTrainers[] }) => {
-  console.log(data);
-  
   const navigate = useNavigate();
   const location = useLocation();
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
@@ -16,11 +14,11 @@ const Trainers = ({ data }: { data: IFTrainers[] }) => {
   return (
     <div className="flex flex-col gap-[5px]">
       <div className="pt-8 px-8">
-        <div className="w-full h-[395px] grid grid-cols-3 gap-4 justify-between overflow-auto">
+        <div className="w-full h-[395px] flex flex-wrap justify-between overflow-auto">
           {data.map((trainer, index) => {
             return (
               <button
-                className="max-w-[345px] h-[120px] flex border border-[#0088FF] scroll-mt-6"
+                className="w-[345px] h-max flex gap-2 border border-[#0088FF]"
                 key={index}
                 onClick={() =>
                   navigate(location.pathname + "/id", {
@@ -30,24 +28,31 @@ const Trainers = ({ data }: { data: IFTrainers[] }) => {
               >
                 <img
                   src={urlBack + trainer.imagePath}
-                  className="object-cover w-[95px] h-full"
+                  className="object-cover w-[95px] h-[107px] object-center"
                 />
-                <div className="pl-2 font-sofiasans flex flex-col justify-around w-full">
-                  <p className="text-[#0F1A42] font-semibold text-left">
-                    {trainer.name}
+                <div className="font-sofiasans text-[#182135] flex flex-col justify-around w-full">
+                  <p className="font-semibold text-left">
+                    {prefLang === "Tm" ? trainer.nameTm : trainer.nameRu}
                   </p>
-                  <div className="font-sofiasans text-[10px] text-[#182135] overflow-hidden">
+                  <div className="text-[10px] overflow-hidden">
                     <p className="h-[14px] flex items-center">
                       Ýaşy: {trainer.age}
                     </p>
                     <p className="h-[14px] flex items-center">
-                      Doglan ýeri: {trainer.birthPlace}
+                      Doglan ýeri:{" "}
+                      {prefLang === "Tm"
+                        ? trainer.birthPlaceTm
+                        : trainer.birthPlaceRu}
                     </p>
                     <p className="h-[14px] flex items-center">
-                      Sport derejesi: {trainer.sportLevel}
+                      Sport derejesi:{" "}
+                      {prefLang === "Tm"
+                        ? trainer.sportLevelTm
+                        : trainer.sportLevelRu}
                     </p>
                     <p className="h-[14px] flex items-center">
-                      Iş wezipesi: {trainer.job}
+                      Iş wezipesi:{" "}
+                      {prefLang === "Tm" ? trainer.jobTm : trainer.jobRu}
                     </p>
                     <p className="h-[14px] flex items-center">
                       Iş tejribesi: {trainer.experience} ýyl

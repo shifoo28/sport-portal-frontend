@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { GET_SHOP_FILTERS } from "../../../../redux/types";
 
 const polygon = (
   <svg
@@ -16,7 +18,15 @@ const polygon = (
 );
 
 const Filter = () => {
-  return <div>Filter</div>;
+  const dispatch = useDispatch();
+  dispatch({ type: GET_SHOP_FILTERS });
+
+  return (
+    <div>
+      <div></div>
+      <div></div>
+    </div>
+  );
 };
 
 export default Filter;

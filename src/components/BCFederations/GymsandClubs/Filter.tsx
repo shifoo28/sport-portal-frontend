@@ -5,10 +5,10 @@ import {
   PopoverContent,
   PopoverHandler,
 } from "@material-tailwind/react";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState, FormEvent } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import { ISportType } from "../../../redux/interfaces/gymsclubs";
+import { POST_GYMS_AND_CLUBS_FILTER } from "../../../redux/types";
 
 const arrow = (
   <svg
@@ -24,27 +24,55 @@ const arrow = (
     />
   </svg>
 );
-let sport_types = [
-  {
-    id: "0",
-    nameTm: "Sport görnüşler",
-    nameRu: "Виды спорта",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
 
 const Filter = () => {
+  const dispatch = useDispatch();
+
+  // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const sportTypes: ISportType[] = useSelector(
+  const sportTypes: string[] = useSelector(
     (state: RootState) => state.gymsclubs.filters[0]?.filters
   );
-  sport_types.push(...sportTypes);
+  const locations: string[] = useSelector(
+    (state: RootState) => state.gymsclubs.filters[1]?.filters
+  );
 
-  const [sportTypesFilter, setSportTypesFilter] = useState(sport_types[0]);
+  // useState
+  const [searchString, setSearchString] = useState("");
+  const [sportTypesFilter, setSportTypesFilter] = useState("");
+  const [locationsFilter, setLocationsFilter] = useState("");
+
+  // Other Hooks
+  useEffect(() => {
+    setSportTypesFilter(prefLang === "Tm" ? "Sport görnüşler" : "Виды спорта");
+    setLocationsFilter(prefLang === "Tm" ? "Şäherler" : "Городов");
+    setSearchString("");
+  }, [prefLang]);
+
+  // Functions
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch({
+      type: POST_GYMS_AND_CLUBS_FILTER,
+      payload: {
+        name: searchString,
+        sports: sportTypes.includes(sportTypesFilter)
+          ? sportTypesFilter
+          : undefined,
+        locations: locations.includes(locationsFilter)
+          ? locationsFilter
+          : undefined,
+        lang: prefLang,
+      },
+    });
+    setSearchString("");
+  };
 
   return (
-    <form className="border border-[#0088FF] max-w-[1170px] w-full px-9 py-10 font-sofiasans flex flex-col gap-7">
+    <form
+      onSubmit={handleSubmit}
+      className="border border-[#0088FF] max-w-[1170px] w-full px-9 py-10 font-sofiasans flex flex-col gap-7"
+    >
       <p className="text-3xl font-semibold">
         {prefLang === "Tm"
           ? "Türgenleşik desgalaryň gözlegi"
@@ -59,6 +87,8 @@ const Filter = () => {
               : "Введите название учреждения и спорта..."
           }
           className="w-full font-sofiasans text-base outline-none"
+          value={searchString}
+          onChange={(e) => setSearchString(e.target.value)}
         />
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
           <path
@@ -81,38 +111,37 @@ const Filter = () => {
           : "или вы можете фильтровать по типу вашего интереса"}
       </p>
       <div className="py-3 text-white font-sofiasans flex justify-between">
+        {/* Filter Column 1 */}
         <div className="w-full gap-9 flex flex-col">
+          {/* SPORT TYPES */}
           <Popover>
             <PopoverHandler>
               <button
                 type="button"
                 className="p-0 bg-[#0088FF] flex justify-between max-w-[310px] w-full h-[45px] font-sofiasans text-base px-7 items-center"
               >
-                <p>
-                  {prefLang === "Tm"
-                    ? sportTypesFilter.nameTm
-                    : sportTypesFilter.nameRu}
-                </p>
+                <p>{sportTypesFilter}</p>
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent>
-              <List>
-                {sport_types?.map((st, i) => {
+            <PopoverContent className="rounded-none max-w-[310px] w-full border border-[#0088FF]">
+              <List className="p-0">
+                {sportTypes?.map((name, i) => {
                   return (
                     <ListItem
                       key={i}
-                      onClick={() => setSportTypesFilter(st)}
-                      className=""
+                      onClick={() => setSportTypesFilter(name)}
+                      className="hover:bg-blue-100 rounded-none w-full px-2"
                     >
-                      {prefLang === "Tm" ? st.nameTm : st.nameRu}
+                      {name}
                     </ListItem>
                   );
                 })}
               </List>
             </PopoverContent>
           </Popover>
-          <Popover placement="bottom">
+          {/* SPORT BUILDINGS */}
+          <Popover>
             <PopoverHandler>
               <button
                 type="button"
@@ -126,23 +155,40 @@ const Filter = () => {
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent>q</PopoverContent>
+            <PopoverContent> </PopoverContent>
           </Popover>
         </div>
+        {/* Filter Column 2 */}
         <div className="w-full gap-9 flex flex-col">
-          <Popover placement="bottom">
+          {/* LOCATIONS */}
+          <Popover>
             <PopoverHandler>
               <button
                 type="button"
                 className="p-0 bg-[#0088FF] flex justify-between max-w-[310px] w-full h-[45px] font-sofiasans text-base px-7 items-center"
               >
-                <p>{prefLang === "Tm" ? "Şäherler" : "Города"}</p>
+                <p>{locationsFilter}</p>
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent>q</PopoverContent>
+            <PopoverContent className="rounded-none max-w-[310px] w-full border border-[#0088FF]">
+              <List className="p-0">
+                {locations?.map((l, i) => {
+                  return (
+                    <ListItem
+                      key={i}
+                      onClick={() => setLocationsFilter(l)}
+                      className="hover:bg-blue-100 rounded-none w-full px-2"
+                    >
+                      {l}
+                    </ListItem>
+                  );
+                })}
+              </List>
+            </PopoverContent>
           </Popover>
-          <Popover placement="bottom">
+          {/* TEAMS */}
+          <Popover>
             <PopoverHandler>
               <button
                 type="button"
@@ -152,11 +198,13 @@ const Filter = () => {
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent>q</PopoverContent>
+            <PopoverContent> </PopoverContent>
           </Popover>
         </div>
+        {/* Filter Column 3 */}
         <div className="w-full flex justify-end gap-16">
-          <Popover placement="bottom">
+          {/* START DATE */}
+          <Popover>
             <PopoverHandler>
               <button
                 type="button"
@@ -166,9 +214,10 @@ const Filter = () => {
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent>q</PopoverContent>
+            <PopoverContent> </PopoverContent>
           </Popover>
-          <Popover placement="bottom">
+          {/* END DATE */}
+          <Popover>
             <PopoverHandler>
               <button
                 type="button"
@@ -178,7 +227,7 @@ const Filter = () => {
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent>q</PopoverContent>
+            <PopoverContent> </PopoverContent>
           </Popover>
         </div>
       </div>

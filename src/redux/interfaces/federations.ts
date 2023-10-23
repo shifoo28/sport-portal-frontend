@@ -15,14 +15,17 @@ export interface IFederations {
 }
 export interface IFSports {
   id: string;
-  tel: string;
   fax: string;
   web: string;
+  tel: string;
   email: string;
-  leader: string;
-  founded: string;
-  location: string;
-  president: string;
+  founded: number;
+  leaderRu: string;
+  leaderTm: string;
+  locationRu: string;
+  locationTm: string;
+  presidentRu: string;
+  presidentTm: string;
   federationId: string;
   federation: { id: string; nameTm: string; nameRu: string };
   createdAt: Date;
@@ -31,67 +34,79 @@ export interface IFSports {
 export interface IFTrainers {
   id: string;
   age: number;
-  job: string;
-  name: string;
-  made: string;
+  jobTm: string;
+  jobRu: string;
+  club: string;
+  views: number;
+  links: object;
+  nameTm: string;
+  nameRu: string;
+  madeTm: string;
+  madeRu: string;
   rating: number;
   imagePath: string;
   experience: number;
-  views: number;
-  birthPlace: string;
-  sportLevel: string;
-  workedAt: string[];
-  badges: string[];
-  links: object;
+  positionTm: string;
+  positionRu: string;
+  birthPlaceTm: string;
+  birthPlaceRu: string;
+  sportLevelTm: string;
+  sportLevelRu: string;
+  workedAtTm: string[];
+  workedAtRu: string[];
+  badgesTm: string[];
+  badgesRu: string[];
   federationId: string;
-  federation: { id: string; nameTm: string; nameRu: string };
+  federation: {
+    id: string;
+    nameTm: string;
+    nameRu: string;
+    imagePath: string;
+    createdAt: string;
+    updatedAt: string;
+  };
   createdAt: string;
   updatedAt: string;
 }
 export interface IFAthletes {
   id: string;
+  jobTm: null;
+  jobRu: null;
   age: number;
-  birthPlace: string;
-  experience: number;
-  sportLevel: string;
-  workedAt: string[];
-  badges: string[];
-  links: {};
-  name: string;
   club: string;
-  made: string;
-  rating: number;
-  position: string;
-  imagePath: string;
-  federationId: string;
-  federation: { id: string; nameTm: string; nameRu: string };
-}
-export interface IHCEmployee {
-  id: string;
-  name: string;
-  job: string;
-  age: number;
-  workAt: string;
-  departmentId: string;
-  experience: number;
   views: number;
+  links: string;
+  nameTm: null;
+  nameRu: null;
+  madeTm: null;
+  madeRu: null;
   rating: number;
   imagePath: string;
-  links: {};
+  positionTm: null;
+  positionRu: null;
+  experience: number;
+  birthPlaceTm: null;
+  birthPlaceRu: null;
+  sportLevelTm: null;
+  sportLevelRu: null;
+  workedAtTm: string[];
+  workedAtRu: string[];
+  badgesTm: string[];
+  badgesRu: string[];
   createdAt: string;
   updatedAt: string;
-}
-export interface IHCDepartment {
-  id: string;
-  nameTm: string;
-  nameRu: string;
-  createdAt: Date;
-  updatedAt: Date;
-  employees: IHCEmployee[];
+  federationId: string;
+  federation: {
+    id: string;
+    nameTm: string;
+    nameRu: string;
+    imagePath: string;
+    createdAt: string;
+    updatedAt: string;
+  };
 }
 export interface IFederationsState {
   federation_sports?: IFederations[];
   federation_trainers?: IFederations[];
   federation_athletes?: IFederations[];
-  health_care_departments?: IHCDepartment[];
 }

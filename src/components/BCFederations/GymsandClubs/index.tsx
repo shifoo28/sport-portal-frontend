@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Filter from "./Filter";
 import ListofFacility from "./List";
-import GMap from "./Map";
+import OpenStreetMap from "./Map";
 import { useLocation } from "react-router-dom";
 import GACDetail from "../../Details/GACDetail";
 import { GET_GYMS_AND_CLUBS_FILTER } from "../../../redux/types";
 import { RootState } from "../../../redux/store";
 
 const GymsAndClubs = () => {
-  const dispatch = useDispatch();
-  dispatch({ type: GET_GYMS_AND_CLUBS_FILTER });
-
   const { pathname } = useLocation();
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const dispatch = useDispatch();
+  dispatch({ type: GET_GYMS_AND_CLUBS_FILTER, payload: prefLang });
 
   if (pathname.includes("detail")) {
     return <GACDetail />;
@@ -28,7 +27,7 @@ const GymsAndClubs = () => {
           </p>
         </div>
         <Filter />
-        <GMap />
+        <OpenStreetMap />
         <ListofFacility />
       </div>
     );

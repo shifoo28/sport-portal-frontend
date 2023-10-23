@@ -10,9 +10,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { activateTab } from "../../redux/actions/main";
 import HCDetail from "../Details/HCDetail";
 import { GET_HEALTH_CARE_DEPARTMENTS } from "../../redux/types";
-import { IHCDepartment } from "../../redux/interfaces/federations";
 import { RootState } from "../../redux/store";
 import { urlBack } from "../../redux/apiCalls";
+import { IHCDepartment } from "../../redux/interfaces/hcdepartment";
 
 const descriptionRu =
   'Медицинские осмотры спортсменов, взрослых и детей, проводятся в соответствии с Приказом МЗ РФ от 23 октября 2020 г. N 1144н "Об утверждении порядка организации оказания медицинской помощи лицам, занимающимся физической культурой и спортом (в том числе при подготовке и проведении физкультурных мероприятий и спортивных мероприятий), включая порядок медицинского осмотра лиц, желающих пройти спортивную подготовку, заниматься физической культурой и спортом в организациях и (или) выполнить нормативы испытаний (тестов) Всероссийского физкультурно-спортивного комплекса "Готов к труду и обороне" (Г ТО)" и форм медицинских заключений о допуске к участию физкультурных и спортивных мероприятиях" Цены ниже муниципальных.';
@@ -25,7 +25,7 @@ const Component = () => {
   const { pathname } = useLocation();
   const prefLang = useSelector((state: any) => state.main.prefLang);
   const hcdepartmnts: IHCDepartment[] = useSelector(
-    (state: RootState) => state.federations.health_care_departments
+    (state: RootState) => state.healthcare.health_care_departments
   );
 
   const [open, setOpen] = React.useState("");
@@ -75,7 +75,7 @@ const Component = () => {
                 onClick={() => handleOpen(d.id)}
                 className="h-[73px] border-none"
               >
-                <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase font-oswald font-normal">
+                <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase font-oswald font-normal font-semibold">
                   {prefLang === "Tm" ? d.nameTm : d.nameRu}
                 </p>
               </AccordionHeader>
@@ -85,34 +85,34 @@ const Component = () => {
                     open != d.id ? "hidden" : ""
                   }`}
                 >
-                  <div className="grid grid-cols-3 overflow-auto h-60 gap-y-4">
-                    {d.employees.map((w, i) => {
+                  <div className="overflow-auto h-60 gap-y-4 flex-wrap">
+                    {d.employees.map((e, i) => {
                       return (
                         <button
                           key={i}
                           className="flex max-w-[345px] border border-[#0088FF] h-[108px]"
                           onClick={() =>
-                            linkTo(pathname + "/detail", w.id, d.id)
+                            linkTo(pathname + "/detail", e.id, d.id)
                           }
                         >
                           <img
-                            src={urlBack + w.imagePath}
+                            src={urlBack + e.imagePath}
                             className="w-[95px] h-full object-cover"
                           />
                           <div className="flex flex-col font-sofiasans text-[#0F1A42] justify-between h-full pl-2 pb-1">
-                            <p className="font-semibold text-left h-4">
-                              {w.name}
+                            <p className="font-semibold text-left h-4 uppercase">
+                              {prefLang === "Tm" ? e.nameTm : e.nameRu}
                             </p>
                             <div className="w-full">
                               <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
                                 {prefLang === "Tm"
-                                  ? `Ýaşy: ${w.age}`
-                                  : `Возраст: ${w.age}`}
+                                  ? `Ýaşy: ${e.age}`
+                                  : `Возраст: ${e.age}`}
                               </p>
                               <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
                                 {prefLang === "Tm"
-                                  ? `Iş ýeri: ${w.workAt}`
-                                  : `Место работы: ${w.workAt}`}
+                                  ? `Iş ýeri: ${e.workAtTm}`
+                                  : `Место работы: ${e.workAtRu}`}
                               </p>
                               <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
                                 {prefLang === "Tm"
@@ -121,13 +121,13 @@ const Component = () => {
                               </p>
                               <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
                                 {prefLang === "Tm"
-                                  ? `Iş tejribesi: ${w.experience}ýyl`
-                                  : `Опыт работы: ${w.experience}г`}
+                                  ? `Iş tejribesi: ${e.experience}ýyl`
+                                  : `Опыт работы: ${e.experience}г`}
                               </p>
                               <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
                                 {prefLang === "Tm"
-                                  ? `Iş wezipesi: ${w.job}`
-                                  : `Должность: ${w.job}`}
+                                  ? `Iş wezipesi: ${e.jobTm}`
+                                  : `Должность: ${e.jobRu}`}
                               </p>
                             </div>
                             <div className="flex justify-end">
@@ -157,7 +157,8 @@ const Component = () => {
 
 const HealthCare = () => {
   const dispatch = useDispatch();
-  dispatch({ type: GET_HEALTH_CARE_DEPARTMENTS });
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  dispatch({ type: GET_HEALTH_CARE_DEPARTMENTS, payload: prefLang });
 
   return <Component />;
 };

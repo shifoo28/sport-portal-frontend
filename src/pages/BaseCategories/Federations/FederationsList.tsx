@@ -10,6 +10,7 @@ import Sports from "../../../components/BCFederations/Sports";
 import Trainers from "../../../components/BCFederations/Trainers";
 import { IFederations } from "../../../redux/interfaces/federations";
 import { RootState } from "../../../redux/store";
+import { urlBack } from "../../../redux/apiCalls";
 
 const FederationsList = ({ indexComponent }: { indexComponent: number }) => {
   const [open, setOpen] = useState("");
@@ -29,7 +30,7 @@ const FederationsList = ({ indexComponent }: { indexComponent: number }) => {
 
   return (
     <Fragment>
-      {federations?.map((e, i) => {
+      {federations.map((e, i) => {
         return (
           <Accordion
             open={open === e.id}
@@ -41,16 +42,19 @@ const FederationsList = ({ indexComponent }: { indexComponent: number }) => {
               className="h-[73px] border-none"
             >
               <div className="flex justify-between w-full">
-                <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8">
+                <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase">
                   {prefLang === "Tm" ? e.nameTm : e.nameRu}
                 </p>
-                <img src={e.imagePath} className="w-[76px] h-[65px]" />
+                <img
+                  src={urlBack + e.imagePath}
+                  className="w-[76px] h-[65px] object-contain object-center"
+                />
               </div>
             </AccordionHeader>
             <AccordionBody>
               <div className={`w-full h-max ${open != e.id ? "hidden" : ""}`}>
                 {indexComponent === 0 ? (
-                  <Sports data={e.fsports} />
+                  <Sports data={e.fsports} prefLang={prefLang} />
                 ) : indexComponent === 1 ? (
                   <Trainers data={e.ftrainers} />
                 ) : (
