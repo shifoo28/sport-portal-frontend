@@ -2,12 +2,33 @@ export interface IMain {
   type: string;
   payload: any;
 }
-
+export interface ILanguage {
+  id: string;
+  name: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+export interface IBaseCategory {
+  id: string;
+  nameTm: string;
+  nameRu: string;
+  active: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export interface ISportCategory {
+  id: string;
+  nameTm: string;
+  nameRu: string;
+  section: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 export interface IMainState {
-  active_tab: number;
-  langs: { id: string; name: string }[];
-  base_categories: { id: string; nameTm: string; nameRu: string }[];
-  sport_categories: { id: string; nameTm: string; nameRu: string }[];
   message: string;
   prefLang: string;
+  active_tab: number;
+  langs: ILanguage[];
+  base_categories: IBaseCategory[];
+  sport_categories: ISportCategory[];
 }

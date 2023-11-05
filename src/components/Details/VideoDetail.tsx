@@ -1,17 +1,29 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { urlBack } from "../../redux/apiCalls";
-import playvideo from "../../components/Video News/svg/playvideo.svg";
+import playvideo from "../../components/Sections/Videos/svg/playvideo.svg";
+import { IVideoNews } from "../../redux/interfaces/home";
+import { RootState } from "../../redux/store";
 
-const VideoDetails = () => {
-  const location = useLocation();
-  const { index } = location.state;
-  const newVideo = useSelector((state: any) => state.home.video[index]);
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+const VideoDetail = () => {
+  // Hooks
+  const navigate = useNavigate();
+  const { state } = useLocation();
 
+  // useSelector
+  const videos: IVideoNews[] = useSelector(
+    (state: RootState) => state.home.video_news
+  );
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+
+  // Operation
+  const video = videos.find((video) => video.id === state.videoId);
+  const [same_video_main, ...same_videos] = videos.filter(
+    (v) => v.id != video?.id
+  );
   const now = new Date().getTime();
-  const updated = new Date(newVideo.updatedAt).getTime();
+  const updated = new Date(video?.updatedAt || "").getTime();
   const postedAt = now - updated;
   const uploaded = Math.round(postedAt / 1000 / 60 / 60 / 24)
     ? `${Math.round(postedAt / 1000 / 60 / 60 / 24)} ${
@@ -27,11 +39,19 @@ const VideoDetails = () => {
       }`
     : `${prefLang === "Tm" ? "1 minut öň" : "1 минуту назад"}`;
 
+  // Function
+  const linkToVideoDetail = (videoId: string) => {
+    navigate("", { state: { videoId } });
+  };
+  const linkToAllVideos = () => {
+    navigate("/all");
+  };
+
   return (
     <div className="flex w-full max-w-[1170px] mx-32 pt-7">
       <div className="flex items-center w-full flex-col text-[#0F1A42]">
         <p className="font-oswald text-[50px] max-w-[90%] text-center">
-          {prefLang === "Tm" ? newVideo.nameTm : newVideo.nameRu}
+          {prefLang === "Tm" ? video?.nameTm : video?.nameRu}
         </p>
         <div className="w-full">
           <div className="flex w-full justify-between">
@@ -54,17 +74,19 @@ const VideoDetails = () => {
                   stroke-linejoin="round"
                 />
               </svg>
-              {newVideo.views}
+              {video?.views}
             </p>
             <p className="font-sofiasans text-base">{uploaded}</p>
           </div>
           <video
-            src={urlBack + "/" + newVideo.videoPath}
+            src={urlBack + video?.videoPath}
             width={"100%"}
             controls
             autoPlay
           >
-            Your browser doesn't support this video!
+            {prefLang === "Tm"
+              ? "Siziň browseriňiz bu wideony açyp bilmeýär!"
+              : "Ваш браузер не поддерживает это видео"}
           </video>
         </div>
         <div className="w-full pt-24 flex flex-col gap-8">
@@ -75,90 +97,67 @@ const VideoDetails = () => {
               </p>
             </div>
             <div className="w-full border-b border-black flex justify-end">
-              <button className="text-sm bg-[#077EE6] text-white h-full px-3">
+              <button
+                className="text-sm bg-[#077EE6] text-white h-full px-3"
+                onClick={linkToAllVideos}
+              >
                 {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
               </button>
             </div>
           </div>
           <div className="flex justify-between font-oswald text-2xl">
-            <div className="flex flex-col justify-between cursor-pointer">
+            <div
+              className="flex flex-col justify-between cursor-pointer"
+              onClick={() => linkToVideoDetail(same_video_main.id)}
+            >
               <div className="h-[400px] w-[660px] relative">
                 <img
                   src={playvideo}
                   className="absolute top-[160px] left-[300px]"
                 />
                 <img
-                  src="/images/video_news/news_1.png"
+                  src={urlBack + same_video_main.imagePath}
                   className="object-cover h-full"
                 />
               </div>
-              <p className="text-xs font-sofiasans">Floyd Miles 3 Days Ago</p>
+              <p className="text-xs font-sofiasans">
+                {new Date(same_video_main.createdAt).toLocaleDateString()}
+              </p>
               <p className="font-semibold max-w-[550px]">
-                Charge Two Devices at the Same Time With This Magnetic Wireless
-                Charging Dock
+                {prefLang === "Tm"
+                  ? same_video_main.nameTm
+                  : same_video_main.nameRu}
               </p>
             </div>
             <div className="flex flex-col gap-4">
-              <div className="flex h-[165px] gap-4">
-                <div className="relative w-[182px] h-full">
-                  <img
-                    src={playvideo}
-                    className="absolute w-[38px] h-[38px] top-[40%] left-[40%]"
-                  />
-                  <img
-                    src="/images/video_news/news_2.png"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div className="flex flex-col justify-center gap-4">
-                  <p className="text-xs font-sofiasans">
-                    Jacob Jones 3 Days Ago
-                  </p>
-                  <p className="max-w-[290px] font-semibold">
-                    Tiny moon rover could be a stepping stone to Mars
-                  </p>
-                </div>
-              </div>
-              <div className="flex h-[165px] gap-4">
-                <div className="relative w-[182px] h-full">
-                  <img
-                    src={playvideo}
-                    className="absolute w-[38px] h-[38px] top-[40%] left-[40%]"
-                  />
-                  <img
-                    src="/images/video_news/news_3.png"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div className="flex flex-col justify-center gap-4">
-                  <p className="text-xs font-sofiasans">
-                    Jacob Jones 3 Days Ago
-                  </p>
-                  <p className="max-w-[290px] font-semibold">
-                    Tiny moon rover could be a stepping stone to Mars
-                  </p>
-                </div>
-              </div>
-              <div className="flex h-[165px] gap-4">
-                <div className="relative w-[182px] h-full">
-                  <img
-                    src={playvideo}
-                    className="absolute w-[38px] h-[38px] top-[40%] left-[40%]"
-                  />
-                  <img
-                    src="/images/video_news/news_4.png"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div className="flex flex-col justify-center gap-4">
-                  <p className="text-xs font-sofiasans">
-                    Jacob Jones 3 Days Ago
-                  </p>
-                  <p className="max-w-[290px] font-semibold">
-                    Tiny moon rover could be a stepping stone to Mars
-                  </p>
-                </div>
-              </div>
+              {same_videos.slice(0, 3).map((sv, index) => {
+                return (
+                  <div
+                    className="flex h-[165px] gap-4 cursor-pointer"
+                    key={index}
+                    onClick={() => linkToVideoDetail(sv.id)}
+                  >
+                    <div className="relative w-[182px] h-full">
+                      <img
+                        src={playvideo}
+                        className="absolute w-[38px] h-[38px] top-[40%] left-[40%]"
+                      />
+                      <img
+                        src={urlBack + sv.imagePath}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-center gap-4">
+                      <p className="text-xs font-sofiasans">
+                        {new Date(sv.createdAt).toLocaleDateString()}
+                      </p>
+                      <p className="max-w-[290px] font-semibold">
+                        {prefLang === "Tm" ? sv.nameTm : sv.nameRu}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -167,4 +166,4 @@ const VideoDetails = () => {
   );
 };
 
-export default VideoDetails;
+export default VideoDetail;

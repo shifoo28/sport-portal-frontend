@@ -75,7 +75,7 @@ const Component = () => {
                 onClick={() => handleOpen(d.id)}
                 className="h-[73px] border-none"
               >
-                <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase font-oswald font-normal font-semibold">
+                <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase font-oswald font-semibold">
                   {prefLang === "Tm" ? d.nameTm : d.nameRu}
                 </p>
               </AccordionHeader>

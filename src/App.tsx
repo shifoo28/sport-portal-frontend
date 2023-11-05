@@ -10,14 +10,14 @@ import {
   SPORT_NEWS_ALL,
   VIDEO_DETAILS_PAGE,
 } from "./tools/links";
-import VideoDetails from "./pages/VideoDetails";
+import VideoDetails from "./components/Details/VideoDetail";
 import Footer from "./components/Footer";
 import Banner from "./components/Headers";
 import BaseCategoriesList from "./components/Headers/BaseCategory";
 import ToolBox from "./components/Headers/ToolBox";
 import SportNewsAll from "./pages/SportNewsAll";
 import Navbar from "./components/Navbar";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { GET_LOCAL_NEWS, GET_MAIN, GET_VIDEO_NEWS } from "./redux/types";
 import Login from "./pages/Login";
 import AboutUs from "./pages/AboutUs";

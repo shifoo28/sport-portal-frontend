@@ -1,8 +1,8 @@
 import { Typography } from "@material-tailwind/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { NEWS_DETAILS_PAGE } from "../../tools/links";
-import { urlBack } from "../../redux/apiCalls";
+import { NEWS_DETAILS_PAGE } from "../../../tools/links";
+import { urlBack } from "../../../redux/apiCalls";
 
 type CardData = {
   id: string;

@@ -1,7 +1,7 @@
 import React from "react";
-import NewsCards from "../../components/Local News";
-import VideoNews from "../../components/Video News";
-import WorldSportNews from "../../components/World Sport News";
+import NewsCards from "../../components/Sections/Local";
+import VideoNews from "../../components/Sections/Videos/Videos";
+import WorldSportNews from "../../components/Sections/Global";
 
 const HomePage = () => {
 

@@ -11,16 +11,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { SPORT_NEWS_ALL } from "../../../tools/links";
 import { useNavigate } from "react-router-dom";
 import { activateTab } from "../../../redux/actions/main";
+import { RootState } from "../../../redux/store";
+import { ISportCategory } from "../../../redux/interfaces/main";
 
 const SportNewsList = ({ activeTab }: { activeTab: number }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { prefLang, sport_categories } = useSelector(
-    (state: any) => state.main
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const sport_categories: ISportCategory[] = useSelector(
+    (state: RootState) => state.main.sport_categories
   );
-  const linkTo = (l: string, tab: number) => {
+  const linkTo = (link: string, tab: number, sportCategoryId: string) => {
     dispatch(activateTab(tab));
-    navigate(l);
+    navigate(link, { state: { sportCategoryId } });
   };
 
   return (
@@ -45,22 +48,14 @@ const SportNewsList = ({ activeTab }: { activeTab: number }) => {
       </PopoverHandler>
       <PopoverContent className="bg-white border max-w-[116px] w-full flex justify-center rounded-none">
         <List className="text-xs font-oswald">
-          {sport_categories.map((sc: any) => {
-            return prefLang === "Tm" ? (
+          {sport_categories.map((sc, index) => {
+            return (
               <ListItem
-                key={sc.id}
-                className="hover:text-[#08F]"
-                onClick={() => linkTo(SPORT_NEWS_ALL, 0)}
+                key={index}
+                className="hover:text-[#08F] p-1 hover:underline"
+                onClick={() => linkTo(SPORT_NEWS_ALL, 0, sc.id)}
               >
-                - {sc.nameTm}
-              </ListItem>
-            ) : (
-              <ListItem
-                key={sc.id}
-                className="hover:text-[#08F]"
-                onClick={() => linkTo(SPORT_NEWS_ALL, 0)}
-              >
-                - {sc.nameRu}
+                · {prefLang === "Tm" ? sc.nameTm : sc.nameRu}
               </ListItem>
             );
           })}

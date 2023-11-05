@@ -1,3 +1,6 @@
+import { ISportCategory } from "./main";
+import { IShopCategories } from "./shop";
+
 export interface IHome {
   type: string;
   payload: any;
@@ -10,23 +13,25 @@ export interface INews {
   views: number;
   nameTm: string;
   nameRu: string;
-  location: string;
+  locationTm: string;
+  locationRu: string;
   imagePath: string;
   categoryId: string;
-  category: { nameTm: string; nameRu: string };
+  category: IShopCategories;
   createdAt: Date;
   updatedAt: Date;
 }
-
 export interface IVideoNews {
   id: string;
   views: number;
   nameTm: string;
   nameRu: string;
+  textTm: string;
+  textRu: string;
   imagePath: string;
   videoPath: string;
   categoryId: string;
-  category: { nameTm: string; nameRu: string };
+  category: ISportCategory;
   createdAt: Date;
   updatedAt: Date;
 }

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { dummyData as data } from "../Video News/FilterNews";
 import { useDispatch, useSelector } from "react-redux";
-import { sameNews } from "./NewsDetail";
 import { BASE_CATEGORIES, APP_ADDRESS, SPORTS } from "../../tools/links";
 import { activateTab } from "../../redux/actions/main";
 import { RootState } from "../../redux/store";
@@ -28,6 +26,9 @@ const CompetitionDetail = () => {
 
   // Operations
   const competition = competitions.find((c) => c.id === state.competitionId);
+  const same_competitions = competitions.filter(
+    (item) => item.typeId === competition?.typeId
+  );
 
   return (
     <div className="mx-32 max-w-[1170px] pt-8 flex gap-12 font-sofiasans">
@@ -103,13 +104,18 @@ const CompetitionDetail = () => {
             </div>
           </div>
           <div className="flex justify-between pt-4">
-            {sameNews.map((e) => {
+            {same_competitions.map((sc, index) => {
               return (
-                <div className="flex flex-col w-[195px] gap-2">
-                  <img src={e.imgLink} className="object-cover h-[145px]" />
-                  <p className="text-[10px] font-sofiasans">{e.date}</p>
+                <div className="flex flex-col w-[195px] gap-2" key={index}>
+                  <img
+                    src={urlBack + sc.imagePath}
+                    className="object-cover h-[145px]"
+                  />
+                  <p className="text-[10px] font-sofiasans">
+                    {prefLang === "Tm" ? sc.locationTm : sc.locationRu}
+                  </p>
                   <p className="text-sm font-oswald font-semibol cursor-pointer">
-                    {e.title}
+                    {prefLang === "Tm" ? sc.nameTm : sc.nameRu}
                   </p>
                 </div>
               );
@@ -122,7 +128,7 @@ const CompetitionDetail = () => {
 };
 
 const Sorted = ({ prefLang }: { prefLang: string }) => {
-  let dummyData = data;
+  let dummyData: any[] = [];
   const [activeTab, setActiveTab] = useState(0);
   const changeTab = (activate: number) => {
     setActiveTab(activate);
@@ -164,21 +170,21 @@ const Sorted = ({ prefLang }: { prefLang: string }) => {
         </div>
       </div>
       <div className="pt-5">
-        {dummyData.map((e) => {
+        {dummyData?.map((e) => {
           return (
             <div
-              key={e.id}
+              key={e?.id}
               className="flex justify-between items-center pb-4 cursor-pointer"
             >
               <div className="h-[70px] w-[70px] relative">
                 <img
-                  src={e.imgLink}
+                  src={e?.imgLink}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">
-                <p className="font-sofiasans text-[8px]">{e.date}</p>
-                <p className="font-oswald text-[15px] leading-5">{e.title}</p>
+                <p className="font-sofiasans text-[8px]">{e?.date}</p>
+                <p className="font-oswald text-[15px] leading-5">{e?.title}</p>
               </div>
             </div>
           );

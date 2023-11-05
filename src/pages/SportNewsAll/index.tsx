@@ -1,174 +1,20 @@
 import React from "react";
-import FootballNewsBody from "../../components/World Sport News/FootballNewsBody";
+import FootballNewsBody from "../../components/Sections/Global/FootballNewsBody";
 import { useSelector } from "react-redux";
-
-const news = [
-  {
-    id: 0,
-    title: "Türkmenistanyň agyr atletika ýygyndysy Gruziýada türgenleşýär",
-    location: "Tibilisi - 17 Apr 2023",
-    imagePath: "/images/news/same/exact_1.png",
-  },
-  {
-    id: 1,
-    title:
-      "Türkmenistanly ýetginjekler sebit ýaryşyndan 5 medal bilen dolandylar",
-    location: "Özbegistan Çirçik - 26 Iyun 2023",
-    imagePath: "/images/news/same/exact_2.png",
-  },
-  {
-    id: 2,
-    title:
-      "Türkmenistanda halkara sport ýaryşlarynyň ýeňijilerine Prezidentiň sowgatlary gowşuryldy",
-    location: "Aşgabat - 25 Maý 2023",
-    imagePath: "/images/news/same/exact_3.png",
-  },
-  {
-    id: 3,
-    title:
-      "Türkmenistanyň agyr atletika boýunça ýetginjekler ýygyndylary dünýä çempionatyna gatnaşar",
-    location: "Albaniýa Durres - 11 Mart 2023",
-    imagePath: "/images/news/same/exact_4.png",
-  },
-  {
-    id: 0,
-    title: "Türkmenistanyň agyr atletika ýygyndysy Gruziýada türgenleşýär",
-    location: "Tibilisi - 17 Apr 2023",
-    imagePath: "/images/news/same/exact_1.png",
-  },
-  {
-    id: 1,
-    title:
-      "Türkmenistanly ýetginjekler sebit ýaryşyndan 5 medal bilen dolandylar",
-    location: "Özbegistan Çirçik - 26 Iyun 2023",
-    imagePath: "/images/news/same/exact_2.png",
-  },
-  {
-    id: 2,
-    title:
-      "Türkmenistanda halkara sport ýaryşlarynyň ýeňijilerine Prezidentiň sowgatlary gowşuryldy",
-    location: "Aşgabat - 25 Maý 2023",
-    imagePath: "/images/news/same/exact_3.png",
-  },
-  {
-    id: 3,
-    title:
-      "Türkmenistanyň agyr atletika boýunça ýetginjekler ýygyndylary dünýä çempionatyna gatnaşar",
-    location: "Albaniýa Durres - 11 Mart 2023",
-    imagePath: "/images/news/same/exact_4.png",
-  },
-  {
-    id: 0,
-    title: "Türkmenistanyň agyr atletika ýygyndysy Gruziýada türgenleşýär",
-    location: "Tibilisi - 17 Apr 2023",
-    imagePath: "/images/news/same/exact_1.png",
-  },
-  {
-    id: 1,
-    title:
-      "Türkmenistanly ýetginjekler sebit ýaryşyndan 5 medal bilen dolandylar",
-    location: "Özbegistan Çirçik - 26 Iyun 2023",
-    imagePath: "/images/news/same/exact_2.png",
-  },
-  {
-    id: 2,
-    title:
-      "Türkmenistanda halkara sport ýaryşlarynyň ýeňijilerine Prezidentiň sowgatlary gowşuryldy",
-    location: "Aşgabat - 25 Maý 2023",
-    imagePath: "/images/news/same/exact_3.png",
-  },
-  {
-    id: 3,
-    title:
-      "Türkmenistanyň agyr atletika boýunça ýetginjekler ýygyndylary dünýä çempionatyna gatnaşar",
-    location: "Albaniýa Durres - 11 Mart 2023",
-    imagePath: "/images/news/same/exact_4.png",
-  },
-  {
-    id: 0,
-    title: "Türkmenistanyň agyr atletika ýygyndysy Gruziýada türgenleşýär",
-    location: "Tibilisi - 17 Apr 2023",
-    imagePath: "/images/news/same/exact_1.png",
-  },
-  {
-    id: 1,
-    title:
-      "Türkmenistanly ýetginjekler sebit ýaryşyndan 5 medal bilen dolandylar",
-    location: "Özbegistan Çirçik - 26 Iyun 2023",
-    imagePath: "/images/news/same/exact_2.png",
-  },
-  {
-    id: 2,
-    title:
-      "Türkmenistanda halkara sport ýaryşlarynyň ýeňijilerine Prezidentiň sowgatlary gowşuryldy",
-    location: "Aşgabat - 25 Maý 2023",
-    imagePath: "/images/news/same/exact_3.png",
-  },
-  {
-    id: 3,
-    title:
-      "Türkmenistanyň agyr atletika boýunça ýetginjekler ýygyndylary dünýä çempionatyna gatnaşar",
-    location: "Albaniýa Durres - 11 Mart 2023",
-    imagePath: "/images/news/same/exact_4.png",
-  },
-  {
-    id: 0,
-    title: "Türkmenistanyň agyr atletika ýygyndysy Gruziýada türgenleşýär",
-    location: "Tibilisi - 17 Apr 2023",
-    imagePath: "/images/news/same/exact_1.png",
-  },
-  {
-    id: 1,
-    title:
-      "Türkmenistanly ýetginjekler sebit ýaryşyndan 5 medal bilen dolandylar",
-    location: "Özbegistan Çirçik - 26 Iyun 2023",
-    imagePath: "/images/news/same/exact_2.png",
-  },
-  {
-    id: 2,
-    title:
-      "Türkmenistanda halkara sport ýaryşlarynyň ýeňijilerine Prezidentiň sowgatlary gowşuryldy",
-    location: "Aşgabat - 25 Maý 2023",
-    imagePath: "/images/news/same/exact_3.png",
-  },
-  {
-    id: 3,
-    title:
-      "Türkmenistanyň agyr atletika boýunça ýetginjekler ýygyndylary dünýä çempionatyna gatnaşar",
-    location: "Albaniýa Durres - 11 Mart 2023",
-    imagePath: "/images/news/same/exact_4.png",
-  },
-  {
-    id: 0,
-    title: "Türkmenistanyň agyr atletika ýygyndysy Gruziýada türgenleşýär",
-    location: "Tibilisi - 17 Apr 2023",
-    imagePath: "/images/news/same/exact_1.png",
-  },
-  {
-    id: 1,
-    title:
-      "Türkmenistanly ýetginjekler sebit ýaryşyndan 5 medal bilen dolandylar",
-    location: "Özbegistan Çirçik - 26 Iyun 2023",
-    imagePath: "/images/news/same/exact_2.png",
-  },
-  {
-    id: 2,
-    title:
-      "Türkmenistanda halkara sport ýaryşlarynyň ýeňijilerine Prezidentiň sowgatlary gowşuryldy",
-    location: "Aşgabat - 25 Maý 2023",
-    imagePath: "/images/news/same/exact_3.png",
-  },
-  {
-    id: 3,
-    title:
-      "Türkmenistanyň agyr atletika boýunça ýetginjekler ýygyndylary dünýä çempionatyna gatnaşar",
-    location: "Albaniýa Durres - 11 Mart 2023",
-    imagePath: "/images/news/same/exact_4.png",
-  },
-];
+import { RootState } from "../../redux/store";
+import { INews } from "../../redux/interfaces/home";
+import { useLocation } from "react-router-dom";
+import { urlBack } from "../../redux/apiCalls";
 
 const SportNewsAll = () => {
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const { state } = useLocation();
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const local_news: INews[] = useSelector(
+    (state: RootState) => state.home.local_news
+  );
+  const news = local_news.filter(
+    (ln) => ln.categoryId === state.sportCategoryId
+  );
 
   return (
     <div className="w-full mx-32 max-w-[1170px]">
@@ -190,20 +36,29 @@ const SportNewsAll = () => {
             <div
               className={`flex items-center max-w-[160px] w-full border-b border-[#F65050] text-[#F65050]`}
             >
-              {prefLang == "Tm" ? "Futbol  täzelikler" : "Новости футбола"}
+              {prefLang == "Tm"
+                ? news[0].category.nameTm
+                : news[0].category.nameRu}
             </div>
             <span className="border-b border-black w-full"></span>
           </div>
           <div className="grid grid-cols-4 w-full pt-5 gap-4">
-            {news.map((i) => {
+            {news?.map((item, index) => {
               return (
-                <div className="flex flex-col gap-1">
+                <div
+                  className="flex flex-col gap-1 cursor-pointer hover:underline"
+                  key={index}
+                >
                   <img
-                    src={i.imagePath}
+                    src={urlBack + item.imagePath}
                     className="w-[195px] h-[145px] object-cover"
                   />
-                  <p className="text-[10px] font-sofiasans">{i.location}</p>
-                  <p className="text-sm font-oswald">{i.title}</p>
+                  <p className="text-[10px] font-sofiasans">
+                    {prefLang === "Tm" ? item.locationTm : item.locationRu}
+                  </p>
+                  <p className="text-sm font-oswald">
+                    {prefLang === "Tm" ? item.nameTm : item.nameRu}
+                  </p>
                 </div>
               );
             })}

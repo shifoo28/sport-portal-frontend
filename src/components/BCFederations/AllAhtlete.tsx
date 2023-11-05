@@ -1,151 +1,22 @@
 import React from "react";
 import rating from "../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
-
-const data = [
-  {
-    id: 0,
-    imgLink: "/images/federations/athlete_1.jfif",
-    name: "Ruslan Mingazow",
-    sportType: "Futbol",
-    position: "Hüjümçi",
-    flagImg: "/images/federations/flag_2.png",
-    club: "Kitchee",
-    rating: 4.5,
-    made: "MILLI",
-  },
-  {
-    id: 1,
-    imgLink: "/images/federations/athlete_2.png",
-    name: "Arslanmyrat Amanow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Ahal",
-    rating: 4.5,
-    made: "MILLI",
-  },
-  {
-    id: 2,
-    imgLink: "/images/federations/athlete_3.png",
-    name: "Daýanç Meredow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Arkadag",
-    rating: 4.5,
-    made: "U23",
-  },
-  {
-    id: 3,
-    imgLink: "/images/federations/athlete_1.jfif",
-    name: "Ruslan Mingazow",
-    sportType: "Futbol",
-    position: "Hüjümçi",
-    flagImg: "/images/federations/flag_2.png",
-    club: "Kitchee",
-    rating: 4.5,
-    made: "MILLI",
-  },
-  {
-    id: 4,
-    imgLink: "/images/federations/athlete_2.png",
-    name: "Arslanmyrat Amanow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Ahal",
-    rating: 4.5,
-    made: "MILLI",
-  },
-  {
-    id: 5,
-    imgLink: "/images/federations/athlete_3.png",
-    name: "Daýanç Meredow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Arkadag",
-    rating: 4.5,
-    made: "U23",
-  },
-  {
-    id: 6,
-    imgLink: "/images/federations/athlete_1.jfif",
-    name: "Ruslan Mingazow",
-    sportType: "Futbol",
-    position: "Hüjümçi",
-    flagImg: "/images/federations/flag_2.png",
-    club: "Kitchee",
-    rating: 4.5,
-    made: "MILLI",
-  },
-  {
-    id: 7,
-    imgLink: "/images/federations/athlete_2.png",
-    name: "Arslanmyrat Amanow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Ahal",
-    rating: 4.5,
-    made: "MILLI",
-  },
-  {
-    id: 8,
-    imgLink: "/images/federations/athlete_3.png",
-    name: "Daýanç Meredow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Arkadag",
-    rating: 4.5,
-    made: "U23",
-  },
-  {
-    id: 9,
-    imgLink: "/images/federations/athlete_1.jfif",
-    name: "Ruslan Mingazow",
-    sportType: "Futbol",
-    position: "Hüjümçi",
-    flagImg: "/images/federations/flag_2.png",
-    club: "Kitchee",
-    rating: 4.5,
-    made: "MILLI",
-  },
-  {
-    id: 10,
-    imgLink: "/images/federations/athlete_2.png",
-    name: "Arslanmyrat Amanow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Ahal",
-    rating: 4.5,
-    made: "MILLI",
-  },
-  {
-    id: 11,
-    imgLink: "/images/federations/athlete_3.png",
-    name: "Daýanç Meredow",
-    sportType: "Futbol",
-    position: "Ýarym goragçy",
-    flagImg: "/images/federations/flag_1.png",
-    club: "Arkadag",
-    rating: 4.5,
-    made: "U23",
-  },
-];
+import { IFederations } from "../../redux/interfaces/federations";
+import { urlBack } from "../../redux/apiCalls";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { flags } from "./Athlete";
 
 const AllAhtlete = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { pathname } = location;
+  const { pathname, state } = useLocation();
+  const federation: IFederations = state.federation;
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
 
   return (
-    <div className="w-full">
-      <table className="w-full max-w-[99%]">
-        <thead className="">
+    <div className="w-full min-h-screen font-sofiasans">
+      <table className="w-full">
+        <thead>
           <tr className="h-[13px] text-[11px] border border-[#0088FF]">
             <td className="" align="center">
               №
@@ -156,9 +27,9 @@ const AllAhtlete = () => {
             <td className="" align="center">
               Ady we familiýasy
             </td>
-            <td className="" align="center">
+            {/* <td className="" align="center">
               Sport görnüşi
-            </td>
+            </td> */}
             <td className="" align="center">
               Orny
             </td>
@@ -171,12 +42,12 @@ const AllAhtlete = () => {
             <td className="" align="center"></td>
           </tr>
         </thead>
-        <tbody className="text-base">
-          {data.map((athlete) => {
+        <tbody className="text-base lowercase">
+          {federation.fathlete?.map((athlete, index) => {
             return (
               <tr className="border border-[#0088FF]">
                 <td className="p-2 font-semibold" align="center">
-                  {athlete.id + 1}
+                  {index + 1}
                 </td>
                 <td
                   className="p-2 font-semibold cursor-pointer"
@@ -188,12 +59,12 @@ const AllAhtlete = () => {
                   }
                 >
                   <img
-                    src={athlete.imgLink}
+                    src={urlBack + athlete.imagePath}
                     className="w-[60px] h-[60px] object-cover"
                   />
                 </td>
                 <td
-                  className="p-2 font-semibold cursor-pointer"
+                  className="p-2 font-semibold cursor-pointer uppercase"
                   align="center"
                   onClick={() =>
                     navigate(pathname.slice(0, pathname.length - 4) + "/id", {
@@ -201,18 +72,22 @@ const AllAhtlete = () => {
                     })
                   }
                 >
-                  {athlete.name}
+                  {prefLang === "Tm" ? athlete.nameTm : athlete.nameRu}
+                </td>
+                {/* <td className="p-2 font-semibold" align="center">
+                  {}
+                </td> */}
+                <td className="p-2 font-semibold capitalize" align="center">
+                  {prefLang === "Tm" ? athlete.positionTm : athlete.positionRu}
                 </td>
                 <td className="p-2 font-semibold" align="center">
-                  {athlete.sportType}
-                </td>
-                <td className="p-2 font-semibold" align="center">
-                  {athlete.position}
-                </td>
-                <td className="p-2 font-semibold" align="center">
-                  <div className="flex gap-1 w-max">
+                  <div className="flex gap-1 w-max items-center capitalize">
                     <img
-                      src={athlete.flagImg}
+                      src={
+                        flags.find((f) =>
+                          athlete.club?.toLocaleLowerCase().includes(f.key)
+                        )?.flag
+                      }
                       className="w-[26px] h-[18px] object-cover"
                     />
                     {athlete.club}
@@ -222,8 +97,8 @@ const AllAhtlete = () => {
                   <img src={rating} className="h-[15px]" />
                 </td>
                 <td className="p-2 font-semibold" align="center">
-                  <p className="bg-[#CCE6D8] text-[#00843D] px-2 flex items-center rounded-md w-max text-[10px]">
-                    {athlete.made}
+                  <p className="bg-[#CCE6D8] text-[#00843D] uppercase px-2 flex items-center rounded-md w-max text-[10px]">
+                    {prefLang === "Tm" ? athlete.madeTm : athlete.madeRu}
                   </p>
                 </td>
               </tr>

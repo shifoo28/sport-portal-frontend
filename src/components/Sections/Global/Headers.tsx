@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import nextSvg from "../../assets/svg/next.svg";
-import prevSvg from "../../assets/svg/prev.svg";
+import nextSvg from "../../../assets/svg/next.svg";
+import prevSvg from "../../../assets/svg/prev.svg";
 import { useSelector } from "react-redux";
 
 export const HeaderWithCategories = () => {

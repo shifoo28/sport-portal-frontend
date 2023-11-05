@@ -85,8 +85,7 @@ const clubs = [
     logo: "/images/world_news/arsenal.png",
   },
 ];
-
-const cempionat = [
+const cempionats = [
   {
     id: 0,
     title: "Premier League",
@@ -131,11 +130,11 @@ const FootballNewsBody = () => {
 
   return (
     <div className="pt-6">
-      {cempionat.map((e) => {
+      {cempionats.map((cempionat, index) => {
         return (
           <Accordion
-            key={e.id}
-            open={open === e.id}
+            key={index}
+            open={open === cempionat.id}
             className="pb-2"
             icon={
               <svg
@@ -143,7 +142,7 @@ const FootballNewsBody = () => {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                className={`${open === e.id ? "rotate-90" : ""}`}
+                className={`${open === cempionat.id ? "rotate-90" : ""}`}
               >
                 <g clip-path="url(#clip0_1_770)">
                   <path
@@ -166,17 +165,17 @@ const FootballNewsBody = () => {
           >
             <AccordionHeader
               className="border-0 p-0"
-              onClick={() => handleOpen(e.id)}
+              onClick={() => handleOpen(cempionat.id)}
             >
-              <img src={e.imgLink} />
+              <img src={cempionat.imgLink} />
               <p className="font-sofiasans text-sm font-normal flex justify-start w-full ml-3">
-                {e.title}
+                {cempionat.title}
               </p>
             </AccordionHeader>
             <AccordionBody>
               <div
                 className={`${
-                  open != e.id ? "hidden" : ""
+                  open != cempionat.id ? "hidden" : ""
                 } font-sofiasans text-xs`}
               >
                 <div className="flex justify-between items-center text-[#636363] ml-2 mr-4">
@@ -198,24 +197,25 @@ const FootballNewsBody = () => {
                 </div>
                 <div className=" overflow-auto max-h-[190px]">
                   <div className={`flex flex-col gap-1 pr-1`}>
-                    {e.clubs.map((e) => {
+                    {cempionat?.clubs?.map((club, index) => {
                       return (
                         <div
+                          key={index}
                           className={`flex rounded-md p-1 justify-between ${
-                            e.place < 5 ? "bg-[#F2F0F9]" : "bg-[#FEE6EB]"
+                            club.place < 5 ? "bg-[#F2F0F9]" : "bg-[#FEE6EB]"
                           } 
                       `}
                         >
                           <div className="flex">
-                            <p className="pr-2">{e.place}</p>
+                            <p className="pr-2">{club.place}</p>
                             <div className="h-5 w-7 flex justify-center items-center">
                               <img
-                                src={e.logo}
+                                src={club.logo}
                                 className="w-full h-full object-contain"
                               />
                             </div>
                             <p className="flex items-center pl-1 w-full">
-                              {e.title}
+                              {club.title}
                             </p>
                           </div>
                           <div className="flex justify-between items-center pr-1">

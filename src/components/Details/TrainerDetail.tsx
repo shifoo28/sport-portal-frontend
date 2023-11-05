@@ -3,17 +3,26 @@ import { useLocation } from "react-router-dom";
 import rating from "../../assets/svg/rating.svg";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { IFederations } from "../../redux/interfaces/federations";
+import { urlBack } from "../../redux/apiCalls";
 
-const BCFDetail = () => {
+const TrainerDetail = () => {
+  // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const location = useLocation();
-  const { id, who } = location.state;
+  const { state } = useLocation();
+  const trainers: IFederations[] = useSelector(
+    (state: RootState) => state.federations.federation_trainers
+  ); // Get all federations
+
+  //   Operation
+  const federation = trainers.find((ft) => ft.id === state.federationId); //Get current trainer's federation
+  const trainer = federation?.ftrainers.find((ft) => ft.id === state.trainerId); // Get trainer
 
   return (
     <div className="mx-40 flex pt-14 justify-between">
       <div className="flex flex-col gap-2">
         <img
-          src="/images/bcfdetail/rm.jfif"
+          src={urlBack + trainer?.imagePath}
           className="w-[210px] h-[235px] object-cover object-center"
         />
         <div className="flex justify-between w-full items-center">
@@ -43,7 +52,7 @@ const BCFDetail = () => {
                 stroke-linejoin="round"
               />
             </svg>
-            <p className="font-sofiasans text-base h-max">35.328</p>
+            <p className="font-sofiasans text-base h-max">{trainer?.views}</p>
           </div>
           <img src="/images/bcfdetail/socials.png" />
         </div>
@@ -51,54 +60,61 @@ const BCFDetail = () => {
       <div className="max-w-[870px] w-full flex flex-col gap-5">
         <div className="flex justify-between">
           <p className="font-oswald text-[50px] text-[#0088FF] uppercase">
-            RUSLAN MINGAZOW
+            {prefLang === "Tm" ? trainer?.nameTm : trainer?.nameRu}
           </p>
-          <img src="" alt="" />
+          <img src={urlBack + federation?.imagePath} alt="" className="w-[57px] h-[65px]" />
         </div>
         <div className="font-sofiasans text-2xl">
-          <p>Ýaşy: 31 </p>
-          <p>Doglan ýeri: Aşgabat</p>
-          <p>Iş tejribesi: 15 ýyl</p>
-          <p>Sport derejesi: Halkara derejeli sport ussady</p>
+          <p>{(prefLang === "Tm" ? "Ýaşy: " : "Возраст: ") + trainer?.age}</p>
+          <p>
+            {prefLang === "Tm"
+              ? `Doglan ýeri: ${trainer?.birthPlaceTm}`
+              : `Место рождения: ${trainer?.birthPlaceRu}`}
+          </p>
+          <p>
+            {prefLang === "Tm"
+              ? `Iş tejribesi: ${trainer?.experience} ýyl`
+              : `Опыт работы: ${trainer?.experience} лет.`}
+          </p>
+          <p>
+            {prefLang === "Tm"
+              ? `Sport derejesi: ${trainer?.sportLevelTm}`
+              : `Спортивный уровень: ${trainer?.sportLevelRu}`}
+          </p>
           <div className="flex justify-between">
-            <p>Işlän ýerleri:</p>
-            <div className="w-[720px]">
-              <p>2007-2009Aşgabat </p>
-              <p>2009-2014Skonto Rīga </p>
-              <p>2014-2016Jablonec</p>
-              <p>2016-2019Slavia Prague </p>
-              <p>2017→ Mladá Boleslav </p>
-              <p>2018-2019→ Příbram</p>
-              <p>2019-2020-Irtysh Pavlodar 2020-Shakhter Karagandy </p>
-              <p>2021-2022Caspiy</p>
-              <p>2022-Kitchee</p>
+            <p>{prefLang === "Tm" ? "Işlän ýerleri:" : "Места работы:"}</p>
+            <div className="max-w-[680px] w-full">
+              {trainer?.workedAtTm.map((wa, index) => {
+                return (
+                  <p key={index}>
+                    {prefLang === "Ru" ? trainer.workedAtRu[index] : wa}
+                  </p>
+                );
+              })}
             </div>
           </div>
           <div className="flex justify-between">
-            <p>Baýraklary:</p>
-            <div className="w-[720px]">
-              <p>2008-Türkmenistanyň çempiony </p>
-              <p>2008-Türkmenistanyň Superkubok ýeňijisi </p>
-              <p>2010-Latwiýanyň çempiony </p>
-              <p>2012-2013 Latwiýa kubok kümüş medal ýeňijisi </p>
-              <p>2013-Latwiýanyň Superkubok ýeňijisi </p>
-              <p>2014/15-2015/16 Çehiýanyň kubok finalisti </p>
-              <p>2016/17-Çehiýanyň çempiony</p>
-              <p>2015-Türkmenistanyň iň gowy futbolçysy </p>
-              <p>2022/23-Hong Kong Premýer ligasynyň iň gowy futbolçysy</p>
+            <p>{prefLang === "Tm" ? "Baýraklary:" : "Награды:"}</p>
+            <div className="max-w-[680px] w-full">
+              {trainer?.badgesTm.map((badge, index) => {
+                return (
+                  <p key={index}>
+                    {prefLang === "Ru" ? trainer.badgesRu[index] : badge}
+                  </p>
+                );
+              })}
             </div>
           </div>
           <div className="flex justify-between">
-            <p>Iş wezipesi:</p>
-            <div className="w-[720px]">
-              <p>Milli futbol toparynyň oýunçysy</p>
-              <p>Hong Kong Kitchee toparynyň hüjümçisi</p>
+            <p>{prefLang === "Tm" ? "Iş wezipesi:" : "Должность:"}</p>
+            <div className="max-w-[680px] w-full">
+              <p>{prefLang === "Tm" ? trainer?.jobTm : trainer?.jobRu}</p>
             </div>
           </div>
         </div>
         <div className="flex justify-between pt-3">
           <p className="bg-[#CAE4D6] text-[#00843D] uppercase text-[32px] px-5 rounded-sm">
-            Milli
+            {prefLang === "Tm" ? trainer?.madeTm : trainer?.madeRu}
           </p>
           <img src={rating} className="h-full" />
           <button className="bg-[#077EE6] text-white font-oswald text-lg px-3">
@@ -110,4 +126,4 @@ const BCFDetail = () => {
   );
 };
 
-export default BCFDetail;
+export default TrainerDetail;

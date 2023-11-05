@@ -30,35 +30,39 @@ const FederationsList = ({ indexComponent }: { indexComponent: number }) => {
 
   return (
     <Fragment>
-      {federations.map((e, i) => {
+      {federations.map((federation, index) => {
         return (
           <Accordion
-            open={open === e.id}
+            open={open === federation.id}
             className="border-b-2 border-r-2 border-blue-100 w-full bg-white"
-            key={i}
+            key={index}
           >
             <AccordionHeader
-              onClick={() => handleOpen(e.id)}
+              onClick={() => handleOpen(federation.id)}
               className="h-[73px] border-none"
             >
               <div className="flex justify-between w-full">
                 <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase">
-                  {prefLang === "Tm" ? e.nameTm : e.nameRu}
+                  {prefLang === "Tm" ? federation.nameTm : federation.nameRu}
                 </p>
                 <img
-                  src={urlBack + e.imagePath}
+                  src={urlBack + federation.imagePath}
                   className="w-[76px] h-[65px] object-contain object-center"
                 />
               </div>
             </AccordionHeader>
             <AccordionBody>
-              <div className={`w-full h-max ${open != e.id ? "hidden" : ""}`}>
+              <div
+                className={`w-full h-max ${
+                  open != federation.id ? "hidden" : ""
+                }`}
+              >
                 {indexComponent === 0 ? (
-                  <Sports data={e.fsports} prefLang={prefLang} />
+                  <Sports data={federation.fsports} prefLang={prefLang} />
                 ) : indexComponent === 1 ? (
-                  <Trainers data={e.ftrainers} />
+                  <Trainers data={federation.ftrainers} />
                 ) : (
-                  <Athlete data={e.fathlete} />
+                  <Athlete federation={federation} />
                 )}
               </div>
             </AccordionBody>

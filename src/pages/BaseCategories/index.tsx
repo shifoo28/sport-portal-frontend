@@ -9,13 +9,14 @@ import {
   SPORTSHOPS,
 } from "../../tools/links";
 import Federations from "./Federations";
-import BCFDetail from "../../components/Details/BCFDetail";
+
 import GymsAndClubs from "../../components/BCFederations/GymsandClubs";
 import HealthCare from "../../components/BCFederations/HealthCare";
 import HealthyFood from "../../components/BCFederations/HealthyFood";
 import Competitions from "../../components/BCFederations/Competitions";
 import AllCategories from "./AllCategories";
 import Shop from "../../components/BCFederations/Shop";
+import BCFDetail from "../../components/Details/TADetail";
 
 const components = [
   GymsAndClubs,
