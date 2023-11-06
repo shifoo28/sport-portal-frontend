@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { urlBack } from "../../redux/apiCalls";
 import { PATCH_SPORT_NEWS_VIEWS } from "../../redux/types";
 import { RootState } from "../../redux/store";
-import { INews } from "../../redux/interfaces/home";
+import { ILocalNews } from "../../redux/interfaces/home";
 
 const NewsDetail = () => {
   // Hooks
@@ -15,12 +15,12 @@ const NewsDetail = () => {
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const local_news: INews[] = useSelector(
+  const local_news: ILocalNews[] = useSelector(
     (state: RootState) => state.home.local_news
   );
 
   // Operation
-  const news_data: INews =
+  const news_data: ILocalNews =
     state.newsId && local_news.find((ln) => ln.id === state.newsId);
   const same_news = local_news.filter(
     (ln) => ln.categoryId === news_data.categoryId

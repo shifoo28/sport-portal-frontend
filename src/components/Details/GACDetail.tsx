@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import ListofFacility from "../BCFederations/GymsandClubs/List";
+import ListofFacility from "../BaseCategories/GymsandClubs/List";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import location from "../../assets/svg/location.svg";
 import call from "../../assets/svg/call.svg";
 import email from "../../assets/svg/email.svg";
 import link from "../../assets/svg/link.svg";
-import left from "../BCFederations/GymsandClubs/svg/left.svg";
-import right from "../BCFederations/GymsandClubs/svg/right.svg";
+import left from "../BaseCategories/GymsandClubs/svg/left.svg";
+import right from "../BaseCategories/GymsandClubs/svg/right.svg";
 import { RootState } from "../../redux/store";
 import { IGymsAndClubs } from "../../redux/interfaces/gymsclubs";
 import { urlBack } from "../../redux/apiCalls";

@@ -10,12 +10,12 @@ import {
 } from "../../tools/links";
 import Federations from "./Federations";
 
-import GymsAndClubs from "../../components/BCFederations/GymsandClubs";
-import HealthCare from "../../components/BCFederations/HealthCare";
-import HealthyFood from "../../components/BCFederations/HealthyFood";
-import Competitions from "../../components/BCFederations/Competitions";
-import AllCategories from "./AllCategories";
-import Shop from "../../components/BCFederations/Shop";
+import GymsAndClubs from "../../components/BaseCategories/GymsandClubs";
+import HealthCare from "../../components/BaseCategories/HealthCare";
+import HealthyFood from "../../components/BaseCategories/HealthyFood";
+import Competitions from "../../components/BaseCategories/Competitions";
+import AllCategories from "./AllTrainersAthletes";
+import Shop from "../../components/BaseCategories/Shop";
 import BCFDetail from "../../components/Details/TADetail";
 
 const components = [

@@ -3,10 +3,10 @@ import FilterNews from "../../components/Sections/Videos/FilterNews";
 import NewsDetail from "../../components/Details/NewsDetail";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { INews } from "../../redux/interfaces/home";
+import { ILocalNews } from "../../redux/interfaces/home";
 
 const NewsDetails = () => {
-  const local_news: INews[] = useSelector(
+  const local_news: ILocalNews[] = useSelector(
     (state: RootState) => state.home.local_news
   );
 

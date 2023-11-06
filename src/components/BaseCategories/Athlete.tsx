@@ -28,7 +28,7 @@ const Athlete = ({ federation }: { federation: IFederations }) => {
   };
   const linkToAllAthlete = () => {
     navigate(pathname + "/all", {
-      state: { federation },
+      state: { federationId: federation.id },
     });
   };
 
@@ -51,7 +51,7 @@ const Athlete = ({ federation }: { federation: IFederations }) => {
                 Sport görnüşi
               </td> */}
               <td className="" align="center">
-                {prefLang === "Tm" ? "Orny" : "Расположение"}
+                {prefLang === "Tm" ? "Orny" : "Позиция"}
               </td>
               <td className="" align="center">
                 {prefLang === "Tm" ? "Toparynyň ady" : "Название команды"}
@@ -66,8 +66,8 @@ const Athlete = ({ federation }: { federation: IFederations }) => {
             {federation.fathlete?.map((athlete, index) => {
               return (
                 <tr
+                key={index}
                   className="border border-[#0088FF]"
-                  key={athlete.id}
                   onClick={() => linkToAthleteDetail(athlete.id)}
                 >
                   <td className="p-2 font-semibold" align="center">

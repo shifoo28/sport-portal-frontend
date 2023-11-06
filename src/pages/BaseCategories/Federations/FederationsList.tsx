@@ -5,9 +5,9 @@ import {
 } from "@material-tailwind/react";
 import React, { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
-import Athlete from "../../../components/BCFederations/Athlete";
-import Sports from "../../../components/BCFederations/Sports";
-import Trainers from "../../../components/BCFederations/Trainers";
+import Athlete from "../../../components/BaseCategories/Athlete";
+import Sports from "../../../components/BaseCategories/Sports";
+import Trainers from "../../../components/BaseCategories/Trainers";
 import { IFederations } from "../../../redux/interfaces/federations";
 import { RootState } from "../../../redux/store";
 import { urlBack } from "../../../redux/apiCalls";
@@ -60,7 +60,7 @@ const FederationsList = ({ indexComponent }: { indexComponent: number }) => {
                 {indexComponent === 0 ? (
                   <Sports data={federation.fsports} prefLang={prefLang} />
                 ) : indexComponent === 1 ? (
-                  <Trainers data={federation.ftrainers} />
+                  <Trainers federation={federation} />
                 ) : (
                   <Athlete federation={federation} />
                 )}

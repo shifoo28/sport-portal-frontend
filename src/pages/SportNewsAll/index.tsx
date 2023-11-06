@@ -2,14 +2,14 @@ import React from "react";
 import FootballNewsBody from "../../components/Sections/Global/FootballNewsBody";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { INews } from "../../redux/interfaces/home";
+import { ILocalNews } from "../../redux/interfaces/home";
 import { useLocation } from "react-router-dom";
 import { urlBack } from "../../redux/apiCalls";
 
 const SportNewsAll = () => {
   const { state } = useLocation();
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const local_news: INews[] = useSelector(
+  const local_news: ILocalNews[] = useSelector(
     (state: RootState) => state.home.local_news
   );
   const news = local_news.filter(

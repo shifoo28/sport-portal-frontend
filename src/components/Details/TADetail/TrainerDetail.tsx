@@ -1,22 +1,30 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import rating from "../../assets/svg/rating.svg";
+import { useLocation, useNavigate } from "react-router-dom";
+import rating from "../../../assets/svg/rating.svg";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import { IFederations } from "../../redux/interfaces/federations";
-import { urlBack } from "../../redux/apiCalls";
+import { RootState } from "../../../redux/store";
+import { IFederations } from "../../../redux/interfaces/federations";
+import { urlBack } from "../../../redux/apiCalls";
 
 const TrainerDetail = () => {
+  // Hooks
+  const { state, pathname } = useLocation();
+  const navigate = useNavigate();
+
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const { state } = useLocation();
-  const trainers: IFederations[] = useSelector(
+  const f_trainers: IFederations[] = useSelector(
     (state: RootState) => state.federations.federation_trainers
   ); // Get all federations
 
   //   Operation
-  const federation = trainers.find((ft) => ft.id === state.federationId); //Get current trainer's federation
+  const federation = f_trainers.find((ft) => ft.id === state.federationId); //Get current trainer's federation
   const trainer = federation?.ftrainers.find((ft) => ft.id === state.trainerId); // Get trainer
+
+  // Function
+  const linkToAllTrainers = () => {
+    navigate(pathname + "/../all", { state: { federationId: federation?.id } });
+  };
 
   return (
     <div className="mx-40 flex pt-14 justify-between">
@@ -62,7 +70,11 @@ const TrainerDetail = () => {
           <p className="font-oswald text-[50px] text-[#0088FF] uppercase">
             {prefLang === "Tm" ? trainer?.nameTm : trainer?.nameRu}
           </p>
-          <img src={urlBack + federation?.imagePath} alt="" className="w-[57px] h-[65px]" />
+          <img
+            src={urlBack + federation?.imagePath}
+            alt=""
+            className="w-[57px] h-[65px]"
+          />
         </div>
         <div className="font-sofiasans text-2xl">
           <p>{(prefLang === "Tm" ? "Ýaşy: " : "Возраст: ") + trainer?.age}</p>
@@ -113,11 +125,14 @@ const TrainerDetail = () => {
           </div>
         </div>
         <div className="flex justify-between pt-3">
-          <p className="bg-[#CAE4D6] text-[#00843D] uppercase text-[32px] px-5 rounded-sm">
+          <p className="bg-[#CAE4D6] text-[#00843D] uppercase text-[32px] px-5 rounded-sm font-semibold">
             {prefLang === "Tm" ? trainer?.madeTm : trainer?.madeRu}
           </p>
           <img src={rating} className="h-full" />
-          <button className="bg-[#077EE6] text-white font-oswald text-lg px-3">
+          <button
+            className="bg-[#077EE6] text-white font-oswald text-lg px-3"
+            onClick={linkToAllTrainers}
+          >
             {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
           </button>
         </div>

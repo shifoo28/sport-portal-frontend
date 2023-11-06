@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IGetNewsQuery } from "./interfaces/home";
 
 export const urlBack = "http://10.10.73.40/";
 
@@ -13,21 +14,37 @@ export async function fetchMain() {
   }
 }
 
-export async function fetchLocalNews() {
+export async function fetchLocalNews(query: IGetNewsQuery) {  
   try {
-    const res = await fetch(urlBack + "main-page/Local");
+    const res = await axios.get(urlBack + "main-page", {
+      params: { ...query },
+    });
 
-    return (await res.json()).data;
+    return res.data.data;
   } catch (error) {
     throw error;
   }
 }
 
-export async function fetchVideoNews() {
+export async function fetchGlobalNews(query: IGetNewsQuery) {
   try {
-    const res = await fetch(urlBack + "main-page/Video");
+    const res = await axios.get(urlBack + "main-page", {
+      params: { ...query },
+    });
 
-    return (await res.json()).data;
+    return res.data.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function fetchVideoNews(query: IGetNewsQuery) {
+  try {
+    const res = await axios.get(urlBack + "main-page", {
+      params: { ...query },
+    });
+
+    return res.data.data;
   } catch (error) {
     throw error;
   }

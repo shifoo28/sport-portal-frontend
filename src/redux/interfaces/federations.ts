@@ -33,21 +33,16 @@ export interface IFSports {
 }
 export interface IFTrainers {
   id: string;
+  rating: number;
+  experience: number;
+  views: number;
   age: number;
   jobTm: string;
   jobRu: string;
-  club: string;
-  views: number;
-  links: object;
   nameTm: string;
   nameRu: string;
   madeTm: string;
   madeRu: string;
-  rating: number;
-  imagePath: string;
-  experience: number;
-  positionTm: string;
-  positionRu: string;
   birthPlaceTm: string;
   birthPlaceRu: string;
   sportLevelTm: string;
@@ -56,17 +51,11 @@ export interface IFTrainers {
   workedAtRu: string[];
   badgesTm: string[];
   badgesRu: string[];
+  imagePath: string;
+  links: object;
   federationId: string;
-  federation: {
-    id: string;
-    nameTm: string;
-    nameRu: string;
-    imagePath: string;
-    createdAt: string;
-    updatedAt: string;
-  };
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 export interface IFAthletes {
   id: string;
@@ -96,14 +85,6 @@ export interface IFAthletes {
   createdAt: string;
   updatedAt: string;
   federationId: string;
-  federation: {
-    id: string;
-    nameTm: string;
-    nameRu: string;
-    imagePath: string;
-    createdAt: string;
-    updatedAt: string;
-  };
 }
 export interface IFederationsState {
   federation_sports?: IFederations[];

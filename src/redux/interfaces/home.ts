@@ -1,12 +1,15 @@
 import { ISportCategory } from "./main";
-import { IShopCategories } from "./shop";
 
+export enum ESection {
+  Local = "Local",
+  World = "World",
+  Video = "Video",
+}
 export interface IHome {
   type: string;
   payload: any;
 }
-
-export interface INews {
+export interface ILocalNews {
   id: string;
   textTm: string;
   textRu: string;
@@ -17,7 +20,22 @@ export interface INews {
   locationRu: string;
   imagePath: string;
   categoryId: string;
-  category: IShopCategories;
+  category: ISportCategory;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export interface IWorldNews {
+  id: string;
+  textTm: string;
+  textRu: string;
+  views: number;
+  nameTm: string;
+  nameRu: string;
+  locationTm: string;
+  locationRu: string;
+  imagePath: string;
+  categoryId: string;
+  category: ISportCategory;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -35,8 +53,14 @@ export interface IVideoNews {
   createdAt: Date;
   updatedAt: Date;
 }
-
 export interface IHomeState {
-  local_news: INews[];
+  local_news: ILocalNews[];
+  world_news: IWorldNews[];
   video_news: IVideoNews[];
+}
+export interface IGetNewsQuery {
+  lang: string;
+  skip: number;
+  take: number;
+  section: ESection;
 }

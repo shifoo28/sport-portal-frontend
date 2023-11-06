@@ -1,17 +1,26 @@
 import React from "react";
 import rating from "../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
-import { IFederations } from "../../redux/interfaces/federations";
+import { IFAthletes } from "../../redux/interfaces/federations";
 import { urlBack } from "../../redux/apiCalls";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { flags } from "./Athlete";
 
-const AllAhtlete = () => {
+const AllAhtlete = ({ athletes }: { athletes: IFAthletes[] }) => {
+  // Hooks
   const navigate = useNavigate();
   const { pathname, state } = useLocation();
-  const federation: IFederations = state.federation;
+
+  // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
+
+  // Function
+  const linkToAthleteDetail = (athleteId: string) => {
+    navigate(pathname + "/../id", {
+      state: { athleteId, federationId: state.federationId },
+    });
+  };
 
   return (
     <div className="w-full min-h-screen font-sofiasans">
@@ -22,42 +31,34 @@ const AllAhtlete = () => {
               №
             </td>
             <td className="" align="center">
-              Surady
+              {prefLang === "Tm" ? "Surady" : "Фото"}
             </td>
             <td className="" align="center">
-              Ady we familiýasy
-            </td>
-            {/* <td className="" align="center">
-              Sport görnüşi
-            </td> */}
-            <td className="" align="center">
-              Orny
+              {prefLang === "Tm" ? "Ady we familiýasy" : "Имя и фамилия"}
             </td>
             <td className="" align="center">
-              Toparynyň ady
+              {prefLang === "Tm" ? "Orny" : "Позиция"}
             </td>
             <td className="" align="center">
-              Reýtingi
+              {prefLang === "Tm" ? "Toparynyň ady" : "Название команды"}
+            </td>
+            <td className="" align="center">
+              {prefLang === "Tm" ? "Reýtingi" : "Рейтинг"}
             </td>
             <td className="" align="center"></td>
           </tr>
         </thead>
         <tbody className="text-base lowercase">
-          {federation.fathlete?.map((athlete, index) => {
+          {athletes.map((athlete, index) => {
             return (
-              <tr className="border border-[#0088FF]">
+              <tr
+                className="border border-[#0088FF]"
+                onClick={() => linkToAthleteDetail(athlete.id)}
+              >
                 <td className="p-2 font-semibold" align="center">
                   {index + 1}
                 </td>
-                <td
-                  className="p-2 font-semibold cursor-pointer"
-                  align="center"
-                  onClick={() =>
-                    navigate(pathname.slice(0, pathname.length - 4) + "/id", {
-                      state: { id: athlete.id },
-                    })
-                  }
-                >
+                <td className="p-2 font-semibold cursor-pointer" align="center">
                   <img
                     src={urlBack + athlete.imagePath}
                     className="w-[60px] h-[60px] object-cover"
@@ -66,17 +67,9 @@ const AllAhtlete = () => {
                 <td
                   className="p-2 font-semibold cursor-pointer uppercase"
                   align="center"
-                  onClick={() =>
-                    navigate(pathname.slice(0, pathname.length - 4) + "/id", {
-                      state: { id: athlete.id },
-                    })
-                  }
                 >
                   {prefLang === "Tm" ? athlete.nameTm : athlete.nameRu}
                 </td>
-                {/* <td className="p-2 font-semibold" align="center">
-                  {}
-                </td> */}
                 <td className="p-2 font-semibold capitalize" align="center">
                   {prefLang === "Tm" ? athlete.positionTm : athlete.positionRu}
                 </td>

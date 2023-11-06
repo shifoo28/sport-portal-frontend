@@ -2,15 +2,22 @@ import React, { useState } from "react";
 import nextSvg from "../../../assets/svg/next.svg";
 import prevSvg from "../../../assets/svg/prev.svg";
 import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { ISportCategory } from "../../../redux/interfaces/main";
 
 export const HeaderWithCategories = () => {
-  const [cIndex, setCIndex] = useState(0);
-  const prefLang = useSelector((state: any) => state.main.prefLang);
-  const categories: object[] = useSelector(
-    (state: any) => state.main.sport_categories
+  // useState
+  const [categoryIndex, setCategoryIndex] = useState(0);
+
+  // useSelector
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const categories: ISportCategory[] = useSelector(
+    (state: RootState) => state.main.sport_categories
   );
-  const c = categories.filter(
-    (i, index) => index >= cIndex && index < cIndex + 4
+
+  // Operation
+  const filtered_categories = categories.filter(
+    (fc, index) => index >= categoryIndex && index < categoryIndex + 4
   );
 
   return (
@@ -27,36 +34,36 @@ export const HeaderWithCategories = () => {
         >
           {prefLang === "Tm" ? "Hemmesi" : "Все"}
         </div>
-        {c.map((e: any) => {
+        {filtered_categories.map((fc, index) => {
           return (
             <div
               className={`h-6 px-4 bg-[#0E2165] flex items-center hover:bg-[#0088FF] cursor-pointer`}
-              key={e.id}
+              key={index}
             >
-              {prefLang === "Tm" ? e.nameTm : e.nameRu}
+              {prefLang === "Tm" ? fc.nameTm : fc.nameRu}
             </div>
           );
         })}
         <div className="flex gap-3">
           <button
-            disabled={!(cIndex > 0)}
-            onClick={() => setCIndex(cIndex - 1)}
+            disabled={!(categoryIndex > 0)}
+            onClick={() => setCategoryIndex(categoryIndex - 1)}
           >
             <img
               src={prevSvg}
               className={`h-6 w-6 ${
-                !(cIndex > 0) ? "bg-[#6E748C]" : "bg-[#0E2165]"
+                !(categoryIndex > 0) ? "bg-[#6E748C]" : "bg-[#0E2165]"
               }`}
             />
           </button>
           <button
-            disabled={cIndex === categories.length - 4}
-            onClick={() => setCIndex(cIndex + 1)}
+            disabled={categoryIndex === categories.length - 4}
+            onClick={() => setCategoryIndex(categoryIndex + 1)}
           >
             <img
               src={nextSvg}
               className={`${
-                cIndex === categories.length - 4
+                categoryIndex === categories.length - 4
                   ? "bg-[#6E748C]"
                   : "bg-[#0E2165]"
               } h-6 w-6 cursor-pointer`}
@@ -69,7 +76,7 @@ export const HeaderWithCategories = () => {
 };
 
 export const HeaderWithoutCategories = () => {
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
 
   return (
     <div className="flex h-11 font-oswald w-full">

@@ -1,6 +1,6 @@
 import { all } from "redux-saga/effects";
 import { mainSaga } from "./mainSaga";
-import { localNewsSaga, videoNewsSaga } from "./homeSaga";
+import { globalNewsSaga, localNewsSaga, videoNewsSaga } from "./homeSaga";
 import { fathletesSaga, fsportsSaga, ftrainersSaga } from "./federations";
 import { newsDetails } from "./newsDetailsSaga";
 import {
@@ -16,6 +16,7 @@ export default function* rootSaga() {
   yield all([
     mainSaga(),
     localNewsSaga(),
+    globalNewsSaga(),
     videoNewsSaga(),
     fsportsSaga(),
     ftrainersSaga(),

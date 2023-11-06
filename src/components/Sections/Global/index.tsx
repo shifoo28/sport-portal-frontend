@@ -3,7 +3,7 @@ import { HeaderWithCategories, HeaderWithoutCategories } from "./Headers";
 import WorldNewsBody from "./WorldNewsBody";
 import FootballNewsBody from "./FootballNewsBody";
 
-const index = () => {
+const index = () => {  
   return (
     <div className="flex w-full mt-7 h-max max-w-[1170px] mx-32">
       <div className="flex justify-between w-full">

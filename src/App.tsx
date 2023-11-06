@@ -18,7 +18,7 @@ import ToolBox from "./components/Headers/ToolBox";
 import SportNewsAll from "./pages/SportNewsAll";
 import Navbar from "./components/Navbar";
 import { useDispatch } from "react-redux";
-import { GET_LOCAL_NEWS, GET_MAIN, GET_VIDEO_NEWS } from "./redux/types";
+import { GET_MAIN } from "./redux/types";
 import Login from "./pages/Login";
 import AboutUs from "./pages/AboutUs";
 import BaseCategories from "./pages/BaseCategories";
@@ -91,10 +91,6 @@ const App = () => {
 };
 
 const TemplateApp = ({ children }: { children: JSX.Element }) => {
-  const dispatch = useDispatch();
-  dispatch({ type: GET_LOCAL_NEWS });
-  dispatch({ type: GET_VIDEO_NEWS });
-
   return (
     <div className="flex justify-center">
       <div className="max-w-[1440px]">
