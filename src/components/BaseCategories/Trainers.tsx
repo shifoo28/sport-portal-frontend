@@ -27,7 +27,7 @@ const Trainers = ({ federation }: { federation: IFederations }) => {
   return (
     <div className="flex flex-col gap-[5px]">
       <div className="pt-8 px-8">
-        <div className="w-full h-[395px] flex flex-wrap justify-between overflow-auto">
+        <div className="w-full h-[395px] flex flex-wrap justify-around overflow-auto">
           {federation.ftrainers.map((trainer, index) => {
             return (
               <button

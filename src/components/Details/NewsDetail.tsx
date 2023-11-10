@@ -5,31 +5,31 @@ import { useDispatch, useSelector } from "react-redux";
 import { urlBack } from "../../redux/apiCalls";
 import { PATCH_SPORT_NEWS_VIEWS } from "../../redux/types";
 import { RootState } from "../../redux/store";
-import { ILocalNews } from "../../redux/interfaces/home";
+import { ESection, ILocalNews, IWorldNews } from "../../redux/interfaces/home";
 
 const NewsDetail = () => {
   // Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const { state: r_state } = useLocation();
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const local_news: ILocalNews[] = useSelector(
-    (state: RootState) => state.home.local_news
+  const news: ILocalNews[] | IWorldNews[] = useSelector((state: RootState) =>
+    r_state.section === ESection.Local
+      ? state.home.local_news
+      : state.home.world_news
   );
 
   // Operation
-  const news_data: ILocalNews =
-    state.newsId && local_news.find((ln) => ln.id === state.newsId);
-  const same_news = local_news.filter(
-    (ln) => ln.categoryId === news_data.categoryId
-  );
+  const news_data =
+    r_state.newsId && news.find((ln) => ln.id === r_state.newsId);
+  const same_news = news.filter((ln) => ln.categoryId === news_data.categoryId);
 
   useEffect(() => {
     dispatch({
       type: PATCH_SPORT_NEWS_VIEWS,
-      payload: { newsId: state.newsId, categoryId: news_data?.categoryId },
+      payload: { newsId: r_state.newsId, categoryId: news_data?.categoryId },
     });
   }, [prefLang]);
 

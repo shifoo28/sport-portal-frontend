@@ -27,6 +27,7 @@ const GACDetail = () => {
     data?.imagePath5,
   ];
   const [indexImage, setIndexImage] = useState(0);
+  console.log(indexImage);
 
   return (
     <div className="mx-32 flex flex-col pt-7 max-w-[1170px]">
@@ -124,7 +125,9 @@ const GACDetail = () => {
             <img src={urlBack + images[indexImage]} className="w-[850px]" />
             <button
               className="absolute top-[50%] left-7"
-              onClick={() => setIndexImage((indexImage - 1) % 5)}
+              onClick={() =>
+                setIndexImage(indexImage < 1 ? images.length-1 : indexImage - 1)
+              }
             >
               <img src={right} />
             </button>

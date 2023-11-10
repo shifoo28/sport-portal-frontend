@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { NEWS_DETAILS_PAGE } from "../../../tools/links";
 import { urlBack } from "../../../redux/apiCalls";
+import { ESection } from "../../../redux/interfaces/home";
 
 type CardData = {
   id: string;
@@ -21,10 +22,13 @@ const NewsCard: React.FC<CardData> = ({
   imgLink,
   cardSize,
 }) => {
+  // Hooks
+  const navigate = useNavigate();
+
+  // Operation
   let textSize = "text-xl",
     titleMaxWidth = "max-w-[300px]",
     bottom = "bottom-5";
-
   switch (cardSize) {
     case "max":
       {
@@ -53,12 +57,16 @@ const NewsCard: React.FC<CardData> = ({
     default:
       break;
   }
-  const navigate = useNavigate();
+
+  // Function
+  const linkToNewsDetail = (newsId: string) => {
+    navigate(NEWS_DETAILS_PAGE, { state: { newsId, section: ESection.Local } });
+  };
 
   return (
     <figure
       className={`relative w-full h-full m-0 cursor-pointer`}
-      onClick={() => navigate(NEWS_DETAILS_PAGE, { state: { newsId: id } })}
+      onClick={() => linkToNewsDetail(id)}
     >
       <div className="w-full h-full">
         <img

@@ -1,79 +1,86 @@
 import React from "react";
-
-const worldNews = [
-  {
-    id: 0,
-    placeAndDate: "Craig Bator - 27 Dec 2020",
-    title: "Penn’s expanding political climate gears up for 2020 election",
-    imgLink: "/images/world_news/news_2.png",
-  },
-  {
-    id: 1,
-    placeAndDate: "Craig Bator - 27 Dec 2020",
-    title: "Things to Look For in a Financial Trading Platform",
-    imgLink: "/images/world_news/news_3.png",
-  },
-  {
-    id: 2,
-    placeAndDate: "Craig Bator - 27 Dec 2020",
-    title: "The only thing that overcomes hard luck is hard work",
-    imgLink: "/images/world_news/news_4.png",
-  },
-  {
-    id: 3,
-    placeAndDate: "Craig Bator - 27 Dec 2020",
-    title: "Success is not a good teacher failure makes you humble",
-    imgLink: "/images/world_news/news_5.png",
-  },
-  {
-    id: 4,
-    placeAndDate: "Craig Bator - 27 Dec 2020",
-    title: "At Value-Focused Hotels, the Free Breakfast Gets Bigger",
-    imgLink: "/images/world_news/news_6.png",
-  },
-];
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { ESection, IWorldNews } from "../../../redux/interfaces/home";
+import { urlBack } from "../../../redux/apiCalls";
+import { useNavigate } from "react-router-dom";
+import { NEWS_DETAILS_PAGE } from "../../../tools/links";
 
 const WorldNewsBody = () => {
-  let category = "Futbol";
+  // Hooks
+  const navigate = useNavigate();
+
+  // useSelector
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const world_news: IWorldNews[] = useSelector(
+    (state: RootState) => state.home.world_news
+  );
+
+  // Operation
+  const [world_news_main, ...world_news_other] = world_news;
+
+  // Function
+  const linkToNewsDetail = (newsId: string) => {
+    navigate(NEWS_DETAILS_PAGE, { state: { newsId, section: ESection.World } });
+  };
 
   return (
-    <div className="flex justify-between pt-5 gap-7">
-      <div className="flex flex-col max-w-[400px] w-full">
+    <div className="flex justify-between pt-5 gap-7 ">
+      <div
+        className="flex flex-col max-w-[400px] w-full cursor-pointer"
+        onClick={() => linkToNewsDetail(world_news_main.id)}
+      >
         <div className="relative">
           <img
-            src="/images/world_news/news_1.png"
+            src={urlBack + world_news_main?.imagePath}
             className="object-cover h-64 w-full"
           />
           <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 to-black/50 " />
           <div className="absolute top-6 left-6 h-5 bg-[#08F] w-max text-white text-[9px] flex items-center">
-            <p className="px-3">{category}</p>
+            <p className="px-3">
+              {prefLang === "Tm"
+                ? world_news_main?.category.nameTm
+                : world_news_main?.category.nameRu}
+            </p>
           </div>
         </div>
         <div className="flex flex-col pt-6">
           <p className="pb-[6px] font-sofiasans text-[10px]">
-            Craig Bator - 27 Dec 2020
+            {prefLang === "Tm"
+              ? world_news_main?.locationTm
+              : world_news_main?.locationRu}
           </p>
-          <p className="pb-4 font-oswald text-lg tracking-wide font-semibold cursor-pointer">
-            Now Is the Time to Think About Your Small Business Success
+          <p className="pb-4 font-oswald text-lg tracking-wide font-semibold capitalize">
+            {prefLang === "Tm"
+              ? world_news_main?.nameTm
+              : world_news_main?.nameRu}
           </p>
-          <p className="font-sofiasans text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
-            lobortis augue condimentum maecenas. Metus at in fames vitae posuere
-            ut vel vulputate....
+          <p className="font-sofiasans text-sm text-ellipsis overflow-hidden  h-16">
+            {prefLang === "Tm"
+              ? world_news_main?.textTm
+              : world_news_main?.textRu}
           </p>
         </div>
       </div>
       <div className="w-full flex flex-col justify-between">
-        {worldNews.map((e) => {
+        {world_news_other?.slice(0, 5).map((wn, index) => {
           return (
-            <div className="flex cursor-pointer">
+            <div
+              className="flex cursor-pointer"
+              key={index}
+              onClick={() => linkToNewsDetail(wn.id)}
+            >
               <img
-                src={e.imgLink}
+                src={urlBack + wn.imagePath}
                 className="h-[70px] w-[90px] object-cover"
               />
               <div className="pl-4">
-                <p className="font-sofiasans text-[10px]">{e.placeAndDate}</p>
-                <p className="font-oswald text-[16px] max-w-[280px]">{e.title}</p>
+                <p className="font-sofiasans text-[10px]">
+                  {prefLang === "Tm" ? wn.locationTm : wn.locationRu}
+                </p>
+                <p className="font-oswald text-[16px] max-w-[280px] capitalize">
+                  {prefLang === "Tm" ? wn.nameTm : wn.nameRu}
+                </p>
               </div>
             </div>
           );
