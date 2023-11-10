@@ -20,18 +20,24 @@ const descriptionTm =
   "Türgenleriň, ulularyň we çagalaryň lukmançylyk barlaglary Döwlet Saglygy goraýyş ministrliginiň 2020-nji ýylyň 23-nji oktýabryndaky N 1144n Buýruga gatnaşýan adamlara lukmançylyk kömegini bermegiň tertibi tassyklanylandan soň buýrugy boýunça geçirilýär. bedenterbiýe we sport (bedenterbiýe we sport çärelerini taýýarlamakda we geçirmekde), şol sanda sport tälimini almak, guramalarda bedenterbiýe we sport bilen meşgullanmak we synag standartlaryny ýerine ýetirmek isleýän adamlary lukmançylyk barlagynyň tertibini goşmak bilen (Zähmet we goranmaga taýyn) bedenterbiýe we sport toplumynyň (synaglar) we bedenterbiýe we sport çärelerine gatnaşmaga kabul edilmek.";
 
 const Component = () => {
+  // Hooks
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+
+  // useState
+  const [open, setOpen] = React.useState("");
+
+  // useSelector
   const prefLang = useSelector((state: any) => state.main.prefLang);
   const hcdepartmnts: IHCDepartment[] = useSelector(
     (state: RootState) => state.healthcare.health_care_departments
   );
 
-  const [open, setOpen] = React.useState("");
+  // Function
   const handleOpen = (value: string) => setOpen(open === value ? "" : value);
-  const linkTo = (l: string, employeeId: string, departmentId: string) => {
-    navigate(l, { state: { employeeId, departmentId } });
+  const linkToEmployeeDetail = (employeeId: string, departmentId: string) => {
+    navigate(pathname + "/detail", { state: { employeeId, departmentId } });
     dispatch(activateTab(5));
   };
 
@@ -64,70 +70,70 @@ const Component = () => {
         </p>
       </div>
       <div className="flex flex-col gap-8">
-        {hcdepartmnts.map((d, i) => {
+        {hcdepartmnts.map((department, index) => {
           return (
             <Accordion
-              open={open === d.id}
+              open={open === department.id}
               className="border-b-2 border-r-2 border-blue-100 w-full bg-white"
-              key={i}
+              key={index}
             >
               <AccordionHeader
-                onClick={() => handleOpen(d.id)}
+                onClick={() => handleOpen(department.id)}
                 className="h-[73px] border-none"
               >
                 <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase font-oswald font-semibold">
-                  {prefLang === "Tm" ? d.nameTm : d.nameRu}
+                  {prefLang === "Tm" ? department.nameTm : department.nameRu}
                 </p>
               </AccordionHeader>
               <AccordionBody>
                 <div
                   className={`w-full h-max px-8 ${
-                    open != d.id ? "hidden" : ""
+                    open != department.id ? "hidden" : ""
                   }`}
                 >
-                  <div className="overflow-auto h-60 gap-y-4 flex-wrap">
-                    {d.employees.map((e, i) => {
+                  <div className="overflow-auto h-60 gap-y-4 flex flex-wrap justify-between pr-2">
+                    {department.employees.map((employee, index) => {
                       return (
                         <button
-                          key={i}
-                          className="flex max-w-[345px] border border-[#0088FF] h-[108px]"
-                          onClick={() =>
-                            linkTo(pathname + "/detail", e.id, d.id)
-                          }
+                          key={index}
+                          className="flex w-[345px] border border-[#0088FF] h-[108px]"
+                          onClick={() => linkToEmployeeDetail(employee.id, department.id)}
                         >
                           <img
-                            src={urlBack + e.imagePath}
+                            src={urlBack + employee.imagePath}
                             className="w-[95px] h-full object-cover"
                           />
-                          <div className="flex flex-col font-sofiasans text-[#0F1A42] justify-between h-full pl-2 pb-1">
+                          <div className="flex flex-col font-sofiasans text-[#0F1A42] justify-between h-full pl-2 pb-1 w-[250px]">
                             <p className="font-semibold text-left h-4 uppercase">
-                              {prefLang === "Tm" ? e.nameTm : e.nameRu}
+                              {prefLang === "Tm"
+                                ? employee.nameTm
+                                : employee.nameRu}
                             </p>
                             <div className="w-full">
                               <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
                                 {prefLang === "Tm"
-                                  ? `Ýaşy: ${e.age}`
-                                  : `Возраст: ${e.age}`}
+                                  ? `Ýaşy: ${employee.age}`
+                                  : `Возраст: ${employee.age}`}
+                              </p>
+                              <p className="h-[14px] text-[10px] text-left truncate w-full">
+                                {prefLang === "Tm"
+                                  ? `Iş ýeri: ${employee.workAtTm}`
+                                  : `Место работы: ${employee.workAtRu}`}
                               </p>
                               <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
                                 {prefLang === "Tm"
-                                  ? `Iş ýeri: ${e.workAtTm}`
-                                  : `Место работы: ${e.workAtRu}`}
+                                  ? `Iş bölümi: ${department.nameTm}`
+                                  : `Кафедра: ${department.nameRu}`}
                               </p>
                               <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
                                 {prefLang === "Tm"
-                                  ? `Iş bölümi: ${d.nameTm}`
-                                  : `Кафедра: ${d.nameRu}`}
+                                  ? `Iş tejribesi: ${employee.experience}ýyl`
+                                  : `Опыт работы: ${employee.experience}г`}
                               </p>
                               <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
                                 {prefLang === "Tm"
-                                  ? `Iş tejribesi: ${e.experience}ýyl`
-                                  : `Опыт работы: ${e.experience}г`}
-                              </p>
-                              <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
-                                {prefLang === "Tm"
-                                  ? `Iş wezipesi: ${e.jobTm}`
-                                  : `Должность: ${e.jobRu}`}
+                                  ? `Iş wezipesi: ${employee.jobTm}`
+                                  : `Должность: ${employee.jobRu}`}
                               </p>
                             </div>
                             <div className="flex justify-end">
