@@ -29,5 +29,5 @@ export interface IHCDepartment {
   employees: IHCEmployee[];
 }
 export interface IHealthCareState {
-  health_care_departments: IHCEmployee[];
+  health_care_departments: IHCDepartment[];
 }

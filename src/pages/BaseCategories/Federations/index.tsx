@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  SPORTS,
-  TRAINERS,
-  ATHLETE,
-  BASE_CATEGORIES,
-} from "../../../tools/links";
+import { SPORTS, TRAINERS, ATHLETE } from "../../../tools/links";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import {
@@ -12,8 +7,9 @@ import {
   GET_FEDERATION_SPORTS,
   GET_FEDERATION_TRAINERS,
 } from "../../../redux/types";
-import FederationsList from "./FederationsList";
+import List from "./List";
 import { RootState } from "../../../redux/store";
+import AllMembers from "../AllMembers";
 
 export const bcfInformation = [
   {
@@ -40,10 +36,14 @@ export const bcfInformation = [
 ];
 
 const Federations = () => {
+  // Hooks
   const dispatch = useDispatch();
-  const location = useLocation();
+  const { pathname } = useLocation();
+
+  // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const pathname = location.pathname.slice(BASE_CATEGORIES.length);
+
+  // Operation
   let indexComponent = bcfInformation.findIndex((info) =>
     pathname.includes(info.link)
   );
@@ -54,7 +54,9 @@ const Federations = () => {
     ? dispatch({ type: GET_FEDERATION_TRAINERS })
     : dispatch({ type: GET_FEDERATION_ATHLETES });
 
-  return (
+  return pathname.includes("all") ? (
+    <AllMembers />
+  ) : (
     <div className="w-full max-w-[1170px] mx-32 pt-7 font-oswald">
       <div className="flex flex-col w-full items-center">
         <p className="text-[50px] text-center max-w-[975px] w-full capitalize text-[#0F1A42]">
@@ -63,7 +65,7 @@ const Federations = () => {
             : bcfInformation[indexComponent].titleRu}
         </p>
         <div className="flex flex-col gap-8 w-full pt-10">
-          <FederationsList indexComponent={indexComponent} />
+          <List indexComponent={indexComponent} />
         </div>
       </div>
     </div>

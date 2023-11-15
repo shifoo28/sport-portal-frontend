@@ -12,7 +12,7 @@ import { IFederations } from "../../../redux/interfaces/federations";
 import { RootState } from "../../../redux/store";
 import { urlBack } from "../../../redux/apiCalls";
 
-const FederationsList = ({ indexComponent }: { indexComponent: number }) => {
+const List = ({ indexComponent }: { indexComponent: number }) => {
   const [open, setOpen] = useState("");
   const handleOpen = (value: string) => setOpen(open === value ? "" : value);
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
@@ -73,4 +73,4 @@ const FederationsList = ({ indexComponent }: { indexComponent: number }) => {
   );
 };
 
-export default FederationsList;
+export default List;

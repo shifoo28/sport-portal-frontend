@@ -40,6 +40,7 @@ const Component = () => {
     navigate(pathname + "/detail", { state: { employeeId, departmentId } });
     dispatch(activateTab(5));
   };
+  const linkToAllEmployees = () => {};
 
   return pathname.includes("detail") ? (
     <HCDetail />
@@ -97,7 +98,9 @@ const Component = () => {
                         <button
                           key={index}
                           className="flex w-[345px] border border-[#0088FF] h-[108px]"
-                          onClick={() => linkToEmployeeDetail(employee.id, department.id)}
+                          onClick={() =>
+                            linkToEmployeeDetail(employee.id, department.id)
+                          }
                         >
                           <img
                             src={urlBack + employee.imagePath}

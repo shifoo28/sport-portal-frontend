@@ -27,10 +27,9 @@ const GACDetail = () => {
     data?.imagePath5,
   ];
   const [indexImage, setIndexImage] = useState(0);
-  console.log(indexImage);
 
   return (
-    <div className="mx-32 flex flex-col pt-7 max-w-[1170px]">
+    <div className="mx-23 flex flex-col pt-7 max-w-[1170px]">
       <div className="flex justify-end">
         <p className="max-w-[850px] w-full text-center font-oswald text-[26px] text-[#0F1A42] px-72 capitalize font-semibold">
           {prefLang === "Tm" ? data?.nameTm : data?.nameRu}
@@ -60,7 +59,7 @@ const GACDetail = () => {
             </p>
             <p className="flex text-sm gap-7 text-[#182135]">
               <img src={link} />
-              <a href={data?.link} className="hover:underline">
+              <a href={data?.link} className="hover:underline truncate">
                 {data?.link}
               </a>
             </p>
