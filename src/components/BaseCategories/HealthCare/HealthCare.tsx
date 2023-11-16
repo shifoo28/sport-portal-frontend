@@ -5,14 +5,15 @@ import {
 } from "@material-tailwind/react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import rating from "../../assets/svg/rating.svg";
+import rating from "../../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
-import { activateTab } from "../../redux/actions/main";
-import HCDetail from "../Details/HCDetail";
-import { GET_HEALTH_CARE_DEPARTMENTS } from "../../redux/types";
-import { RootState } from "../../redux/store";
-import { urlBack } from "../../redux/apiCalls";
-import { IHCDepartment } from "../../redux/interfaces/hcdepartment";
+import { activateTab } from "../../../redux/actions/main";
+import HCDetail from "../../Details/HCDetail";
+import { GET_HEALTH_CARE_DEPARTMENTS } from "../../../redux/types";
+import { RootState } from "../../../redux/store";
+import { urlBack } from "../../../redux/apiCalls";
+import { IHCDepartment } from "../../../redux/interfaces/hcdepartment";
+import AllHCDEmployees from "./AllEmployees";
 
 const descriptionRu =
   'Медицинские осмотры спортсменов, взрослых и детей, проводятся в соответствии с Приказом МЗ РФ от 23 октября 2020 г. N 1144н "Об утверждении порядка организации оказания медицинской помощи лицам, занимающимся физической культурой и спортом (в том числе при подготовке и проведении физкультурных мероприятий и спортивных мероприятий), включая порядок медицинского осмотра лиц, желающих пройти спортивную подготовку, заниматься физической культурой и спортом в организациях и (или) выполнить нормативы испытаний (тестов) Всероссийского физкультурно-спортивного комплекса "Готов к труду и обороне" (Г ТО)" и форм медицинских заключений о допуске к участию физкультурных и спортивных мероприятиях" Цены ниже муниципальных.';
@@ -23,7 +24,7 @@ const Component = () => {
   // Hooks
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { pathname } = useLocation();
+  const { pathname, state } = useLocation();
 
   // useState
   const [open, setOpen] = React.useState("");
@@ -40,10 +41,19 @@ const Component = () => {
     navigate(pathname + "/detail", { state: { employeeId, departmentId } });
     dispatch(activateTab(5));
   };
-  const linkToAllEmployees = () => {};
+  const linkToAllEmployees = (departmentId: string) => {
+    navigate(pathname + "/all", { state: { departmentId } });
+  };
 
   return pathname.includes("detail") ? (
     <HCDetail />
+  ) : pathname.includes("all") ? (
+    <AllHCDEmployees
+      department={
+        state.departmentId &&
+        hcdepartmnts.find((department) => department.id === state.departmentId)
+      }
+    />
   ) : (
     <div className="mx-32 max-w-[1170px] pt-8 flex flex-col gap-10">
       <div className="px-16">
@@ -148,7 +158,10 @@ const Component = () => {
                     })}
                   </div>
                   <div className="flex justify-end pt-4 px-6">
-                    <button className="bg-[#077EE6] text-white h-11 font-oswald px-4">
+                    <button
+                      className="bg-[#077EE6] text-white h-11 font-oswald px-4"
+                      onClick={() => linkToAllEmployees(department.id)}
+                    >
                       {prefLang === "Tm"
                         ? "Hemmesini görmek"
                         : "Посмотреть все"}

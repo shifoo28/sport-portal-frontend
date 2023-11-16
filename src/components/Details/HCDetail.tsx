@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import rating from "../../assets/svg/rating.svg";
 import { RootState } from "../../redux/store";
@@ -7,15 +7,25 @@ import { urlBack } from "../../redux/apiCalls";
 import { IHCDepartment } from "../../redux/interfaces/hcdepartment";
 
 const HCDetail = () => {
-  const location = useLocation();
-  const { employeeId, departmentId } = location.state;
+  // Hooks
+  const navigate = useNavigate();
+  const { pathname, state } = useLocation();
 
+  // useSelector
+  const prefLang = useSelector((state: any) => state.main.prefLang);
   const departments: IHCDepartment[] = useSelector(
     (state: RootState) => state.healthcare.health_care_departments
   );
+
+  // Operation
+  const { employeeId, departmentId } = state;
   const department = departments.find((d) => d.id === departmentId);
   const employee = department?.employees.find((e) => e.id === employeeId);
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+
+  // Function
+  const linkToAllEmployees = () => {
+    navigate(pathname + "/../all", { state: { departmentId } });
+  };
 
   return (
     <div className="flex items-center justify-center pt-9">
@@ -91,7 +101,10 @@ const HCDetail = () => {
           <div className="flex justify-between pt-10">
             <span></span>
             <img src={rating} className="h-full" />
-            <button className="bg-[#077EE6] text-white h-11 font-oswald px-4">
+            <button
+              className="bg-[#077EE6] text-white h-11 font-oswald px-4"
+              onClick={linkToAllEmployees}
+            >
               {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
             </button>
           </div>

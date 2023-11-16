@@ -4,11 +4,9 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { urlBack } from "../../redux/apiCalls";
-import { ATHLETE, TRAINERS } from "../../tools/links";
+import { ATHLETE } from "../../tools/links";
 import { IFederations } from "../../redux/interfaces/federations";
 import AllTrainers from "../../components/BaseCategories/AllMembers/AllTrainers";
-import AllHCDEmployees from "../../components/BaseCategories/AllMembers/AllHCDEmployees";
-import { IHCDepartment } from "../../redux/interfaces/hcdepartment";
 
 const AllMembers = () => {
   // Hooks
@@ -21,16 +19,10 @@ const AllMembers = () => {
       ? state.federations.federation_athletes
       : state.federations.federation_trainers
   );
-  const departmentMembers: IHCDepartment[] = useSelector(
-    (state: RootState) => state.healthcare.health_care_departments
-  );
 
   // Opreation
   const federation = federationMembers.find(
     (fat) => fat.id === state.federationId
-  );
-  const department = departmentMembers.find(
-    (dm) => dm.id === state.departmentId
   );
 
   return (
@@ -48,10 +40,8 @@ const AllMembers = () => {
         </div>
         {pathname.includes(ATHLETE) ? (
           <AllAhtlete athletes={federation?.fathlete || []} />
-        ) : pathname.includes(TRAINERS) ? (
-          <AllTrainers trainers={federation?.ftrainers || []} />
         ) : (
-          <AllHCDEmployees employees={department?.employees || []} />
+          <AllTrainers trainers={federation?.ftrainers || []} />
         )}
       </div>
     </div>

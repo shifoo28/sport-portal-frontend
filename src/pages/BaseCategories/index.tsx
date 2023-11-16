@@ -13,7 +13,7 @@ import {
 } from "../../tools/links";
 import Federations from "./Federations";
 import GymsAndClubs from "../../components/BaseCategories/GymsandClubs";
-import HealthCare from "../../components/BaseCategories/HealthCare";
+import HealthCare from "../../components/BaseCategories/HealthCare/HealthCare";
 import HealthyFood from "../../components/BaseCategories/HealthyFood";
 import Competitions from "../../components/BaseCategories/Competitions";
 import Shop from "../../components/BaseCategories/Shop";
