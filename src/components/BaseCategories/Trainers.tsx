@@ -1,10 +1,11 @@
 import React from "react";
 import rating from "../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IFederations } from "../../redux/interfaces/federations";
 import { urlBack } from "../../redux/apiCalls";
 import { RootState } from "../../redux/store";
+import { activateTab } from "../../redux/actions/main";
 
 const Trainers = ({ federation }: { federation: IFederations }) => {
   // Hooks

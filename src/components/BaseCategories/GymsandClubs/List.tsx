@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import nextSvg from "../../../assets/svg/next.svg";
 import prevSvg from "../../../assets/svg/prev.svg";
 import { useLocation, useNavigate } from "react-router-dom";
-import { activateTab } from "../../../redux/actions/main";
 import { RootState } from "../../../redux/store";
 import { IGymsAndClubs } from "../../../redux/interfaces/gymsclubs";
 
@@ -25,14 +24,20 @@ const theadersRu = [
 ];
 
 const List = () => {
-  const location = useLocation();
+  // Hooks
+  const { pathname } = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
+  // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const gymsclubs: IGymsAndClubs[] = useSelector(
     (state: RootState) => state.gymsclubs.gymsclubs
   );
+
+  // useState
   const [paginate, setPaginate] = useState(0);
+
+  // Operation
   const table_body = gymsclubs.filter(
     (b, i) => i >= paginate && i < paginate + 5
   );
@@ -45,11 +50,11 @@ const List = () => {
     );
   }
 
-  const linkTo = (l: string, id: string) => {
-    navigate(l, {
-      state: { id },
+  // Function
+  const linkToGACDetail = (gymsclubsId: string) => {
+    navigate(pathname + (pathname.includes("/detail") ? "" : "/detail"), {
+      state: { gymsclubsId },
     });
-    dispatch(activateTab(4));
   };
 
   return gymsclubs.length ? (
@@ -61,10 +66,10 @@ const List = () => {
       </p>
       <table className="border border-[#0088FF] w-full">
         <thead className="bg-[#A9CFEF] h-[74px]">
-          {theadersTm.map((h, i) => {
+          {theadersTm.map((header, index) => {
             return (
-              <th className="font-normal text-xl" key={i}>
-                {prefLang === "Tm" ? h : theadersRu[i]}
+              <th className="font-normal text-xl" key={index}>
+                {prefLang === "Tm" ? header : theadersRu[index]}
               </th>
             );
           })}
@@ -72,49 +77,49 @@ const List = () => {
         <br />
         <br />
         <tbody>
-          {table_body.map((b, i) => {
+          {table_body.map((tb, index) => {
             return (
               <tr
-                key={i}
+                key={index}
                 className={`${
-                  i % 2 !== 0 ? "bg-[#A9CFEF4D]" : ""
+                  index % 2 !== 0 ? "bg-[#A9CFEF4D]" : ""
                 } cursor-pointer`}
+                onClick={() => linkToGACDetail(tb.id)}
               >
                 <td>
-                  <p className="flex items-center justify-center">{i + 1}.</p>
-                </td>
-                <td className="border-l px-4 py-8 max-w-[220px]">
-                  <p
-                    className="flex items-center justify-center text-center"
-                    onClick={() => linkTo(location.pathname + "/detail", b.id)}
-                  >
-                    {prefLang === "Tm" ? b.nameTm : b.nameRu}
+                  <p className="flex items-center justify-center">
+                    {index + 1}.
                   </p>
                 </td>
                 <td className="border-l px-4 py-8 max-w-[220px]">
                   <p className="flex items-center justify-center text-center">
-                    {prefLang === "Tm" ? b.locationTm : b.locationRu}
+                    {prefLang === "Tm" ? tb.nameTm : tb.nameRu}
+                  </p>
+                </td>
+                <td className="border-l px-4 py-8 max-w-[220px]">
+                  <p className="flex items-center justify-center text-center">
+                    {prefLang === "Tm" ? tb.locationTm : tb.locationRu}
                   </p>
                 </td>
                 <td className="border-l px-4 py-8">
                   <p className="flex flex-col items-center justify-center">
-                    {b.tel.map((t, i) => {
+                    {tb.tel.map((t, i) => {
                       return <p key={i}>{t}</p>;
                     })}
                   </p>
                 </td>
                 <td className="border-l max-w-[200px] px-4 py-8">
                   <p className="text-center">
-                    {b.sportsTm.map((s, i) => {
-                      return (prefLang === "Tm" ? s : b.sportsRu[i]) + " ";
+                    {tb.sportsTm.map((s, i) => {
+                      return (prefLang === "Tm" ? s : tb.sportsRu[i]) + " ";
                     })}
                   </p>
                 </td>
                 <td className="border-l px-4 py-8">
                   <p className="flex flex-col items-center justify-center">
-                    {b.openAtTm.map((o, i) => {
+                    {tb.openAtTm.map((o, i) => {
                       return (
-                        <p key={i}>{prefLang === "Tm" ? o : b.openAtRu[i]}</p>
+                        <p key={i}>{prefLang === "Tm" ? o : tb.openAtRu[i]}</p>
                       );
                     })}
                   </p>

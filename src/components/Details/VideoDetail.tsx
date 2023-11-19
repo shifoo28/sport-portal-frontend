@@ -5,6 +5,7 @@ import { urlBack } from "../../redux/apiCalls";
 import playvideo from "../../components/Sections/Videos/svg/playvideo.svg";
 import { IVideoNews } from "../../redux/interfaces/home";
 import { RootState } from "../../redux/store";
+import { DateTimeToPassedTime } from "../../tools/TimeConverter";
 
 const VideoDetail = () => {
   // Hooks
@@ -19,25 +20,11 @@ const VideoDetail = () => {
 
   // Operation
   const video = videos.find((video) => video.id === state.videoId);
+  const uploadedAt = DateTimeToPassedTime(prefLang, video?.updatedAt);
+
   const [same_video_main, ...same_videos] = videos.filter(
     (v) => v.id != video?.id
   );
-  const now = new Date().getTime();
-  const updated = new Date(video?.updatedAt || "").getTime();
-  const postedAt = now - updated;
-  const uploaded = Math.round(postedAt / 1000 / 60 / 60 / 24)
-    ? `${Math.round(postedAt / 1000 / 60 / 60 / 24)} ${
-        prefLang === "Tm" ? "gün öň" : "дня(день) назад"
-      }`
-    : Math.round(postedAt / 1000 / 60 / 60)
-    ? `${Math.round(postedAt / 1000 / 60 / 60)} ${
-        prefLang === "Tm" ? "sagat öň" : "час(а) назад"
-      }`
-    : Math.round(postedAt / 1000 / 60)
-    ? `${Math.round(postedAt / 1000 / 60)} ${
-        prefLang === "Tm" ? "minut öň" : "минут(ы) назад"
-      }`
-    : `${prefLang === "Tm" ? "1 minut öň" : "1 минуту назад"}`;
 
   // Function
   const linkToVideoDetail = (videoId: string) => {
@@ -76,7 +63,7 @@ const VideoDetail = () => {
               </svg>
               {video?.views}
             </p>
-            <p className="font-sofiasans text-base">{uploaded}</p>
+            <p className="font-sofiasans text-base">{uploadedAt}</p>
           </div>
           <video
             src={urlBack + video?.videoPath}

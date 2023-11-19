@@ -8,7 +8,7 @@ import { RootState } from "../../../redux/store";
 import { IVideoNews } from "../../../redux/interfaces/home";
 import { BG_COLORS } from "../../../tools/constants";
 
-const SportNewsBody = () => {
+const Body = () => {
   // Hooks
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ const SportNewsBody = () => {
           src={urlBack + video_main?.imagePath}
           className="object-cover h-full w-full"
         />
-        <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 to-black/50 " />
+        <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 to-black/50" />
         <div className="absolute top-6 left-6 h-5 bg-[#FE4A51] w-max text-white text-[9px] flex items-center">
           <p className="px-3">
             {prefLang === "Tm"
@@ -60,7 +60,7 @@ const SportNewsBody = () => {
       </div>
       <div className="pt-6">
         <div className="flex justify-between">
-          {videos_other.slice(0.3).map((video, index) => {
+          {videos_other.slice(0,3).map((video, index) => {
             return (
               <div
                 className="flex flex-col max-w-[270px] w-full cursor-pointer"
@@ -104,4 +104,4 @@ const SportNewsBody = () => {
   );
 };
 
-export default SportNewsBody;
+export default Body;

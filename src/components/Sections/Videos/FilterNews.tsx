@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { urlBack } from "../../../redux/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { VIDEO_DETAILS_PAGE } from "../../../tools/links";
 
 const FilterNews = ({ data }: { data?: any[] }) => {
-  // Hooks
-  const navigate = useNavigate();
-
   // useSelector
   const prefLang = useSelector((state: any) => state.main.prefLang);
 
@@ -15,9 +12,15 @@ const FilterNews = ({ data }: { data?: any[] }) => {
   const [activeTab, setActiveTab] = useState(false);
   const changeTab = (activate: boolean) => {
     setActiveTab(activate);
-    setNews(data?.reverse() || []);
+    // setNews(data?.reverse());
   };
   const [news, setNews] = useState(data);
+
+  // Hooks
+  const navigate = useNavigate();
+  useEffect(() => {
+    setNews(data?.reverse());
+  }, [data, activeTab]);
 
   // Function
   const swipeVideosTo = (tab: boolean) => {
@@ -52,7 +55,7 @@ const FilterNews = ({ data }: { data?: any[] }) => {
         </div>
       </div>
       <div className="pt-5">
-        {news?.map((item, index) => {
+        {news?.slice(0, 8).map((item, index) => {
           return (
             <div
               key={index}

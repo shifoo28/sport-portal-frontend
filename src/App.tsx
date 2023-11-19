@@ -15,7 +15,7 @@ import Footer from "./components/Footer";
 import Banner from "./components/Headers";
 import BaseCategoriesList from "./components/Headers/BaseCategory";
 import ToolBox from "./components/Headers/ToolBox";
-import SportNewsAll from "./pages/SportNewsAll";
+import SportNewsAll from "./pages/NewsAll";
 import Navbar from "./components/Navbar";
 import { useDispatch } from "react-redux";
 import { GET_MAIN } from "./redux/types";

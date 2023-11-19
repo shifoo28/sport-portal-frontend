@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import ListofFacility from "../BaseCategories/GymsandClubs/List";
+import React, { useEffect, useState } from "react";
+import List from "../BaseCategories/GymsandClubs/List";
 import { useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import location from "../../assets/svg/location.svg";
 import call from "../../assets/svg/call.svg";
 import email from "../../assets/svg/email.svg";
@@ -11,14 +11,27 @@ import right from "../BaseCategories/GymsandClubs/svg/right.svg";
 import { RootState } from "../../redux/store";
 import { IGymsAndClubs } from "../../redux/interfaces/gymsclubs";
 import { urlBack } from "../../redux/apiCalls";
+import { activateTab } from "../../redux/actions/main";
 
 const GACDetail = () => {
+  // Hooks
+  const { pathname, state } = useLocation();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(activateTab(4));
+  }, [pathname]);
+
+  // useState
+  const [indexImage, setIndexImage] = useState(0);
+
+  // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const { state } = useLocation();
   const gymsclubs: IGymsAndClubs[] = useSelector(
     (state: RootState) => state.gymsclubs.gymsclubs
   );
-  const data = gymsclubs.find((b) => b.id === state.id);
+
+  // Operation
+  const data = gymsclubs.find((gc) => gc.id === state.gymsclubsId);
   const images = [
     data?.imagePath1,
     data?.imagePath2,
@@ -26,10 +39,9 @@ const GACDetail = () => {
     data?.imagePath4,
     data?.imagePath5,
   ];
-  const [indexImage, setIndexImage] = useState(0);
 
   return (
-    <div className="mx-23 flex flex-col pt-7 max-w-[1170px]">
+    <div className="mx-32 flex flex-col pt-7 max-w-[1170px]">
       <div className="flex justify-end">
         <p className="max-w-[850px] w-full text-center font-oswald text-[26px] text-[#0F1A42] px-72 capitalize font-semibold">
           {prefLang === "Tm" ? data?.nameTm : data?.nameRu}
@@ -120,18 +132,23 @@ const GACDetail = () => {
             </svg>
             {data?.views}
           </p>
-          <div className="relative max-w-[850px]">
-            <img src={urlBack + images[indexImage]} className="w-[850px]" />
+          <div className="relative max-w-[850px] border border-[#0088FF]">
+            <img
+              src={urlBack + images[indexImage]}
+              className="w-[850px] h-[600px] object-contain"
+            />
             <button
-              className="absolute top-[50%] left-7"
+              className="absolute top-[50%] left-10"
               onClick={() =>
-                setIndexImage(indexImage < 1 ? images.length-1 : indexImage - 1)
+                setIndexImage(
+                  indexImage < 1 ? images.length - 1 : indexImage - 1
+                )
               }
             >
               <img src={right} />
             </button>
             <button
-              className="absolute top-[50%] right-7"
+              className="absolute top-[50%] right-10"
               onClick={() => setIndexImage((indexImage + 1) % 5)}
             >
               <img src={left} />
@@ -152,7 +169,7 @@ const GACDetail = () => {
         </div>
       </div>
       <div className="pt-10">
-        <ListofFacility />
+        <List />
       </div>
     </div>
   );

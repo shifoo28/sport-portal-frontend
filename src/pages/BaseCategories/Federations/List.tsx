@@ -13,8 +13,10 @@ import { RootState } from "../../../redux/store";
 import { urlBack } from "../../../redux/apiCalls";
 
 const List = ({ indexComponent }: { indexComponent: number }) => {
+  // useState
   const [open, setOpen] = useState("");
-  const handleOpen = (value: string) => setOpen(open === value ? "" : value);
+
+  // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const federations: IFederations[] = useSelector((state: RootState) => {
     switch (indexComponent) {
@@ -27,6 +29,9 @@ const List = ({ indexComponent }: { indexComponent: number }) => {
         return state.federations.federation_athletes;
     }
   });
+
+  // Operation
+  const handleOpen = (value: string) => setOpen(open === value ? "" : value);
 
   return (
     <Fragment>

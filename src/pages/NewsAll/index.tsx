@@ -37,8 +37,8 @@ const SportNewsAll = () => {
               className={`flex items-center max-w-[160px] w-full border-b border-[#F65050] text-[#F65050]`}
             >
               {prefLang == "Tm"
-                ? news[0].category.nameTm
-                : news[0].category.nameRu}
+                ? news[0]?.category?.nameTm
+                : news[0]?.category?.nameRu}
             </div>
             <span className="border-b border-black w-full"></span>
           </div>

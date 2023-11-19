@@ -1,6 +1,6 @@
 import React from "react";
 import { HeaderWithCategories } from "./Headers";
-import SportNewsBody from "./SportNewsBody";
+import SportNewsBody from "./Body";
 import FilterNews from "./FilterNews";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";

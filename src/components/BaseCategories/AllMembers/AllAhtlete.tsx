@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import rating from "../../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IFAthletes } from "../../../redux/interfaces/federations";
 import { urlBack } from "../../../redux/apiCalls";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { flags } from "../Athlete";
+import { activateTab } from "../../../redux/actions/main";
 
 const AllAhtlete = ({ athletes }: { athletes: IFAthletes[] }) => {
   // Hooks
-  const navigate = useNavigate();
   const { pathname, state } = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(activateTab(3));
+  }, []);
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);

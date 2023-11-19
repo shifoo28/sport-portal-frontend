@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IFTrainers } from "../../../redux/interfaces/federations";
 import rating from "../../../assets/svg/rating.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { urlBack } from "../../../redux/apiCalls";
 import { RootState } from "../../../redux/store";
 import { useNavigate, useLocation } from "react-router-dom";
+import { activateTab } from "../../../redux/actions/main";
 
 const AllTrainers = ({ trainers }: { trainers: IFTrainers[] }) => {
   // Hooks
-  const navigate = useNavigate();
   const { pathname, state } = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(activateTab(2));
+  }, []);
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
