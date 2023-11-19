@@ -1,37 +1,32 @@
-import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { SPORT_NEWS_ALL } from "../../tools/links";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { urlBack } from "../../redux/apiCalls";
-import { PATCH_SPORT_NEWS_VIEWS } from "../../redux/types";
 import { RootState } from "../../redux/store";
-import { ESection, ILocalNews, IWorldNews } from "../../redux/interfaces/home";
+import { ILocalNews, IWorldNews } from "../../redux/interfaces/home";
 
-const NewsDetail = () => {
+interface Props {
+  news_data: ILocalNews | IWorldNews;
+  same_news: ILocalNews[] | IWorldNews[];
+}
+
+const NewsDetail = ({ news_data, same_news }: Props) => {
   // Hooks
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { state: r_state } = useLocation();
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const news: ILocalNews[] | IWorldNews[] = useSelector((state: RootState) =>
-    r_state.section === ESection.Local
-      ? state.home.local_news
-      : state.home.world_news
-  );
 
-  // Operation
-  const news_data =
-    r_state.newsId && news.find((ln) => ln.id === r_state.newsId);
-  const same_news = news.filter((ln) => ln.categoryId === news_data.categoryId);
-
-  useEffect(() => {
-    dispatch({
-      type: PATCH_SPORT_NEWS_VIEWS,
-      payload: { newsId: r_state.newsId, categoryId: news_data?.categoryId },
+  // Function
+  const linkToNewsDetail = (newsId: string, categoryId: string) => {
+    navigate("", { state: { newsId, categoryId } });
+  };
+  const linkToAllNews = () => {
+    navigate(SPORT_NEWS_ALL, {
+      state: { sportCategoryId: news_data?.categoryId },
     });
-  }, [prefLang]);
+  };
 
   return (
     <div className="flex flex-col items-center justify-between gap-5 w-full">
@@ -83,11 +78,7 @@ const NewsDetail = () => {
           <div className="border-b border-black flex justify-end w-full">
             <button
               className="text-base bg-[#077EE6] text-white h-11 w-36"
-              onClick={() => {
-                navigate(SPORT_NEWS_ALL, {
-                  state: { sportCategoryId: news_data?.categoryId },
-                });
-              }}
+              onClick={linkToAllNews}
             >
               {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
             </button>
@@ -96,7 +87,11 @@ const NewsDetail = () => {
         <div className="flex flex-wrap justify-between pt-4">
           {same_news.map((sn, index) => {
             return (
-              <div className="flex flex-col w-[195px] gap-2" key={index}>
+              <div
+                className="flex flex-col w-[195px] gap-2"
+                key={index}
+                onClick={() => linkToNewsDetail(sn.id, sn.categoryId)}
+              >
                 <img
                   src={urlBack + sn.imagePath}
                   className="object-cover h-[145px]"

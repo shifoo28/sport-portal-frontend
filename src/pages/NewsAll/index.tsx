@@ -6,12 +6,17 @@ import { ILocalNews } from "../../redux/interfaces/home";
 import { useLocation } from "react-router-dom";
 import { urlBack } from "../../redux/apiCalls";
 
-const SportNewsAll = () => {
+const NewsAll = () => {
+  // Hooks
   const { state } = useLocation();
+
+  // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const local_news: ILocalNews[] = useSelector(
     (state: RootState) => state.home.local_news
   );
+
+  // Operation
   const news = local_news.filter(
     (ln) => ln.categoryId === state.sportCategoryId
   );
@@ -69,4 +74,4 @@ const SportNewsAll = () => {
   );
 };
 
-export default SportNewsAll;
+export default NewsAll;
