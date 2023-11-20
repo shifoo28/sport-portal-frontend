@@ -17,4 +17,4 @@ export const SPORTSHOPS = "/sport_shops";
 export const COMPETITIONS = "/competitions";
 
 // Sport News All
-export const SPORT_NEWS_ALL = "/sport_news_all";
+export const SPORT_NEWS_ALL = "/all_news";

@@ -18,7 +18,7 @@ const NewsAll = () => {
 
   // Operation
   const news = local_news.filter(
-    (ln) => ln.categoryId === state.sportCategoryId
+    (ln) => ln.categoryId === state.categoryId
   );
 
   return (

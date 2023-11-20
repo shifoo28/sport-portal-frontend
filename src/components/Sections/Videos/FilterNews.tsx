@@ -3,17 +3,22 @@ import { useSelector } from "react-redux";
 import { urlBack } from "../../../redux/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { VIDEO_DETAILS_PAGE } from "../../../tools/links";
+import {
+  ILocalNews,
+  IVideoNews,
+  IWorldNews,
+} from "../../../redux/interfaces/home";
 
-const FilterNews = ({ data }: { data?: any[] }) => {
+interface Props {
+  data: ILocalNews[] | IWorldNews[] | IVideoNews[];
+}
+
+const FilterNews = ({ data }: Props) => {
   // useSelector
   const prefLang = useSelector((state: any) => state.main.prefLang);
 
   // useState
   const [activeTab, setActiveTab] = useState(false);
-  const changeTab = (activate: boolean) => {
-    setActiveTab(activate);
-    // setNews(data?.reverse());
-  };
   const [news, setNews] = useState(data);
 
   // Hooks
@@ -23,6 +28,9 @@ const FilterNews = ({ data }: { data?: any[] }) => {
   }, [data, activeTab]);
 
   // Function
+  const changeTab = (activate: boolean) => {
+    setActiveTab(activate);
+  };
   const swipeVideosTo = (tab: boolean) => {
     changeTab(tab);
   };

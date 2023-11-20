@@ -30,13 +30,19 @@ const NewsDetails = () => {
   // Operation
   const news_data =
     r_state.newsId && news.find((ln) => ln.id === r_state.newsId);
-  const same_news = news.filter((ln) => ln.categoryId === news_data.categoryId);
+  const same_news = news.filter(
+    (ln) => ln.categoryId === news_data.categoryId && ln.id != r_state.newsId
+  );
 
   return (
     <div className="flex justify-between max-w-[1170px] mx-32">
       <div className="flex w-full pt-7 gap-12">
         <FilterNews data={news} />
-        <NewsDetail news_data={news_data} same_news={same_news} />
+        <NewsDetail
+          news_data={news_data}
+          same_news={same_news.slice(0, 4)}
+          section={r_state.section}
+        />
       </div>
     </div>
   );

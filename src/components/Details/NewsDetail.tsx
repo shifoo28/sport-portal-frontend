@@ -4,14 +4,15 @@ import { SPORT_NEWS_ALL } from "../../tools/links";
 import { useSelector } from "react-redux";
 import { urlBack } from "../../redux/apiCalls";
 import { RootState } from "../../redux/store";
-import { ILocalNews, IWorldNews } from "../../redux/interfaces/home";
+import { ESection, ILocalNews, IWorldNews } from "../../redux/interfaces/home";
 
 interface Props {
   news_data: ILocalNews | IWorldNews;
   same_news: ILocalNews[] | IWorldNews[];
+  section: ESection;
 }
 
-const NewsDetail = ({ news_data, same_news }: Props) => {
+const NewsDetail = ({ news_data, same_news, section }: Props) => {
   // Hooks
   const navigate = useNavigate();
 
@@ -20,11 +21,11 @@ const NewsDetail = ({ news_data, same_news }: Props) => {
 
   // Function
   const linkToNewsDetail = (newsId: string, categoryId: string) => {
-    navigate("", { state: { newsId, categoryId } });
+    navigate("", { state: { newsId, categoryId, section } });
   };
   const linkToAllNews = () => {
     navigate(SPORT_NEWS_ALL, {
-      state: { sportCategoryId: news_data?.categoryId },
+      state: { categoryId: news_data?.categoryId },
     });
   };
 
@@ -88,7 +89,7 @@ const NewsDetail = ({ news_data, same_news }: Props) => {
           {same_news.map((sn, index) => {
             return (
               <div
-                className="flex flex-col w-[195px] gap-2"
+                className="flex flex-col w-[195px] gap-2 cursor-pointer"
                 key={index}
                 onClick={() => linkToNewsDetail(sn.id, sn.categoryId)}
               >
@@ -99,7 +100,7 @@ const NewsDetail = ({ news_data, same_news }: Props) => {
                 <p className="text-[10px] font-sofiasans">
                   {prefLang === "Tm" ? sn.locationTm : sn.locationRu}
                 </p>
-                <p className="text-sm font-oswald font-semibol cursor-pointer">
+                <p className="text-sm font-oswald font-semibol">
                   {prefLang === "Tm" ? sn.nameTm : sn.nameRu}
                 </p>
               </div>
