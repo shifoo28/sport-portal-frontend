@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import FilterNews from "../../components/Sections/Videos/FilterNews";
-import NewsDetail from "../../components/Details/NewsDetail";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ESection, ILocalNews, IWorldNews } from "../../redux/interfaces/home";
 import { useLocation } from "react-router-dom";
 import { PATCH_SPORT_NEWS_VIEWS } from "../../redux/types";
+import FilterNews from "../../components/Details/NewsDetail/FilterNews";
+import NewsDetail from "../../components/Details/NewsDetail/NewsDetail";
 
 const NewsDetails = () => {
   const { state: r_state } = useLocation();

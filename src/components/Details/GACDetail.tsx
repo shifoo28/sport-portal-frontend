@@ -71,7 +71,11 @@ const GACDetail = () => {
             </p>
             <p className="flex text-sm gap-7 text-[#182135]">
               <img src={link} />
-              <a href={data?.link} className="hover:underline truncate">
+              <a
+                href={data?.link}
+                className="hover:underline truncate"
+                target="_blank"
+              >
                 {data?.link}
               </a>
             </p>

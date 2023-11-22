@@ -5,7 +5,9 @@ import { Route, Routes } from "react-router-dom";
 import NF404 from "./pages/404";
 import NewsDetails from "./pages/NewsDetails";
 import {
+  ABOUTUS,
   BASE_CATEGORIES,
+  LOGIN,
   NEWS_DETAILS_PAGE,
   SPORT_NEWS_ALL,
   VIDEO_DETAILS_PAGE,
@@ -29,15 +31,6 @@ const App = () => {
 
   return (
     <Routes>
-      <Route element={<Login />} path="/login" />
-      <Route
-        element={
-          <TemplateApp>
-            <AboutUs />
-          </TemplateApp>
-        }
-        path="/aboutus"
-      />
       <Route
         element={
           <TemplateApp>
@@ -45,6 +38,15 @@ const App = () => {
           </TemplateApp>
         }
         path="/"
+      />
+      <Route element={<Login />} path={LOGIN} />
+      <Route
+        element={
+          <TemplateApp>
+            <AboutUs />
+          </TemplateApp>
+        }
+        path={ABOUTUS}
       />
       <Route
         element={

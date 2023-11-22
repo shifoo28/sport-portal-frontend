@@ -2,24 +2,33 @@ import React from "react";
 import FootballNewsBody from "../../components/Sections/Global/FootballNewsBody";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { ILocalNews } from "../../redux/interfaces/home";
-import { useLocation } from "react-router-dom";
+import { ESection, ILocalNews } from "../../redux/interfaces/home";
+import { useLocation, useNavigate } from "react-router-dom";
 import { urlBack } from "../../redux/apiCalls";
+import { NEWS_DETAILS_PAGE } from "../../tools/links";
 
 const NewsAll = () => {
   // Hooks
-  const { state } = useLocation();
+  const navigate = useNavigate();
+  const { state: r_state } = useLocation();
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const local_news: ILocalNews[] = useSelector(
-    (state: RootState) => state.home.local_news
+  const all_news: ILocalNews[] = useSelector((state: RootState) =>
+    r_state.section === ESection.Local
+      ? state.home.local_news
+      : state.home.world_news
   );
 
   // Operation
-  const news = local_news.filter(
-    (ln) => ln.categoryId === state.categoryId
-  );
+  const news = all_news.filter((ln) => ln.categoryId === r_state.categoryId);
+
+  // Function
+  const linkToNewsDetail = (newsId: string, categoryId: string) => {
+    navigate("/../" + NEWS_DETAILS_PAGE, {
+      state: { newsId, categoryId, section: r_state.section },
+    });
+  };
 
   return (
     <div className="w-full mx-32 max-w-[1170px]">
@@ -53,6 +62,7 @@ const NewsAll = () => {
                 <div
                   className="flex flex-col gap-1 cursor-pointer hover:underline"
                   key={index}
+                  onClick={() => linkToNewsDetail(item.id, item.categoryId)}
                 >
                   <img
                     src={urlBack + item.imagePath}

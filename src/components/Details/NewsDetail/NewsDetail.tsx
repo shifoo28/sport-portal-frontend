@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { SPORT_NEWS_ALL } from "../../tools/links";
+import { SPORT_NEWS_ALL } from "../../../tools/links";
 import { useSelector } from "react-redux";
-import { urlBack } from "../../redux/apiCalls";
-import { RootState } from "../../redux/store";
-import { ESection, ILocalNews, IWorldNews } from "../../redux/interfaces/home";
+import { urlBack } from "../../../redux/apiCalls";
+import { RootState } from "../../../redux/store";
+import { ESection, ILocalNews, IWorldNews } from "../../../redux/interfaces/home";
 
 interface Props {
   news_data: ILocalNews | IWorldNews;

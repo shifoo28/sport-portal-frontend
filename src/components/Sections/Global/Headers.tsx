@@ -4,21 +4,34 @@ import prevSvg from "../../../assets/svg/prev.svg";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { ISportCategory } from "../../../redux/interfaces/main";
+import { useNavigate } from "react-router-dom";
+import { SPORT_NEWS_ALL } from "../../../tools/links";
+import { ESection } from "../../../redux/interfaces/home";
 
 export const HeaderWithCategories = () => {
+  // Hooks
+  const navigate = useNavigate();
+
   // useState
   const [categoryIndex, setCategoryIndex] = useState(0);
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const categories: ISportCategory[] = useSelector(
-    (state: RootState) => state.main.sport_categories
+    (state: RootState) => state.main.sport_categories.world
   );
 
   // Operation
   const filtered_categories = categories.filter(
     (fc, index) => index >= categoryIndex && index < categoryIndex + 4
   );
+
+  // Function
+  const linkToAllNews = (categoryId?: string) => {
+    navigate(SPORT_NEWS_ALL, {
+      state: { categoryId, section: ESection.World },
+    });
+  };
 
   return (
     <div className="h-11 flex justify-between font-oswald">
@@ -31,6 +44,7 @@ export const HeaderWithCategories = () => {
       >
         <div
           className={`h-6 px-4 bg-[#0088FF] flex items-center hover:bg-[#0088FF] cursor-pointer`}
+          onClick={() => linkToAllNews()}
         >
           {prefLang === "Tm" ? "Hemmesi" : "Все"}
         </div>
@@ -39,6 +53,7 @@ export const HeaderWithCategories = () => {
             <div
               className={`h-6 px-4 bg-[#0E2165] flex items-center hover:bg-[#0088FF] cursor-pointer`}
               key={index}
+              onClick={() => linkToAllNews(fc.id)}
             >
               {prefLang === "Tm" ? fc.nameTm : fc.nameRu}
             </div>

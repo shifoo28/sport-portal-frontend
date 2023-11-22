@@ -6,31 +6,39 @@ import {
   List,
   ListItem,
 } from "@material-tailwind/react";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { SPORT_NEWS_ALL } from "../../../tools/links";
 import { useNavigate } from "react-router-dom";
-import { activateTab } from "../../../redux/actions/main";
 import { RootState } from "../../../redux/store";
 import { ISportCategory } from "../../../redux/interfaces/main";
 
 const SportNewsList = ({ activeTab }: { activeTab: number }) => {
+  // Hooks
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
+  // useState
+  const [open, setOpen] = useState(false);
+
+  // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const sport_categories: ISportCategory[] = useSelector(
-    (state: RootState) => state.main.sport_categories
+  const categories: ISportCategory[] = useSelector(
+    (state: RootState) => state.main.sport_categories.local
   );
-  const linkTo = (link: string, tab: number, sportCategoryId: string) => {
-    dispatch(activateTab(tab));
-    navigate(link, { state: { sportCategoryId } });
+
+  // Function
+  const linkToAllNews = (categoryId: string) => {
+    setOpen(false);
+    navigate(SPORT_NEWS_ALL, { state: { categoryId } });
   };
 
   return (
-    <Popover placement="bottom-end">
+    <Popover placement="bottom-end" open={open}>
       <PopoverHandler>
-        <Button className="flex items-center gap-2 shadow-none p-0 font-oswald">
+        <Button className="flex items-center gap-2 shadow-none p-0 font-oswald outline-none">
           <p
+            // onClick={() => setOpen(!open)}
+            onClick={() => setOpen(!open)}
             className={`normal-case text-sm ${
               activeTab === 0 ? "text-[#08F]" : "text-black"
             }`}
@@ -48,12 +56,12 @@ const SportNewsList = ({ activeTab }: { activeTab: number }) => {
       </PopoverHandler>
       <PopoverContent className="bg-white border max-w-[116px] w-full flex justify-center rounded-none">
         <List className="text-xs font-oswald">
-          {sport_categories.map((sc, index) => {
+          {categories.map((sc, index) => {
             return (
               <ListItem
                 key={index}
                 className="hover:text-[#08F] p-1 hover:underline"
-                onClick={() => linkTo(SPORT_NEWS_ALL, 0, sc.id)}
+                onClick={() => linkToAllNews(sc.id)}
               >
                 · {prefLang === "Tm" ? sc.nameTm : sc.nameRu}
               </ListItem>

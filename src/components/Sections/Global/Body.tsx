@@ -6,7 +6,7 @@ import { urlBack } from "../../../redux/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { NEWS_DETAILS_PAGE } from "../../../tools/links";
 
-const WorldNewsBody = () => {
+const Body = () => {
   // Hooks
   const navigate = useNavigate();
 
@@ -90,4 +90,4 @@ const WorldNewsBody = () => {
   );
 };
 
-export default WorldNewsBody;
+export default Body;

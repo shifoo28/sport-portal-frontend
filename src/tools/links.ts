@@ -1,6 +1,6 @@
-export const APP_ADDRESS = "http://localhost:3000";
+export const APP_ADDRESS = "http://10.10.73.74:3000";
 export const LOGIN = "/login";
-export const ABOUTUS = "/aboutus";
+export const ABOUTUS = "/about_us";
 // Sport News
 export const NEWS_DETAILS_PAGE = "news/details/";
 export const VIDEO_DETAILS_PAGE = "videos/details/";
@@ -17,4 +17,5 @@ export const SPORTSHOPS = "/sport_shops";
 export const COMPETITIONS = "/competitions";
 
 // Sport News All
-export const SPORT_NEWS_ALL = "/all_news";
+export const SPORT_NEWS_ALL = "/news_all";
+export const VIDEO_NEWS_ALL = '/video_news_all'

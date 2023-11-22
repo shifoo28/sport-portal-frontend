@@ -4,21 +4,31 @@ import prevSvg from "../../../assets/svg/prev.svg";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { ISportCategory } from "../../../redux/interfaces/main";
+import { useNavigate } from "react-router-dom";
+import { VIDEO_NEWS_ALL } from "../../../tools/links";
 
 export const HeaderWithCategories = () => {
+  // Hooks
+  const navigate = useNavigate();
+
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const sport_categories: ISportCategory[] = useSelector(
-    (state: RootState) => state.main.sport_categories
+  const categories: ISportCategory[] = useSelector(
+    (state: RootState) => state.main.sport_categories.video
   );
 
   // useState
   const [cIndex, setCIndex] = useState(0);
 
   // Operation
-  const sc_visible = sport_categories.filter(
+  const sc_visible = categories.filter(
     (i, index) => index >= cIndex && index < cIndex + 4
   );
+
+  // Function
+  const linkToAllVideoNews = (categoryId?: string) => {
+    navigate(VIDEO_NEWS_ALL, { state: { categoryId } });
+  };
 
   return (
     <div className="h-11 flex justify-between font-oswald">
@@ -28,6 +38,7 @@ export const HeaderWithCategories = () => {
       <div className="flex justify-end items-center border-b border-black w-full text-white text-xs gap-3">
         <div
           className={`h-6 px-4 bg-[#0088FF] flex items-center hover:bg-[#0088FF] cursor-pointer`}
+          onClick={() => linkToAllVideoNews()}
         >
           {prefLang === "Tm" ? "Hemmesi" : "Все"}
         </div>
@@ -36,6 +47,7 @@ export const HeaderWithCategories = () => {
             <div
               key={index}
               className={`h-6 px-4 bg-[#0E2165] flex items-center hover:bg-[#0088FF] cursor-pointer`}
+              onClick={() => linkToAllVideoNews(sc.id)}
             >
               {prefLang === "Tm" ? sc.nameTm : sc.nameRu}
             </div>
@@ -54,13 +66,13 @@ export const HeaderWithCategories = () => {
             />
           </button>
           <button
-            disabled={cIndex === sport_categories.length - 4}
+            disabled={cIndex === categories.length - 4}
             onClick={() => setCIndex(cIndex + 1)}
           >
             <img
               src={nextSvg}
               className={`${
-                cIndex === sport_categories.length - 4
+                cIndex === categories.length - 4
                   ? "bg-[#6E748C]"
                   : "bg-[#0E2165]"
               } h-6 w-6 cursor-pointer`}

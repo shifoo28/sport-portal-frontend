@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { urlBack } from "../../../redux/apiCalls";
 import { useNavigate } from "react-router-dom";
-import { VIDEO_DETAILS_PAGE } from "../../../tools/links";
-import { IVideoNews } from "../../../redux/interfaces/home";
-import { RootState } from "../../../redux/store";
+import { urlBack } from "../../../redux/apiCalls";
+import { ILocalNews, IWorldNews } from "../../../redux/interfaces/home";
 
 interface Props {
-  data: IVideoNews[];
+  data: ILocalNews[] | IWorldNews[];
 }
 
 const FilterNews = ({ data }: Props) => {
   // useSelector
-  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const prefLang = useSelector((state: any) => state.main.prefLang);
 
   // useState
   const [activeTab, setActiveTab] = useState(false);
-  const [videos, setNews] = useState(data);
+  const [news, setNews] = useState(data);
 
   // Hooks
   const navigate = useNavigate();
@@ -28,8 +26,8 @@ const FilterNews = ({ data }: Props) => {
   const changeTab = (activate: boolean) => {
     setActiveTab(activate);
   };
-  const linkToVideoDetail = (videoId: string) => {
-    navigate(VIDEO_DETAILS_PAGE, { state: { videoId } });
+  const linkToNewsDetail = (newsId: string) => {
+    navigate("", { state: { newsId } });
   };
 
   return (
@@ -57,25 +55,25 @@ const FilterNews = ({ data }: Props) => {
         </div>
       </div>
       <div className="pt-5">
-        {videos?.slice(0, 8).map((video, index) => {
+        {news?.slice(0, 8).map((item, index) => {
           return (
             <div
               key={index}
               className="flex justify-between items-center pb-4 cursor-pointer"
-              onClick={() => linkToVideoDetail(video.id)}
+              onClick={() => linkToNewsDetail(item.id)}
             >
               <div className="h-[70px] w-[70px] relative">
                 <img
-                  src={urlBack + video.imagePath}
+                  src={urlBack + item.imagePath}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">
                 <p className="font-sofiasans text-[8px]">
-                  {new Date(video.createdAt).toLocaleDateString()}
+                  {new Date(item.createdAt).toLocaleDateString()}
                 </p>
                 <p className="font-oswald text-[14px] leading-4">
-                  {prefLang === "Tm" ? video.nameTm : video.nameRu}
+                  {prefLang === "Tm" ? item.nameTm : item.nameRu}
                 </p>
               </div>
             </div>

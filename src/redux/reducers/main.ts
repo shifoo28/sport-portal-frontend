@@ -10,7 +10,11 @@ const initialState: IMainState = {
   active_tab: 0,
   langs: [{ id: "", name: "" }],
   base_categories: [],
-  sport_categories: [],
+  sport_categories: {
+    local: [],
+    world: [],
+    video: [],
+  },
   message: "",
   prefLang: "",
 };

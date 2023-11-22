@@ -13,7 +13,7 @@ import {
 } from "../../../tools/links";
 import { useDispatch, useSelector } from "react-redux";
 import { activateTab } from "../../../redux/actions/main";
-import SportNewsList from "./SportNewsList";
+import SportNewsList from "./SportCategories";
 import { RootState } from "../../../redux/store";
 
 const links = [

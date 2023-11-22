@@ -68,7 +68,7 @@ const HCDetail = () => {
           </div>
         </div>
         <div className="max-w-[850px] w-full flex flex-col">
-          <p className="font-oswald text-[50px] text-[#0088FF]">
+          <p className="font-oswald text-[50px] text-[#0088FF] uppercase">
             {prefLang === "Tm" ? employee?.nameTm : employee?.nameRu}
           </p>
           <div className="font-sofiasans text-3xl">

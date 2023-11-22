@@ -36,7 +36,10 @@ const Footer = () => {
             </div>
             <div className="flex justify-center items-center gap-1">
               <img src={mail} alt="" />
-              <p className="underline">sportportal-tm@olympic.tm</p>
+              {/* <p className="underline">sportportal-tm@olympic.tm</p> */}
+              <a className="underline" href="mailto:sportportal-tm@olympic.tm">
+                sportportal-tm@olympic.tm
+              </a>
             </div>
             <div className="flex justify-center items-center gap-1">
               <img src={tel} alt="" />

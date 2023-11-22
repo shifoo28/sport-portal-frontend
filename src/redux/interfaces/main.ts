@@ -24,11 +24,16 @@ export interface ISportCategory {
   createdAt: Date;
   updatedAt: Date;
 }
+export interface ISportCategories {
+  local: ISportCategory[];
+  world: ISportCategory[];
+  video: ISportCategory[];
+}
 export interface IMainState {
   message: string;
   prefLang: string;
   active_tab: number;
   langs: ILanguage[];
   base_categories: IBaseCategory[];
-  sport_categories: ISportCategory[];
+  sport_categories: ISportCategories;
 }
