@@ -5,6 +5,7 @@ import { ESection, IWorldNews } from "../../../redux/interfaces/home";
 import { urlBack } from "../../../redux/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { NEWS_DETAILS_PAGE } from "../../../tools/links";
+import { BG_COLORS } from "../../../tools/constants";
 
 const Body = () => {
   // Hooks
@@ -36,7 +37,11 @@ const Body = () => {
             className="object-cover h-64 w-full"
           />
           <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 to-black/50 " />
-          <div className="absolute top-6 left-6 h-5 bg-[#08F] w-max text-white text-[9px] flex items-center">
+          <div
+            className={`absolute top-6 left-6 h-5 w-max text-white text-[9px] flex items-center ${
+              BG_COLORS[Math.floor(Math.random() * BG_COLORS.length)]
+            }`}
+          >
             <p className="px-3">
               {prefLang === "Tm"
                 ? world_news_main?.category.nameTm

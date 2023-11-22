@@ -6,9 +6,10 @@ import { ILocalNews, IWorldNews } from "../../../redux/interfaces/home";
 
 interface Props {
   data: ILocalNews[] | IWorldNews[];
+  linkToNewsDetail: (newsId: string, categoryId: string) => void;
 }
 
-const FilterNews = ({ data }: Props) => {
+const FilterNews = ({ data, linkToNewsDetail }: Props) => {
   // useSelector
   const prefLang = useSelector((state: any) => state.main.prefLang);
 
@@ -25,9 +26,6 @@ const FilterNews = ({ data }: Props) => {
   // Function
   const changeTab = (activate: boolean) => {
     setActiveTab(activate);
-  };
-  const linkToNewsDetail = (newsId: string) => {
-    navigate("", { state: { newsId } });
   };
 
   return (
@@ -60,7 +58,7 @@ const FilterNews = ({ data }: Props) => {
             <div
               key={index}
               className="flex justify-between items-center pb-4 cursor-pointer"
-              onClick={() => linkToNewsDetail(item.id)}
+              onClick={() => linkToNewsDetail(item.id, item.categoryId)}
             >
               <div className="h-[70px] w-[70px] relative">
                 <img

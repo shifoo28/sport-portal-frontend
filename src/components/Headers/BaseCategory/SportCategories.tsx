@@ -12,6 +12,7 @@ import { SPORT_NEWS_ALL } from "../../../tools/links";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../../redux/store";
 import { ISportCategory } from "../../../redux/interfaces/main";
+import { ESection } from "../../../redux/interfaces/home";
 
 const SportNewsList = ({ activeTab }: { activeTab: number }) => {
   // Hooks
@@ -29,7 +30,9 @@ const SportNewsList = ({ activeTab }: { activeTab: number }) => {
   // Function
   const linkToAllNews = (categoryId: string) => {
     setOpen(false);
-    navigate(SPORT_NEWS_ALL, { state: { categoryId } });
+    navigate(SPORT_NEWS_ALL, {
+      state: { categoryId, section: ESection.Local },
+    });
   };
 
   return (

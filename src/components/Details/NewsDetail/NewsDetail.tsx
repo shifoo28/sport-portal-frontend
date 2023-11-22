@@ -4,15 +4,15 @@ import { SPORT_NEWS_ALL } from "../../../tools/links";
 import { useSelector } from "react-redux";
 import { urlBack } from "../../../redux/apiCalls";
 import { RootState } from "../../../redux/store";
-import { ESection, ILocalNews, IWorldNews } from "../../../redux/interfaces/home";
+import { ILocalNews, IWorldNews } from "../../../redux/interfaces/home";
 
 interface Props {
   news_data: ILocalNews | IWorldNews;
   same_news: ILocalNews[] | IWorldNews[];
-  section: ESection;
+  linkToNewsDetail: (newsId: string, categoryId: string) => void;
 }
 
-const NewsDetail = ({ news_data, same_news, section }: Props) => {
+const NewsDetail = ({ news_data, same_news, linkToNewsDetail }: Props) => {
   // Hooks
   const navigate = useNavigate();
 
@@ -20,12 +20,12 @@ const NewsDetail = ({ news_data, same_news, section }: Props) => {
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
 
   // Function
-  const linkToNewsDetail = (newsId: string, categoryId: string) => {
-    navigate("", { state: { newsId, categoryId, section } });
-  };
   const linkToAllNews = () => {
     navigate(SPORT_NEWS_ALL, {
-      state: { categoryId: news_data?.categoryId },
+      state: {
+        categoryId: news_data?.categoryId,
+        section: news_data.category.section,
+      },
     });
   };
 

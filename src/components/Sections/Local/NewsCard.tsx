@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { NEWS_DETAILS_PAGE } from "../../../tools/links";
 import { urlBack } from "../../../redux/apiCalls";
 import { ESection } from "../../../redux/interfaces/home";
+import { BG_COLORS } from "../../../tools/constants";
 
 type CardData = {
   id: string;
@@ -75,7 +76,11 @@ const NewsCard: React.FC<CardData> = ({
         />
       </div>
       <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 via-black/50 " />
-      <div className="absolute top-6 left-6 h-5 bg-[#08F] w-max text-white text-[9px] flex items-center">
+      <div
+        className={`absolute top-6 left-6 h-5 ${
+          BG_COLORS[Math.floor(Math.random() * BG_COLORS.length)]
+        } w-max text-white text-[9px] flex items-center`}
+      >
         <p className="px-3">{category}</p>
       </div>
       <figcaption

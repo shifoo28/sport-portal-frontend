@@ -60,7 +60,7 @@ const Body = () => {
       </div>
       <div className="pt-6">
         <div className="flex justify-between">
-          {videos_other.slice(0,3).map((video, index) => {
+          {videos_other.slice(0, 3).map((video, index) => {
             return (
               <div
                 className="flex flex-col max-w-[270px] w-full cursor-pointer"
@@ -80,7 +80,9 @@ const Body = () => {
                     />
                   </div>
                   <div
-                    className={`absolute top-6 left-6 h-5 ${BG_COLORS[index]} w-max text-white text-[9px] flex items-center`}
+                    className={`absolute top-6 left-6 h-5 ${
+                      BG_COLORS[Math.floor(Math.random() * BG_COLORS.length)]
+                    } w-max text-white text-[9px] flex items-center`}
                   >
                     <p className="px-3">
                       {prefLang === "Tm"
