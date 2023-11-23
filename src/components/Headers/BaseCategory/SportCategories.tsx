@@ -8,7 +8,7 @@ import {
 } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { SPORT_NEWS_ALL } from "../../../tools/links";
+import { NEWS_ALL } from "../../../tools/links";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../../redux/store";
 import { ISportCategory } from "../../../redux/interfaces/main";
@@ -30,7 +30,7 @@ const SportNewsList = ({ activeTab }: { activeTab: number }) => {
   // Function
   const linkToAllNews = (categoryId: string) => {
     setOpen(false);
-    navigate(SPORT_NEWS_ALL, {
+    navigate(NEWS_ALL, {
       state: { categoryId, section: ESection.Local },
     });
   };

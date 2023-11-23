@@ -6,6 +6,7 @@ import playvideo from "../../components/Sections/Videos/svg/playvideo.svg";
 import { IVideoNews } from "../../redux/interfaces/home";
 import { RootState } from "../../redux/store";
 import { DateTimeToPassedTime } from "../../tools/TimeConverter";
+import { VIDEO_NEWS_ALL } from "../../tools/links";
 
 const VideoDetail = () => {
   // Hooks
@@ -30,8 +31,8 @@ const VideoDetail = () => {
   const linkToVideoDetail = (videoId: string) => {
     navigate("", { state: { videoId } });
   };
-  const linkToAllVideos = () => {
-    navigate("/all");
+  const linkToAllVideos = (categoryId?: string) => {
+    navigate("/.." + VIDEO_NEWS_ALL, { state: { categoryId } });
   };
 
   return (
@@ -86,7 +87,7 @@ const VideoDetail = () => {
             <div className="w-full border-b border-black flex justify-end">
               <button
                 className="text-sm bg-[#077EE6] text-white h-full px-3"
-                onClick={linkToAllVideos}
+                onClick={() => linkToAllVideos(video?.categoryId)}
               >
                 {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
               </button>

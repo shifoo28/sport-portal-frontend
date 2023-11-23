@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { ISportCategory } from "../../../redux/interfaces/main";
 import { useNavigate } from "react-router-dom";
-import { SPORT_NEWS_ALL } from "../../../tools/links";
+import { NEWS_ALL } from "../../../tools/links";
 import { ESection } from "../../../redux/interfaces/home";
 
 export const HeaderWithCategories = () => {
@@ -28,7 +28,7 @@ export const HeaderWithCategories = () => {
 
   // Function
   const linkToAllNews = (categoryId?: string) => {
-    navigate(SPORT_NEWS_ALL, {
+    navigate(NEWS_ALL, {
       state: { categoryId, section: ESection.World },
     });
   };

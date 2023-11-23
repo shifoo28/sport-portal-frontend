@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { SPORT_NEWS_ALL } from "../../../tools/links";
+import { NEWS_ALL } from "../../../tools/links";
 import { useSelector } from "react-redux";
 import { urlBack } from "../../../redux/apiCalls";
 import { RootState } from "../../../redux/store";
@@ -21,7 +21,7 @@ const NewsDetail = ({ news_data, same_news, linkToNewsDetail }: Props) => {
 
   // Function
   const linkToAllNews = () => {
-    navigate(SPORT_NEWS_ALL, {
+    navigate(NEWS_ALL, {
       state: {
         categoryId: news_data?.categoryId,
         section: news_data.category.section,

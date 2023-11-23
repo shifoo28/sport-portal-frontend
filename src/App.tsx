@@ -3,27 +3,29 @@ import React from "react";
 import HomePage from "./pages/home";
 import { Route, Routes } from "react-router-dom";
 import NF404 from "./pages/404";
-import NewsDetails from "./pages/NewsDetails";
+import NewsDetails from "./pages/News/NewsDetails";
 import {
   ABOUTUS,
   BASE_CATEGORIES,
   LOGIN,
+  NEWS_ALL,
   NEWS_DETAILS_PAGE,
-  SPORT_NEWS_ALL,
   VIDEO_DETAILS_PAGE,
+  VIDEO_NEWS_ALL,
 } from "./tools/links";
-import VideoDetails from "./components/Details/VideoDetail";
 import Footer from "./components/Footer";
 import Banner from "./components/Headers";
 import BaseCategoriesList from "./components/Headers/BaseCategory";
 import ToolBox from "./components/Headers/ToolBox";
-import SportNewsAll from "./pages/NewsAll";
+import NewsAll from "./pages/News";
 import Navbar from "./components/Navbar";
 import { useDispatch } from "react-redux";
 import { GET_MAIN } from "./redux/types";
 import Login from "./pages/Login";
 import AboutUs from "./pages/AboutUs";
 import BaseCategories from "./pages/BaseCategories";
+import VideoNewsAll from "./pages/VideoNews";
+import VideoNewsDetails from "./pages/VideoNews/VideoNewsDetails";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -59,7 +61,7 @@ const App = () => {
       <Route
         element={
           <TemplateApp>
-            <VideoDetails />
+            <VideoNewsDetails />
           </TemplateApp>
         }
         path={VIDEO_DETAILS_PAGE}
@@ -75,10 +77,18 @@ const App = () => {
       <Route
         element={
           <TemplateApp>
-            <SportNewsAll />
+            <NewsAll />
           </TemplateApp>
         }
-        path={SPORT_NEWS_ALL}
+        path={NEWS_ALL}
+      />
+      <Route
+        element={
+          <TemplateApp>
+            <VideoNewsAll />
+          </TemplateApp>
+        }
+        path={VIDEO_NEWS_ALL}
       />
       <Route
         element={
