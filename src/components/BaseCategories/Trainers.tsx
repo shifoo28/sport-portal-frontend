@@ -1,11 +1,10 @@
 import React from "react";
-import rating from "../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { IFederations } from "../../redux/interfaces/federations";
 import { urlBack } from "../../redux/apiCalls";
 import { RootState } from "../../redux/store";
-import { activateTab } from "../../redux/actions/main";
+import Rating from "./Rating";
 
 const Trainers = ({ federation }: { federation: IFederations }) => {
   // Hooks
@@ -86,7 +85,7 @@ const Trainers = ({ federation }: { federation: IFederations }) => {
                     <div className="bg-[#CCE6D8] text-[#00843D] px-2 flex items-center justify-center rounded-md">
                       {prefLang === "Tm" ? trainer.madeTm : trainer.madeRu}
                     </div>
-                    <img src={rating} className="h-[15px] pr-1" />
+                    <Rating className="h-[15px]" gap="gap-1" readonly value={trainer.rating}/>
                   </div>
                 </div>
               </button>

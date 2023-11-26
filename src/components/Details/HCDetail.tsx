@@ -1,10 +1,10 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import rating from "../../assets/svg/rating.svg";
 import { RootState } from "../../redux/store";
 import { urlBack } from "../../redux/apiCalls";
 import { IHCDepartment } from "../../redux/interfaces/hcdepartment";
+import Rating from "../BaseCategories/Rating";
 
 const HCDetail = () => {
   // Hooks
@@ -100,7 +100,7 @@ const HCDetail = () => {
           </div>
           <div className="flex justify-between pt-10">
             <span></span>
-            <img src={rating} className="h-full" />
+            <Rating value={employee?.rating || 0} />
             <button
               className="bg-[#077EE6] text-white h-11 font-oswald px-4"
               onClick={linkToAllEmployees}

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import rating from "../../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IFAthletes } from "../../../redux/interfaces/federations";
 import { urlBack } from "../../../redux/apiCalls";
@@ -7,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { flags } from "../Athlete";
 import { activateTab } from "../../../redux/actions/main";
+import Rating from "../Rating";
 
 const AllAhtlete = ({ athletes }: { athletes: IFAthletes[] }) => {
   // Hooks
@@ -91,8 +91,13 @@ const AllAhtlete = ({ athletes }: { athletes: IFAthletes[] }) => {
                     {athlete.club}
                   </div>
                 </td>
-                <td className="p-2 font-semibold" align="center">
-                  <img src={rating} className="h-[15px]" />
+                <td className="p-2 font-semibold w-0" align="center">
+                  <Rating
+                    className="h-[15px]"
+                    value={athlete.rating}
+                    readonly
+                    gap="gap-1"
+                  />
                 </td>
                 <td className="p-2 font-semibold" align="center">
                   <p className="bg-[#CCE6D8] text-[#00843D] uppercase px-2 flex items-center rounded-md w-max text-[10px]">

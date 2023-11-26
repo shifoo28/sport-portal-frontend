@@ -5,7 +5,6 @@ import {
 } from "@material-tailwind/react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import rating from "../../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { activateTab } from "../../../redux/actions/main";
 import HCDetail from "../../Details/HCDetail";
@@ -14,6 +13,7 @@ import { RootState } from "../../../redux/store";
 import { urlBack } from "../../../redux/apiCalls";
 import { IHCDepartment } from "../../../redux/interfaces/hcdepartment";
 import AllHCDEmployees from "./AllEmployees";
+import Rating from "../Rating";
 
 const descriptionRu =
   'Медицинские осмотры спортсменов, взрослых и детей, проводятся в соответствии с Приказом МЗ РФ от 23 октября 2020 г. N 1144н "Об утверждении порядка организации оказания медицинской помощи лицам, занимающимся физической культурой и спортом (в том числе при подготовке и проведении физкультурных мероприятий и спортивных мероприятий), включая порядок медицинского осмотра лиц, желающих пройти спортивную подготовку, заниматься физической культурой и спортом в организациях и (или) выполнить нормативы испытаний (тестов) Всероссийского физкультурно-спортивного комплекса "Готов к труду и обороне" (Г ТО)" и форм медицинских заключений о допуске к участию физкультурных и спортивных мероприятиях" Цены ниже муниципальных.';
@@ -150,7 +150,8 @@ const Component = () => {
                               </p>
                             </div>
                             <div className="flex justify-end">
-                              <img src={rating} className="h-3 pr-1" />
+                              <img src={''} className="h-3 pr-1" />
+                              <Rating className="h-3" gap="gap-1" readonly value={employee.rating}/>
                             </div>
                           </div>
                         </button>

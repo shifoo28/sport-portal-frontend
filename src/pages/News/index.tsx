@@ -14,14 +14,17 @@ const NewsAll = () => {
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const all_news: ILocalNews[] = useSelector((state: RootState) =>
+  var news: ILocalNews[] = useSelector((state: RootState) =>
     r_state.section === ESection.Local
       ? state.home.local_news
       : state.home.world_news
   );
 
   // Operation
-  const news = all_news.filter((ln) => ln.categoryId === r_state.categoryId);
+  news =
+    (r_state.categoryId &&
+      news.filter((ln) => ln.categoryId === r_state.categoryId)) ||
+    news;
 
   // Function
   const linkToNewsDetail = (newsId: string, categoryId: string) => {
@@ -50,9 +53,13 @@ const NewsAll = () => {
             <div
               className={`flex items-center max-w-[160px] w-full border-b border-[#F65050] text-[#F65050]`}
             >
-              {prefLang == "Tm"
-                ? news[0]?.category?.nameTm
-                : news[0]?.category?.nameRu}
+              {prefLang === "Tm"
+                ? r_state.categoryId
+                  ? news[0]?.category?.nameTm
+                  : "Hemmesi"
+                : r_state.categoryId
+                ? news[0]?.category?.nameRu
+                : "Все"}
             </div>
             <span className="border-b border-black w-full"></span>
           </div>

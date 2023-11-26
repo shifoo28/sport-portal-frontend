@@ -22,7 +22,7 @@ const Body = () => {
   const [video_main, ...videos_other] = videos;
 
   // Function
-  const linkTo = (videoId: string) => {
+  const linkToVideoDetail = (videoId: string) => {
     navigate(VIDEO_DETAILS_PAGE, { state: { videoId } });
   };
 
@@ -30,7 +30,7 @@ const Body = () => {
     <div className="flex pt-5 flex-col">
       <div
         className="relative h-[400px] w-full font-sofiasans cursor-pointer"
-        onClick={() => linkTo(video_main.id)}
+        onClick={() => linkToVideoDetail(video_main.id)}
       >
         <img
           src={urlBack + video_main?.imagePath}
@@ -65,7 +65,7 @@ const Body = () => {
               <div
                 className="flex flex-col max-w-[270px] w-full cursor-pointer"
                 key={index}
-                onClick={() => linkTo(video.id)}
+                onClick={() => linkToVideoDetail(video.id)}
               >
                 <div className="relative h-[200px]">
                   <img

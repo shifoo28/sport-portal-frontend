@@ -1,5 +1,4 @@
 export const APP_ADDRESS = "http://10.10.73.74:3000";
-export const LOGIN = "/login";
 export const ABOUTUS = "/about_us";
 // Sport News
 export const NEWS_DETAILS_PAGE = "news/details/";

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { IFTrainers } from "../../../redux/interfaces/federations";
-import rating from "../../../assets/svg/rating.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { urlBack } from "../../../redux/apiCalls";
 import { RootState } from "../../../redux/store";
 import { useNavigate, useLocation } from "react-router-dom";
 import { activateTab } from "../../../redux/actions/main";
+import Rating from "../Rating";
 
 const AllTrainers = ({ trainers }: { trainers: IFTrainers[] }) => {
   // Hooks
@@ -74,8 +74,13 @@ const AllTrainers = ({ trainers }: { trainers: IFTrainers[] }) => {
                 <td className="p-2 font-semibold capitalize" align="center">
                   {trainer.experience + (prefLang === "Tm" ? " ýyl" : " лет")}
                 </td>
-                <td className="p-2 font-semibold" align="center">
-                  <img src={rating} className="h-[15px]" />
+                <td className="p-2 font-semibold w-0" align="center">
+                  <Rating
+                    className="h-[15px]"
+                    value={trainer.rating}
+                    readonly
+                    gap="gap-1"
+                  />
                 </td>
                 <td className="p-2 font-semibold" align="center">
                   <p className="bg-[#CCE6D8] text-[#00843D] uppercase px-2 flex items-center rounded-md w-max text-[10px]">

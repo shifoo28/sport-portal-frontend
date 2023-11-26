@@ -2,9 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { IHCDepartment } from "../../../redux/interfaces/hcdepartment";
-import rating from "../../../assets/svg/rating.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import { urlBack } from "../../../redux/apiCalls";
+import Rating from "../Rating";
 
 const AllEmployees = ({ department }: { department: IHCDepartment }) => {
   // Hooks
@@ -82,7 +82,8 @@ const AllEmployees = ({ department }: { department: IHCDepartment }) => {
                       {prefLang === "Tm" ? employee.jobTm : employee.jobRu}
                     </td>
                     <td className="p-2 font-semibold" align="center">
-                      <img src={rating} className="h-[15px]" />
+                      {/* <img src={''} className="h-[15px]" /> */}
+                      <Rating className="h-[15px]" gap="gap-1" value={employee.rating} readonly/>
                     </td>
                     <td className="p-2 font-semibold" align="center">
                       <p className="bg-[#CCE6D8] text-[#00843D] uppercase px-2 flex items-center rounded-md w-max text-[10px]">

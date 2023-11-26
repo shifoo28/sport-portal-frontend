@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import rating from "../../../assets/svg/rating.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { IFederations } from "../../../redux/interfaces/federations";
 import { urlBack } from "../../../redux/apiCalls";
 import { activateTab } from "../../../redux/actions/main";
+import Rating from "../../BaseCategories/Rating";
 
 const TrainerDetail = () => {
   // Hooks
@@ -133,7 +133,7 @@ const TrainerDetail = () => {
           <p className="bg-[#CAE4D6] text-[#00843D] uppercase text-[32px] px-5 rounded-sm font-semibold">
             {prefLang === "Tm" ? trainer?.madeTm : trainer?.madeRu}
           </p>
-          <img src={rating} className="h-full" />
+          <Rating value={trainer?.rating || 0} />
           <button
             className="bg-[#077EE6] text-white font-oswald text-lg px-3"
             onClick={linkToAllTrainers}

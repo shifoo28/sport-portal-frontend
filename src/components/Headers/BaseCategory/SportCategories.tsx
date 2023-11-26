@@ -38,9 +38,8 @@ const SportNewsList = ({ activeTab }: { activeTab: number }) => {
   return (
     <Popover placement="bottom-end" open={open}>
       <PopoverHandler>
-        <Button className="flex items-center gap-2 shadow-none p-0 font-oswald outline-none">
+        <Button className="flex items-center gap-2 shadow-none p-0 font-oswald outline-none font-normal">
           <p
-            // onClick={() => setOpen(!open)}
             onClick={() => setOpen(!open)}
             className={`normal-case text-sm ${
               activeTab === 0 ? "text-[#08F]" : "text-black"

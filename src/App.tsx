@@ -7,7 +7,6 @@ import NewsDetails from "./pages/News/NewsDetails";
 import {
   ABOUTUS,
   BASE_CATEGORIES,
-  LOGIN,
   NEWS_ALL,
   NEWS_DETAILS_PAGE,
   VIDEO_DETAILS_PAGE,
@@ -21,7 +20,6 @@ import NewsAll from "./pages/News";
 import Navbar from "./components/Navbar";
 import { useDispatch } from "react-redux";
 import { GET_MAIN } from "./redux/types";
-import Login from "./pages/Login";
 import AboutUs from "./pages/AboutUs";
 import BaseCategories from "./pages/BaseCategories";
 import VideoNewsAll from "./pages/VideoNews";
@@ -41,7 +39,7 @@ const App = () => {
         }
         path="/"
       />
-      <Route element={<Login />} path={LOGIN} />
+      {/* <Route element={<Login />} path={LOGIN} /> */}
       <Route
         element={
           <TemplateApp>

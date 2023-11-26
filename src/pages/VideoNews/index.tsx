@@ -1,37 +1,89 @@
 import React from "react";
+import playVideoSvg from "../../components/Sections/Videos/svg/playvideo.svg";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { RootState } from "../../redux/store";
 import { IVideoNews } from "../../redux/interfaces/home";
+import { VIDEO_DETAILS_PAGE } from "../../tools/links";
+import { urlBack } from "../../redux/apiCalls";
+import { BG_COLORS } from "../../tools/constants";
 
 const VideoNewsAll = () => {
   // Hooks
+  const navigate = useNavigate();
   const { state } = useLocation();
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const video_news_all: IVideoNews[] = useSelector(
+  var videos: IVideoNews[] = useSelector(
     (state: RootState) => state.home.video_news
   );
 
   // Operation
-  const videos = video_news_all.filter(
-    (vna) => vna.categoryId === state.categoryId
-  );
+  videos =
+    (state.categoryId &&
+      videos.filter((vna) => vna.categoryId === state.categoryId)) ||
+    videos;
+
+  // Function
+  const linkToVideoDetail = (videoId: string) => {
+    navigate("/../" + VIDEO_DETAILS_PAGE, { state: { videoId } });
+  };
 
   return (
     <div className="mx-32 max-w-[1170px] flex flex-col pt-7 w-full">
       <div className="flex">
         <p className="border-b border-[#077EE6] text-[#077EE6] w-full max-w-xs font-oswald text-2xl">
           {prefLang === "Tm"
-            ? videos[0]?.category.nameTm
-            : videos[0]?.category.nameRu}
+            ? state.categoryId
+              ? videos[0]?.category.nameTm
+              : "Hemmesi"
+            : state.categoryId
+            ? videos[0]?.category.nameRu
+            : "Все"}
         </p>
         <p className="w-full border-b border-black"></p>
       </div>
-      <div className="flex flex-wrap gap-5 pt-3">
+      <div className="flex flex-wrap gap-5 pt-3 justify-center">
         {videos?.map((video, index) => {
-          return <div key={index}>{video.categoryId}</div>;
+          return (
+            <div
+              className="flex flex-col max-w-[270px] w-full cursor-pointer"
+              key={index}
+              onClick={() => linkToVideoDetail(video.id)}
+            >
+              <div className="relative h-[200px]">
+                <img
+                  src={urlBack + video.imagePath}
+                  className="object-cover h-full w-full"
+                />
+                <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 to-black/50 " />
+                <div className="absolute top-1/2 left-1/2 h-[38px] w-[38px] ">
+                  <img
+                    src={playVideoSvg}
+                    className="-translate-x-1/2 -translate-y-1/2"
+                  />
+                </div>
+                <div
+                  className={`absolute top-6 left-6 h-5 ${
+                    BG_COLORS[Math.floor(Math.random() * BG_COLORS.length)]
+                  } w-max text-white text-[9px] flex items-center`}
+                >
+                  <p className="px-3">
+                    {prefLang === "Tm"
+                      ? video?.category?.nameTm
+                      : video?.category?.nameRu}
+                  </p>
+                </div>
+              </div>
+              <p className="pt-6 font-sofiasans text-[10px]">
+                {new Date(video?.updatedAt).toLocaleDateString()}
+              </p>
+              <p className="pt-1 font-oswald text-sm font-semibold">
+                {prefLang === "Tm" ? video.nameTm : video.nameRu}
+              </p>
+            </div>
+          );
         })}
       </div>
     </div>

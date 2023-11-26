@@ -1,10 +1,10 @@
 import React from "react";
-import rating from "../../assets/svg/rating.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IFederations } from "../../redux/interfaces/federations";
 import { urlBack } from "../../redux/apiCalls";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
+import Rating from "./Rating";
 
 export const flags = [
   { flag: "/images/federations/flag_2.png", key: "kitchee" },
@@ -66,7 +66,7 @@ const Athlete = ({ federation }: { federation: IFederations }) => {
             {federation.fathlete?.map((athlete, index) => {
               return (
                 <tr
-                key={index}
+                  key={index}
                   className="border border-[#0088FF]"
                   onClick={() => linkToAthleteDetail(athlete.id)}
                 >
@@ -115,8 +115,8 @@ const Athlete = ({ federation }: { federation: IFederations }) => {
                       {athlete.club}
                     </div>
                   </td>
-                  <td className="p-2 font-semibold" align="center">
-                    <img src={rating} className="h-[15px]" />
+                  <td className="p-2 font-semibold w-0" align="center">
+                    <Rating className="h-[15px]" value={athlete.rating} readonly gap="gap-1"/>
                   </td>
                   <td className="p-2 font-semibold uppercase" align="center">
                     <p className="bg-[#CCE6D8] text-[#00843D] px-2 flex items-center rounded-md w-max text-[10px]">
