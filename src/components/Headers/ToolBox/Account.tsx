@@ -19,7 +19,7 @@ const Account = ({ prefLang }: { prefLang: string }) => {
         size="xs"
         open={open}
         handler={handleOpen}
-        className="bg-black/70 rounded-none"
+        className="rounded-none bg-transparent shadow-none"
         animate={{
           mount: { scale: 1, y: 0 },
           unmount: { scale: 0.9, y: -100 },

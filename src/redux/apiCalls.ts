@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IGetNewsQuery } from "./interfaces/home";
 
-export const urlBack = "http://10.10.73.40/";
+export const urlBack = "http://127.0.0.1:3012/";
 
 // GET REQUESTS
 export async function fetchMain() {
@@ -14,7 +14,7 @@ export async function fetchMain() {
   }
 }
 
-export async function fetchLocalNews(query: IGetNewsQuery) {  
+export async function fetchLocalNews(query: IGetNewsQuery) {
   try {
     const res = await axios.get(urlBack + "main-page", {
       params: { ...query },
