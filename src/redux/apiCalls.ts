@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IGetNewsQuery } from "./interfaces/home";
 
-export const urlBack = "http://127.0.0.1:3012/";
+export const urlBack = "http://10.10.73.40/v1";
 
 // GET REQUESTS
 export async function fetchMain() {
