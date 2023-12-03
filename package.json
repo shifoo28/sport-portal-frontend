@@ -1,7 +1,11 @@
 {
   "name": "sport-portal-frontend",
   "version": "0.1.0",
-  "private": true,
+  "homepage": ".",
+  "author": {
+    "name": "Hushnudbek RAHIMOW",
+    "email": "shifoo2802@gmail.com"
+  },
   "dependencies": {
     "@material-tailwind/react": "^2.0.8",
     "@testing-library/jest-dom": "^5.17.0",
@@ -48,7 +52,8 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "last 1 edge version"
     ]
   },
   "devDependencies": {
