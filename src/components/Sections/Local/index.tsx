@@ -7,22 +7,22 @@ import { RootState } from "../../../redux/store";
 const ads = [
   {
     id: 0,
-    imgLink: `${process.env.ADDRESS}images/ads/ads_1.png`,
+    imgLink: `${process.env.REACT_APP_ADDRESS}images/ads/ads_1.png`,
     title: "Alem Sport magazin",
   },
   {
     id: 1,
-    imgLink: `${process.env.ADDRESS}images/ads/ads_2.png`,
+    imgLink: `${process.env.REACT_APP_ADDRESS}images/ads/ads_2.png`,
     title: "Фирменный магазин 'Nike'",
   },
   {
     id: 2,
-    imgLink: `${process.env.ADDRESS}images/ads/ads_3.png`,
+    imgLink: `${process.env.REACT_APP_ADDRESS}images/ads/ads_3.png`,
     title: "Hattrick Store",
   },
   {
     id: 3,
-    imgLink: `${process.env.ADDRESS}images/ads/ads_4.png`,
+    imgLink: `${process.env.REACT_APP_ADDRESS}images/ads/ads_4.png`,
     title: "Lotto Sport magazin",
   },
 ];
@@ -30,6 +30,7 @@ const ads = [
 const NewsCards = () => {
   const news = useSelector((state: RootState) => state.home.local_news);
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
+console.log(ads);
 
   return (
     <div className="w-full flex mt-9 mx-32 h-max max-w-[1170px]">
