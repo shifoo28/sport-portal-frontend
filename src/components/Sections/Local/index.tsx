@@ -30,7 +30,6 @@ const ads = [
 const NewsCards = () => {
   const news = useSelector((state: RootState) => state.home.local_news);
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-console.log(ads);
 
   return (
     <div className="w-full flex mt-9 mx-32 h-max max-w-[1170px]">
