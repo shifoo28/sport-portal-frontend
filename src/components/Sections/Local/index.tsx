@@ -7,22 +7,22 @@ import { RootState } from "../../../redux/store";
 const ads = [
   {
     id: 0,
-    imgLink: "http://10.10.73.40/images/ads/ads_1.png",
+    imgLink: `${process.env.ADDRESS}images/ads/ads_1.png`,
     title: "Alem Sport magazin",
   },
   {
     id: 1,
-    imgLink: "http://10.10.73.40/images/ads/ads_2.png",
+    imgLink: `${process.env.ADDRESS}images/ads/ads_2.png`,
     title: "Фирменный магазин 'Nike'",
   },
   {
     id: 2,
-    imgLink: "http://10.10.73.40/images/ads/ads_3.png",
+    imgLink: `${process.env.ADDRESS}images/ads/ads_3.png`,
     title: "Hattrick Store",
   },
   {
     id: 3,
-    imgLink: "http://10.10.73.40/images/ads/ads_4.png",
+    imgLink: `${process.env.ADDRESS}images/ads/ads_4.png`,
     title: "Lotto Sport magazin",
   },
 ];

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IGetNewsQuery } from "./interfaces/home";
 
-export const urlBack = process.env.ADDRESS || "http:/url.gurnamaly.com/";
+export const urlBack = process.env.ADDRESS_API || "http:/url.gurnamaly.com/";
 
 // GET REQUESTS
 export async function fetchMain() {
