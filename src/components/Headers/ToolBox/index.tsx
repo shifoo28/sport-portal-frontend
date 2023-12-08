@@ -70,16 +70,17 @@ const ToolBox = () => {
           <div>{prefLang === "Tm" ? "15°C Aşgabat" : "В Ашхабаде 15°C"}</div>
         </div>
         <div
-          className="flex items-center cursor-pointer"
+          className="flex gap-3 items-center cursor-pointer min-w-max"
           onClick={() => {
             navigate("/");
           }}
         >
           <img
             src="/icons/toolbox/logo.png"
-            className="w-12 h-14 object-cover"
+            className="w-[90px] h-[50px] object-cove object-contain"
+            alt=""
           />
-          <span className="flex pl-4">
+          <span className="flex">
             <p className="text-[#0F1A42] text-4xl font-oswald uppercase">
               Sport
             </p>
