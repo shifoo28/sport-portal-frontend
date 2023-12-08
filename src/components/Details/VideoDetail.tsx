@@ -10,8 +10,8 @@ import { VIDEO_NEWS_ALL } from "../../tools/links";
 
 const VideoDetail = () => {
   // Hooks
-  const navigate = useNavigate();
   const { state } = useLocation();
+  const navigate = useNavigate();
 
   // useSelector
   const videos: IVideoNews[] = useSelector(

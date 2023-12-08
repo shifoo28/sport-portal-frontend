@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { BASE_CATEGORIES, APP_ADDRESS, SPORTS } from "../../tools/links";
-import { activateTab } from "../../redux/actions/main";
+import {
+  BASE_CATEGORIES,
+  APP_ADDRESS,
+  SPORTS,
+  COMPETITION_ALL,
+} from "../../tools/links";
 import { RootState } from "../../redux/store";
 import { ICompetition } from "../../redux/interfaces/competitions";
 import { urlBack } from "../../redux/apiCalls";
+import { activateTab } from "../../redux/actions/main";
 
 const CompetitionDetail = () => {
+  // Hooks
+  const { state, pathname } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { state, pathname } = useLocation();
+  useEffect(() => {
+    dispatch(activateTab(8));
+  }, []);
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
@@ -19,9 +28,11 @@ const CompetitionDetail = () => {
   );
 
   // Functions
-  const linkTo = () => {
+  const linkToSports = () => {
     navigate(APP_ADDRESS + BASE_CATEGORIES + SPORTS);
-    dispatch(activateTab(2));
+  };
+  const linkToAllCompetitions = (competitionId: number) => {
+    navigate(pathname + COMPETITION_ALL, { state: { competitionId } });
   };
 
   // Operations
@@ -86,7 +97,7 @@ const CompetitionDetail = () => {
         </p>
         <button
           className="uppercase bg-[#0F1A42] text-white font-sofiasans font-semibold h-11 px-5"
-          onClick={linkTo}
+          onClick={linkToSports}
         >
           {prefLang === "Tm" ? "GATNAŞMAK ÜÇIN" : "ДЛЯ УЧАСТИЯ"}
         </button>
@@ -106,7 +117,11 @@ const CompetitionDetail = () => {
           <div className="flex justify-between pt-4">
             {same_competitions.map((sc, index) => {
               return (
-                <div className="flex flex-col w-[195px] gap-2" key={index}>
+                <div
+                  className="flex flex-col w-[195px] gap-2"
+                  key={index}
+                  onClick={() => linkToAllCompetitions(sc.competitionType.id)}
+                >
                   <img
                     src={urlBack + sc.imagePath}
                     className="object-cover h-[145px]"

@@ -1,4 +1,4 @@
-export const APP_ADDRESS = "http://10.10.73.74:3000";
+export const APP_ADDRESS = "http://sportportal.com.tm";
 export const ABOUTUS = "/about_us";
 // Sport News
 export const NEWS_DETAILS_PAGE = "news/details/";
@@ -15,6 +15,7 @@ export const HEALTHYFOOD = "/healthy_food";
 export const SPORTSHOPS = "/sport_shops";
 export const COMPETITIONS = "/competitions";
 
-// Sport News All
+// All
 export const NEWS_ALL = "/news_all";
 export const VIDEO_NEWS_ALL = '/video_news_all'
+export const COMPETITION_ALL = '/competition_all'

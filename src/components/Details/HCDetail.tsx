@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { urlBack } from "../../redux/apiCalls";
 import { IHCDepartment } from "../../redux/interfaces/hcdepartment";
 import Rating from "../BaseCategories/Rating";
+import { activateTab } from "../../redux/actions/main";
 
 const HCDetail = () => {
   // Hooks
-  const navigate = useNavigate();
   const { pathname, state } = useLocation();
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(activateTab(5));
+  }, []);
+  
   // useSelector
   const prefLang = useSelector((state: any) => state.main.prefLang);
   const departments: IHCDepartment[] = useSelector(
