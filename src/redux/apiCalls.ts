@@ -15,14 +15,10 @@ export async function fetchMain() {
 }
 
 export async function fetchLocalNews(query: IGetNewsQuery) {
-  try {
-    console.log(urlBack + "main-page");
-    console.log(query);
-    
+  try {    
     const res = await axios.get(urlBack + "main-page", {
       params: { ...query },
     });
-console.log(res.data);
 
     return res.data.data;
   } catch (error) {
