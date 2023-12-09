@@ -1,44 +1,57 @@
 import React, { useState } from "react";
 import user from "./svg/user.svg";
 import { Dialog } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 const Account = ({ prefLang }: { prefLang: string }) => {
+  // Hooks
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen((cur) => !cur);
+  const navigate = useNavigate();
+
+  // Operation
+  const handleOpen = () => setOpen(!open);
+
+  // Function
+  const linkToGoogleAuth = () => {
+    navigate("/auth");
+  };
 
   return (
-    <button
-      className="flex justify-center items-center gap-1"
-      onClick={handleOpen}
-    >
-      <p>{prefLang === "Tm" ? "Içeri gir" : "Войти"}</p>
-      <img src={user} alt="" />
+    <>
+      <button
+        className="flex justify-center items-center gap-1"
+        onClick={handleOpen}
+      >
+        <p>{prefLang === "Tm" ? "Içeri gir" : "Войти"}</p>
+        <img src={user} alt="" />
+      </button>
 
       {/* Login */}
       <Dialog
-        size="xs"
+        size="xxl"
         open={open}
         handler={handleOpen}
-        className="rounded-none bg-transparent shadow-none"
-        animate={{
-          mount: { scale: 1, y: 0 },
-          unmount: { scale: 0.9, y: -100 },
-        }}
+        className="bg-black/70 shadow-none rounded-none h-screen backdrop-blur-sm"
       >
-        <div className="flex justify-center items-center flex-col h-full w-full font-sofiasans gap-6">
+        <div className="flex justify-center items-center flex-col h-full w-full min-w-[300px] font-sofiasans gap-6">
           <form className="flex flex-col justify-center items-center bg-white p-8 gap-6 max-w-[472px] w-full">
             <img
               src="/icons/toolbox/logo.png"
               alt=""
-              className="w-[63px] h-[73px]"
+              className="w-[130px] h-[90px] object-contain"
             />
             <p className="text-2xl text-[#181E25] font-semibold">
-              Bize agza bol!
+              {prefLang === "Tm" ? "Bize agza bol!" : "Присоединяйтесь!"}
             </p>
-            <p className="text-[#788BA5]">
-              Baglan, habarly bol, teswirleriňi galdyr
+            <p className="text-[#788BA5] text-center text-sm max-w-xs">
+              {prefLang === "Tm"
+                ? "Baglan, habarly bol, teswirleriňi galdyr"
+                : "Оставайтесь на связи, оставайтесь в курсе, оставляйте комментарии"}
             </p>
-            <button className="flex justify-center items-center border text-[#181E25] w-full h-10">
+            <button
+              className="flex justify-center items-center border text-[#181E25] w-full h-10"
+              onClick={() => linkToGoogleAuth()}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="21"
@@ -63,30 +76,38 @@ const Account = ({ prefLang }: { prefLang: string }) => {
                   fill="#EB4335"
                 />
               </svg>
-              Google bilen baglan
+              {prefLang === "Tm"
+                ? "Google bilen baglan"
+                : "Зарегистрируйтесь через Google"}
             </button>
             <div className="flex flex-col items-center w-full gap-1">
               <p className="text-sm text-[#181E25] w-full">
-                E-mail ýa-da telefon nomer
+                {prefLang === "Tm"
+                  ? "E-mail ýa-da telefon nomer"
+                  : "Email или номер телефона"}
               </p>
               <input
                 type="email"
-                name=""
-                id=""
+                name="email"
+                id="email"
                 className="border w-full h-10 outline-none px-3"
               />
             </div>
             <div className="flex flex-col justify-between items-center w-full gap-1">
               <div className="w-full flex justify-between items-center">
-                <p className="text-sm text-[#181E25]">Parol</p>
+                <p className="text-sm text-[#181E25]">
+                  {prefLang === "Tm" ? "Parol" : "Пароль"}
+                </p>
                 <p className="text-sm text-[#117DF9] cursor-pointer">
-                  Paroly ýatdan çykardym?
+                  {prefLang === "Tm"
+                    ? "Paroly ýatdan çykardym?"
+                    : "Забыли пароль?"}
                 </p>
               </div>
               <input
                 type="password"
-                name=""
-                id=""
+                name="password"
+                id="password"
                 className="border w-full h-10 outline-none px-3"
               />
             </div>
@@ -94,15 +115,18 @@ const Account = ({ prefLang }: { prefLang: string }) => {
               type="submit"
               className="bg-[#4938C3] text-white w-full h-10"
             >
-              Register
+              {prefLang === "Tm" ? "Register" : "Зарегистрироваться"}
             </button>
           </form>
           <p className="text-white flex gap-1 cursor-pointer">
-            Ulayjym öň bar? <p className="text-[#117DF9]">Baglan</p>
+            {prefLang === "Tm" ? "Ulayjym öň barmy? " : "Уже есть? "}
+            <p className="text-[#117DF9]">
+              {prefLang === "Tm" ? "Baglan" : "Войти"}
+            </p>
           </p>
         </div>
       </Dialog>
-    </button>
+    </>
   );
 };
 
