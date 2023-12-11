@@ -80,9 +80,9 @@ const Navbar = () => {
         </span>
         <span className="flex justify-center items-center cursor-pointer gap-1">
           <img src="/icons/basecategory/logo_tst.png" className="w-6 h-5" />
-          <p className="text-xs text-[#00843D]">
-            TÜRKMENISTAN{" "}
-            <p className="flex justify-end items-end text-[#BFB55C] text-[8px] h-[8px]">
+          <p className="flex flex-col leading-[8px] relative">
+            <p className="text-[#00843D]">TÜRKMENISTAN</p>
+            <p className="text-[#BFB55C] text-[8px] text-right absolute right-0 bottom-[-9px]">
               SPORT TV
             </p>
           </p>

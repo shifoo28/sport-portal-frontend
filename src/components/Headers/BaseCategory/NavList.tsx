@@ -48,7 +48,7 @@ const NavList = () => {
   );
 
   return (
-    <div className="w-full flex justify-between text-sm items-center">
+    <div className="flex justify-between text-sm items-center gap-10">
       {base_categories.map((nav: any, index: number) => {
         return (
           <p
