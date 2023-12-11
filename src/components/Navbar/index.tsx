@@ -73,7 +73,7 @@ const Navbar = () => {
           className="flex justify-center items-center cursor-pointer gap-1"
           onClick={() => linkTo("../")}
         >
-          <img src="/icons/basecategory/applogo.png" className="w-8 h-5" />
+          <img src="/icons/toolbox/nav_logo.png" className="w-8 h-5" />
           <p className="text-xs text-[#0F1A42]">
             SPORT<span className="text-[#08F]">PORTAL</span>
           </p>
