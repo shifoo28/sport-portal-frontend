@@ -126,16 +126,6 @@ export async function fetchCompetitionFilters(lang: string) {
   }
 }
 
-export async function fetchShopFilters() {
-  try {
-    const res = await fetch(urlBack + "shop/filters");
-
-    return (await res.json()).data;
-  } catch (error) {
-    throw error;
-  }
-}
-
 // PATCH REQUESTS
 export async function patchNewsDetailsViews(id: string, categoryId: string) {
   try {

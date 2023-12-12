@@ -11,7 +11,6 @@ import {
   GYMSANDCLUBS,
   HEALTHCARE,
   HEALTHYFOOD,
-  SPORTSHOPS,
   COMPETITIONS,
 } from "../../tools/links";
 import SportNews from "../Headers/BaseCategory/SportCategories";
@@ -26,7 +25,6 @@ const links = [
   GYMSANDCLUBS,
   HEALTHCARE,
   HEALTHYFOOD,
-  SPORTSHOPS,
   COMPETITIONS,
 ];
 

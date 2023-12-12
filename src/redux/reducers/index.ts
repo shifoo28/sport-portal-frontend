@@ -5,7 +5,6 @@ import federations from "./federations";
 import gymsclubs from "./gymsclubs";
 import competitions from "./competitions";
 import { newsDetails } from "./newsDetails";
-import shop from "./shop";
 import { healthcare } from "./healthcare";
 
 const rootReducer = combineReducers({
@@ -14,7 +13,6 @@ const rootReducer = combineReducers({
   federations,
   gymsclubs,
   healthcare,
-  shop,
   competitions,
   newsDetails,
 });

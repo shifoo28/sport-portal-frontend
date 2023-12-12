@@ -12,7 +12,6 @@ export const ATHLETE = "/athlete";
 export const GYMSANDCLUBS = "/gyms_and_clubs";
 export const HEALTHCARE = "/health_care";
 export const HEALTHYFOOD = "/healthy_food";
-export const SPORTSHOPS = "/sport_shops";
 export const COMPETITIONS = "/competitions";
 
 // All

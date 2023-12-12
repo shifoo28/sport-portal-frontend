@@ -7,7 +7,6 @@ import {
   GYMSANDCLUBS,
   HEALTHCARE,
   HEALTHYFOOD,
-  SPORTSHOPS,
   COMPETITIONS,
   BASE_CATEGORIES,
 } from "../../../tools/links";
@@ -23,7 +22,6 @@ const links = [
   GYMSANDCLUBS,
   HEALTHCARE,
   HEALTHYFOOD,
-  SPORTSHOPS,
   COMPETITIONS,
 ];
 

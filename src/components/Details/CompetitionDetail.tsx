@@ -18,7 +18,7 @@ const CompetitionDetail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(activateTab(8));
+    dispatch(activateTab(6));
   }, []);
 
   // useSelector
