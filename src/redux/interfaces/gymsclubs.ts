@@ -37,5 +37,4 @@ export interface IGymsAndClubs {
 export interface IGymsClubsState {
   filters: IGymsClubsFilter[];
   gymsclubs: IGymsAndClubs[];
-  all_gymsclubs: IGymsAndClubs[];
 }
