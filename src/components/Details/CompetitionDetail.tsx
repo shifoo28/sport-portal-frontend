@@ -31,6 +31,9 @@ const CompetitionDetail = () => {
   const linkToSports = () => {
     navigate(APP_ADDRESS + BASE_CATEGORIES + SPORTS);
   };
+  const linkToCompetitionDetail = (competitionId: string) => {
+    navigate(pathname, { state: { competitionId } });
+  };
   const linkToAllCompetitions = (competitionId: number) => {
     navigate(pathname + COMPETITION_ALL, { state: { competitionId } });
   };
@@ -44,7 +47,11 @@ const CompetitionDetail = () => {
   return (
     <div className="mx-32 max-w-[1170px] pt-8 flex gap-12 font-sofiasans">
       <div>
-        <Sorted prefLang={prefLang} />
+        <Sorted
+          prefLang={prefLang}
+          data={competitions}
+          link={linkToCompetitionDetail}
+        />
       </div>
       <div className="w-full flex flex-col items-center gap-5">
         <p className="font-oswald text-[26px] text-[#0F1A42] text-center max-w-[700px] capitalize">
@@ -142,12 +149,19 @@ const CompetitionDetail = () => {
   );
 };
 
-const Sorted = ({ prefLang }: { prefLang: string }) => {
-  let dummyData: any[] = [];
+const Sorted = ({
+  prefLang,
+  data,
+  link,
+}: {
+  prefLang: string;
+  data: ICompetition[];
+  link: (competitionId: string) => void;
+}) => {
   const [activeTab, setActiveTab] = useState(0);
   const changeTab = (activate: number) => {
     setActiveTab(activate);
-    dummyData = dummyData.reverse();
+    data = data.reverse();
   };
 
   return (
@@ -185,21 +199,26 @@ const Sorted = ({ prefLang }: { prefLang: string }) => {
         </div>
       </div>
       <div className="pt-5">
-        {dummyData?.map((e) => {
+        {data?.map((e, index) => {
           return (
             <div
-              key={e?.id}
+              key={index}
               className="flex justify-between items-center pb-4 cursor-pointer"
+              onClick={() => link(e?.id)}
             >
               <div className="h-[70px] w-[70px] relative">
                 <img
-                  src={e?.imgLink}
+                  src={urlBack + e?.imagePath}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">
-                <p className="font-sofiasans text-[8px]">{e?.date}</p>
-                <p className="font-oswald text-[15px] leading-5">{e?.title}</p>
+                <p className="font-sofiasans text-[8px]">
+                  {prefLang === "Tm" ? e?.locationTm : e?.locationRu}
+                </p>
+                <p className="font-oswald text-[15px] leading-5">
+                  {prefLang === "Tm" ? e?.nameTm : e?.nameTm}
+                </p>
               </div>
             </div>
           );

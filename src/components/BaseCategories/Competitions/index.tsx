@@ -33,11 +33,11 @@ const Competitions = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  dispatch({ type: GET_COMPETITIONS });
 
   if (pathname.includes("id")) {
     return <CompetitionDetail />; // Opens Detailed page
   } else {
-    dispatch({ type: GET_COMPETITIONS });
     dispatch({ type: GET_COMPETITION_FILTERS, payload: prefLang });
 
     return <Component />;
