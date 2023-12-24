@@ -15,7 +15,7 @@ export async function fetchMain() {
 }
 
 export async function fetchLocalNews(query: IGetNewsQuery) {
-  try {    
+  try {
     const res = await axios.get(urlBack + "main-page", {
       params: { ...query },
     });
@@ -80,6 +80,15 @@ export async function fetchFederationAthletes() {
   }
 }
 
+export async function fetchAllGymsClubs(lang: string) {
+  try {
+    const res = await fetch(urlBack + `gyms-and-clubs-page?lang=${lang}`);
+
+    return (await res.json()).data.gymsclubs
+  } catch (error) {
+    throw error;
+  }
+}
 export async function fetchGymsClubsFilters(lang: string) {
   try {
     const res = await fetch(

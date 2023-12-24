@@ -14,10 +14,10 @@ const VideoDetail = () => {
   const navigate = useNavigate();
 
   // useSelector
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const videos: IVideoNews[] = useSelector(
     (state: RootState) => state.home.video_news
   );
-  const prefLang = useSelector((state: RootState) => state.main.prefLang);
 
   // Operation
   const video = videos.find((video) => video.id === state.videoId);
@@ -96,7 +96,7 @@ const VideoDetail = () => {
           <div className="flex justify-between font-oswald text-2xl">
             <div
               className="flex flex-col justify-between cursor-pointer"
-              onClick={() => linkToVideoDetail(same_video_main.id)}
+              onClick={() => linkToVideoDetail(same_video_main?.id)}
             >
               <div className="h-[400px] w-[660px] relative">
                 <img
@@ -104,17 +104,17 @@ const VideoDetail = () => {
                   className="absolute top-[160px] left-[300px]"
                 />
                 <img
-                  src={urlBack + same_video_main.imagePath}
+                  src={urlBack + same_video_main?.imagePath}
                   className="object-cover h-full"
                 />
               </div>
               <p className="text-xs font-sofiasans">
-                {new Date(same_video_main.createdAt).toLocaleDateString()}
+                {new Date(same_video_main?.createdAt).toLocaleDateString()}
               </p>
               <p className="font-semibold max-w-[550px]">
                 {prefLang === "Tm"
-                  ? same_video_main.nameTm
-                  : same_video_main.nameRu}
+                  ? same_video_main?.nameTm
+                  : same_video_main?.nameRu}
               </p>
             </div>
             <div className="flex flex-col gap-4">

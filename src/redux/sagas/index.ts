@@ -8,7 +8,11 @@ import {
   getCompetitionFiltersSaga,
   postCompetitionFilterSaga,
 } from "./competitions";
-import { gymsclubsSaga, gymsclubspostfilterSaga } from "./gymsclubsSaga";
+import {
+  gymsclubsAllSaga,
+  gymsclubsSaga,
+  gymsclubspostfilterSaga,
+} from "./gymsclubsSaga";
 import { hcdepartmentsSaga } from "./healthcare";
 
 export default function* rootSaga() {
@@ -20,6 +24,7 @@ export default function* rootSaga() {
     fsportsSaga(),
     ftrainersSaga(),
     fathletesSaga(),
+    gymsclubsAllSaga(),
     gymsclubsSaga(),
     gymsclubspostfilterSaga(),
     hcdepartmentsSaga(),
