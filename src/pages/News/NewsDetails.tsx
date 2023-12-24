@@ -12,6 +12,8 @@ import FilterNews from "../../components/Details/NewsDetail/FilterNews";
 import NewsDetail from "../../components/Details/NewsDetail/NewsDetail";
 
 const NewsDetails = () => {
+  const { state: r_state } = useLocation();
+
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const news: ILocalNews[] | IWorldNews[] = useSelector((state: RootState) =>
@@ -22,12 +24,20 @@ const NewsDetails = () => {
 
   // Hooks
   const navigate = useNavigate();
-  const { state: r_state } = useLocation();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({
       type: PATCH_SPORT_NEWS_VIEWS,
       payload: { newsId: r_state.newsId, categoryId: news_data?.categoryId },
+    });
+    // Renews
+    dispatch({
+      type: GET_LOCAL_NEWS,
+      payload: { section: ESection.Local, lang: prefLang },
+    });
+    dispatch({
+      type: GET_GLOBAL_NEWS,
+      payload: { section: ESection.World, lang: prefLang },
     });
   }, [prefLang]);
 
@@ -39,15 +49,6 @@ const NewsDetails = () => {
   );
 
   // Function
-  // Renews
-  dispatch({
-    type: GET_LOCAL_NEWS,
-    payload: { section: ESection.Local, lang: prefLang },
-  });
-  dispatch({
-    type: GET_GLOBAL_NEWS,
-    payload: { section: ESection.World, lang: prefLang },
-  });
   const linkToNewsDetail = (newsId: string, categoryId: string) => {
     navigate("", { state: { newsId, categoryId, section: r_state.section } });
   };
