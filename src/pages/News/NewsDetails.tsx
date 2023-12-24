@@ -29,15 +29,6 @@ const NewsDetails = () => {
       type: PATCH_SPORT_NEWS_VIEWS,
       payload: { newsId: r_state.newsId, categoryId: news_data?.categoryId },
     });
-    // Renews
-    dispatch({
-      type: GET_LOCAL_NEWS,
-      payload: { section: ESection.Local, lang: prefLang },
-    });
-    dispatch({
-      type: GET_GLOBAL_NEWS,
-      payload: { section: ESection.World, lang: prefLang },
-    });
   }, [prefLang]);
 
   // Operation
@@ -48,6 +39,15 @@ const NewsDetails = () => {
   );
 
   // Function
+  // Renews
+  dispatch({
+    type: GET_LOCAL_NEWS,
+    payload: { section: ESection.Local, lang: prefLang },
+  });
+  dispatch({
+    type: GET_GLOBAL_NEWS,
+    payload: { section: ESection.World, lang: prefLang },
+  });
   const linkToNewsDetail = (newsId: string, categoryId: string) => {
     navigate("", { state: { newsId, categoryId, section: r_state.section } });
   };
