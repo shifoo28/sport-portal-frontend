@@ -2,7 +2,7 @@ import { all } from "redux-saga/effects";
 import { mainSaga } from "./mainSaga";
 import { globalNewsSaga, localNewsSaga, videoNewsSaga } from "./homeSaga";
 import { fathletesSaga, fsportsSaga, ftrainersSaga } from "./federations";
-import { newsDetails } from "./newsDetailsSaga";
+import { newsDetailsSaga } from "./newsDetailsSaga";
 import {
   competitionsSaga,
   getCompetitionFiltersSaga,
@@ -26,6 +26,6 @@ export default function* rootSaga() {
     competitionsSaga(),
     getCompetitionFiltersSaga(),
     postCompetitionFilterSaga(),
-    newsDetails(),
+    newsDetailsSaga(),
   ]);
 }

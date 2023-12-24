@@ -19,6 +19,6 @@ function* postNewsViews(action: INewsDetails) {
   }
 }
 
-export function* newsDetails() {
+export function* newsDetailsSaga() {
   yield takeLatest(PATCH_SPORT_NEWS_VIEWS, postNewsViews);
 }

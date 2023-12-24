@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FootballNewsBody from "../../components/Sections/Global/FootballNewsBody";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ESection, ILocalNews } from "../../redux/interfaces/home";
 import { useLocation, useNavigate } from "react-router-dom";
 import { urlBack } from "../../redux/apiCalls";
 import { NEWS_DETAILS_PAGE } from "../../tools/links";
+import { GET_LOCAL_NEWS, GET_GLOBAL_NEWS } from "../../redux/types";
 
 const NewsAll = () => {
   // Hooks
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({
+      type: GET_LOCAL_NEWS,
+      payload: { section: ESection.Local, lang: prefLang },
+    });
+    dispatch({
+      type: GET_GLOBAL_NEWS,
+      payload: { section: ESection.World, lang: prefLang },
+    });
+  }, []);
   const { state: r_state } = useLocation();
 
   // useSelector
