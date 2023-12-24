@@ -105,7 +105,7 @@ const VideoDetail = () => {
                 />
                 <img
                   src={urlBack + same_video_main?.imagePath}
-                  className="object-cover h-full"
+                  className="object-cover h-full w-full"
                 />
               </div>
               <p className="text-xs font-sofiasans">

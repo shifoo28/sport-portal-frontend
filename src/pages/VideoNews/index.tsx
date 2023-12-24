@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import playVideoSvg from "../../components/Sections/Videos/svg/playvideo.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { RootState } from "../../redux/store";
-import { IVideoNews } from "../../redux/interfaces/home";
+import { ESection, IVideoNews } from "../../redux/interfaces/home";
 import { VIDEO_DETAILS_PAGE } from "../../tools/links";
 import { urlBack } from "../../redux/apiCalls";
 import { BG_COLORS } from "../../tools/constants";
+import { GET_VIDEO_NEWS } from "../../redux/types";
 
 const VideoNewsAll = () => {
   // Hooks
   const navigate = useNavigate();
   const { state } = useLocation();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({
+      type: GET_VIDEO_NEWS,
+      payload: { section: ESection.Video, lang: prefLang },
+    });
+  }, []);
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);

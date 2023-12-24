@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import wertical from "../Headers/BaseCategory/svg/wertical.svg";
-import logoyoutube from "../Headers/BaseCategory/svg/logoyoutube.svg";
-import logolive from "../Headers/BaseCategory/svg/logolive.svg";
 import { useNavigate } from "react-router-dom";
 import {
   BASE_CATEGORIES,
@@ -45,7 +43,7 @@ const Navbar = () => {
   useEffect(() => {
     // function to run on scroll
     const updateScrollDirection = () => {
-      window.scrollY < 290 ? setDisplay("hidden") : setDisplay("");
+      window.scrollY < 280 ? setDisplay("hidden") : setDisplay("");
     };
     window.addEventListener("scroll", updateScrollDirection); // add event listener
 
@@ -86,11 +84,11 @@ const Navbar = () => {
           </p>
         </span>
         <span className="flex justify-center items-center cursor-pointer gap-1">
-          <img src={logoyoutube} className="w-6 h-6" />
+          <img src="/icons/basecategory/logo_youtube.png" className="w-6 h-4" />
           <p className="text-xs">YOUSPORT</p>
         </span>
         <span className="flex justify-center items-center cursor-pointer gap-1">
-          <img src={logolive} className="w-7 h-7" />
+          <img src="/icons/basecategory/logolive.gif" className="w-6 h-5" />
           <p className="text-xs text-[#F44336]">LIVE</p>
         </span>
         <img src={wertical} className="h-[60%]" />
