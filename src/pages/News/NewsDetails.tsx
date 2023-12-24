@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ESection, ILocalNews, IWorldNews } from "../../redux/interfaces/home";
 import { useLocation, useNavigate } from "react-router-dom";
-import { PATCH_SPORT_NEWS_VIEWS } from "../../redux/types";
+import {
+  GET_GLOBAL_NEWS,
+  GET_LOCAL_NEWS,
+  PATCH_SPORT_NEWS_VIEWS,
+} from "../../redux/types";
 import FilterNews from "../../components/Details/NewsDetail/FilterNews";
 import NewsDetail from "../../components/Details/NewsDetail/NewsDetail";
 
 const NewsDetails = () => {
-  // Hooks
-  const navigate = useNavigate();
-  const { state: r_state } = useLocation();
-
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const news: ILocalNews[] | IWorldNews[] = useSelector((state: RootState) =>
@@ -21,11 +21,22 @@ const NewsDetails = () => {
   );
 
   // Hooks
+  const navigate = useNavigate();
+  const { state: r_state } = useLocation();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({
       type: PATCH_SPORT_NEWS_VIEWS,
       payload: { newsId: r_state.newsId, categoryId: news_data?.categoryId },
+    });
+    // Renews
+    dispatch({
+      type: GET_LOCAL_NEWS,
+      payload: { section: ESection.Local, lang: prefLang },
+    });
+    dispatch({
+      type: GET_GLOBAL_NEWS,
+      payload: { section: ESection.World, lang: prefLang },
     });
   }, [prefLang]);
 
