@@ -16,12 +16,7 @@ import HealthCare from "../../components/BaseCategories/HealthCare/HealthCare";
 import Competitions from "../../components/BaseCategories/Competitions";
 import BCFDetail from "../../components/Details/TADetail";
 
-const components = [
-  Federations,
-  GymsAndClubs,
-  HealthCare,
-  Competitions,
-];
+const components = [Federations, GymsAndClubs, HealthCare, Competitions];
 const separateLinks = [
   SPORTS,
   TRAINERS,
@@ -38,7 +33,7 @@ const BaseCategories = () => {
   const indexLink = separateLinks.findIndex((i) => uri.includes(i));
 
   return indexLink > 2 ? (
-    createElement(components[indexLink-2])
+    createElement(components[indexLink - 2])
   ) : uri.includes("id") ? (
     <BCFDetail />
   ) : (

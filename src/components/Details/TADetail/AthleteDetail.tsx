@@ -78,7 +78,7 @@ const AthleteDetail = () => {
           <img
             src={urlBack + federation?.imagePath}
             alt=""
-            className="w-[57px] h-[65px]"
+            className="w-[57px] h-[65px] object-center"
           />
         </div>
         <div className="font-sofiasans text-2xl">
