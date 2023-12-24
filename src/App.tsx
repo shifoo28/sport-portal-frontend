@@ -28,6 +28,7 @@ import VideoNewsDetails from "./pages/VideoNews/VideoNewsDetails";
 const App = () => {
   const dispatch = useDispatch();
   dispatch({ type: GET_MAIN });
+console.log('1');
 
   return (
     <Routes>
@@ -39,7 +40,6 @@ const App = () => {
         }
         path="/"
       />
-      {/* <Route element={<Login />} path={LOGIN} /> */}
       <Route
         element={
           <TemplateApp>
