@@ -28,7 +28,7 @@ import VideoNewsDetails from "./pages/VideoNews/VideoNewsDetails";
 const App = () => {
   const dispatch = useDispatch();
   dispatch({ type: GET_MAIN });
-  dispatch({ type: GET_WEATHER });
+  // dispatch({ type: GET_WEATHER });
 
   return (
     <Routes>
