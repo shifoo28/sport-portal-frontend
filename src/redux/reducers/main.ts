@@ -3,11 +3,14 @@ import {
   ACTIVATE_TAB,
   GET_MAIN_FAILED,
   GET_MAIN_SUCCESS,
+  GET_WEATHER_FAILED,
+  GET_WEATHER_SUCCESS,
   SET_LANG,
 } from "../types";
 
 const initialState: IMainState = {
   active_tab: 0,
+  weather: {},
   langs: [{ id: "", name: "" }],
   base_categories: [],
   sport_categories: {
@@ -32,6 +35,12 @@ export default function main(state: IMainState = initialState, action: IMain) {
       };
 
     case GET_MAIN_FAILED:
+      return { ...state, message: payload.message };
+
+    case GET_WEATHER_SUCCESS:
+      return { ...state, weather: payload };
+
+    case GET_WEATHER_FAILED:
       return { ...state, message: payload.message };
 
     case SET_LANG:

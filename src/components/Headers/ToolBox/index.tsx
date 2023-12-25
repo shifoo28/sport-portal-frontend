@@ -4,6 +4,7 @@ import SelectLang from "./SelectLang";
 import Account from "./Account";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { RootState } from "../../../redux/store";
 
 export const monthsTm = [
   "Ýanwar",
@@ -53,8 +54,14 @@ export const daysRu = [
 ];
 
 const ToolBox = () => {
-  const prefLang = useSelector((state: any) => state.main.prefLang);
+  // useSelector
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const weather = useSelector((state: RootState) => state.main.weather);
+
+  // Hooks
   const navigate = useNavigate();
+
+  // Operations
   const d = new Date();
   let year = `${d.getFullYear()}${prefLang === "Tm" ? "ý" : "г"}`;
   let month =
@@ -62,18 +69,25 @@ const ToolBox = () => {
   let date = d.getDate();
   let day = prefLang === "Tm" ? daysTm[d.getDay()] : daysRu[d.getDay()];
 
+  // Function
+  const linkToBase = () => {
+    navigate("/");
+  };
+
   return (
     <section className="w-full h-16 font-sofiasans text-xs">
       <div className="mx-32 flex justify-between max-w-[1170px] h-full">
         <div className="flex flex-col justify-around w-full">
           <div>{day + ", " + date + " " + month + " " + year}</div>
-          <div>{prefLang === "Tm" ? "15°C Aşgabat" : "В Ашхабаде 15°C"}</div>
+          <div>
+            {prefLang === "Tm"
+              ? `${weather.temp}°C Aşgabat`
+              : `В Ашхабаде ${weather.temp}°C`}
+          </div>
         </div>
         <div
           className="flex gap-3 items-center cursor-pointer min-w-max"
-          onClick={() => {
-            navigate("/");
-          }}
+          onClick={linkToBase}
         >
           <img
             src="/icons/toolbox/logo.png"

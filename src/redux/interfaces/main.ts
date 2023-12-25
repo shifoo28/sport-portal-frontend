@@ -33,6 +33,7 @@ export interface IMainState {
   message: string;
   prefLang: string;
   active_tab: number;
+  weather: object;
   langs: ILanguage[];
   base_categories: IBaseCategory[];
   sport_categories: ISportCategories;

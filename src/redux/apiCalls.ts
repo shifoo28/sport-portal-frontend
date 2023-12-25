@@ -14,6 +14,16 @@ export async function fetchMain() {
   }
 }
 
+export async function fetchWeather() {
+  try {
+    const res = await axios.get(process.env.REACT_APP_WEATHER_API || "");
+
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function fetchLocalNews(query: IGetNewsQuery) {
   try {
     const res = await axios.get(urlBack + "main-page", {

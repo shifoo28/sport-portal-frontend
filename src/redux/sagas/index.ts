@@ -1,5 +1,5 @@
 import { all } from "redux-saga/effects";
-import { mainSaga } from "./mainSaga";
+import { mainSaga, weatherSaga } from "./mainSaga";
 import { globalNewsSaga, localNewsSaga, videoNewsSaga } from "./homeSaga";
 import { fathletesSaga, fsportsSaga, ftrainersSaga } from "./federations";
 import { newsDetailsSaga } from "./newsDetailsSaga";
@@ -8,15 +8,13 @@ import {
   getCompetitionFiltersSaga,
   postCompetitionFilterSaga,
 } from "./competitions";
-import {
-  gymsclubsSaga,
-  gymsclubspostfilterSaga,
-} from "./gymsclubsSaga";
+import { gymsclubsSaga, gymsclubspostfilterSaga } from "./gymsclubsSaga";
 import { hcdepartmentsSaga } from "./healthcare";
 
 export default function* rootSaga() {
   yield all([
     mainSaga(),
+    weatherSaga(),
     localNewsSaga(),
     globalNewsSaga(),
     videoNewsSaga(),

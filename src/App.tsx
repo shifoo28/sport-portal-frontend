@@ -19,7 +19,7 @@ import ToolBox from "./components/Headers/ToolBox";
 import NewsAll from "./pages/News";
 import Navbar from "./components/Navbar";
 import { useDispatch } from "react-redux";
-import { GET_MAIN } from "./redux/types";
+import { GET_MAIN, GET_WEATHER } from "./redux/types";
 import AboutUs from "./pages/AboutUs";
 import BaseCategories from "./pages/BaseCategories";
 import VideoNewsAll from "./pages/VideoNews";
@@ -28,6 +28,7 @@ import VideoNewsDetails from "./pages/VideoNews/VideoNewsDetails";
 const App = () => {
   const dispatch = useDispatch();
   dispatch({ type: GET_MAIN });
+  dispatch({ type: GET_WEATHER });
 
   return (
     <Routes>
