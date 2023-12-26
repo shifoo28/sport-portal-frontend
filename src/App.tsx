@@ -1,5 +1,4 @@
 import React from "react";
-
 import HomePage from "./pages/home";
 import { Route, Routes } from "react-router-dom";
 import NF404 from "./pages/404";
@@ -24,6 +23,7 @@ import AboutUs from "./pages/AboutUs";
 import BaseCategories from "./pages/BaseCategories";
 import VideoNewsAll from "./pages/VideoNews";
 import VideoNewsDetails from "./pages/VideoNews/VideoNewsDetails";
+import ScrollToTop from "./ScrollToTop";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -103,6 +103,7 @@ const App = () => {
 const TemplateApp = ({ children }: { children: JSX.Element }) => {
   return (
     <div className="flex justify-center">
+      <ScrollToTop />
       <div className="max-w-[1440px]">
         <Banner />
         <ToolBox />
