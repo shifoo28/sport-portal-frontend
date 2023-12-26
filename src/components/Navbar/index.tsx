@@ -74,7 +74,11 @@ const Navbar = () => {
             SPORT<span className="text-[#08F]">PORTAL</span>
           </p>
         </span>
-        <span className="flex justify-center items-center cursor-pointer gap-1">
+        <a
+          className="flex justify-center items-center cursor-pointer gap-1"
+          href="https://turkmentv.gov.tm/live"
+          target="_blank"
+        >
           <img src="/icons/basecategory/logo_tst.png" className="w-6 h-5" />
           <p className="flex flex-col leading-[8px] relative">
             <p className="text-[#00843D]">TÜRKMENISTAN</p>
@@ -82,15 +86,23 @@ const Navbar = () => {
               SPORT TV
             </p>
           </p>
-        </span>
-        <span className="flex justify-center items-center cursor-pointer gap-1">
+        </a>
+        <a
+          className="flex justify-center items-center cursor-pointer gap-1"
+          href="https://www.youtube.com/@turkmensport_tm"
+          target="_blank"
+        >
           <img src="/icons/basecategory/logo_youtube.png" className="w-6 h-4" />
           <p className="text-xs">YOUSPORT</p>
-        </span>
-        <span className="flex justify-center items-center cursor-pointer gap-1">
+        </a>
+        <a
+          className="flex justify-center items-center cursor-pointer gap-1"
+          href="https://www.instagram.com/sportportal.tm"
+          target="_blank"
+        >
           <img src="/icons/basecategory/logolive.gif" className="w-6 h-5" />
           <p className="text-xs text-[#F44336]">LIVE</p>
-        </span>
+        </a>
         <img src={wertical} className="h-[60%]" />
         {base_categories.map((bc, index) => {
           return (

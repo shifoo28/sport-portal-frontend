@@ -37,7 +37,7 @@ const BaseCategoriesList = () => {
             </a>
             <a
               className="flex cursor-pointer pr-1 items-center"
-              href="https://www.instagram.com/turkmensport"
+              href="https://www.instagram.com/sportportal.tm"
               target="_blank"
             >
               <img
