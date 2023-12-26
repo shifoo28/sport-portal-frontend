@@ -8,7 +8,11 @@ const BaseCategoriesList = () => {
       <nav className="font-oswald text-sm h-full mx-32 flex justify-between max-w-[1170px]">
         <div className="flex items-center justify-between h-full w-full gap-2">
           <div className="flex items-center justify-between font-oswald text-xs max-w-[280px] w-full">
-            <div className="flex cursor-pointer items-center">
+            <a
+              className="flex cursor-pointer items-center"
+              href="https://turkmentv.gov.tm/live"
+              target="_blank"
+            >
               <img
                 src="/icons/basecategory/logo_tst.png"
                 className="w-6 h-5 pr-1"
@@ -19,21 +23,29 @@ const BaseCategoriesList = () => {
                   SPORT TV
                 </p>
               </p>
-            </div>
-            <div className="flex items-center cursor-pointer pr-1">
+            </a>
+            <a
+              className="flex items-center cursor-pointer pr-1"
+              href="https://www.youtube.com/@turkmensport_tm"
+              target="_blank"
+            >
               <img
                 src="/icons/basecategory/logo_youtube.png"
                 className="w-7 h-4 pr-1"
               />
               <p className="text-[#0F1A42]">YOUSPORT</p>
-            </div>
-            <div className="flex cursor-pointer pr-1 items-center">
+            </a>
+            <a
+              className="flex cursor-pointer pr-1 items-center"
+              href="https://www.instagram.com/turkmensport"
+              target="_blank"
+            >
               <img
                 src="/icons/basecategory/logolive.gif"
                 className="w-7 h-7 pr-1"
               />
               <p className="text-[#F44336]">LIVE</p>
-            </div>
+            </a>
           </div>
           <img src={wertical} />
           <NavList />
