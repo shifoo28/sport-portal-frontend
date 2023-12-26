@@ -1,6 +1,6 @@
 import React from "react";
 import { HeaderWithCategories } from "./Headers";
-import SportNewsBody from "./Body";
+import Body from "./Body";
 import FilterNews from "./FilterNews";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
@@ -13,7 +13,7 @@ const Videos = () => {
       <div className="flex w-full justify-between">
         <div className="flex flex-col max-w-[870px] w-full">
           <HeaderWithCategories />
-          <SportNewsBody />
+          <Body />
         </div>
         <div className="flex flex-col max-w-[270px] w-full">
           <FilterNews data={videos_other} />

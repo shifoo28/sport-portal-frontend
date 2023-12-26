@@ -44,8 +44,8 @@ const Body = () => {
               : video_main?.category?.nameRu}
           </p>
         </div>
-        <div className="absolute top-24 left-1/2">
-          <img src={playVideoSvg} />
+        <div className="absolute top-1/3 left-1/2">
+          <img src={playVideoSvg} alt=""/>
         </div>
         <div
           className={`absolute text-white bottom-6 max-w-[60%] left-0 w-full ml-6`}

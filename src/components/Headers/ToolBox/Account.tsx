@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import user from "./svg/user.svg";
 import { Dialog } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,9 @@ const Account = ({ prefLang }: { prefLang: string }) => {
   // Function
   const linkToGoogleAuth = () => {
     navigate("/auth");
+  };
+  const linkToRegister = (e: FormEvent) => {
+    e.preventDefault();
   };
 
   return (
@@ -34,7 +37,10 @@ const Account = ({ prefLang }: { prefLang: string }) => {
         className="bg-black/70 shadow-none rounded-none h-screen backdrop-blur-sm"
       >
         <div className="flex justify-center items-center flex-col h-full w-full min-w-[300px] font-sofiasans gap-6">
-          <form className="flex flex-col justify-center items-center bg-white p-8 gap-6 max-w-[472px] w-full">
+          <form
+            className="flex flex-col justify-center items-center bg-white p-8 gap-6 max-w-[472px] w-full"
+            onSubmit={(e: FormEvent<HTMLFormElement>) => linkToRegister(e)}
+          >
             <img
               src="/icons/toolbox/logo.png"
               alt=""
@@ -91,6 +97,7 @@ const Account = ({ prefLang }: { prefLang: string }) => {
                 name="email"
                 id="email"
                 className="border w-full h-10 outline-none px-3"
+                required
               />
             </div>
             <div className="flex flex-col justify-between items-center w-full gap-1">
@@ -109,6 +116,7 @@ const Account = ({ prefLang }: { prefLang: string }) => {
                 name="password"
                 id="password"
                 className="border w-full h-10 outline-none px-3"
+                required
               />
             </div>
             <button
@@ -119,7 +127,7 @@ const Account = ({ prefLang }: { prefLang: string }) => {
             </button>
           </form>
           <p className="text-white flex gap-1 cursor-pointer">
-            {prefLang === "Tm" ? "Ulayjym öň barmy? " : "Уже есть? "}
+            {prefLang === "Tm" ? "Ulanyjyň öň barmy? " : "Уже есть? "}
             <p className="text-[#117DF9]">
               {prefLang === "Tm" ? "Baglan" : "Войти"}
             </p>
