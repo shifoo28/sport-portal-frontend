@@ -5,12 +5,15 @@ import {
   GET_MAIN_SUCCESS,
   GET_WEATHER_FAILED,
   GET_WEATHER_SUCCESS,
+  POST_SEARCH_FAILED,
+  POST_SEARCH_SUCCESS,
   SET_LANG,
 } from "../types";
 
 const initialState: IMainState = {
   active_tab: 0,
   weather: {},
+  search: { news: [], videos: [] },
   langs: [{ id: "", name: "" }],
   base_categories: [],
   sport_categories: {
@@ -48,6 +51,12 @@ export default function main(state: IMainState = initialState, action: IMain) {
 
     case ACTIVATE_TAB:
       return { ...state, active_tab: payload };
+
+    case POST_SEARCH_SUCCESS:
+      return { ...state, search: payload };
+
+    case POST_SEARCH_FAILED:
+      return { ...state, message: payload.message };
 
     default:
       return state;

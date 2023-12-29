@@ -6,8 +6,12 @@ import {
   GET_WEATHER,
   GET_WEATHER_FAILED,
   GET_WEATHER_SUCCESS,
+  POST_SEARCH,
+  POST_SEARCH_FAILED,
+  POST_SEARCH_SUCCESS,
 } from "../types";
-import { fetchMain, fetchWeather } from "../apiCalls";
+import { doSearch, fetchMain, fetchWeather } from "../apiCalls";
+import { IMain } from "../interfaces/main";
 
 function* getMain() {
   try {
@@ -32,10 +36,23 @@ function* getWeather() {
     yield put({ type: GET_WEATHER_FAILED, payload: error.message });
   }
 }
+function* search(action: IMain) {
+  try {
+    // @ts-ignore
+    const found = yield call(doSearch, action.payload);
+
+    yield put({ type: POST_SEARCH_SUCCESS, payload: found });
+  } catch (error: any) {
+    yield put({ type: POST_SEARCH_FAILED, message: error.message });
+  }
+}
 
 export function* mainSaga() {
   yield takeLatest(GET_MAIN, getMain);
 }
 export function* weatherSaga() {
   yield takeLatest(GET_WEATHER, getWeather);
+}
+export function* searchSaga() {
+  yield takeLatest(POST_SEARCH, search);
 }

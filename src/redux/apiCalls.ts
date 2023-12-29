@@ -150,6 +150,17 @@ export async function patchNewsDetailsViews(id: string, categoryId: string) {
 }
 
 // POST REQUESTS
+export async function doSearch(params: object) {
+  console.log(params);
+  
+  try {
+    const res = await axios.post(urlBack + "search", null, { params });
+
+    return res.data.data;
+  } catch (error) {
+    throw error;
+  }
+}
 export async function filterGymsClubs(params: object) {
   try {
     const res = await axios.post(urlBack + "gyms-and-clubs-page/filter", null, {

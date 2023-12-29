@@ -1,5 +1,6 @@
 export const APP_ADDRESS = "http://sportportal.com.tm";
 export const ABOUTUS = "/about_us";
+export const SEARCH = "/search";
 // Sport News
 export const NEWS_DETAILS_PAGE = "news/details/";
 export const VIDEO_DETAILS_PAGE = "videos/details/";
@@ -16,5 +17,5 @@ export const COMPETITIONS = "/competitions";
 
 // All
 export const NEWS_ALL = "/news_all";
-export const VIDEO_NEWS_ALL = '/video_news_all'
-export const COMPETITION_ALL = '/competition_all'
+export const VIDEO_NEWS_ALL = "/video_news_all";
+export const COMPETITION_ALL = "/competition_all";

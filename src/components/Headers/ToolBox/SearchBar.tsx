@@ -1,16 +1,38 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { SEARCH } from "../../../tools/links";
+import { useDispatch } from "react-redux";
+import { POST_SEARCH } from "../../../redux/types";
 
 const SearchBar = ({ prefLang }: { prefLang: string }) => {
-  const [searchText, setSearchText] = useState("");
+  // useState
+  const [searchString, setSearchString] = useState("");
+
+  // Hooks
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // Function
+  const search = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (searchString != "") {
+      dispatch({
+        type: POST_SEARCH,
+        payload: { name: searchString, lang: prefLang },
+      });
+      navigate(SEARCH, { state: { searchString, prefLang } });
+      setSearchString("");
+    }
+  };
 
   return (
-    <label className="relative block">
+    <form className="relative block" onSubmit={search}>
       <input
         className="focus:w-full w-14 pr-5 focus:outline-none focus:bg-[#DEE8F0]"
         placeholder={prefLang === "Tm" ? "Gözleg..." : "Поиск..."}
         type="text"
-        value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
+        value={searchString}
+        onChange={(e) => setSearchString(e.target.value)}
       />
       <span className="absolute inset-y-0 right-0 flex items-center ">
         <svg
@@ -24,7 +46,7 @@ const SearchBar = ({ prefLang }: { prefLang: string }) => {
           <path d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z"></path>
         </svg>
       </span>
-    </label>
+    </form>
   );
 };
 

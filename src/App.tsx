@@ -8,6 +8,7 @@ import {
   BASE_CATEGORIES,
   NEWS_ALL,
   NEWS_DETAILS_PAGE,
+  SEARCH,
   VIDEO_DETAILS_PAGE,
   VIDEO_NEWS_ALL,
 } from "./tools/links";
@@ -24,6 +25,7 @@ import BaseCategories from "./pages/BaseCategories";
 import VideoNewsAll from "./pages/VideoNews";
 import VideoNewsDetails from "./pages/VideoNews/VideoNewsDetails";
 import ScrollToTop from "./ScrollToTop";
+import SearchResult from "./pages/SearchResult";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -47,6 +49,14 @@ const App = () => {
           </TemplateApp>
         }
         path={ABOUTUS}
+      />
+      <Route
+        element={
+          <TemplateApp>
+            <SearchResult />
+          </TemplateApp>
+        }
+        path={SEARCH}
       />
       <Route
         element={
@@ -111,7 +121,7 @@ const TemplateApp = ({ children }: { children: JSX.Element }) => {
         <BaseCategoriesList />
         <div className="border border-b-0"></div>
         <Navbar />
-        {children}
+        <div className="min-h-[500px]">{children}</div>
         <Footer />
       </div>
     </div>

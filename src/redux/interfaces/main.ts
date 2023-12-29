@@ -1,6 +1,12 @@
+import { ESection, ILocalNews, IVideoNews } from "./home";
+
 export interface IMain {
   type: string;
   payload: any;
+}
+export interface ISearchResult {
+  news: ILocalNews[];
+  videos: IVideoNews[];
 }
 export interface ILanguage {
   id: string;
@@ -20,7 +26,7 @@ export interface ISportCategory {
   id: string;
   nameTm: string;
   nameRu: string;
-  section: string;
+  section: ESection;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -34,6 +40,7 @@ export interface IMainState {
   prefLang: string;
   active_tab: number;
   weather: object;
+  search: ISearchResult;
   langs: ILanguage[];
   base_categories: IBaseCategory[];
   sport_categories: ISportCategories;
