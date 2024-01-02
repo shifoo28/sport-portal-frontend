@@ -41,10 +41,12 @@ const List = ({ indexComponent }: { indexComponent: number }) => {
             open={open === federation.id}
             className="border-b-2 border-r-2 border-blue-100 w-full bg-white"
             key={index}
+            placeholder=""
           >
             <AccordionHeader
               onClick={() => handleOpen(federation.id)}
               className="h-[73px] border-none"
+              placeholder=""
             >
               <div className="flex justify-between w-full">
                 <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase">
@@ -56,7 +58,7 @@ const List = ({ indexComponent }: { indexComponent: number }) => {
                 />
               </div>
             </AccordionHeader>
-            <AccordionBody>
+            <AccordionBody >
               <div
                 className={`w-full h-max ${
                   open != federation.id ? "hidden" : ""

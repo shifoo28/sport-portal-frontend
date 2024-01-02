@@ -1,5 +1,4 @@
 import {
-  Button,
   Menu,
   MenuHandler,
   MenuItem,
@@ -33,7 +32,7 @@ const SelectLang = () => {
     <div className="flex items-center justify-center">
       <Menu open={open} handler={() => setOpen(!open)}>
         <MenuHandler>
-          <Button className="flex items-center justify-center capitalize tracking-normal p-0 outline-none shadow-none rounded-none">
+          <button className="flex items-center justify-center capitalize tracking-normal p-0 outline-none shadow-none rounded-none">
             <img src={lang.flag} alt=""/>
             <p className="text-xs font-sofiasans text-black px-[2px] font-normal">
               {lang.name}
@@ -55,7 +54,7 @@ const SelectLang = () => {
                 stroke-linejoin="round"
               />
             </svg>
-          </Button>
+          </button>
         </MenuHandler>
         <MenuList className="overflow-visible p-1 gap-1 text-xs font-sofiasans outline-none rounded-none">
           <MenuItem

@@ -1,4 +1,3 @@
-import { Typography } from "@material-tailwind/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { NEWS_DETAILS_PAGE } from "../../../tools/links";
@@ -89,12 +88,8 @@ const NewsCard: React.FC<CardData> = ({
           bottom + " " + titleMaxWidth
         } left-0 w-full ml-4`}
       >
-        <Typography className="font-sofiasans text-[10px] max-w-[131px]">
-          {date}
-        </Typography>
-        <Typography className={`font-oswald capitalize ${textSize}`}>
-          {title}
-        </Typography>
+        <p className="font-sofiasans text-[10px] max-w-[131px]">{date}</p>
+        <p className={`font-oswald capitalize ${textSize}`}>{title}</p>
       </figcaption>
     </figure>
   );

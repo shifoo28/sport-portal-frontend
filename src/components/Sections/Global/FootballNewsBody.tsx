@@ -162,10 +162,12 @@ const FootballNewsBody = () => {
                 </defs>
               </svg>
             }
+            placeholder=""
           >
             <AccordionHeader
               className="border-0 p-0"
               onClick={() => handleOpen(cempionat.id)}
+              placeholder=""
             >
               <img src={cempionat.imgLink} />
               <p className="font-sofiasans text-sm font-normal flex justify-start w-full ml-3">
