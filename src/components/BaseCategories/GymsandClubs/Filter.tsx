@@ -124,14 +124,18 @@ const Filter = () => {
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent className="rounded-none max-w-[310px] w-full border border-[#0088FF]">
-              <List className="p-0">
+            <PopoverContent
+              className="rounded-none max-w-[310px] w-full border border-[#0088FF]"
+              placeholder=""
+            >
+              <List className="p-0" placeholder="">
                 {sportTypes?.map((name, i) => {
                   return (
                     <ListItem
                       key={i}
                       onClick={() => setSportTypesFilter(name)}
                       className="hover:bg-blue-100 rounded-none w-full px-2"
+                      placeholder=""
                     >
                       {name}
                     </ListItem>
@@ -155,7 +159,7 @@ const Filter = () => {
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent> </PopoverContent>
+            <PopoverContent placeholder=""> </PopoverContent>
           </Popover>
         </div>
         {/* Filter Column 2 */}
@@ -171,14 +175,18 @@ const Filter = () => {
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent className="rounded-none max-w-[310px] w-full border border-[#0088FF]">
-              <List className="p-0">
+            <PopoverContent
+              className="rounded-none max-w-[310px] w-full border border-[#0088FF]"
+              placeholder=""
+            >
+              <List className="p-0" placeholder="">
                 {locations?.map((l, i) => {
                   return (
                     <ListItem
                       key={i}
                       onClick={() => setLocationsFilter(l)}
                       className="hover:bg-blue-100 rounded-none w-full px-2"
+                      placeholder=""
                     >
                       {l}
                     </ListItem>
@@ -198,7 +206,7 @@ const Filter = () => {
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent> </PopoverContent>
+            <PopoverContent placeholder=""> </PopoverContent>
           </Popover>
         </div>
         {/* Filter Column 3 */}
@@ -214,7 +222,7 @@ const Filter = () => {
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent> </PopoverContent>
+            <PopoverContent placeholder=""> </PopoverContent>
           </Popover>
           {/* END DATE */}
           <Popover>
@@ -227,7 +235,7 @@ const Filter = () => {
                 {arrow}
               </button>
             </PopoverHandler>
-            <PopoverContent> </PopoverContent>
+            <PopoverContent placeholder=""> </PopoverContent>
           </Popover>
         </div>
       </div>

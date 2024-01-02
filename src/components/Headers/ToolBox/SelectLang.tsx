@@ -33,7 +33,7 @@ const SelectLang = () => {
       <Menu open={open} handler={() => setOpen(!open)}>
         <MenuHandler>
           <button className="flex items-center justify-center capitalize tracking-normal p-0 outline-none shadow-none rounded-none">
-            <img src={lang.flag} alt=""/>
+            <img src={lang.flag} alt="" />
             <p className="text-xs font-sofiasans text-black px-[2px] font-normal">
               {lang.name}
             </p>
@@ -56,16 +56,21 @@ const SelectLang = () => {
             </svg>
           </button>
         </MenuHandler>
-        <MenuList className="overflow-visible p-1 gap-1 text-xs font-sofiasans outline-none rounded-none">
+        <MenuList
+          className="overflow-visible p-1 gap-1 text-xs font-sofiasans outline-none rounded-none"
+          placeholder=""
+        >
           <MenuItem
             className="hover:text-[#08F] rounded-none flex items-center justify-center"
             onClick={() => setPrefLang(0)}
+            placeholder=""
           >
             TM
           </MenuItem>
           <MenuItem
             className="hover:text-[#08F] rounded-none flex items-center justify-center"
             onClick={() => setPrefLang(1)}
+            placeholder=""
           >
             RU
           </MenuItem>

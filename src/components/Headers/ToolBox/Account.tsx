@@ -2,7 +2,6 @@ import React, { FormEvent, useState } from "react";
 import user from "./svg/user.svg";
 import { Dialog } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import { urlBack } from "../../../redux/apiCalls";
 
 const Account = ({ prefLang }: { prefLang: string }) => {
   // Hooks
@@ -36,6 +35,7 @@ const Account = ({ prefLang }: { prefLang: string }) => {
         open={open}
         handler={handleOpen}
         className="bg-black/70 shadow-none rounded-none h-screen backdrop-blur-sm"
+        placeholder=""
       >
         <div className="flex justify-center items-center flex-col h-full w-full min-w-[300px] font-sofiasans gap-6">
           <form

@@ -122,14 +122,18 @@ const Filter = () => {
                   {arrow}
                 </button>
               </PopoverHandler>
-              <PopoverContent className="rounded-none max-w-[310px] w-full border border-[#0088FF]">
-                <List className="p-0">
+              <PopoverContent
+                className="rounded-none max-w-[310px] w-full border border-[#0088FF]"
+                placeholder=""
+              >
+                <List className="p-0" placeholder="">
                   {competitionTypes?.map((t, i) => {
                     return (
                       <ListItem
                         key={i}
                         onClick={() => setFilterType(t)}
                         className="hover:bg-blue-100 rounded-none w-full px-2"
+                        placeholder=""
                       >
                         {t}
                       </ListItem>
@@ -148,14 +152,18 @@ const Filter = () => {
                   {arrow}
                 </button>
               </PopoverHandler>
-              <PopoverContent className="rounded-none max-w-[310px] w-full border border-[#0088FF]">
-                <List className="p-0">
+              <PopoverContent
+                className="rounded-none max-w-[310px] w-full border border-[#0088FF]"
+                placeholder=""
+              >
+                <List className="p-0" placeholder="">
                   {locations?.map((c, i) => {
                     return (
                       <ListItem
                         key={i}
                         onClick={() => setFilterCountry(c)}
                         className="hover:bg-blue-100 rounded-none w-full px-2"
+                        placeholder=""
                       >
                         {c}
                       </ListItem>

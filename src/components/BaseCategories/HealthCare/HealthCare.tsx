@@ -87,10 +87,12 @@ const Component = () => {
               open={open === department.id}
               className="border-b-2 border-r-2 border-blue-100 w-full bg-white"
               key={index}
+              placeholder=""
             >
               <AccordionHeader
                 onClick={() => handleOpen(department.id)}
                 className="h-[73px] border-none"
+                placeholder=""
               >
                 <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase font-oswald font-semibold">
                   {prefLang === "Tm" ? department.nameTm : department.nameRu}
@@ -150,8 +152,13 @@ const Component = () => {
                               </p>
                             </div>
                             <div className="flex justify-end">
-                              <img src={''} className="h-3 pr-1" />
-                              <Rating className="h-3" gap="gap-1" readonly value={employee.rating}/>
+                              <img src={""} className="h-3 pr-1" />
+                              <Rating
+                                className="h-3"
+                                gap="gap-1"
+                                readonly
+                                value={employee.rating}
+                              />
                             </div>
                           </div>
                         </button>

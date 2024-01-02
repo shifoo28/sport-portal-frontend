@@ -1,7 +1,6 @@
 import {
   Popover,
   PopoverHandler,
-  Button,
   PopoverContent,
   List,
   ListItem,
@@ -56,14 +55,18 @@ const SportNewsList = ({ activeTab }: { activeTab: number }) => {
           </svg>
         </button>
       </PopoverHandler>
-      <PopoverContent className="bg-white border max-w-[116px] w-full flex justify-center rounded-none">
-        <List className="text-xs font-oswald">
+      <PopoverContent
+        className="bg-white border max-w-[116px] w-full flex justify-center rounded-none"
+        placeholder=""
+      >
+        <List className="text-xs font-oswald" placeholder="">
           {categories.map((sc, index) => {
             return (
               <ListItem
                 key={index}
                 className="hover:text-[#08F] p-1 hover:underline"
                 onClick={() => linkToAllNews(sc.id)}
+                placeholder=""
               >
                 · {prefLang === "Tm" ? sc.nameTm : sc.nameRu}
               </ListItem>
