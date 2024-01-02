@@ -39,7 +39,7 @@ const Trainers = ({ federation }: { federation: IFederations }) => {
                   src={urlBack + trainer.imagePath}
                   className="object-cover w-[95px] h-[112px] object-center"
                 />
-                <div className="font-sofiasans text-[#182135] flex flex-col justify-around w-full overflow-hidden">
+                <div className="font-sofiasans text-[#182135] flex flex-col justify-between w-full h-full overflow-hidden">
                   <p className="font-semibold text-left truncate">
                     {prefLang === "Tm" ? trainer.nameTm : trainer.nameRu}
                   </p>
@@ -81,11 +81,16 @@ const Trainers = ({ federation }: { federation: IFederations }) => {
                         : `Опыт работы: ${trainer.experience} лет.`}
                     </p>
                   </div>
-                  <div className="flex w-full justify-between">
-                    <div className="bg-[#CCE6D8] text-[#00843D] px-2 flex items-center justify-center rounded-md">
+                  <div className="flex w-full justify-between items-center h-4">
+                    <p className="bg-[#CCE6D8] text-[#00843D] px-2 h-full flex items-center justify-center rounded-md">
                       {prefLang === "Tm" ? trainer.madeTm : trainer.madeRu}
-                    </div>
-                    <Rating className="h-[15px]" gap="gap-1" readonly value={trainer.rating}/>
+                    </p>
+                    <Rating
+                      className="h-full"
+                      gap="gap-1"
+                      readonly
+                      value={trainer.rating}
+                    />
                   </div>
                 </div>
               </button>

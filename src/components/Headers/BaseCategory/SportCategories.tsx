@@ -38,7 +38,7 @@ const SportNewsList = ({ activeTab }: { activeTab: number }) => {
   return (
     <Popover placement="bottom-end" open={open}>
       <PopoverHandler>
-        <Button className="flex items-center gap-2 shadow-none p-0 font-oswald outline-none font-normal">
+        <button className="flex items-center gap-2 shadow-none p-0 font-oswald outline-none font-normal rounded-none">
           <p
             onClick={() => setOpen(!open)}
             className={`normal-case text-sm ${
@@ -54,7 +54,7 @@ const SportNewsList = ({ activeTab }: { activeTab: number }) => {
               stroke={activeTab === 0 ? "#08F" : "#0F1A42"}
             />
           </svg>
-        </Button>
+        </button>
       </PopoverHandler>
       <PopoverContent className="bg-white border max-w-[116px] w-full flex justify-center rounded-none">
         <List className="text-xs font-oswald">

@@ -52,7 +52,7 @@ const Filter = () => {
   // useEffect
   useEffect(() => {
     setFilterCountry(prefLang === "Tm" ? "Türkmenistan" : "Туркменистан");
-    setFilterType(prefLang === "Tm" ? "Hemmesi" : "Все они");
+    setFilterType(prefLang === "Tm" ? "Hemmesi" : "Все");
   }, [prefLang]);
 
   // Functions
