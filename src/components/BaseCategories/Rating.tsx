@@ -51,6 +51,7 @@ const Rating = ({ value, className, gap, readonly }: Props) => {
       unratedIcon={unratedIcon}
       className={`flex h-full ${gap || "gap-3"}`}
       readonly={readonly}
+      placeholder=""
     />
   );
 };
