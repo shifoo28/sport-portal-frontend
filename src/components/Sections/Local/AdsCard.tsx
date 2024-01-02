@@ -8,13 +8,13 @@ type Props = {
 
 const AdsCard: FC<Props> = ({ imgLink, title }) => {
   return (
-    <figure className={`relative`}>
+    <figure className="relative w-[210px] h-[130px]">
       <img
-        className="h-full w-full  object-cover object-center"
+        className="object-cover object-center h-full w-full"
         src={imgLink}
-        alt="nature image"
+        alt=""
       />
-      <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 via-black/50 " />
+      <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 via-black/50" />
       <figcaption className="absolute text-white bottom-4 left-0 w-full max-w-[356px] cursor-pointer ml-2">
         <Typography className="font-sofiasans text-[10px] max-w-[110px]">
           {title}

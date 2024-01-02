@@ -73,6 +73,7 @@ const NewsCard: React.FC<CardData> = ({
         <img
           className={`h-full w-full object-cover object-center`}
           src={urlBack + imgLink}
+          alt=""
         />
       </div>
       <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 via-black/50 " />

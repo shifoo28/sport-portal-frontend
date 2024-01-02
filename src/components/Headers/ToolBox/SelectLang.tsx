@@ -34,7 +34,7 @@ const SelectLang = () => {
       <Menu open={open} handler={() => setOpen(!open)}>
         <MenuHandler>
           <Button className="flex items-center justify-center capitalize tracking-normal p-0 outline-none shadow-none rounded-none">
-            <img src={lang.flag} />
+            <img src={lang.flag} alt=""/>
             <p className="text-xs font-sofiasans text-black px-[2px] font-normal">
               {lang.name}
             </p>
@@ -45,7 +45,7 @@ const SelectLang = () => {
               fill="none"
               className={`${
                 open ? "rotate-180" : ""
-              } h-5 w-3 transition-transform`}
+              } h-max w-3 transition-transform`}
             >
               <path
                 d="M1 0.400635L4 1.95617L7 0.400635"

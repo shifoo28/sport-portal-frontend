@@ -95,18 +95,9 @@ const NewsCards = () => {
           </div>
         </div>
         <div className="flex flex-col justify-between">
-          <div className="w-[210px]">
-            <AdsCard imgLink={ads[0]?.imgLink} title={ads[0]?.title} />
-          </div>
-          <div className="w-[210px]">
-            <AdsCard imgLink={ads[1]?.imgLink} title={ads[1]?.title} />
-          </div>
-          <div className="w-[210px]">
-            <AdsCard imgLink={ads[2]?.imgLink} title={ads[2]?.title} />
-          </div>
-          <div className="w-[210px]">
-            <AdsCard imgLink={ads[3]?.imgLink} title={ads[3]?.title} />
-          </div>
+          {ads.map((ad, index) => {
+            return <AdsCard imgLink={ad?.imgLink} title={ad?.title} />;
+          })}
         </div>
       </div>
     </div>

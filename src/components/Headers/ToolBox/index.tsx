@@ -100,9 +100,11 @@ const ToolBox = () => {
           </span>
         </div>
         <div className="flex flex-col justify-around items-end w-full">
-          <span className="flex items-center gap-2">
-            <SearchBar prefLang={prefLang} />|<SelectLang />
-          </span>
+          <div className="flex items-center gap-3">
+            <SearchBar prefLang={prefLang} />
+            <hr className="border h-full" />
+            <SelectLang />
+          </div>
           <Account prefLang={prefLang} />
         </div>
       </div>

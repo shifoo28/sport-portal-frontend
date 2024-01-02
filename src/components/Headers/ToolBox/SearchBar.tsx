@@ -26,7 +26,7 @@ const SearchBar = ({ prefLang }: { prefLang: string }) => {
   };
 
   return (
-    <form className="relative block" onSubmit={search}>
+    <form className="relative block h-max w-max cursor-pointer" onSubmit={search}>
       <input
         className="focus:w-full w-14 pr-5 focus:outline-none focus:bg-[#DEE8F0]"
         placeholder={prefLang === "Tm" ? "Gözleg..." : "Поиск..."}

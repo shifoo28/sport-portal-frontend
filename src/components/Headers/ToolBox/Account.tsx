@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from "react";
 import user from "./svg/user.svg";
 import { Dialog } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
+import { urlBack } from "../../../redux/apiCalls";
 
 const Account = ({ prefLang }: { prefLang: string }) => {
   // Hooks
@@ -22,7 +23,7 @@ const Account = ({ prefLang }: { prefLang: string }) => {
   return (
     <>
       <button
-        className="flex justify-center items-center gap-1"
+        className="flex justify-center items-center gap-1 outline-none"
         onClick={handleOpen}
       >
         <p>{prefLang === "Tm" ? "Içeri gir" : "Войти"}</p>
@@ -38,13 +39,19 @@ const Account = ({ prefLang }: { prefLang: string }) => {
       >
         <div className="flex justify-center items-center flex-col h-full w-full min-w-[300px] font-sofiasans gap-6">
           <form
-            className="flex flex-col justify-center items-center bg-white p-8 gap-6 max-w-[472px] w-full"
+            className="relative flex flex-col justify-center items-center bg-white p-8 gap-6 max-w-[472px] w-full"
             onSubmit={(e: FormEvent<HTMLFormElement>) => linkToRegister(e)}
           >
             <img
+              src={process.env.REACT_APP_ADDRESS + "icons/toolbox/x50.png"}
+              alt=""
+              className="absolute top-4 right-4 h-6 w-6 cursor-pointer"
+              onClick={() => setOpen(false)}
+            />
+            <img
               src="/icons/toolbox/logo.png"
               alt=""
-              className="w-[130px] h-[90px] object-contain"
+              className="w-[165px] h-[90px] object-contain"
             />
             <p className="text-2xl text-[#181E25] font-semibold">
               {prefLang === "Tm" ? "Bize agza bol!" : "Присоединяйтесь!"}

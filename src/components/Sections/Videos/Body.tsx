@@ -44,9 +44,11 @@ const Body = () => {
               : video_main?.category?.nameRu}
           </p>
         </div>
-        <div className="absolute top-1/3 left-1/2">
-          <img src={playVideoSvg} alt=""/>
-        </div>
+        <img
+          src={playVideoSvg}
+          alt=""
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        />
         <div
           className={`absolute text-white bottom-6 max-w-[60%] left-0 w-full ml-6`}
         >
@@ -73,12 +75,10 @@ const Body = () => {
                     className="object-cover h-full w-full"
                   />
                   <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 to-black/50 " />
-                  <div className="absolute top-1/2 left-1/2 h-[38px] w-[38px] ">
-                    <img
-                      src={playVideoSvg}
-                      className="-translate-x-1/2 -translate-y-1/2"
-                    />
-                  </div>
+                  <img
+                    src={playVideoSvg}
+                    className="absolute top-1/2 left-1/2 h-[38px] w-[38px] -translate-x-1/2 -translate-y-1/2"
+                  />
                   <div
                     className={`absolute top-6 left-6 h-5 ${
                       BG_COLORS[Math.floor(Math.random() * BG_COLORS.length)]
