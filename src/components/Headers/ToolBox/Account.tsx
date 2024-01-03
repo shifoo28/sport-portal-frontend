@@ -130,7 +130,7 @@ const Account = ({ prefLang }: { prefLang: string }) => {
               type="submit"
               className="bg-[#4938C3] text-white w-full h-10"
             >
-              {prefLang === "Tm" ? "Register" : "Зарегистрироваться"}
+              {prefLang === "Tm" ? "Agza bol" : "Зарегистрироваться"}
             </button>
           </form>
           <p className="text-white flex gap-1 cursor-pointer">

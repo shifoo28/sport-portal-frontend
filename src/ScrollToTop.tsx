@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 
 const ScrollToTop = () => {
   const { pathname, state } = useLocation();
-console.log(pathname);
 
   useEffect(() => {
     pathname === "/"

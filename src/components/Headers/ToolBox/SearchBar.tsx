@@ -26,24 +26,37 @@ const SearchBar = ({ prefLang }: { prefLang: string }) => {
   };
 
   return (
-    <form className="relative block h-max w-max cursor-pointer" onSubmit={search}>
+    <form
+      className="relative block h-max w-max cursor-pointer"
+      onSubmit={search}
+    >
       <input
-        className="focus:w-full w-14 pr-5 focus:outline-none focus:bg-[#DEE8F0]"
+        className="focus:w-full w-[50px] pr-4 focus:outline-none focus:bg-[#F7F5F9] placeholder:text-[#393939]"
         placeholder={prefLang === "Tm" ? "Gözleg..." : "Поиск..."}
         type="text"
         value={searchString}
         onChange={(e) => setSearchString(e.target.value)}
       />
-      <span className="absolute inset-y-0 right-0 flex items-center ">
+      <span className="absolute inset-y-0 right-0 flex items-center">
         <svg
-          className="h-4 w-4 fill-[#393939]"
-          x="0px"
-          y="0px"
-          width="30"
-          height="30"
-          viewBox="0 0 30 30"
+          xmlns="http://www.w3.org/2000/svg"
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="#393939"
         >
-          <path d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z"></path>
+          <path
+            d="M0.95 5.76791C0.95 8.42369 3.11213 10.5858 5.76791 10.5858C8.42369 10.5858 10.5858 8.42369 10.5858 5.76791C10.5858 3.11213 8.42369 0.95 5.76791 0.95C3.11213 0.95 0.95 3.11213 0.95 5.76791ZM1.74774 5.76791C1.74774 3.55341 3.54883 1.74774 5.76791 1.74774C7.98699 1.74774 9.78807 3.55341 9.78807 5.76791C9.78807 7.98241 7.98699 9.78807 5.76791 9.78807C3.54883 9.78807 1.74774 7.98241 1.74774 5.76791Z"
+            fill="#393939"
+            stroke="#393939"
+            stroke-width="0.1"
+          />
+          <path
+            d="M10.3698 10.9333C10.4494 11.013 10.5508 11.0503 10.6517 11.0503C10.7526 11.0503 10.8539 11.013 10.9336 10.9333C11.088 10.7789 11.088 10.5239 10.9336 10.3695L10.0032 9.43908C9.84875 9.28464 9.5938 9.28464 9.43936 9.43908C9.28493 9.59351 9.28493 9.84847 9.43936 10.0029L10.3698 10.9333Z"
+            fill="#393939"
+            stroke="#393939"
+            stroke-width="0.1"
+          />
         </svg>
       </span>
     </form>

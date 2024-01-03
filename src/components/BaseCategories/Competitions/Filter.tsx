@@ -75,6 +75,7 @@ const Filter = () => {
         date: filterDate,
       },
     });
+    window.scrollTo({ top: 950, behavior: "smooth" });
   };
 
   return (

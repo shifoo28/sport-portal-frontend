@@ -109,17 +109,16 @@ const CompetitionDetail = () => {
           {prefLang === "Tm" ? "GATNAŞMAK ÜÇIN" : "ДЛЯ УЧАСТИЯ"}
         </button>
         <div className="flex flex-col w-full pt-20">
-          <div className="flex justify-between w-full font-oswald h-max">
-            <p className="border-b border-[#F65050] text-[#F65050] text-2xl w-[300px]">
+          <div className="flex justify-between w-full font-oswald h-11">
+            <p className="border-b border-[#F65050] text-[#F65050] text-2xl w-[350px]">
               {prefLang === "Tm"
                 ? "Meňzeş bäsleşikler"
                 : "Похожие соревнования"}
             </p>
-            <div className="border-b border-black flex justify-end w-full">
-              <button className="text-base bg-[#077EE6] text-white h-11 w-36">
-                {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
-              </button>
-            </div>
+            <div className="border-b border-black w-full" />
+            <button className="bg-[#077EE6] text-white h-full w-56">
+              {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
+            </button>
           </div>
           <div className="flex justify-between pt-4">
             {same_competitions.map((sc, index) => {

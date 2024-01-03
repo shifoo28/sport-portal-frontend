@@ -102,7 +102,7 @@ const ToolBox = () => {
         <div className="flex flex-col justify-around items-end w-full">
           <div className="flex items-center gap-3">
             <SearchBar prefLang={prefLang} />
-            <hr className="border h-full" />
+            <hr className="border-l h-full" />
             <SelectLang />
           </div>
           <Account prefLang={prefLang} />

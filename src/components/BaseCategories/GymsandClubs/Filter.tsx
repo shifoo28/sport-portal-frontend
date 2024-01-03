@@ -66,12 +66,13 @@ const Filter = () => {
       },
     });
     setSearchString("");
+    window.scrollTo({ top: 1100, behavior: "smooth" });
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="border border-[#0088FF] max-w-[1170px] w-full px-9 py-10 font-sofiasans flex flex-col gap-7"
+      className="border border-[#0088FF] w-full p-9 font-sofiasans flex flex-col gap-7"
     >
       <p className="text-3xl font-semibold">
         {prefLang === "Tm"

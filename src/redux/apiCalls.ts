@@ -151,8 +151,6 @@ export async function patchNewsDetailsViews(id: string, categoryId: string) {
 
 // POST REQUESTS
 export async function doSearch(params: object) {
-  console.log(params);
-  
   try {
     const res = await axios.post(urlBack + "search", null, { params });
 

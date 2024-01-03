@@ -84,14 +84,13 @@ const VideoDetail = () => {
                 {prefLang === "Tm" ? "Meňzeş täzelikler" : "Подобные новости"}
               </p>
             </div>
-            <div className="w-full border-b border-black flex justify-end">
-              <button
-                className="text-sm bg-[#077EE6] text-white h-full px-3"
-                onClick={() => linkToAllVideos(video?.categoryId)}
-              >
-                {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
-              </button>
-            </div>
+            <div className="w-full border-b border-black flex justify-end" />
+            <button
+              className="text-sm bg-[#077EE6] text-white h-full w-40"
+              onClick={() => linkToAllVideos(video?.categoryId)}
+            >
+              {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
+            </button>
           </div>
           <div className="flex justify-between font-oswald text-2xl">
             <div
