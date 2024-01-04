@@ -63,6 +63,7 @@ const AllTrainers = ({ trainers }: { trainers: IFTrainers[] }) => {
                   <img
                     src={urlBack + trainer.imagePath}
                     className="w-[60px] h-[60px] object-cover"
+                    alt=""
                   />
                 </td>
                 <td

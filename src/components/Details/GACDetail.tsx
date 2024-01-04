@@ -54,11 +54,11 @@ const GACDetail = () => {
           </p>
           <div className="flex flex-col border border-[#0088FF] p-5 font-sofiasans gap-7">
             <p className="flex text-sm gap-7 text-[#182135]">
-              <img src={location} />
+              <img src={location} alt=""/>
               {prefLang === "Tm" ? data?.locationTm : data?.locationRu}
             </p>
             <p className="flex text-sm gap-7 text-[#182135]">
-              <img src={call} />
+              <img src={call} alt=""/>
               <div>
                 {data?.tel.map((t, i) => {
                   return <p key={i}>{t}</p>;
@@ -66,11 +66,11 @@ const GACDetail = () => {
               </div>
             </p>
             <p className="flex text-sm gap-7 text-[#182135]">
-              <img src={email} />
+              <img src={email} alt=""/>
               {data?.email}
             </p>
             <p className="flex text-sm gap-7 text-[#182135]">
-              <img src={link} />
+              <img src={link} alt=""/>
               <a
                 href={data?.link}
                 className="hover:underline truncate"
@@ -140,6 +140,7 @@ const GACDetail = () => {
             <img
               src={urlBack + images[indexImage]}
               className="w-[850px] h-[600px] object-contain"
+              alt=""
             />
             <button
               className="absolute top-[50%] left-10"
@@ -149,13 +150,13 @@ const GACDetail = () => {
                 )
               }
             >
-              <img src={right} />
+              <img src={right} alt=""/>
             </button>
             <button
               className="absolute top-[50%] right-10"
               onClick={() => setIndexImage((indexImage + 1) % 5)}
             >
-              <img src={left} />
+              <img src={left} alt=""/>
             </button>
           </div>
           <div className="flex justify-between w-full pt-5">
@@ -165,6 +166,7 @@ const GACDetail = () => {
                   <img
                     src={urlBack + im}
                     className="w-[195px] h-[145px] object-cover"
+                    alt=""
                   />
                 )
               );

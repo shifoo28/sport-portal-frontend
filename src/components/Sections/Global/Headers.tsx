@@ -69,6 +69,7 @@ export const HeaderWithCategories = () => {
               className={`h-6 w-6 ${
                 !(categoryIndex > 0) ? "bg-[#6E748C]" : "bg-[#0E2165]"
               }`}
+              alt=""
             />
           </button>
           <button
@@ -82,6 +83,7 @@ export const HeaderWithCategories = () => {
                   ? "bg-[#6E748C]"
                   : "bg-[#0E2165]"
               } h-6 w-6 cursor-pointer`}
+              alt=""
             />
           </button>
         </div>

@@ -101,10 +101,12 @@ const VideoDetail = () => {
                 <img
                   src={playvideo}
                   className="absolute top-[160px] left-[300px]"
+                  alt=""
                 />
                 <img
                   src={urlBack + same_video_main?.imagePath}
                   className="object-cover h-full w-full"
+                  alt=""
                 />
               </div>
               <p className="text-xs font-sofiasans">
@@ -128,10 +130,12 @@ const VideoDetail = () => {
                       <img
                         src={playvideo}
                         className="absolute w-[38px] h-[38px] top-[40%] left-[40%]"
+                        alt=""
                       />
                       <img
                         src={urlBack + sv.imagePath}
                         className="object-cover w-full h-full"
+                        alt=""
                       />
                     </div>
                     <div className="flex flex-col justify-center gap-4">

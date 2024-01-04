@@ -37,6 +37,7 @@ const AthleteDetail = () => {
         <img
           src={urlBack + athlete?.imagePath}
           className="w-[210px] h-[235px] object-cover object-center"
+          alt=""
         />
         <div className="flex justify-between w-full items-center">
           <div className="flex gap-1 items-center">
@@ -67,7 +68,7 @@ const AthleteDetail = () => {
             </svg>
             <p className="font-sofiasans text-base h-max">{athlete?.views}</p>
           </div>
-          <img src="/images/bcfdetail/socials.png" />
+          <img src="/images/bcfdetail/socials.png" alt=""/>
         </div>
       </div>
       <div className="max-w-[870px] w-full flex flex-col gap-5">

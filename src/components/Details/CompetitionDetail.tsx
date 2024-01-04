@@ -131,6 +131,7 @@ const CompetitionDetail = () => {
                   <img
                     src={urlBack + sc.imagePath}
                     className="object-cover h-[145px]"
+                    alt=""
                   />
                   <p className="text-[10px] font-sofiasans">
                     {prefLang === "Tm" ? sc.locationTm : sc.locationRu}
@@ -209,6 +210,7 @@ const Sorted = ({
                 <img
                   src={urlBack + e?.imagePath}
                   className="h-full w-full object-cover object-center"
+                  alt=""
                 />
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">

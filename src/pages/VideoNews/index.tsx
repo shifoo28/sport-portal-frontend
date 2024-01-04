@@ -64,12 +64,14 @@ const VideoNewsAll = () => {
                 <img
                   src={urlBack + video.imagePath}
                   className="object-cover h-full w-full"
+                  alt=""
                 />
                 <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 to-black/50 " />
                 <div className="absolute top-1/2 left-1/2 h-[38px] w-[38px] ">
                   <img
                     src={playVideoSvg}
                     className="-translate-x-1/2 -translate-y-1/2"
+                    alt=""
                   />
                 </div>
                 <div

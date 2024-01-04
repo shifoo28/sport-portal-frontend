@@ -67,6 +67,7 @@ const AllAhtlete = ({ athletes }: { athletes: IFAthletes[] }) => {
                   <img
                     src={urlBack + athlete.imagePath}
                     className="w-[60px] h-[60px] object-cover"
+                    alt=""
                   />
                 </td>
                 <td
@@ -87,6 +88,7 @@ const AllAhtlete = ({ athletes }: { athletes: IFAthletes[] }) => {
                         )?.flag
                       }
                       className="w-[26px] h-[18px] object-cover"
+                      alt=""
                     />
                     {athlete.club}
                   </div>

@@ -39,6 +39,7 @@ const HCDetail = () => {
           <img
             src={urlBack + employee?.imagePath}
             className="w-[210px] h-[235px] object-cover object-center"
+            alt=""
           />
           <div className="flex justify-between items-center">
             <p className="font-sofiasans text-base flex items-center gap-2 h-6">
@@ -69,7 +70,7 @@ const HCDetail = () => {
               </svg>
               {employee?.views}
             </p>
-            <img src={"/images/bcfdetail/socials.png"} />
+            <img src={"/images/bcfdetail/socials.png"} alt=""/>
           </div>
         </div>
         <div className="max-w-[850px] w-full flex flex-col">

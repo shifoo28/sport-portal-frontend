@@ -65,6 +65,7 @@ const NewsDetail = ({ news_data, same_news, linkToNewsDetail }: Props) => {
           <img
             src={urlBack + news_data?.imagePath}
             className="object-cover max-w-[700px] object-center"
+            alt=""
           />
         </div>
       </div>
@@ -95,6 +96,7 @@ const NewsDetail = ({ news_data, same_news, linkToNewsDetail }: Props) => {
                 <img
                   src={urlBack + sn.imagePath}
                   className="object-cover h-[145px]"
+                  alt=""
                 />
                 <p className="text-[10px] font-sofiasans">
                   {prefLang === "Tm" ? sn.locationTm : sn.locationRu}

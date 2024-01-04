@@ -117,6 +117,7 @@ const Component = () => {
                           <img
                             src={urlBack + employee.imagePath}
                             className="w-[95px] h-full object-cover"
+                            alt=""
                           />
                           <div className="flex flex-col font-sofiasans text-[#0F1A42] justify-between h-full pl-2 pb-1 w-[250px]">
                             <p className="font-semibold text-left h-4 uppercase">
@@ -152,7 +153,7 @@ const Component = () => {
                               </p>
                             </div>
                             <div className="flex justify-end">
-                              <img src={""} className="h-3 pr-1" />
+                              <img src={""} className="h-3 pr-1" alt="" />
                               <Rating
                                 className="h-3"
                                 gap="gap-1"

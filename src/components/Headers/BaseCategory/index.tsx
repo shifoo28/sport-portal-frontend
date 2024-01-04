@@ -16,6 +16,7 @@ const BaseCategoriesList = () => {
               <img
                 src="/icons/basecategory/logo_tst.png"
                 className="w-6 h-5 pr-1"
+                alt=""
               />
               <p className="flex flex-col leading-[8px] relative">
                 <p className="text-[#00843D]">TÜRKMENISTAN</p>
@@ -32,6 +33,7 @@ const BaseCategoriesList = () => {
               <img
                 src="/icons/basecategory/logo_youtube.png"
                 className="w-7 h-4 pr-1"
+                alt=""
               />
               <p className="text-[#0F1A42]">YOUSPORT</p>
             </a>
@@ -43,11 +45,12 @@ const BaseCategoriesList = () => {
               <img
                 src="/icons/basecategory/logolive.gif"
                 className="w-7 h-7 pr-1"
+                alt=""
               />
               <p className="text-[#F44336]">LIVE</p>
             </a>
           </div>
-          <img src={wertical} />
+          <img src={wertical} alt="" />
           <NavList />
         </div>
       </nav>

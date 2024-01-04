@@ -141,6 +141,7 @@ const List = () => {
                   className={`cursor-pointer ${
                     paginate > 0 ? "bg-[#0F1A42]" : "bg-[#6E748C]"
                   }`}
+                  alt=""
                 />
               </button>
               <button
@@ -152,6 +153,7 @@ const List = () => {
                   className={`cursor-pointer ${
                     table_body.length === 5 ? "bg-[#0F1A42]" : "bg-[#6E748C]"
                   }`}
+                  alt=""
                 />
               </button>
             </div>

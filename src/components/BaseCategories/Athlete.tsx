@@ -80,6 +80,7 @@ const Athlete = ({ federation }: { federation: IFederations }) => {
                     <img
                       src={urlBack + athlete.imagePath}
                       className="w-[60px] h-[60px] object-cover"
+                      alt=""
                     />
                   </td>
                   <td
@@ -111,12 +112,18 @@ const Athlete = ({ federation }: { federation: IFederations }) => {
                           )?.flag
                         }
                         className="w-[26px] h-[18px] object-cover"
+                        alt=""
                       />
                       {athlete.club}
                     </div>
                   </td>
                   <td className="p-2 font-semibold w-0" align="center">
-                    <Rating className="h-[15px]" value={athlete.rating} readonly gap="gap-1"/>
+                    <Rating
+                      className="h-[15px]"
+                      value={athlete.rating}
+                      readonly
+                      gap="gap-1"
+                    />
                   </td>
                   <td className="p-2 font-semibold uppercase" align="center">
                     <p className="bg-[#CCE6D8] text-[#00843D] px-2 flex items-center rounded-md w-max text-[10px]">

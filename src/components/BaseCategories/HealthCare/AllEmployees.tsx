@@ -70,6 +70,7 @@ const AllEmployees = ({ department }: { department: IHCDepartment }) => {
                       <img
                         src={urlBack + employee.imagePath}
                         className="w-[60px] h-[60px] object-cover"
+                        alt=""
                       />
                     </td>
                     <td
@@ -82,7 +83,6 @@ const AllEmployees = ({ department }: { department: IHCDepartment }) => {
                       {prefLang === "Tm" ? employee.jobTm : employee.jobRu}
                     </td>
                     <td className="p-2 font-semibold" align="center">
-                      {/* <img src={''} className="h-[15px]" /> */}
                       <Rating className="h-[15px]" gap="gap-1" value={employee.rating} readonly/>
                     </td>
                     <td className="p-2 font-semibold" align="center">

@@ -55,6 +55,7 @@ const List = ({ indexComponent }: { indexComponent: number }) => {
                 <img
                   src={urlBack + federation.imagePath}
                   className="w-[76px] h-[65px] object-contain object-center"
+                  alt=""
                 />
               </div>
             </AccordionHeader>

@@ -69,7 +69,7 @@ const Navbar = () => {
           className="flex justify-center items-center cursor-pointer gap-1"
           onClick={() => linkTo("../")}
         >
-          <img src="/icons/toolbox/nav_logo.png" className="w-8 h-5" />
+          <img src="/icons/toolbox/nav_logo.png" className="w-8 h-5" alt=""/>
           <p className="text-xs text-[#0F1A42]">
             SPORT<span className="text-[#08F]">PORTAL</span>
           </p>
@@ -79,7 +79,7 @@ const Navbar = () => {
           href="https://turkmentv.gov.tm/live"
           target="_blank"
         >
-          <img src="/icons/basecategory/logo_tst.png" className="w-6 h-5" />
+          <img src="/icons/basecategory/logo_tst.png" className="w-6 h-5" alt=""/>
           <p className="flex flex-col leading-[8px] relative">
             <p className="text-[#00843D]">TÜRKMENISTAN</p>
             <p className="text-[#BFB55C] text-[8px] text-right absolute right-0 bottom-[-9px]">
@@ -92,7 +92,7 @@ const Navbar = () => {
           href="https://www.youtube.com/@turkmensport_tm"
           target="_blank"
         >
-          <img src="/icons/basecategory/logo_youtube.png" className="w-6 h-4" />
+          <img src="/icons/basecategory/logo_youtube.png" className="w-6 h-4" alt=""/>
           <p className="text-xs">YOUSPORT</p>
         </a>
         <a
@@ -100,10 +100,10 @@ const Navbar = () => {
           href="https://www.instagram.com/sportportal.tm"
           target="_blank"
         >
-          <img src="/icons/basecategory/logolive.gif" className="w-6 h-5" />
+          <img src="/icons/basecategory/logolive.gif" className="w-6 h-5" alt=""/>
           <p className="text-xs text-[#F44336]">LIVE</p>
         </a>
-        <img src={wertical} className="h-[60%]" />
+        <img src={wertical} className="h-[60%]" alt=""/>
         {base_categories.map((bc, index) => {
           return (
             <p

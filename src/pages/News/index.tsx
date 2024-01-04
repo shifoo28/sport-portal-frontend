@@ -86,6 +86,7 @@ const NewsAll = () => {
                   <img
                     src={urlBack + item.imagePath}
                     className="w-[195px] h-[145px] object-cover"
+                    alt=""
                   />
                   <p className="text-[10px] font-sofiasans">
                     {prefLang === "Tm" ? item.locationTm : item.locationRu}

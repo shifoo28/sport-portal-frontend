@@ -68,6 +68,7 @@ const FilterNews = ({ data }: Props) => {
                 <img
                   src={urlBack + video.imagePath}
                   className="h-full w-full object-cover object-center"
+                  alt=""
                 />
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">

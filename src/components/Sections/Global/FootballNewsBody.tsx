@@ -169,7 +169,7 @@ const FootballNewsBody = () => {
               onClick={() => handleOpen(cempionat.id)}
               placeholder=""
             >
-              <img src={cempionat.imgLink} />
+              <img src={cempionat.imgLink} alt=""/>
               <p className="font-sofiasans text-sm font-normal flex justify-start w-full ml-3">
                 {cempionat.title}
               </p>
@@ -214,6 +214,7 @@ const FootballNewsBody = () => {
                               <img
                                 src={club.logo}
                                 className="w-full h-full object-contain"
+                                alt=""
                               />
                             </div>
                             <p className="flex items-center pl-1 w-full">

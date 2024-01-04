@@ -35,6 +35,7 @@ const Body = () => {
           <img
             src={urlBack + world_news_main?.imagePath}
             className="object-cover h-64 w-full"
+            alt=""
           />
           <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 to-black/50 " />
           <div
@@ -78,6 +79,7 @@ const Body = () => {
               <img
                 src={urlBack + wn.imagePath}
                 className="h-[70px] w-[90px] object-cover"
+                alt=""
               />
               <div className="pl-4">
                 <p className="font-sofiasans text-[10px]">

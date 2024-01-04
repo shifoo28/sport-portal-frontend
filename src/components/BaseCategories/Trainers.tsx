@@ -38,6 +38,7 @@ const Trainers = ({ federation }: { federation: IFederations }) => {
                 <img
                   src={urlBack + trainer.imagePath}
                   className="object-cover w-[95px] h-[112px] object-center"
+                  alt=""
                 />
                 <div className="font-sofiasans text-[#182135] flex flex-col justify-between w-full h-full overflow-hidden">
                   <p className="font-semibold text-left truncate">
