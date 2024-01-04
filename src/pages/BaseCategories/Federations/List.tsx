@@ -62,7 +62,7 @@ const List = ({ indexComponent }: { indexComponent: number }) => {
             <AccordionBody >
               <div
                 className={`w-full h-max ${
-                  open != federation.id ? "hidden" : ""
+                  open !== federation.id ? "hidden" : ""
                 }`}
               >
                 {indexComponent === 0 ? (

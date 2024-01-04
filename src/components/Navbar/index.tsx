@@ -78,6 +78,7 @@ const Navbar = () => {
           className="flex justify-center items-center cursor-pointer gap-1"
           href="https://turkmentv.gov.tm/live"
           target="_blank"
+          rel="noreferrer"
         >
           <img src="/icons/basecategory/logo_tst.png" className="w-6 h-5" alt=""/>
           <p className="flex flex-col leading-[8px] relative">
@@ -91,6 +92,7 @@ const Navbar = () => {
           className="flex justify-center items-center cursor-pointer gap-1"
           href="https://www.youtube.com/@turkmensport_tm"
           target="_blank"
+          rel="noreferrer"
         >
           <img src="/icons/basecategory/logo_youtube.png" className="w-6 h-4" alt=""/>
           <p className="text-xs">YOUSPORT</p>
@@ -99,6 +101,7 @@ const Navbar = () => {
           className="flex justify-center items-center cursor-pointer gap-1"
           href="https://www.instagram.com/sportportal.tm"
           target="_blank"
+          rel="noreferrer"
         >
           <img src="/icons/basecategory/logolive.gif" className="w-6 h-5" alt=""/>
           <p className="text-xs text-[#F44336]">LIVE</p>

@@ -54,7 +54,7 @@ const NewsAll = () => {
               className={`flex items-center max-w-[150px] w-full border-b border-[#0088FF] text-[#0088FF] 
                   text-sm`}
             >
-              {prefLang == "Tm" ? "Toparlar Statistika" : "Статистика команды"}
+              {prefLang === "Tm" ? "Toparlar Statistika" : "Статистика команды"}
             </div>
             <span className="border-b border-black w-full"></span>
           </div>

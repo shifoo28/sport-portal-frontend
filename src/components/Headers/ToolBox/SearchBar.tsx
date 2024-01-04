@@ -15,7 +15,7 @@ const SearchBar = ({ prefLang }: { prefLang: string }) => {
   // Function
   const search = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (searchString != "") {
+    if (searchString !== "") {
       dispatch({
         type: POST_SEARCH,
         payload: { name: searchString, lang: prefLang },

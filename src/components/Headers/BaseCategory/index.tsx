@@ -12,6 +12,7 @@ const BaseCategoriesList = () => {
               className="flex cursor-pointer items-center"
               href="https://turkmentv.gov.tm/live"
               target="_blank"
+              rel="noreferrer"
             >
               <img
                 src="/icons/basecategory/logo_tst.png"
@@ -29,6 +30,7 @@ const BaseCategoriesList = () => {
               className="flex items-center cursor-pointer pr-1"
               href="https://www.youtube.com/@turkmensport_tm"
               target="_blank"
+              rel="noreferrer"
             >
               <img
                 src="/icons/basecategory/logo_youtube.png"
@@ -41,6 +43,7 @@ const BaseCategoriesList = () => {
               className="flex cursor-pointer pr-1 items-center"
               href="https://www.instagram.com/sportportal.tm"
               target="_blank"
+              rel="noreferrer"
             >
               <img
                 src="/icons/basecategory/logolive.gif"

@@ -177,7 +177,7 @@ const FootballNewsBody = () => {
             <AccordionBody>
               <div
                 className={`${
-                  open != cempionat.id ? "hidden" : ""
+                  open !== cempionat.id ? "hidden" : ""
                 } font-sofiasans text-xs`}
               >
                 <div className="flex justify-between items-center text-[#636363] ml-2 mr-4">

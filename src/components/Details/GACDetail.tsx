@@ -75,6 +75,7 @@ const GACDetail = () => {
                 href={data?.link}
                 className="hover:underline truncate"
                 target="_blank"
+                rel="noreferrer"
               >
                 {data?.link}
               </a>
@@ -162,7 +163,7 @@ const GACDetail = () => {
           <div className="flex justify-between w-full pt-5">
             {images.map((im, i) => {
               return (
-                i != indexImage && (
+                i !== indexImage && (
                   <img
                     src={urlBack + im}
                     className="w-[195px] h-[145px] object-cover"

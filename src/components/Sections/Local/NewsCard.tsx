@@ -31,27 +31,21 @@ const NewsCard: React.FC<CardData> = ({
     bottom = "bottom-5";
   switch (cardSize) {
     case "max":
-      {
-        textSize = "text-2xl";
-        titleMaxWidth = "max-w-[340px]";
-        bottom = "bottom-7";
-      }
+      textSize = "text-2xl";
+      titleMaxWidth = "max-w-[340px]";
+      bottom = "bottom-7";
       break;
 
     case "mid":
-      {
-        textSize = "text-xl";
-        titleMaxWidth = "max-w-[300px]";
-        bottom = "bottom-6";
-      }
+      textSize = "text-xl";
+      titleMaxWidth = "max-w-[300px]";
+      bottom = "bottom-6";
       break;
 
     case "min":
-      {
-        textSize = "text-sm";
-        titleMaxWidth = "max-w-[195px]";
-        bottom = "bottom-2";
-      }
+      textSize = "text-sm";
+      titleMaxWidth = "max-w-[195px]";
+      bottom = "bottom-2";
       break;
 
     default:

@@ -24,7 +24,7 @@ const VideoDetail = () => {
   const uploadedAt = DateTimeToPassedTime(prefLang, video?.updatedAt);
 
   const [same_video_main, ...same_videos] = videos.filter(
-    (v) => v.id != video?.id
+    (v) => v.id !== video?.id
   );
 
   // Function

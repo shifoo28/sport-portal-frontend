@@ -45,7 +45,7 @@ const NewsDetails = () => {
   const news_data =
     r_state.newsId && news.find((ln) => ln.id === r_state.newsId);
   const same_news = news.filter(
-    (ln) => ln.categoryId === news_data.categoryId && ln.id != r_state.newsId
+    (ln) => ln.categoryId === news_data.categoryId && ln.id !== r_state.newsId
   );
 
   // Function

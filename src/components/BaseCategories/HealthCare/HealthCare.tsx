@@ -101,7 +101,7 @@ const Component = () => {
               <AccordionBody>
                 <div
                   className={`w-full h-max px-8 ${
-                    open != department.id ? "hidden" : ""
+                    open !== department.id ? "hidden" : ""
                   }`}
                 >
                   <div className="overflow-auto h-60 gap-y-4 flex flex-wrap justify-between pr-2">

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { urlBack } from "../../../redux/apiCalls";
 import { ILocalNews, IWorldNews } from "../../../redux/interfaces/home";
 
@@ -18,7 +17,6 @@ const FilterNews = ({ data, linkToNewsDetail }: Props) => {
   const [news, setNews] = useState(data);
 
   // Hooks
-  const navigate = useNavigate();
   useEffect(() => {
     setNews(data?.reverse());
   }, [data, activeTab]);

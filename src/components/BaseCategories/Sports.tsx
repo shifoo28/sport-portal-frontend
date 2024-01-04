@@ -29,10 +29,16 @@ const Sports = ({ data, prefLang }: { data: IFSports; prefLang: string }) => {
         <p>E-mail: {data?.email}</p>
         <p className="flex gap-3">
           Web:{" "}
-          {data?.web.split(";").map((e, i) => {
+          {data?.web.split(";").map((item, index) => {
             return (
-              <a href={e} className="hover:underline" target="_blank" key={i}>
-                {e}
+              <a
+                href={item}
+                className="hover:underline"
+                target="_blank"
+                key={index}
+                rel="noreferrer"
+              >
+                {item}
               </a>
             );
           })}
