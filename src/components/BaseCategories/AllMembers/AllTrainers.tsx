@@ -68,7 +68,6 @@ const AllTrainers = ({ trainers }: { trainers: IFTrainers[] }) => {
                 </td>
                 <td
                   className="p-2 font-semibold cursor-pointer uppercase"
-                  align="center"
                 >
                   {prefLang === "Tm" ? trainer.nameTm : trainer.nameRu}
                 </td>

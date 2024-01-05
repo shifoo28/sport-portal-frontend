@@ -26,7 +26,7 @@ const Body = () => {
   };
 
   return (
-    <div className="flex justify-between pt-5 gap-7 ">
+    <div className="flex justify-between pt-5 gap-7">
       <div
         className="flex flex-col max-w-[400px] w-full cursor-pointer"
         onClick={() => linkToNewsDetail(world_news_main.id)}
@@ -61,7 +61,7 @@ const Body = () => {
               ? world_news_main?.nameTm
               : world_news_main?.nameRu}
           </p>
-          <p className="font-sofiasans text-sm text-ellipsis overflow-hidden  h-16">
+          <p className="font-sofiasans text-sm text-ellipsis overflow-hidden h-[60px]">
             {prefLang === "Tm"
               ? world_news_main?.textTm
               : world_news_main?.textRu}
@@ -85,7 +85,7 @@ const Body = () => {
                 <p className="font-sofiasans text-[10px]">
                   {prefLang === "Tm" ? wn.locationTm : wn.locationRu}
                 </p>
-                <p className="font-oswald text-[16px] max-w-[280px] capitalize">
+                <p className="font-oswald text-[16px] max-w-[280px] capitalize text-ellipsis overflow-hidden h-12">
                   {prefLang === "Tm" ? wn.nameTm : wn.nameRu}
                 </p>
               </div>

@@ -28,10 +28,12 @@ const HomePage = () => {
   });
 
   return (
-    <div className="w-full flex flex-col justify-center">
-      <NewsCards />
-      <WorldSportNews />
-      <VideoNews />
+    <div className="w-full flex justify-center pt-9">
+      <div className="max-w-[1170px] flex flex-col gap-7 w-full">
+        <NewsCards />
+        <WorldSportNews />
+        <VideoNews />
+      </div>
     </div>
   );
 };

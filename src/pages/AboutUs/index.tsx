@@ -11,52 +11,58 @@ const AboutUs = () => {
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
 
   return (
-    <div className="mx-32 max-w-[1170px] flex pt-9 gap-20">
-      {/* Part 1 */}
-      <div className="max-w-[270px] flex flex-col items-center gap-4 pt-10">
-        <img src="images/aboutus.png" alt="" className="w-[270px] h-[190px]" />
-        <div className="text-center max-w-[90%]">
-          <p className="font-semibold">SPORT-PORTAL</p>
-          <p>
-            {prefLang === "Tm"
-              ? "Sport bilen bagly ähli zatlary özünde jemleýän platforma."
-              : "Платформа, охватывающая всё, что связано со спортом."}
-          </p>
+    <div className="flex justify-center">
+      <div className="max-w-[1170px] flex pt-9 gap-20">
+        {/* Part 1 */}
+        <div className="max-w-[270px] flex flex-col items-center gap-4 pt-10">
+          <img
+            src="images/aboutus.png"
+            alt=""
+            className="w-[270px] h-[190px]"
+          />
+          <div className="text-center max-w-[90%]">
+            <p className="font-semibold">SPORT-PORTAL</p>
+            <p>
+              {prefLang === "Tm"
+                ? "Sport bilen bagly ähli zatlary özünde jemleýän platforma."
+                : "Платформа, охватывающая всё, что связано со спортом."}
+            </p>
+          </div>
+          <table className="text-white bg-[#0088FF] w-full text-center font-sofiasans">
+            <tr>
+              <td className="text-3xl p-3 font-semibold">512</td>
+              <td className="text-start pl-2">
+                {prefLang === "Tm" ? "Sport toplum" : "Спорт комплексы"}
+              </td>
+            </tr>
+            <tr>
+              <td className="text-3xl p-3 font-semibold">108</td>
+              <td className="text-start pl-2">
+                {prefLang === "Tm" ? "Sport mekdep" : "Спорт школы"}
+              </td>
+            </tr>
+            <tr>
+              <td className="text-3xl p-3 font-semibold">45</td>
+              <td className="text-start pl-2">
+                {prefLang === "Tm" ? "Sport görnüş" : "Тип спорта"}
+              </td>
+            </tr>
+            <tr>
+              <td className="text-3xl p-3 font-semibold">221</td>
+              <td className="text-start pl-2">
+                {prefLang === "Tm" ? "Türgenleşik zal" : "Тренажерные залы"}
+              </td>
+            </tr>
+          </table>
         </div>
-        <table className="text-white bg-[#0088FF] w-full text-center font-sofiasans">
-          <tr>
-            <td className="text-3xl p-3 font-semibold">512</td>
-            <td className="text-start pl-2">
-              {prefLang === "Tm" ? "Sport toplum" : "Спорт комплексы"}
-            </td>
-          </tr>
-          <tr>
-            <td className="text-3xl p-3 font-semibold">108</td>
-            <td className="text-start pl-2">
-              {prefLang === "Tm" ? "Sport mekdep" : "Спорт школы"}
-            </td>
-          </tr>
-          <tr>
-            <td className="text-3xl p-3 font-semibold">45</td>
-            <td className="text-start pl-2">
-              {prefLang === "Tm" ? "Sport görnüş" : "Тип спорта"}
-            </td>
-          </tr>
-          <tr>
-            <td className="text-3xl p-3 font-semibold">221</td>
-            <td className="text-start pl-2">
-              {prefLang === "Tm" ? "Türgenleşik zal" : "Тренажерные залы"}
-            </td>
-          </tr>
-        </table>
-      </div>
 
-      {/* Part 2 */}
-      <div className="w-full font-sofiasans text-center flex flex-col gap-6">
-        <p className="capitalize font-oswald text-5xl">
-          {prefLang === "Tm" ? "Biz barada" : "О нас"}
-        </p>
-        <p className="text-justify">{prefLang === "Tm" ? textTm : textRu}</p>
+        {/* Part 2 */}
+        <div className="w-full font-sofiasans text-center flex flex-col gap-6">
+          <p className="capitalize font-oswald text-5xl">
+            {prefLang === "Tm" ? "Biz barada" : "О нас"}
+          </p>
+          <p className="text-justify">{prefLang === "Tm" ? textTm : textRu}</p>
+        </div>
       </div>
     </div>
   );

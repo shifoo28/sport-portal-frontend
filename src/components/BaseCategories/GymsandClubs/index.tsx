@@ -23,17 +23,19 @@ const GymsAndClubs = () => {
     return <GACDetail />;
   } else {
     return (
-      <div className="w-full mx-32 max-w-[1170px] h-max flex flex-col items-center gap-20 pt-8">
-        <div className="max-w-[1000px] w-full">
-          <p className="text-[#0F1A42] font-oswald text-[50px] text-center capitalize">
-            {prefLang === "Tm"
-              ? "Türkmenistandaky ähli sport toplumlary we onda hereket edýän sport toparlary"
-              : "Все спортивные комплексы и спортивные команды, действующие в Туркменистане"}
-          </p>
+      <div className="flex justify-center pt-9">
+        <div className="w-full max-w-[1170px] flex flex-col items-center gap-20">
+          <div className="max-w-[1000px] w-full">
+            <p className="text-[#0F1A42] font-oswald text-[50px] text-center capitalize">
+              {prefLang === "Tm"
+                ? "Türkmenistandaky ähli sport toplumlary we onda hereket edýän sport toparlary"
+                : "Все спортивные комплексы и спортивные команды, действующие в Туркменистане"}
+            </p>
+          </div>
+          <Filter />
+          <OpenStreetMap />
+          <ListofFacility />
         </div>
-        <Filter />
-        <OpenStreetMap />
-        <ListofFacility />
       </div>
     );
   }

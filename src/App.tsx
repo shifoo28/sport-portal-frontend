@@ -113,7 +113,7 @@ const TemplateApp = ({ children }: { children: JSX.Element }) => {
   return (
     <div className="flex justify-center">
       <ScrollToTop />
-      <div className="max-w-[1440px]">
+      <div className="">
         <Banner />
         <ToolBox />
         <div className="border border-b-0"></div>

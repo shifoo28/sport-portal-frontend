@@ -72,7 +72,6 @@ const AllAhtlete = ({ athletes }: { athletes: IFAthletes[] }) => {
                 </td>
                 <td
                   className="p-2 font-semibold cursor-pointer uppercase"
-                  align="center"
                 >
                   {prefLang === "Tm" ? athlete.nameTm : athlete.nameRu}
                 </td>

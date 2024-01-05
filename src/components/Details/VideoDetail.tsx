@@ -36,8 +36,8 @@ const VideoDetail = () => {
   };
 
   return (
-    <div className="flex w-full max-w-[1170px] mx-32 pt-7">
-      <div className="flex items-center w-full flex-col text-[#0F1A42]">
+    <div className="flex justify-center w-full pt-9">
+      <div className="flex items-center w-full flex-col text-[#0F1A42] max-w-[1170px]">
         <p className="font-oswald text-[50px] max-w-[90%] text-center">
           {prefLang === "Tm" ? video?.nameTm : video?.nameRu}
         </p>

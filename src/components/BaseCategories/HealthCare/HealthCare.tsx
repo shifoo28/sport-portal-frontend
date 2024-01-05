@@ -55,132 +55,134 @@ const Component = () => {
       }
     />
   ) : (
-    <div className="mx-32 max-w-[1170px] pt-8 flex flex-col gap-10">
-      <div className="px-16">
-        <p className="text-center font-oswald text-[50px] text-[#0F1A42] capitalize">
-          {prefLang === "Tm"
-            ? "Döwlet Sport lukmançylygy ylmy we amaly merkeziniň lukmançylyk hyzmatlarynyň sanawy"
-            : "Список медицинских услуг Государственного научно-практического центра спортивной медицины"}
-        </p>
-        <p className="font-sofiasans text-lg text-center">
-          {prefLang === "Tm" ? descriptionTm : descriptionRu}
-        </p>
-      </div>
-      <div className="text-[#182135] flex flex-col gap-5 font-sofiasans text-[25px] font-semibold">
-        <p>
-          {prefLang === "Tm" ? "Ýükläp al: " : "Скачать: "}
-          <a href="/pdf/trainers.pdf" className="hover:underline">
-            Tälimçiler üçin Medisina barlagy
-          </a>
-        </p>
-        <p>
-          {prefLang === "Tm" ? "Ýükläp al: " : "Скачать: "}
-          <a href="/pdf/sportsmens.pdf" className="hover:underline">
-            Türgenler üçin Medisina barlagy
-          </a>
-        </p>
-      </div>
-      <div className="flex flex-col gap-8">
-        {hcdepartmnts.map((department, index) => {
-          return (
-            <Accordion
-              open={open === department.id}
-              className="border-b-2 border-r-2 border-blue-100 w-full bg-white"
-              key={index}
-              placeholder=""
-            >
-              <AccordionHeader
-                onClick={() => handleOpen(department.id)}
-                className="h-[73px] border-none"
+    <div className="flex justify-center pt-9">
+      <div className="max-w-[1170px] w-full flex flex-col gap-10">
+        <div className="px-16">
+          <p className="text-center font-oswald text-[50px] text-[#0F1A42] capitalize">
+            {prefLang === "Tm"
+              ? "Döwlet Sport lukmançylygy ylmy we amaly merkeziniň lukmançylyk hyzmatlarynyň sanawy"
+              : "Список медицинских услуг Государственного научно-практического центра спортивной медицины"}
+          </p>
+          <p className="font-sofiasans text-lg text-center">
+            {prefLang === "Tm" ? descriptionTm : descriptionRu}
+          </p>
+        </div>
+        <div className="text-[#182135] flex flex-col gap-5 font-sofiasans text-[25px] font-semibold">
+          <p>
+            {prefLang === "Tm" ? "Ýükläp al: " : "Скачать: "}
+            <a href="/pdf/trainers.pdf" className="hover:underline">
+              Tälimçiler üçin Medisina barlagy
+            </a>
+          </p>
+          <p>
+            {prefLang === "Tm" ? "Ýükläp al: " : "Скачать: "}
+            <a href="/pdf/sportsmens.pdf" className="hover:underline">
+              Türgenler üçin Medisina barlagy
+            </a>
+          </p>
+        </div>
+        <div className="flex flex-col gap-8">
+          {hcdepartmnts.map((department, index) => {
+            return (
+              <Accordion
+                open={open === department.id}
+                className="border-b-2 border-r-2 border-blue-100 w-full bg-white"
+                key={index}
                 placeholder=""
               >
-                <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase font-oswald font-semibold">
-                  {prefLang === "Tm" ? department.nameTm : department.nameRu}
-                </p>
-              </AccordionHeader>
-              <AccordionBody>
-                <div
-                  className={`w-full h-max px-8 ${
-                    open !== department.id ? "hidden" : ""
-                  }`}
+                <AccordionHeader
+                  onClick={() => handleOpen(department.id)}
+                  className="h-[73px] border-none"
+                  placeholder=""
                 >
-                  <div className="overflow-auto h-60 gap-y-4 flex flex-wrap justify-between pr-2">
-                    {department.employees.map((employee, index) => {
-                      return (
-                        <button
-                          key={index}
-                          className="flex w-[345px] border border-[#0088FF] h-[108px]"
-                          onClick={() =>
-                            linkToEmployeeDetail(employee.id, department.id)
-                          }
-                        >
-                          <img
-                            src={urlBack + employee.imagePath}
-                            className="w-[95px] h-full object-cover"
-                            alt=""
-                          />
-                          <div className="flex flex-col font-sofiasans text-[#0F1A42] justify-between h-full pl-2 pb-1 w-[250px]">
-                            <p className="font-semibold text-left h-4 uppercase">
-                              {prefLang === "Tm"
-                                ? employee.nameTm
-                                : employee.nameRu}
-                            </p>
-                            <div className="w-full">
-                              <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
+                  <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase font-oswald font-semibold">
+                    {prefLang === "Tm" ? department.nameTm : department.nameRu}
+                  </p>
+                </AccordionHeader>
+                <AccordionBody>
+                  <div
+                    className={`w-full h-max px-8 ${
+                      open !== department.id ? "hidden" : ""
+                    }`}
+                  >
+                    <div className="overflow-auto h-60 gap-y-4 flex flex-wrap justify-between pr-2">
+                      {department.employees.map((employee, index) => {
+                        return (
+                          <button
+                            key={index}
+                            className="flex w-[345px] border border-[#0088FF] h-[108px]"
+                            onClick={() =>
+                              linkToEmployeeDetail(employee.id, department.id)
+                            }
+                          >
+                            <img
+                              src={urlBack + employee.imagePath}
+                              className="w-[95px] h-full object-cover"
+                              alt=""
+                            />
+                            <div className="flex flex-col font-sofiasans text-[#0F1A42] justify-between h-full pl-2 pb-1 w-[250px]">
+                              <p className="font-semibold text-left h-4 uppercase">
                                 {prefLang === "Tm"
-                                  ? `Ýaşy: ${employee.age}`
-                                  : `Возраст: ${employee.age}`}
+                                  ? employee.nameTm
+                                  : employee.nameRu}
                               </p>
-                              <p className="h-[14px] text-[10px] text-left truncate w-full">
-                                {prefLang === "Tm"
-                                  ? `Iş ýeri: ${employee.workAtTm}`
-                                  : `Место работы: ${employee.workAtRu}`}
-                              </p>
-                              <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
-                                {prefLang === "Tm"
-                                  ? `Iş bölümi: ${department.nameTm}`
-                                  : `Кафедра: ${department.nameRu}`}
-                              </p>
-                              <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
-                                {prefLang === "Tm"
-                                  ? `Iş tejribesi: ${employee.experience}ýyl`
-                                  : `Опыт работы: ${employee.experience}г`}
-                              </p>
-                              <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
-                                {prefLang === "Tm"
-                                  ? `Iş wezipesi: ${employee.jobTm}`
-                                  : `Должность: ${employee.jobRu}`}
-                              </p>
+                              <div className="w-full">
+                                <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
+                                  {prefLang === "Tm"
+                                    ? `Ýaşy: ${employee.age}`
+                                    : `Возраст: ${employee.age}`}
+                                </p>
+                                <p className="h-[14px] text-[10px] text-left truncate w-full">
+                                  {prefLang === "Tm"
+                                    ? `Iş ýeri: ${employee.workAtTm}`
+                                    : `Место работы: ${employee.workAtRu}`}
+                                </p>
+                                <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
+                                  {prefLang === "Tm"
+                                    ? `Iş bölümi: ${department.nameTm}`
+                                    : `Кафедра: ${department.nameRu}`}
+                                </p>
+                                <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
+                                  {prefLang === "Tm"
+                                    ? `Iş tejribesi: ${employee.experience}ýyl`
+                                    : `Опыт работы: ${employee.experience}г`}
+                                </p>
+                                <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
+                                  {prefLang === "Tm"
+                                    ? `Iş wezipesi: ${employee.jobTm}`
+                                    : `Должность: ${employee.jobRu}`}
+                                </p>
+                              </div>
+                              <div className="flex justify-end">
+                                <img src={""} className="h-3 pr-1" alt="" />
+                                <Rating
+                                  className="h-3"
+                                  gap="gap-1"
+                                  readonly
+                                  value={employee.rating}
+                                />
+                              </div>
                             </div>
-                            <div className="flex justify-end">
-                              <img src={""} className="h-3 pr-1" alt="" />
-                              <Rating
-                                className="h-3"
-                                gap="gap-1"
-                                readonly
-                                value={employee.rating}
-                              />
-                            </div>
-                          </div>
-                        </button>
-                      );
-                    })}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    <div className="flex justify-end pt-4 px-6">
+                      <button
+                        className="bg-[#077EE6] text-white h-11 font-oswald px-4"
+                        onClick={() => linkToAllEmployees(department.id)}
+                      >
+                        {prefLang === "Tm"
+                          ? "Hemmesini görmek"
+                          : "Посмотреть все"}
+                      </button>
+                    </div>
                   </div>
-                  <div className="flex justify-end pt-4 px-6">
-                    <button
-                      className="bg-[#077EE6] text-white h-11 font-oswald px-4"
-                      onClick={() => linkToAllEmployees(department.id)}
-                    >
-                      {prefLang === "Tm"
-                        ? "Hemmesini görmek"
-                        : "Посмотреть все"}
-                    </button>
-                  </div>
-                </div>
-              </AccordionBody>
-            </Accordion>
-          );
-        })}
+                </AccordionBody>
+              </Accordion>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

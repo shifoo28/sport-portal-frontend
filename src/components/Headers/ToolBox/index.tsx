@@ -75,13 +75,11 @@ const ToolBox = () => {
   };
 
   return (
-    <section className="w-full h-16 font-sofiasans text-xs">
-      <div className="mx-32 flex justify-between max-w-[1170px] h-full">
+    <section className="w-full h-16 font-sofiasans text-xs flex justify-center">
+      <div className="flex justify-between max-w-[1170px] w-full h-full">
         <div className="flex flex-col justify-around w-full">
-          <div>{day + ", " + date + " " + month + " " + year}</div>
-          <div>
-            {prefLang === "Tm" ? `${15}°C Aşgabat` : `В Ашхабаде ${15}°C`}
-          </div>
+          <p>{day + ", " + date + " " + month + " " + year}</p>
+          <p>{prefLang === "Tm" ? `${15}°C Aşgabat` : `В Ашхабаде ${15}°C`}</p>
         </div>
         <div
           className="flex gap-3 items-center cursor-pointer min-w-max"
@@ -105,7 +103,7 @@ const ToolBox = () => {
             <hr className="border-l h-full" />
             <SelectLang />
           </div>
-          <Account prefLang={prefLang} />
+          <Account />
         </div>
       </div>
     </section>

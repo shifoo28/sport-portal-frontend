@@ -54,8 +54,8 @@ const NewsDetails = () => {
   };
 
   return (
-    <div className="flex justify-between max-w-[1170px] mx-32">
-      <div className="flex w-full pt-7 gap-12">
+    <div className="flex pt-9 w-full justify-center">
+      <div className="flex max-w-[1170px] w-full gap-12">
         <FilterNews data={news} linkToNewsDetail={linkToNewsDetail} />
         <NewsDetail
           news_data={news_data}

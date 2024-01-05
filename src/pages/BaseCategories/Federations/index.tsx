@@ -57,8 +57,8 @@ const Federations = () => {
   return pathname.includes("all") ? (
     <AllMembers />
   ) : (
-    <div className="w-full max-w-[1170px] mx-32 pt-7 font-oswald">
-      <div className="flex flex-col w-full items-center">
+    <div className="w-full pt-9 font-oswald flex justify-center">
+      <div className="max-w-[1170px] flex flex-col w-full items-center">
         <p className="text-[50px] text-center max-w-[975px] w-full capitalize text-[#0F1A42]">
           {prefLang === "Tm"
             ? bcfInformation[indexComponent].titleTm

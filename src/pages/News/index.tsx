@@ -46,8 +46,8 @@ const NewsAll = () => {
   };
 
   return (
-    <div className="w-full mx-32 max-w-[1170px]">
-      <div className="w-full flex justify-between gap-8 pt-8">
+    <div className="w-full flex justify-center">
+      <div className="w-full max-w-[1170px] flex justify-between gap-8 pt-8">
         <div className="w-[445px]">
           <div className="flex h-11 font-oswald w-full">
             <div

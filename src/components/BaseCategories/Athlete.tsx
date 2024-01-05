@@ -83,21 +83,9 @@ const Athlete = ({ federation }: { federation: IFederations }) => {
                       alt=""
                     />
                   </td>
-                  <td
-                    className="p-2 font-semibold cursor-pointer capitalize"
-                    align="center"
-                  >
+                  <td className="p-2 font-semibold cursor-pointer capitalize">
                     {prefLang === "Tm" ? athlete.nameTm : athlete.nameRu}
                   </td>
-                  {/* <td className="p-2 font-semibold" align="center">
-                    {
-                      sportTypes.find((st) =>
-                        athlete.federation?.nameTm
-                          ?.toLocaleLowerCase()
-                          .includes(st.key)
-                      )?.name
-                    }
-                  </td> */}
                   <td className="p-2 font-semibold capitalize" align="center">
                     {prefLang === "Tm"
                       ? athlete.positionTm

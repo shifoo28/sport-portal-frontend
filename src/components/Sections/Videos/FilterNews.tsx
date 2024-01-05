@@ -75,7 +75,7 @@ const FilterNews = ({ data }: Props) => {
                 <p className="font-sofiasans text-[8px]">
                   {new Date(video.createdAt).toLocaleDateString()}
                 </p>
-                <p className="font-oswald text-[14px] leading-4">
+                <p className="font-oswald text-[14px] leading-4 text-ellipsis overflow-hidden h-8">
                   {prefLang === "Tm" ? video.nameTm : video.nameRu}
                 </p>
               </div>

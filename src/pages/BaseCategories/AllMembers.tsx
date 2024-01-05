@@ -26,7 +26,7 @@ const AllMembers = () => {
   );
 
   return (
-    <div className="w-full flex justify-center pt-14">
+    <div className="w-full flex justify-center pt-9">
       <div className="max-w-[1100px] w-full flex flex-col gap-5">
         <div className="flex justify-between items-center">
           <p className="text-[#0088FF] text-[25px] font-oswald font-semibold uppercase">

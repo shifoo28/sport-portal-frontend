@@ -4,8 +4,8 @@ import {
   MenuItem,
   MenuList,
 } from "@material-tailwind/react";
-import tmflag from "./svg/tmflag.svg";
-import ruflag from "./svg/ruflag.svg";
+import tmflag from "../../../assets/svg/tmflag.svg";
+import ruflag from "../../../assets/svg/ruflag.svg";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLangAction } from "../../../redux/actions/main";
