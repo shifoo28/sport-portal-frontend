@@ -1,24 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import user from "../../../assets/svg/user.svg";
 import Authentication from "./Auth";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
+import { authDialogOpen } from "../../../redux/actions/main";
 
 const Account = () => {
   // Hooks
-  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
 
   return (
     <>
       <button
         className="flex justify-center items-center gap-1 outline-none"
-        onClick={() => setOpen(true)}
+        onClick={() => dispatch(authDialogOpen(true))}
       >
         <p>{prefLang === "Tm" ? "Içeri gir" : "Войти"}</p>
         <img src={user} alt="" />
       </button>
-      <Authentication setOpen={setOpen} open={open} prefLang={prefLang} />
+      <Authentication />
     </>
   );
 };

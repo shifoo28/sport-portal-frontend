@@ -1,5 +1,6 @@
 export const SET_LANG = "SET_LANG";
 export const ACTIVATE_TAB = "ACTIVATE_TAB";
+export const AUTH_DIALOG_OPEN = "AUTH_DIALOG_OPEN";
 
 // GET
 export const GET_MAIN = "GET_MAIN";

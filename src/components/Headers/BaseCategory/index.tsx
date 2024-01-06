@@ -4,7 +4,7 @@ import wertical from "./svg/wertical.svg";
 
 const BaseCategoriesList = () => {
   return (
-    <section className="w-full h-9 flex justify-center">
+    <section className="w-full h-9 flex justify-center shadow-[0_5px_2px_-2px_rgba(0,0,0,0.3)]">
       <nav className="font-oswald text-sm h-full flex justify-between max-w-[1170px] w-full">
         <div className="flex items-center justify-between h-full w-full gap-2">
           <div className="flex items-center justify-between font-oswald text-xs max-w-[280px] w-full">

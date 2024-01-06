@@ -1,6 +1,7 @@
 import { IMain, IMainState } from "../interfaces/main";
 import {
   ACTIVATE_TAB,
+  AUTH_DIALOG_OPEN,
   GET_MAIN_FAILED,
   GET_MAIN_SUCCESS,
   GET_WEATHER_FAILED,
@@ -23,6 +24,7 @@ const initialState: IMainState = {
   },
   message: "",
   prefLang: "",
+  auth_dialog_open: false,
 };
 
 export default function main(state: IMainState = initialState, action: IMain) {
@@ -51,6 +53,9 @@ export default function main(state: IMainState = initialState, action: IMain) {
 
     case ACTIVATE_TAB:
       return { ...state, active_tab: payload };
+
+    case AUTH_DIALOG_OPEN:
+      return { ...state, auth_dialog_open: payload };
 
     case POST_SEARCH_SUCCESS:
       return { ...state, search: payload };

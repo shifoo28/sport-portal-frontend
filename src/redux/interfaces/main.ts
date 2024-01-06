@@ -44,4 +44,5 @@ export interface IMainState {
   langs: ILanguage[];
   base_categories: IBaseCategory[];
   sport_categories: ISportCategories;
+  auth_dialog_open: boolean;
 }
