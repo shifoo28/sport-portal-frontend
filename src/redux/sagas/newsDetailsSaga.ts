@@ -10,8 +10,7 @@ import { patchNewsDetailsViews } from "../apiCalls";
 function* postNewsViews(action: INewsDetails) {
   const { newsId, categoryId } = action.payload;
   try {
-    // @ts-ignore
-    const isPosted = yield call(patchNewsDetailsViews, newsId, categoryId);
+    yield call(patchNewsDetailsViews, newsId, categoryId);
 
     yield put({ type: PATCH_SPORT_NEWS_VIEWS_SUCCESS });
   } catch (error: any) {
