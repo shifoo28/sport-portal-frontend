@@ -32,7 +32,7 @@ export const HeaderWithCategories = () => {
 
   return (
     <div className="h-11 flex justify-between font-oswald">
-      <div className="max-w-[180px] w-full border-red-600 border-b text-2xl text-red-600 font-semibold">
+      <div className="max-w-[180px] w-full border-red-600 border-b text-2xl text-red-600">
         {prefLang === "Tm" ? "Wideo täzelikler" : "Видео новости"}
       </div>
       <div className="flex justify-end items-center border-b border-black w-full text-white text-xs gap-3">

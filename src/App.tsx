@@ -110,19 +110,26 @@ const App = () => {
 };
 
 const TemplateApp = ({ children }: { children: JSX.Element }) => {
-  return (
+  return process.env.REACT_APP_ENVIRONMENT === "DEV" ? (
     <div className="flex justify-center">
       <ScrollToTop />
       <div className="w-full max-w-[1440px]">
         <Banner />
         <ToolBox />
-        <div className="border border-b-0"></div>
+        <div className="border border-b-0 "></div>
         <BaseCategoriesList />
-        <div className="border border-b-0"></div>
+        <div className=""></div>
         <Navbar />
         <div className="min-h-[500px]">{children}</div>
         <Footer />
       </div>
+    </div>
+  ) : (
+    <div className="flex w-screen h-screen justify-center items-center flex-col gap-5">
+      <a href="https://www.instagram.com/sportportal.tm" target="_blank">
+        <img src="icons/toolbox/logo.png" alt="" className="w-40" />
+      </a>
+      <p className="text-2xl text-gray-600">Tehniki işler geçirilýär...</p>
     </div>
   );
 };
