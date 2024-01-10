@@ -14,16 +14,29 @@ const Map = () => {
     (state: RootState) => state.gymsclubs.gymsclubs
   );
 
+  // Function
+  const handleClick = () => {
+    window.scrollTo({ top: 2000, behavior: "smooth" });
+  };
+
   return (
     <MapContainer center={[37.9502, 58.3832]} zoom={12} scrollWheelZoom={false}>
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-
-      {gymsclubs.map((gc, i) => {
+      {gymsclubs.map((gc, index) => {
         return (
-          <Marker position={[gc.latitude, gc.longitude]} icon={markerIcon}>
+          <Marker
+            position={[gc.latitude, gc.longitude]}
+            icon={markerIcon}
+            key={index}
+            alt=""
+            riseOnHover
+            eventHandlers={{
+              click: handleClick,
+            }}
+          >
             <Popup>{prefLang === "Tm" ? gc.nameTm : gc.nameRu}</Popup>
           </Marker>
         );
