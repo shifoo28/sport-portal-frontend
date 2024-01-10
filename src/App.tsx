@@ -110,6 +110,8 @@ const App = () => {
 };
 
 const TemplateApp = ({ children }: { children: JSX.Element }) => {
+  console.log(1);
+  
   return process.env.REACT_APP_ENVIRONMENT === "DEV" ? (
     <div className="flex justify-center">
       <ScrollToTop />
