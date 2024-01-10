@@ -113,7 +113,7 @@ const TemplateApp = ({ children }: { children: JSX.Element }) => {
   return process.env.REACT_APP_ENVIRONMENT === "DEV" ? (
     <div className="flex justify-center">
       <ScrollToTop />
-      <div className="w-full max-w-[1440px]">
+      <div className="w-full max-w-[1256px]">
         <Banner />
         <ToolBox />
         <div className="border border-b-0 "></div>

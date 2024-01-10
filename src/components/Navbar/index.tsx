@@ -67,7 +67,7 @@ const Navbar = () => {
     <section
       className={`${display} font-oswald text-sm`}
     >
-      <div className="max-w-[1440px] w-full top-0 fixed z-10 flex justify-center bg-white shadow-[0_15px_10px_-2px_rgba(0,0,0,0.3)]">
+      <div className="max-w-[1256px] w-full top-0 fixed z-10 flex justify-center bg-white shadow-[0_15px_10px_-2px_rgba(0,0,0,0.3)]">
         <div className="h-9 max-w-[1170px] w-full flex justify-between items-center">
           <span
             className="flex justify-center items-center cursor-pointer gap-1"
