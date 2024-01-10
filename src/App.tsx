@@ -125,11 +125,11 @@ const TemplateApp = ({ children }: { children: JSX.Element }) => {
       </div>
     </div>
   ) : (
-    <div className="flex w-screen h-screen justify-center items-center flex-col gap-5">
+    <div className="flex w-screen h-screen justify-center items-center flex-col gap-10">
       <a href="https://www.instagram.com/sportportal.tm" target="_blank">
-        <img src="icons/toolbox/logo.png" alt="" className="w-40" />
+        <img src="icons/toolbox/logo.png" alt="" className="w-96" />
       </a>
-      <p className="text-2xl text-gray-600">Tehniki işler geçirilýär...</p>
+      <p className="text-5xl text-gray-500">Tehniki işler geçirilýär...</p>
     </div>
   );
 };
