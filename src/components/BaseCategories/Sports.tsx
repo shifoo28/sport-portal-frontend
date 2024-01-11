@@ -2,16 +2,13 @@ import React from "react";
 import { IFSports } from "../../redux/interfaces/federations";
 
 const Sports = ({ data, prefLang }: { data: IFSports; prefLang: string }) => {
-  let decoration = "";
-  if (data?.presidentTm.includes("Arslan")) decoration = "line-through";
-
   return (
     <div
       className={`w-full flex justify-between p-8 font-sofiasans text-xl gap-10`}
     >
       <div className="flex w-full">
         <div className="flex flex-col justify-between w-full">
-          <p className={`${decoration}`}>
+          <p>
             Prezidenti:{" "}
             {prefLang === "Tm" ? data?.presidentTm : data?.presidentRu}
           </p>
