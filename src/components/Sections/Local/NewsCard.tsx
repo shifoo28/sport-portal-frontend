@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NEWS_DETAILS_PAGE } from "../../../tools/links";
 import { urlBack } from "../../../redux/apiCalls";
@@ -24,6 +24,7 @@ const NewsCard: React.FC<CardData> = ({
 }) => {
   // Hooks
   const navigate = useNavigate();
+  const [scaleImage, setScaleImage] = useState("scale-125");
 
   // Operation
   let textSize = "text-xl",
@@ -61,10 +62,12 @@ const NewsCard: React.FC<CardData> = ({
     <figure
       className={`relative w-full h-full m-0 cursor-pointer`}
       onClick={() => linkToNewsDetail(id)}
+      onMouseEnter={() => setScaleImage("scale-100")}
+      onMouseLeave={() => setScaleImage("scale-125")}
     >
-      <div className="w-full h-full">
+      <div className="w-full h-full overflow-hidden">
         <img
-          className={`h-full w-full object-cover object-center`}
+          className={`h-full w-full object-cover object-center ${scaleImage} transition duration-300`}
           src={urlBack + imgLink}
           alt=""
         />

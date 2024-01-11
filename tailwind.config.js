@@ -25,5 +25,9 @@ module.exports = {
       xl: "1700px",
     },
   },
-  plugins: [],
+  variants: {
+    extend: {
+      transform: ["hover"],
+    },
+  },
 };

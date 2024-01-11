@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { urlBack } from "../../redux/apiCalls";
-import playvideo from "../../components/Sections/Videos/svg/playvideo.svg";
+import playvideo from "../../assets/svg/playvideo.svg";
 import { IVideoNews } from "../../redux/interfaces/home";
 import { RootState } from "../../redux/store";
 import { DateTimeToPassedTime } from "../../tools/TimeConverter";

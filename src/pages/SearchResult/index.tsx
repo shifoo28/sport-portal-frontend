@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import playVideoSvg from "../../components/Sections/Videos/svg/playvideo.svg";
+import playVideoSvg from "../../assets/svg/playvideo.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ESection, ILocalNews, IVideoNews } from "../../redux/interfaces/home";

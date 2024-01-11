@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { ESection, IWorldNews } from "../../../redux/interfaces/home";
@@ -10,6 +10,7 @@ import { BG_COLORS } from "../../../tools/constants";
 const Body = () => {
   // Hooks
   const navigate = useNavigate();
+  const [scaleImage, setScaleImage] = useState("scale-125");
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
@@ -30,11 +31,13 @@ const Body = () => {
       <div
         className="flex flex-col max-w-[400px] w-full cursor-pointer"
         onClick={() => linkToNewsDetail(world_news_main.id)}
+        onMouseEnter={() => setScaleImage("scale-100")}
+        onMouseLeave={() => setScaleImage("scale-125")}
       >
-        <div className="relative">
+        <div className="relative overflow-hidden">
           <img
             src={urlBack + world_news_main?.imagePath}
-            className="object-cover h-64 w-full"
+            className={`object-cover h-64 w-full ${scaleImage} transition duration-300`}
             alt=""
           />
           <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 to-black/50 " />
