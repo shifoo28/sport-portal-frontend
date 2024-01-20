@@ -9,6 +9,7 @@ import { FC } from "react";
 
 interface Props {
   name: string;
+  all: string;
   items: string[];
   setName: (name: string) => void;
 }
@@ -28,7 +29,7 @@ const arrow = (
   </svg>
 );
 
-export const Popover: FC<Props> = ({ name, items, setName }) => {
+export const Popover: FC<Props> = ({ name, all, items, setName }) => {
   return (
     <MTPopover placement="top">
       <PopoverHandler>
@@ -45,6 +46,14 @@ export const Popover: FC<Props> = ({ name, items, setName }) => {
         placeholder=""
       >
         <List className="p-0" placeholder="">
+          <ListItem
+            key={items?.length}
+            onClick={() => setName(all)}
+            className="hover:bg-blue-100 rounded-none w-full px-2"
+            placeholder=""
+          >
+            {all}
+          </ListItem>
           {items?.map((item, index) => {
             return (
               <ListItem

@@ -14,7 +14,7 @@ type CardData = {
 const NewsCard: React.FC<CardData> = ({ news, cardSize, prefLang }) => {
   // Hooks
   const navigate = useNavigate();
-  const [scaleImage, setScaleImage] = useState("scale-125");
+  const [scaleImage, setScaleImage] = useState("scale-100");
 
   // Operation
   let textSize = "text-xl",
@@ -52,8 +52,8 @@ const NewsCard: React.FC<CardData> = ({ news, cardSize, prefLang }) => {
     <figure
       className={`relative w-full h-full m-0 cursor-pointer`}
       onClick={() => linkToNewsDetail(news?.id)}
-      onMouseEnter={() => setScaleImage("scale-100")}
-      onMouseLeave={() => setScaleImage("scale-125")}
+      onMouseEnter={() => setScaleImage("scale-125")}
+      onMouseLeave={() => setScaleImage("scale-100")}
     >
       <div className="w-full h-full overflow-hidden">
         <img

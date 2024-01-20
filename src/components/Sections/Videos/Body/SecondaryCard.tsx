@@ -12,14 +12,14 @@ interface Props {
 
 const SecondaryCard: FC<Props> = ({ video, prefLang, linkToVideoDetail }) => {
   // Hooks
-  const [scaleImage, setScaleImage] = useState("scale-125");
+  const [scaleImage, setScaleImage] = useState("scale-100");
 
   return (
     <div
       className="flex flex-col w-full max-w-[270px] cursor-pointer"
       onClick={() => linkToVideoDetail(video.id)}
-      onMouseEnter={() => setScaleImage("scale-100")}
-      onMouseLeave={() => setScaleImage("scale-125")}
+      onMouseEnter={() => setScaleImage("scale-125")}
+      onMouseLeave={() => setScaleImage("scale-100")}
     >
       <div className="relative h-[200px] overflow-hidden">
         <img

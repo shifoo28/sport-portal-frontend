@@ -12,14 +12,14 @@ interface Props {
 
 const PrimaryCard: FC<Props> = ({ video, prefLang, linkToVideoDetail }) => {
   // Hooks
-  const [scaleImage, setScaleImage] = useState("scale-125");
+  const [scaleImage, setScaleImage] = useState("scale-100");
 
   return (
     <div
       className="relative h-[400px] w-full font-sofiasans cursor-pointer overflow-hidden transform"
       onClick={() => linkToVideoDetail(video.id)}
-      onMouseEnter={() => setScaleImage("scale-100")}
-      onMouseLeave={() => setScaleImage("scale-125")}
+      onMouseEnter={() => setScaleImage("scale-125")}
+      onMouseLeave={() => setScaleImage("scale-100")}
     >
       <img
         src={urlBack + video?.imagePath}

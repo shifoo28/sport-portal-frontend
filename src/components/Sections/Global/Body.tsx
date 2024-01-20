@@ -10,7 +10,7 @@ import { BG_COLORS } from "../../../tools/constants";
 const Body = () => {
   // Hooks
   const navigate = useNavigate();
-  const [scaleImage, setScaleImage] = useState("scale-125");
+  const [scaleImage, setScaleImage] = useState("scale-100");
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
@@ -31,8 +31,8 @@ const Body = () => {
       <div
         className="flex flex-col max-w-[400px] w-full cursor-pointer"
         onClick={() => linkToNewsDetail(world_news_main.id)}
-        onMouseEnter={() => setScaleImage("scale-100")}
-        onMouseLeave={() => setScaleImage("scale-125")}
+        onMouseEnter={() => setScaleImage("scale-125")}
+        onMouseLeave={() => setScaleImage("scale-100")}
       >
         <div className="relative overflow-hidden">
           <img

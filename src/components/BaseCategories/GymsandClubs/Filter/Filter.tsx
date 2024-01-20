@@ -95,18 +95,21 @@ const Filter = () => {
           {/* LOCATIONS */}
           <Popover
             name={locationsFilter}
+            all={prefLang === "Tm" ? "Ýerleşýän ýeri" : "Местоположение"}
             items={locations}
             setName={setLocationsFilter}
           />
           {/* SPORT TYPES */}
           <Popover
             name={sportTypesFilter}
+            all={prefLang === "Tm" ? "Sport görnüşler" : "Виды спорта"}
             items={sportTypes}
             setName={setSportTypesFilter}
           />
           {/* SPORT ENVIRONMENTS */}
           <Popover
             name={sportEnvironment}
+            all={prefLang === "Tm" ? "Sport desgalar" : "Спортивный комплекс"}
             items={environments}
             setName={setSportEnvironment}
           />
