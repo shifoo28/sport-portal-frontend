@@ -47,7 +47,7 @@ const BaseCategoriesList = () => {
             >
               <img
                 src="/icons/basecategory/logolive.gif"
-                className="w-7 h-7 pr-1"
+                className="w-8 h-7 pr-1"
                 alt=""
               />
               <p className="text-[#F44336]">LIVE</p>

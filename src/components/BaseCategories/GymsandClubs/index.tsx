@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Filter from "./Filter";
+import Filter from "./Filter/Filter";
 import ListofFacility from "./List";
 import OpenStreetMap from "./Map";
 import { useLocation } from "react-router-dom";
@@ -24,7 +24,7 @@ const GymsAndClubs = () => {
   } else {
     return (
       <div className="flex justify-center pt-9">
-        <div className="w-full max-w-[1170px] flex flex-col items-center gap-20">
+        <div className="w-full flex flex-col items-center gap-20">
           <div className="max-w-[1000px] w-full">
             <p className="text-[#0F1A42] font-oswald text-[50px] text-center capitalize">
               {prefLang === "Tm"

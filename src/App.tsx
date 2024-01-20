@@ -17,7 +17,6 @@ import Banner from "./components/Headers";
 import BaseCategoriesList from "./components/Headers/BaseCategory";
 import ToolBox from "./components/Headers/ToolBox";
 import NewsAll from "./pages/News";
-import Navbar from "./components/Navbar";
 import { useDispatch } from "react-redux";
 import { GET_MAIN } from "./redux/types";
 import AboutUs from "./pages/AboutUs";
@@ -26,6 +25,7 @@ import VideoNewsAll from "./pages/VideoNews";
 import VideoNewsDetails from "./pages/VideoNews/VideoNewsDetails";
 import ScrollToTop from "./ScrollToTop";
 import SearchResult from "./pages/SearchResult";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const dispatch = useDispatch();

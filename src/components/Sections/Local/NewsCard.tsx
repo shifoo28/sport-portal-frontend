@@ -2,26 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NEWS_DETAILS_PAGE } from "../../../tools/links";
 import { urlBack } from "../../../redux/apiCalls";
-import { ESection } from "../../../redux/interfaces/home";
+import { ESection, ILocalNews } from "../../../redux/interfaces/home";
 import { BG_COLORS } from "../../../tools/constants";
 
 type CardData = {
-  id: string;
-  imgLink: string;
-  title: string;
-  date: string;
-  category: string;
+  news: ILocalNews;
   cardSize: string;
+  prefLang: string;
 };
 
-const NewsCard: React.FC<CardData> = ({
-  id,
-  category,
-  date,
-  title,
-  imgLink,
-  cardSize,
-}) => {
+const NewsCard: React.FC<CardData> = ({ news, cardSize, prefLang }) => {
   // Hooks
   const navigate = useNavigate();
   const [scaleImage, setScaleImage] = useState("scale-125");
@@ -61,14 +51,14 @@ const NewsCard: React.FC<CardData> = ({
   return (
     <figure
       className={`relative w-full h-full m-0 cursor-pointer`}
-      onClick={() => linkToNewsDetail(id)}
+      onClick={() => linkToNewsDetail(news?.id)}
       onMouseEnter={() => setScaleImage("scale-100")}
       onMouseLeave={() => setScaleImage("scale-125")}
     >
       <div className="w-full h-full overflow-hidden">
         <img
           className={`h-full w-full object-cover object-center ${scaleImage} transition duration-300`}
-          src={urlBack + imgLink}
+          src={urlBack + news?.imagePath}
           alt=""
         />
       </div>
@@ -78,15 +68,21 @@ const NewsCard: React.FC<CardData> = ({
           BG_COLORS[Math.floor(Math.random() * BG_COLORS.length)]
         } w-max text-white text-[9px] flex items-center`}
       >
-        <p className="px-3">{category}</p>
+        <p className="px-3">
+          {prefLang === "Tm" ? news?.category.nameTm : news?.category.nameRu}
+        </p>
       </div>
       <figcaption
         className={`absolute text-white ${
           bottom + " " + titleMaxWidth
         } left-0 w-full ml-4`}
       >
-        <p className="font-sofiasans text-[10px] max-w-[131px]">{date}</p>
-        <p className={`font-oswald capitalize ${textSize}`}>{title}</p>
+        <p className="font-sofiasans text-[10px] max-w-[131px]">
+          {prefLang === "Tm" ? news?.locationTm : news?.locationRu}
+        </p>
+        <p className={`font-oswald capitalize ${textSize}`}>
+          {prefLang === "Tm" ? news?.nameTm : news?.nameRu}
+        </p>
       </figcaption>
     </figure>
   );

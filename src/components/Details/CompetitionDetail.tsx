@@ -122,7 +122,7 @@ const CompetitionDetail = () => {
               </button>
             </div>
             <div className="flex justify-between pt-4">
-              {same_competitions.map((sc, index) => {
+              {same_competitions?.slice(0,4).map((sc, index) => {
                 return (
                   <div
                     className="flex flex-col w-[195px] gap-2"

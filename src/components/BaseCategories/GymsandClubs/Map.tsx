@@ -1,7 +1,7 @@
 import React from "react";
+import "./css/Map.css";
 import { TileLayer, MapContainer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
-import "./css/Map.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { IGymsAndClubs } from "../../../redux/interfaces/gymsclubs";

@@ -60,8 +60,8 @@ const Component = () => {
         <div className="px-16">
           <p className="text-center font-oswald text-[50px] text-[#0F1A42] capitalize">
             {prefLang === "Tm"
-              ? "Döwlet Sport lukmançylygy ylmy we amaly merkeziniň lukmançylyk hyzmatlarynyň sanawy"
-              : "Список медицинских услуг Государственного научно-практического центра спортивной медицины"}
+              ? "Sport lukmançylygy"
+              : "Спортивная медицина"}
           </p>
           <p className="font-sofiasans text-lg text-center">
             {prefLang === "Tm" ? descriptionTm : descriptionRu}

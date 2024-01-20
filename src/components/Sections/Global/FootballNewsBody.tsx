@@ -85,7 +85,7 @@ const clubs = [
     logo: "/images/world_news/arsenal.png",
   },
 ];
-const cempionats = [
+const chempionship = [
   {
     id: 0,
     title: "Premier League",
@@ -130,7 +130,7 @@ const FootballNewsBody = () => {
 
   return (
     <div className="pt-6">
-      {cempionats.map((cempionat, index) => {
+      {chempionship.map((cempionat, index) => {
         return (
           <Accordion
             key={index}
@@ -169,7 +169,7 @@ const FootballNewsBody = () => {
               onClick={() => handleOpen(cempionat.id)}
               placeholder=""
             >
-              <img src={cempionat.imgLink} alt=""/>
+              <img src={cempionat.imgLink} alt="" />
               <p className="font-sofiasans text-sm font-normal flex justify-start w-full ml-3">
                 {cempionat.title}
               </p>

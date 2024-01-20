@@ -15,23 +15,23 @@ export const bcfInformation = [
   {
     link: SPORTS,
     titleTm:
-      "Türkmenistanyň sport we ýaşlar syýasaty ministrliginiň Düzümindäki federasiýalar",
+      "Sportuň görnüşleri boýunça ýurdumyzdaky Milli Federasiýalar we Merkezler",
     titleRu:
-      "Федерации при Министерстве спорта и молодежной политики Туркменистана",
+      "Национальные федерации и центры спорта Туркменистана",
   },
   {
     link: TRAINERS,
     titleTm:
-      "Türkmenistanyň sport we ýaşlar syýasaty ministrliginiň Düzümindäki tälimçiler",
+      "Sportuň görnüşleri boýunça Tälimçiler",
     titleRu:
-      "Тренеры в организации Министерства спорта и молодежной политики Туркменистана",
+      "Тренеры по различным видам спорта",
   },
   {
     link: ATHLETE,
     titleTm:
-      "Türkmenistanyň sport we ýaşlar syýasaty ministrliginiň Düzümindäki sport ussatlary",
+      "Sportuň görnüşleri boýunça Türgenler",
     titleRu:
-      "Мастера спорта Министерства спорта и молодежной политики Туркменистана",
+      "Мастера спорта по разным видам спорта",
   },
 ];
 
