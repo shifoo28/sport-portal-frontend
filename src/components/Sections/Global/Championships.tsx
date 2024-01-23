@@ -4,12 +4,8 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 import React from "react";
-import primierSvg from "./svg/primier.svg";
-import laligaSvg from "./svg/laliga.svg";
-import campligaSvg from "./svg/campionsliga.svg";
-import ligue1Svg from "./svg/ligue1.svg";
-import worldcupSvg from "./svg/worldcup.svg";
 import yokaryligaSvg from "./svg/yokaryliga.svg";
+import tff from "./svg/tff.svg";
 
 const clubs = [
   {
@@ -74,6 +70,12 @@ const chempionship = [
     imgLink: yokaryligaSvg,
     clubs,
   },
+  {
+    id: 1,
+    title: "Naýbaşy futzal liga",
+    imgLink: tff,
+    clubs,
+  },
 ];
 
 const FootballNewsBody = () => {
@@ -121,7 +123,7 @@ const FootballNewsBody = () => {
               onClick={() => handleOpen(cempionat.id)}
               placeholder=""
             >
-              <img src={cempionat.imgLink} alt="" />
+              <img src={cempionat.imgLink} alt="" className="w-5 h-5" />
               <p className="font-sofiasans text-sm font-normal flex justify-start w-full ml-3">
                 {cempionat.title}
               </p>
