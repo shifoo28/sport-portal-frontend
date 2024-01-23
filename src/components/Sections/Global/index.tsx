@@ -1,7 +1,7 @@
 import React from "react";
 import { HeaderWithCategories, HeaderWithoutCategories } from "./Headers";
 import WorldNewsBody from "./Body";
-import FootballNewsBody from "./FootballNewsBody";
+import FootballNewsBody from "./Championships";
 
 const index = () => {
   return (

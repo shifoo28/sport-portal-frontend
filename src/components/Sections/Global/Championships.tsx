@@ -49,78 +49,30 @@ const clubs = [
     logo: "/images/world_news/arsenal.png",
   },
   {
-    id: 0,
+    id: 6,
     place: 1,
     title: "Manchester United",
     logo: "/images/world_news/mu.png",
   },
   {
-    id: 1,
+    id: 7,
     place: 2,
     title: "Manchester City",
     logo: "/images/world_news/mancity.png",
   },
   {
-    id: 2,
+    id: 8,
     place: 3,
     title: "Liverpool",
     logo: "/images/world_news/liverpool.png",
-  },
-  {
-    id: 3,
-    place: 4,
-    title: "Chelsea F.C",
-    logo: "/images/world_news/chelsea.png",
-  },
-  {
-    id: 4,
-    place: 5,
-    title: "West Ham United",
-    logo: "/images/world_news/westham.png",
-  },
-  {
-    id: 5,
-    place: 5,
-    title: "Arsenal",
-    logo: "/images/world_news/arsenal.png",
   },
 ];
 const chempionship = [
   {
     id: 0,
-    title: "Premier League",
-    imgLink: primierSvg,
-    clubs: clubs,
-  },
-  {
-    id: 1,
-    title: "Worldcup",
-    imgLink: worldcupSvg,
-    clubs: [],
-  },
-  {
-    id: 2,
-    title: "Champions League",
-    imgLink: campligaSvg,
-    clubs: [],
-  },
-  {
-    id: 3,
     title: "Ýokary Liga",
     imgLink: yokaryligaSvg,
-    clubs: [],
-  },
-  {
-    id: 4,
-    title: "La Liga",
-    imgLink: laligaSvg,
-    clubs: [],
-  },
-  {
-    id: 5,
-    title: "Ligue 1",
-    imgLink: ligue1Svg,
-    clubs: [],
+    clubs,
   },
 ];
 
@@ -197,7 +149,7 @@ const FootballNewsBody = () => {
                     </p>
                   </div>
                 </div>
-                <div className=" overflow-auto max-h-[190px]">
+                <div className=" overflow-auto max-h-[300px]">
                   <div className={`flex flex-col gap-1 pr-1`}>
                     {cempionat?.clubs?.map((club, index) => {
                       return (

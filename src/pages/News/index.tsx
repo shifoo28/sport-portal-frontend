@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import FootballNewsBody from "../../components/Sections/Global/FootballNewsBody";
+import FootballNewsBody from "../../components/Sections/Global/Championships";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ESection, ILocalNews } from "../../redux/interfaces/home";
