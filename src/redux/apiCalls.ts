@@ -48,6 +48,16 @@ export async function fetchGlobalNews(query: IGetNewsQuery) {
   }
 }
 
+export async function fetchChampionships() {
+  try {
+    const res = await axios.get(urlBack + "championship-stats/football");
+
+    return res.data.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function fetchVideoNews(query: IGetNewsQuery) {
   try {
     const res = await axios.get(urlBack + "main-page", {

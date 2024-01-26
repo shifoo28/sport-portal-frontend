@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HeaderWithCategories, HeaderWithoutCategories } from "./Headers";
 import WorldNewsBody from "./Body";
 import FootballNewsBody from "./Championships";
+import { useDispatch } from "react-redux";
+import { GET_CHAMPIONSHIPS } from "../../../redux/types";
 
-const index = () => {
+const Global = () => {
+  // Hooks
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({type:GET_CHAMPIONSHIPS})
+  }, []);
+
   return (
     <div className="flex justify-between">
       <div className="max-w-[870px] flex flex-col w-full">
@@ -18,4 +26,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Global;

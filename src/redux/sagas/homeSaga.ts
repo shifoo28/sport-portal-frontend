@@ -9,8 +9,16 @@ import {
   GET_GLOBAL_NEWS,
   GET_GLOBAL_NEWS_FAILED,
   GET_GLOBAL_NEWS_SUCCESS,
+  GET_CHAMPIONSHIPS,
+  GET_CHAMPIONSHIPS_FAILED,
+  GET_CHAMPIONSHIPS_SUCCESS,
 } from "../types";
-import { fetchGlobalNews, fetchLocalNews, fetchVideoNews } from "../apiCalls";
+import {
+  fetchChampionships,
+  fetchGlobalNews,
+  fetchLocalNews,
+  fetchVideoNews,
+} from "../apiCalls";
 import { IHome } from "../interfaces/home";
 
 function* getLocalNews(action: IHome) {
@@ -35,6 +43,17 @@ function* getGlobalNews(action: IHome) {
   }
 }
 
+function* getChampionships() {
+  try {
+    // @ts-ignore
+    const championships = yield call(fetchChampionships);
+
+    yield put({ type: GET_CHAMPIONSHIPS_SUCCESS, payload: championships });
+  } catch (error: any) {
+    yield put({ type: GET_CHAMPIONSHIPS_FAILED, message: error.message });
+  }
+}
+
 function* getVideoNews(action: IHome) {
   try {
     // @ts-ignore
@@ -52,6 +71,10 @@ export function* localNewsSaga() {
 
 export function* globalNewsSaga() {
   yield takeLatest(GET_GLOBAL_NEWS, getGlobalNews);
+}
+
+export function* championshipSaga() {
+  yield takeLatest(GET_CHAMPIONSHIPS, getChampionships);
 }
 
 export function* videoNewsSaga() {

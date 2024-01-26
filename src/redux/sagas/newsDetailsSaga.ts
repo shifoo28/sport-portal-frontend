@@ -7,7 +7,7 @@ import {
 import { INewsDetails } from "../interfaces/newsDetails";
 import { patchNewsDetailsViews } from "../apiCalls";
 
-function* postNewsViews(action: INewsDetails) {
+function* patchNewsViews(action: INewsDetails) {
   const { newsId, categoryId } = action.payload;
   try {
     yield call(patchNewsDetailsViews, newsId, categoryId);
@@ -19,5 +19,5 @@ function* postNewsViews(action: INewsDetails) {
 }
 
 export function* newsDetailsSaga() {
-  yield takeLatest(PATCH_SPORT_NEWS_VIEWS, postNewsViews);
+  yield takeLatest(PATCH_SPORT_NEWS_VIEWS, patchNewsViews);
 }

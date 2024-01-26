@@ -4,91 +4,26 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 import React from "react";
-import yokaryligaSvg from "./svg/yokaryliga.svg";
-import tff from "./svg/tff.svg";
-
-const clubs = [
-  {
-    id: 0,
-    place: 1,
-    title: "Manchester United",
-    logo: "/images/world_news/mu.png",
-  },
-  {
-    id: 1,
-    place: 2,
-    title: "Manchester City",
-    logo: "/images/world_news/mancity.png",
-  },
-  {
-    id: 2,
-    place: 3,
-    title: "Liverpool",
-    logo: "/images/world_news/liverpool.png",
-  },
-  {
-    id: 3,
-    place: 4,
-    title: "Chelsea F.C",
-    logo: "/images/world_news/chelsea.png",
-  },
-  {
-    id: 4,
-    place: 5,
-    title: "West Ham United",
-    logo: "/images/world_news/westham.png",
-  },
-  {
-    id: 5,
-    place: 5,
-    title: "Arsenal",
-    logo: "/images/world_news/arsenal.png",
-  },
-  {
-    id: 6,
-    place: 1,
-    title: "Manchester United",
-    logo: "/images/world_news/mu.png",
-  },
-  {
-    id: 7,
-    place: 2,
-    title: "Manchester City",
-    logo: "/images/world_news/mancity.png",
-  },
-  {
-    id: 8,
-    place: 3,
-    title: "Liverpool",
-    logo: "/images/world_news/liverpool.png",
-  },
-];
-const chempionship = [
-  {
-    id: 0,
-    title: "Ýokary Liga",
-    imgLink: yokaryligaSvg,
-    clubs,
-  },
-  {
-    id: 1,
-    title: "Naýbaşy futzal liga",
-    imgLink: tff,
-    clubs,
-  },
-];
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { IChampionship } from "../../../redux/interfaces/home";
+import { urlBack } from "../../../redux/apiCalls";
 
 const FootballNewsBody = () => {
   const [open, setOpen] = React.useState(0);
   const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
+  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const chempionships: IChampionship[] = useSelector(
+    (state: RootState) => state.home.championships
+  );
 
   return (
     <div className="pt-6">
-      {chempionship.map((cempionat, index) => {
+      {chempionships?.map((chempionship, index) => {
         return (
           <Accordion
             key={index}
-            open={open === cempionat.id}
+            open={open === index}
             className="pb-2"
             icon={
               <svg
@@ -96,7 +31,7 @@ const FootballNewsBody = () => {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                className={`${open === cempionat.id ? "rotate-90" : ""}`}
+                className={`${open === index ? "rotate-90" : ""}`}
               >
                 <g clip-path="url(#clip0_1_770)">
                   <path
@@ -120,73 +55,77 @@ const FootballNewsBody = () => {
           >
             <AccordionHeader
               className="border-0 p-0"
-              onClick={() => handleOpen(cempionat.id)}
+              onClick={() => handleOpen(index)}
               placeholder=""
             >
-              <img src={cempionat.imgLink} alt="" className="w-5 h-5" />
+              <img
+                src={urlBack + chempionship.imagePath}
+                alt=""
+                className="w-5 h-5"
+              />
               <p className="font-sofiasans text-sm font-normal flex justify-start w-full ml-3">
-                {cempionat.title}
+                {prefLang === "Tm" ? chempionship.nameTm : chempionship.nameRu}
               </p>
             </AccordionHeader>
             <AccordionBody>
               <div
                 className={`${
-                  open !== cempionat.id ? "hidden" : ""
+                  open !== index ? "hidden" : ""
                 } font-sofiasans text-xs`}
               >
                 <div className="flex justify-between items-center text-[#636363] ml-2 mr-4">
-                  <div>Toparlar</div>
+                  <div>{prefLang === "Tm" ? "Toparlar" : "Команды"}</div>
                   <div className="flex">
                     <p className="flex justify-center items-center w-[23px]">
-                      Ý
+                      {prefLang === "Tm" ? "Ý" : "В"}
                     </p>
                     <p className="flex justify-center items-center w-[23px]">
-                      D
+                      {prefLang === "Tm" ? "D" : "Н"}
                     </p>
                     <p className="flex justify-center items-center w-[23px]">
-                      U
+                      {prefLang === "Tm" ? "U" : "П"}
                     </p>
                     <p className="flex justify-center items-center w-[27px]">
-                      Utuk
+                      {prefLang === "Tm" ? "Utuk" : "Счет"}
                     </p>
                   </div>
                 </div>
                 <div className=" overflow-auto max-h-[300px]">
-                  <div className={`flex flex-col gap-1 pr-1`}>
-                    {cempionat?.clubs?.map((club, index) => {
+                  <div className={`flex flex-col gap-1 pr-2`}>
+                    {chempionship?.FootballTeams?.map((team, index) => {
                       return (
                         <div
                           key={index}
                           className={`flex rounded-md p-1 justify-between ${
-                            club.place < 5 ? "bg-[#F2F0F9]" : "bg-[#FEE6EB]"
+                            index + 1 < 8 ? "bg-[#F2F0F9]" : "bg-[#FEE6EB]"
                           } 
                       `}
                         >
-                          <div className="flex">
-                            <p className="pr-2">{club.place}</p>
-                            <div className="h-5 w-7 flex justify-center items-center">
+                          <div className="flex items-center">
+                            <p className="pr-2">{index + 1}</p>
+                            <div className="w-5 h-5 flex justify-center items-center">
                               <img
-                                src={club.logo}
-                                className="w-full h-full object-contain"
+                                src={urlBack + team.imagePath}
+                                className="object-contain object-center w-full h-full"
                                 alt=""
                               />
                             </div>
                             <p className="flex items-center pl-1 w-full">
-                              {club.title}
+                              {prefLang === "Tm" ? team.nameTm : team.nameRu}
                             </p>
                           </div>
                           <div className="flex justify-between items-center pr-1">
                             <p className="flex justify-center items-center w-[23px]">
-                              {Math.floor(Math.random() * 20) + 11}
+                              {team.win}
                             </p>
                             <p className="flex justify-center items-center w-[23px]">
-                              {Math.floor(Math.random() * 10)}
+                              {team.draw}
                             </p>
                             <p className="flex justify-center items-center w-[23px]">
-                              {Math.floor(Math.random() * 10)}
+                              {team.loss}
                             </p>
                             <p className="flex justify-center items-center w-[27px]">
-                              {Math.floor(Math.random() * 40) + 11}
+                              {team.points}
                             </p>
                           </div>
                         </div>

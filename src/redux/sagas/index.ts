@@ -1,6 +1,11 @@
 import { all } from "redux-saga/effects";
 import { mainSaga, searchSaga, weatherSaga } from "./mainSaga";
-import { globalNewsSaga, localNewsSaga, videoNewsSaga } from "./homeSaga";
+import {
+  championshipSaga,
+  globalNewsSaga,
+  localNewsSaga,
+  videoNewsSaga,
+} from "./homeSaga";
 import { fathletesSaga, fsportsSaga, ftrainersSaga } from "./federations";
 import { newsDetailsSaga } from "./newsDetailsSaga";
 import {
@@ -18,6 +23,7 @@ export default function* rootSaga() {
     searchSaga(),
     localNewsSaga(),
     globalNewsSaga(),
+    championshipSaga(),
     videoNewsSaga(),
     fsportsSaga(),
     ftrainersSaga(),

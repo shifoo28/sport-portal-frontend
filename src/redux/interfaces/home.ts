@@ -39,6 +39,31 @@ export interface IWorldNews {
   createdAt: Date;
   updatedAt: Date;
 }
+export interface IFootballTeam {
+  id: string;
+  nameTm: string;
+  nameRu: string;
+  imagePath: string;
+  win: number;
+  draw: number;
+  loss: number;
+  goalsScored: number;
+  goalsAgainst: number;
+  points: number;
+  championshipId: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export interface IChampionship {
+  id: string;
+  nameTm: string;
+  nameRu: string;
+  imagePath: string;
+  federationId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  FootballTeams?: IFootballTeam[];
+}
 export interface IVideoNews {
   id: string;
   views: number;
@@ -56,6 +81,7 @@ export interface IVideoNews {
 export interface IHomeState {
   local_news: ILocalNews[];
   world_news: IWorldNews[];
+  championships: IChampionship[];
   video_news: IVideoNews[];
 }
 export interface IGetNewsQuery {
