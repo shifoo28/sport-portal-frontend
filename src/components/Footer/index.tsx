@@ -37,12 +37,12 @@ const Footer = () => {
             <div className="flex justify-center items-center gap-1">
               <img src={mail} alt="" />
               <a className="underline" href="mailto:sportportal-tm@olympic.tm">
-                sportportal-tm@olympic.tm
+                tmspotportal@gmail.com
               </a>
             </div>
             <div className="flex justify-center items-center gap-1">
               <img src={tel} alt="" />
-              <p>+99312123456</p>
+              <a href="tel:+99365445455">+99365445455</a>
             </div>
             <div className="flex justify-center items-center gap-1">
               <img src={clock} alt="" />

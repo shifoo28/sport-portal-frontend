@@ -9,27 +9,33 @@ const Sports = ({ data, prefLang }: { data: IFSports; prefLang: string }) => {
       <div className="flex w-full">
         <div className="flex flex-col justify-between w-full">
           <p>
-            Prezidenti:{" "}
-            {prefLang === "Tm" ? data?.presidentTm : data?.presidentRu}
+            {prefLang === "Tm"
+              ? "Başlygy: " + data?.presidentTm
+              : "Начальник: " + data?.presidentRu}
+          </p>
+          <p>{prefLang === "Tm" ? "Baş kätibi: " : "Главный секретарь: "}</p>
+          <p>
+            {prefLang === "Tm"
+              ? "Baş tälimçi: " + data?.leaderTm
+              : "Главный тренер: " + data?.leaderRu}
           </p>
           <p>
-            Baş tälimçi: {prefLang === "Tm" ? data?.leaderTm : data?.leaderRu}
-          </p>
-          <p>Döredilen ýyly: {data?.founded}</p>
-          <p>
-            Ýerleşýän ýeri:{" "}
-            {prefLang === "Tm" ? data?.locationTm : data?.locationRu}
+            {(prefLang === "Tm" ? "Döredilen ýyly: " : "Год учреждения: ") +
+              data?.founded}
           </p>
         </div>
         <div className="h-[150px] border-r border-[#40A6FF]" />
       </div>
       <div className="flex flex-col justify-between w-full">
-        <p>Telefon: {data?.tel}</p>
-        <p>Faks: {data?.fax}</p>
-        <p>E-mail: {data?.email}</p>
+        <p>{(prefLang === "Tm" ? "Telefon: " : "Телефон: ") + data?.tel}</p>
+        <p>{(prefLang === "Tm" ? "Faks: " : "Факс: ") + data?.fax}</p>
+        <p>
+          {prefLang === "Tm" ? "E-mail: " : "Эл. почта: "}
+          <a href={`mailto:${data?.email}`}>{data?.email}</a>
+        </p>
         <p className="flex gap-3">
-          Web:{" "}
-          {data?.web.split(";").map((item, index) => {
+          {prefLang === "Tm" ? "Web: " : "Веб: "}
+          {data?.web.split(" ").map((item, index) => {
             return (
               <a
                 href={item}
@@ -42,6 +48,11 @@ const Sports = ({ data, prefLang }: { data: IFSports; prefLang: string }) => {
               </a>
             );
           })}
+        </p>
+        <p>
+          {prefLang === "Tm"
+            ? "Ýerleşýän ýeri: " + data?.locationTm
+            : "Местоположение: " + data?.locationRu}
         </p>
       </div>
     </div>

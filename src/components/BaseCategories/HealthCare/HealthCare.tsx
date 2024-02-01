@@ -59,9 +59,7 @@ const Component = () => {
       <div className="max-w-[1170px] w-full flex flex-col gap-10">
         <div className="px-16">
           <p className="text-center font-oswald text-[50px] text-[#0F1A42] capitalize">
-            {prefLang === "Tm"
-              ? "Sport lukmançylygy"
-              : "Спортивная медицина"}
+            {prefLang === "Tm" ? "Sport lukmançylygy" : "Спортивная медицина"}
           </p>
           <p className="font-sofiasans text-lg text-center">
             {prefLang === "Tm" ? descriptionTm : descriptionRu}
@@ -70,15 +68,11 @@ const Component = () => {
         <div className="text-[#182135] flex flex-col gap-5 font-sofiasans text-[25px] font-semibold">
           <p>
             {prefLang === "Tm" ? "Ýükläp al: " : "Скачать: "}
-            <a href="/pdf/trainers.pdf" className="hover:underline">
-              Tälimçiler üçin Medisina barlagy
-            </a>
+            Tälimçiler üçin Medisina barlagy
           </p>
           <p>
             {prefLang === "Tm" ? "Ýükläp al: " : "Скачать: "}
-            <a href="/pdf/sportsmens.pdf" className="hover:underline">
-              Türgenler üçin Medisina barlagy
-            </a>
+            Türgenler üçin Medisina barlagy
           </p>
         </div>
         <div className="flex flex-col gap-8">
