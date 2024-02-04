@@ -94,7 +94,7 @@ const ChampionshipsBody: FC<Props> = ({ champIndex }) => {
                     </p>
                   </div>
                 </div>
-                <div className=" overflow-auto max-h-[300px]">
+                <div className=" overflow-auto max-h-[320px]">
                   <div className={`flex flex-col gap-1 pr-2`}>
                     {chempionship?.team?.map((team, index) => {
                       return (
