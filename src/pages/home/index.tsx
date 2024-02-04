@@ -1,9 +1,10 @@
 import React from "react";
 import NewsCards from "../../components/Sections/Local";
 import VideoNews from "../../components/Sections/Videos/Videos";
-import WorldSportNews from "../../components/Sections/Global";
+import WorldSportNews from "../../components/Sections/World";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  GET_CHAMPIONSHIPS,
   GET_GLOBAL_NEWS,
   GET_LOCAL_NEWS,
   GET_VIDEO_NEWS,
@@ -26,6 +27,7 @@ const HomePage = () => {
     type: GET_VIDEO_NEWS,
     payload: { section: ESection.Video, lang: prefLang },
   });
+  dispatch({ type: GET_CHAMPIONSHIPS });
 
   return (
     <div className="w-full flex justify-center pt-9">

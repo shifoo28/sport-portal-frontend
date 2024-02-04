@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import nextSvg from "../../../assets/svg/next.svg";
 import prevSvg from "../../../assets/svg/prev.svg";
 import { useSelector } from "react-redux";
@@ -6,9 +6,10 @@ import { RootState } from "../../../redux/store";
 import { ISportCategory } from "../../../redux/interfaces/main";
 import { useNavigate } from "react-router-dom";
 import { NEWS_ALL } from "../../../tools/links";
-import { ESection } from "../../../redux/interfaces/home";
+import { ESection, IChampionship } from "../../../redux/interfaces/home";
+import { champshipNames } from "../../../tools/constants";
 
-export const HeaderWithCategories = () => {
+export const WorldNewsHeader = () => {
   // Hooks
   const navigate = useNavigate();
 
@@ -92,8 +93,20 @@ export const HeaderWithCategories = () => {
   );
 };
 
-export const HeaderWithoutCategories = () => {
+interface Props {
+  champIndex: number;
+  setChampIndex: (i: number) => void;
+}
+
+export const ChampionshipsHeader: FC<Props> = ({
+  champIndex,
+  setChampIndex,
+}) => {
+  // Hooks
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const championships: [IChampionship[]] = useSelector(
+    (state: RootState) => state.home.championships
+  );
 
   return (
     <div className="flex h-11 font-oswald w-full">
@@ -101,9 +114,40 @@ export const HeaderWithoutCategories = () => {
         className={`flex items-center max-w-[150px] w-full border-b border-[#0088FF] text-[#0088FF] 
                   text-sm`}
       >
-        {prefLang === "Tm" ? "Futbol Statistika" : "Футбольная статистика"}
+        {prefLang === "Tm"
+          ? champshipNames[championships[champIndex][0]?.type]?.tm
+          : champshipNames[championships[champIndex][0]?.type]?.ru}
       </div>
-      <span className="border-b border-black w-full"></span>
+      <span className="border-b border-black w-full flex justify-end">
+        <div className="flex gap-3">
+          <button
+            disabled={!(champIndex > 0)}
+            onClick={() => setChampIndex(champIndex - 1)}
+          >
+            <img
+              src={prevSvg}
+              className={`h-6 w-6 ${
+                !(champIndex > 0) ? "bg-[#6E748C]" : "bg-[#0E2165]"
+              }`}
+              alt=""
+            />
+          </button>
+          <button
+            disabled={champIndex === championships.length - 1}
+            onClick={() => setChampIndex(champIndex + 1)}
+          >
+            <img
+              src={nextSvg}
+              className={`${
+                champIndex === championships.length - 1
+                  ? "bg-[#6E748C]"
+                  : "bg-[#0E2165]"
+              } h-6 w-6 cursor-pointer`}
+              alt=""
+            />
+          </button>
+        </div>
+      </span>
     </div>
   );
 };

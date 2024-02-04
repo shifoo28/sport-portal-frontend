@@ -5,6 +5,10 @@ export enum ESection {
   World = "World",
   Video = "Video",
 }
+export enum EStatistics {
+  Football = "Football",
+  Volleyball = "Volleyball",
+}
 export interface IHome {
   type: string;
   payload: any;
@@ -39,7 +43,7 @@ export interface IWorldNews {
   createdAt: Date;
   updatedAt: Date;
 }
-export interface IFootballTeam {
+export interface ITeam {
   id: string;
   nameTm: string;
   nameRu: string;
@@ -59,10 +63,10 @@ export interface IChampionship {
   nameTm: string;
   nameRu: string;
   imagePath: string;
-  federationId: string;
+  type: EStatistics;
   createdAt: Date;
   updatedAt: Date;
-  FootballTeams?: IFootballTeam[];
+  team: ITeam[];
 }
 export interface IVideoNews {
   id: string;
@@ -81,7 +85,7 @@ export interface IVideoNews {
 export interface IHomeState {
   local_news: ILocalNews[];
   world_news: IWorldNews[];
-  championships: IChampionship[];
+  championships: [IChampionship[]];
   video_news: IVideoNews[];
 }
 export interface IGetNewsQuery {

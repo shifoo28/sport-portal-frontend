@@ -50,7 +50,7 @@ export async function fetchGlobalNews(query: IGetNewsQuery) {
 
 export async function fetchChampionships() {
   try {
-    const res = await axios.get(urlBack + "championship-stats/football");
+    const res = await axios.get(urlBack + "main-page/championships");
 
     return res.data.data;
   } catch (error) {

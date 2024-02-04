@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import FootballNewsBody from "../../components/Sections/Global/Championships";
+import ChampionshipsBodyBody from "../../components/Sections/World/ChampionshipsBody";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ESection, ILocalNews } from "../../redux/interfaces/home";
@@ -58,7 +58,7 @@ const NewsAll = () => {
             </div>
             <span className="border-b border-black w-full"></span>
           </div>
-          <FootballNewsBody />
+          {/* <ChampionshipsBodyBody /> */}
         </div>
         <div className="w-full">
           <div className="flex h-11 font-oswald text-2xl w-full">

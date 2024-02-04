@@ -14,7 +14,7 @@ import {
 const initialState: IHomeState = {
   local_news: [],
   world_news: [],
-  championships: [],
+  championships: [[]],
   video_news: [],
 };
 

@@ -3,18 +3,22 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import React from "react";
+import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { IChampionship } from "../../../redux/interfaces/home";
 import { urlBack } from "../../../redux/apiCalls";
 
-const FootballNewsBody = () => {
+interface Props {
+  champIndex: number;
+}
+
+const ChampionshipsBody: FC<Props> = ({ champIndex }) => {
   const [open, setOpen] = React.useState(0);
   const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const chempionships: IChampionship[] = useSelector(
-    (state: RootState) => state.home.championships
+    (state: RootState) => state.home.championships[champIndex]
   );
 
   return (
@@ -92,7 +96,7 @@ const FootballNewsBody = () => {
                 </div>
                 <div className=" overflow-auto max-h-[300px]">
                   <div className={`flex flex-col gap-1 pr-2`}>
-                    {chempionship?.FootballTeams?.map((team, index) => {
+                    {chempionship?.team?.map((team, index) => {
                       return (
                         <div
                           key={index}
@@ -142,4 +146,4 @@ const FootballNewsBody = () => {
   );
 };
 
-export default FootballNewsBody;
+export default ChampionshipsBody;

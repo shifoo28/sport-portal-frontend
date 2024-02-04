@@ -31,3 +31,8 @@ export const ADS = [
     title: "Lotto Sport magazin",
   },
 ];
+
+export const champshipNames = {
+  Football: { tm: "Futbol Statistika", ru: "Футбольная статистика" },
+  Volleyball: { tm: "Woleýbol statistika", ru: "Волейбольная статистика" },
+};
