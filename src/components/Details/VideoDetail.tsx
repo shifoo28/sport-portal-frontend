@@ -79,7 +79,7 @@ const VideoDetail = () => {
         </div>
         <div className="w-full pt-24 flex flex-col gap-8">
           <div className="flex justify-between font-oswald">
-            <div className="border-b border-[#F65050] w-52">
+            <div className="border-b border-[#F65050] w-56">
               <p className="text-2xl text-[#F65050] my-1">
                 {prefLang === "Tm" ? "Meňzeş täzelikler" : "Подобные новости"}
               </p>

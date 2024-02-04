@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import ChampionshipsBodyBody from "../../components/Sections/World/ChampionshipsBody";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ESection, ILocalNews } from "../../redux/interfaces/home";
@@ -7,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { urlBack } from "../../redux/apiCalls";
 import { NEWS_DETAILS_PAGE } from "../../tools/links";
 import { GET_LOCAL_NEWS, GET_GLOBAL_NEWS } from "../../redux/types";
+import { ChampionshipStats } from "../../components/Sections/World";
 
 const NewsAll = () => {
   // Hooks
@@ -49,16 +49,7 @@ const NewsAll = () => {
     <div className="w-full flex justify-center">
       <div className="w-full max-w-[1170px] flex justify-between gap-8 pt-8">
         <div className="w-[445px]">
-          <div className="flex h-11 font-oswald w-full">
-            <div
-              className={`flex items-center max-w-[150px] w-full border-b border-[#0088FF] text-[#0088FF] 
-                  text-sm`}
-            >
-              {prefLang === "Tm" ? "Toparlar Statistika" : "Статистика команды"}
-            </div>
-            <span className="border-b border-black w-full"></span>
-          </div>
-          {/* <ChampionshipsBodyBody /> */}
+          <ChampionshipStats />
         </div>
         <div className="w-full">
           <div className="flex h-11 font-oswald text-2xl w-full">

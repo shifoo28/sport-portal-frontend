@@ -4,8 +4,6 @@ import WorldNewsBody from "./WorldNewsBody";
 import ChampionshipsBody from "./ChampionshipsBody";
 
 const World = () => {
-  const [champIndex, setChampIndex] = useState(0);
-
   return (
     <div className="flex justify-between">
       <div className="max-w-[870px] flex flex-col w-full">
@@ -13,15 +11,23 @@ const World = () => {
         <WorldNewsBody />
       </div>
       <div className="max-w-[270px] flex flex-col w-full">
-        <ChampionshipsHeader
-          champIndex={champIndex}
-          setChampIndex={setChampIndex}
-        />
-        <ChampionshipsBody
-          champIndex={champIndex}
-        />
+        <ChampionshipStats />
       </div>
     </div>
+  );
+};
+
+export const ChampionshipStats = () => {
+  const [champIndex, setChampIndex] = useState(0);
+
+  return (
+    <>
+      <ChampionshipsHeader
+        champIndex={champIndex}
+        setChampIndex={setChampIndex}
+      />
+      <ChampionshipsBody champIndex={champIndex} />
+    </>
   );
 };
 
