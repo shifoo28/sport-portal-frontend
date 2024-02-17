@@ -4,9 +4,17 @@ export interface IMain {
   type: string;
   payload: any;
 }
+export interface IUser {
+  id: string;
+  name: string;
+  surname: string;
+  email: string;
+  roles: string[];
+  token: string;
+}
 export interface ISearchResult {
-  news: ILocalNews[];
-  videos: IVideoNews[];
+  news?: ILocalNews[];
+  videos?: IVideoNews[];
 }
 export interface ILanguage {
   id: string;
@@ -36,10 +44,12 @@ export interface ISportCategories {
   video: ISportCategory[];
 }
 export interface IMainState {
-  message: string;
+  user?: IUser;
+  auth_message?: string;
+  message?: string;
   prefLang: string;
   active_tab: number;
-  weather: object;
+  weather?: object;
   search: ISearchResult;
   langs: ILanguage[];
   base_categories: IBaseCategory[];

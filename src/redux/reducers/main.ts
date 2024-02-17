@@ -2,19 +2,18 @@ import { IMain, IMainState } from "../interfaces/main";
 import {
   ACTIVATE_TAB,
   AUTH_DIALOG_OPEN,
-  GET_MAIN_FAILED,
   GET_MAIN_SUCCESS,
-  GET_WEATHER_FAILED,
   GET_WEATHER_SUCCESS,
-  POST_SEARCH_FAILED,
+  POST_LOGIN_FAILED,
+  POST_LOGIN_SUCCESS,
   POST_SEARCH_SUCCESS,
+  REMOVE_AUTH_MESSAGE,
   SET_LANG,
 } from "../types";
 
 const initialState: IMainState = {
   active_tab: 0,
-  weather: {},
-  search: { news: [], videos: [] },
+  search: {},
   langs: [{ id: "", name: "" }],
   base_categories: [],
   sport_categories: {
@@ -22,7 +21,6 @@ const initialState: IMainState = {
     world: [],
     video: [],
   },
-  message: "",
   prefLang: "",
   auth_dialog_open: false,
 };
@@ -39,14 +37,8 @@ export default function main(state: IMainState = initialState, action: IMain) {
         sport_categories: payload.sport_categories,
       };
 
-    case GET_MAIN_FAILED:
-      return { ...state, message: payload.message };
-
     case GET_WEATHER_SUCCESS:
       return { ...state, weather: payload };
-
-    case GET_WEATHER_FAILED:
-      return { ...state, message: payload.message };
 
     case SET_LANG:
       return { ...state, prefLang: payload };
@@ -60,8 +52,14 @@ export default function main(state: IMainState = initialState, action: IMain) {
     case POST_SEARCH_SUCCESS:
       return { ...state, search: payload };
 
-    case POST_SEARCH_FAILED:
-      return { ...state, message: payload.message };
+    case POST_LOGIN_SUCCESS:
+      return { ...state, user: payload };
+
+    case POST_LOGIN_FAILED:
+      return { ...state, auth_message: payload };
+
+    case REMOVE_AUTH_MESSAGE:
+      return { ...state, auth_message: payload };
 
     default:
       return state;

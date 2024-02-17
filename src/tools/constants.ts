@@ -36,3 +36,5 @@ export const champshipNames = {
   Football: { tm: "Futbol Statistika", ru: "Футбольная статистика" },
   Volleyball: { tm: "Woleýbol statistika", ru: "Волейбольная статистика" },
 };
+
+export const sp_local_user = "sp_local_user";

@@ -6,12 +6,19 @@ import {
   GET_WEATHER,
   GET_WEATHER_FAILED,
   GET_WEATHER_SUCCESS,
+  POST_LOGIN,
+  POST_LOGIN_FAILED,
   POST_SEARCH,
   POST_SEARCH_FAILED,
   POST_SEARCH_SUCCESS,
 } from "../types";
-import { doSearch, fetchMain, fetchWeather } from "../apiCalls";
-import { IMain } from "../interfaces/main";
+import { doLogin, doSearch, fetchMain, fetchWeather } from "../apiCalls";
+import { IMain, IUser } from "../interfaces/main";
+import {
+  authDialogOpen,
+  removeAuthMessage,
+  setUserLocally,
+} from "../actions/main";
 
 function* getMain() {
   try {
@@ -27,6 +34,7 @@ function* getWeather() {
   try {
     // @ts-ignore
     const weather = yield call(fetchWeather);
+console.log(Math.trunc(weather.main.temp));
 
     yield put({
       type: GET_WEATHER_SUCCESS,
@@ -46,6 +54,22 @@ function* search(action: IMain) {
     yield put({ type: POST_SEARCH_FAILED, message: error.message });
   }
 }
+function* login(action: IMain) {
+  try {
+    // @ts-ignore
+    const user: IUser = yield call(doLogin, action.payload);
+
+    yield put(setUserLocally(user));
+    yield put(authDialogOpen(false));
+    yield put(removeAuthMessage());
+  } catch (error: any) {
+    if (Math.trunc(error.response.data.statusCode / 100) === 4)
+      yield put({
+        type: POST_LOGIN_FAILED,
+        payload: error.response.data.message,
+      });
+  }
+}
 
 export function* mainSaga() {
   yield takeLatest(GET_MAIN, getMain);
@@ -55,4 +79,7 @@ export function* weatherSaga() {
 }
 export function* searchSaga() {
   yield takeLatest(POST_SEARCH, search);
+}
+export function* loginSaga() {
+  yield takeLatest(POST_LOGIN, login);
 }

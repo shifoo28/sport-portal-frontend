@@ -18,7 +18,7 @@ import BaseCategoriesList from "./components/Headers/BaseCategory";
 import ToolBox from "./components/Headers/ToolBox";
 import NewsAll from "./pages/News";
 import { useDispatch } from "react-redux";
-import { GET_MAIN } from "./redux/types";
+import { GET_MAIN, GET_WEATHER } from "./redux/types";
 import AboutUs from "./pages/AboutUs";
 import BaseCategories from "./pages/BaseCategories";
 import VideoNewsAll from "./pages/VideoNews";
@@ -30,6 +30,7 @@ import Navbar from "./components/Navbar";
 const App = () => {
   const dispatch = useDispatch();
   dispatch({ type: GET_MAIN });
+  dispatch({ type: GET_WEATHER });
 
   return (
     <Routes>
@@ -109,7 +110,7 @@ const App = () => {
   );
 };
 
-const TemplateApp = ({ children }: { children: JSX.Element }) => {  
+const TemplateApp = ({ children }: { children: JSX.Element }) => {
   return process.env.REACT_APP_ENVIRONMENT === "DEV" ? (
     <div className="flex justify-center">
       <ScrollToTop />

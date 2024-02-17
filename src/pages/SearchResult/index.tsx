@@ -59,7 +59,7 @@ const SearchResult = () => {
             <span className="border-b border-black w-full" />
           </div>
           <div className="grid grid-cols-2 mx-10 my-5 justify- gap-5">
-            {news.map((item, index) => {
+            {news?.map((item, index) => {
               return (
                 <div
                   className="flex cursor-pointer"
@@ -95,7 +95,7 @@ const SearchResult = () => {
             <span className="border-b border-black w-full" />
           </div>
           <div className="flex flex-wrap mx-20 my-5 justify-between gap-5">
-            {videos.map((video, index) => {
+            {videos?.map((video, index) => {
               return (
                 <div
                   className="flex flex-col max-w-[270px] w-full cursor-pointer"

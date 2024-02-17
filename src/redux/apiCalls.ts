@@ -160,6 +160,15 @@ export async function patchNewsDetailsViews(id: string, categoryId: string) {
 }
 
 // POST REQUESTS
+export async function doLogin(data: object) {
+  try {
+    const res = await axios.post(urlBack + "auth/signin", data);
+
+    return res.data.data;
+  } catch (error) {
+    throw error;
+  }
+}
 export async function doSearch(params: object) {
   try {
     const res = await axios.post(urlBack + "search", null, { params });
