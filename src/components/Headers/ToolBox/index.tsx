@@ -81,8 +81,8 @@ const ToolBox = () => {
           <p>{day + ", " + date + " " + month + " " + year}</p>
           <p>
             {prefLang === "Tm"
-              ? `${weather || 15}°C Aşgabat`
-              : `В Ашхабаде ${weather || 15}°C`}
+              ? `${weather}°C Aşgabat`
+              : `В Ашхабаде ${weather}°C`}
           </p>
         </div>
         <div

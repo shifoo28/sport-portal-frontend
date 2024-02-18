@@ -1,4 +1,4 @@
-import { IMain, IMainState } from "../interfaces/main";
+import { EUserState, IMain, IMainState } from "../interfaces/main";
 import {
   ACTIVATE_TAB,
   AUTH_DIALOG_OPEN,
@@ -13,6 +13,7 @@ import {
 } from "../types";
 
 const initialState: IMainState = {
+  user_state: EUserState.Unauthorized,
   active_tab: 0,
   search: {},
   langs: [{ id: "", name: "" }],
@@ -57,7 +58,7 @@ export default function main(state: IMainState = initialState, action: IMain) {
       return { ...state, search: payload };
 
     case POST_LOGIN_SUCCESS:
-      return { ...state, user: payload };
+      return { ...state, user_state: EUserState.Authorized };
 
     case POST_LOGIN_FAILED:
       return { ...state, auth_message: payload };

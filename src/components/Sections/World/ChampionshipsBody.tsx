@@ -62,11 +62,13 @@ const ChampionshipsBody: FC<Props> = ({ champIndex }) => {
               onClick={() => handleOpen(index)}
               placeholder=""
             >
-              <img
-                src={urlBack + chempionship.imagePath}
-                alt=""
-                className="w-5 h-5"
-              />
+              {chempionship.imagePath && (
+                <img
+                  src={urlBack + chempionship.imagePath}
+                  alt=""
+                  className="w-5 h-5"
+                />
+              )}
               <p className="font-sofiasans text-sm font-normal flex justify-start w-full ml-3">
                 {prefLang === "Tm" ? chempionship.nameTm : chempionship.nameRu}
               </p>
@@ -107,13 +109,15 @@ const ChampionshipsBody: FC<Props> = ({ champIndex }) => {
                         >
                           <div className="flex items-center">
                             <p className="pr-2">{index + 1}</p>
-                            <div className="w-5 h-5 flex justify-center items-center">
-                              <img
-                                src={urlBack + team.imagePath}
-                                className="object-contain object-center w-full h-full"
-                                alt=""
-                              />
-                            </div>
+                            {team.imagePath && (
+                              <div className="w-5 h-5 flex justify-center items-center">
+                                <img
+                                  src={urlBack + team.imagePath}
+                                  className="object-contain object-center w-full h-full"
+                                  alt=""
+                                />
+                              </div>
+                            )}
                             <p className="flex items-center pl-1 w-full">
                               {prefLang === "Tm" ? team.nameTm : team.nameRu}
                             </p>

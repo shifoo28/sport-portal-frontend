@@ -10,11 +10,13 @@ import { IUser } from "../../../redux/interfaces/main";
 const Account = () => {
   // Hooks
   const dispatch = useDispatch();
-  const prefLang = useSelector((state: RootState) => state.main.prefLang);
+  const { prefLang, user_state } = useSelector(
+    (state: RootState) => state.main
+  );
   const [user, setUser] = useState<IUser>();
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem(sp_local_user) || "{}"));
-  }, []);
+  }, [user_state]);
 
   return (
     <>

@@ -1,3 +1,4 @@
+import { EnumType } from "typescript";
 import { ESection, ILocalNews, IVideoNews } from "./home";
 
 export interface IMain {
@@ -11,6 +12,10 @@ export interface IUser {
   email: string;
   roles: string[];
   token: string;
+}
+export enum EUserState {
+  Authorized = "Authorized",
+  Unauthorized = "Unauthorized",
 }
 export interface ISearchResult {
   news?: ILocalNews[];
@@ -46,6 +51,7 @@ export interface ISportCategories {
 export interface IMainState {
   user?: IUser;
   auth_message?: string;
+  user_state: EUserState;
   message?: string;
   prefLang: string;
   active_tab: number;

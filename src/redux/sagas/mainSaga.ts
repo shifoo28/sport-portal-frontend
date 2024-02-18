@@ -8,6 +8,7 @@ import {
   GET_WEATHER_SUCCESS,
   POST_LOGIN,
   POST_LOGIN_FAILED,
+  POST_LOGIN_SUCCESS,
   POST_SEARCH,
   POST_SEARCH_FAILED,
   POST_SEARCH_SUCCESS,
@@ -40,8 +41,6 @@ function* getWeather() {
       payload: Math.trunc(weather.main.temp),
     });
   } catch (error: any) {
-    console.log(error);
-
     yield put({ type: GET_WEATHER_FAILED, payload: error });
   }
 }
@@ -63,6 +62,7 @@ function* login(action: IMain) {
     yield put(setUserLocally(user));
     yield put(authDialogOpen(false));
     yield put(removeAuthMessage());
+    yield put({ type: POST_LOGIN_SUCCESS });
   } catch (error: any) {
     if (Math.trunc(error.response.data.statusCode / 100) === 4)
       yield put({
