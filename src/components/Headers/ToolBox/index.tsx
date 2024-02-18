@@ -56,7 +56,7 @@ export const daysRu = [
 const ToolBox = () => {
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  // const weather = useSelector((state: RootState) => state.main.weather);
+  const weather = useSelector((state: RootState) => state.main.weather);
 
   // Hooks
   const navigate = useNavigate();
@@ -79,7 +79,11 @@ const ToolBox = () => {
       <div className="flex justify-between max-w-[1170px] w-full h-full">
         <div className="flex flex-col justify-around w-full">
           <p>{day + ", " + date + " " + month + " " + year}</p>
-          <p>{prefLang === "Tm" ? `${15}°C Aşgabat` : `В Ашхабаде ${15}°C`}</p>
+          <p>
+            {prefLang === "Tm"
+              ? `${weather}°C Aşgabat`
+              : `В Ашхабаде ${weather}°C`}
+          </p>
         </div>
         <div
           className="flex gap-3 items-center cursor-pointer min-w-max"

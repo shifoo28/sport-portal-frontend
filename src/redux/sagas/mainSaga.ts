@@ -34,11 +34,10 @@ function* getWeather() {
   try {
     // @ts-ignore
     const weather = yield call(fetchWeather);
-console.log(Math.trunc(weather.main.temp));
 
     yield put({
       type: GET_WEATHER_SUCCESS,
-      payload: JSON.parse(weather[0].data).responses[0].weather[0].current,
+      payload: Math.trunc(weather.main.temp),
     });
   } catch (error: any) {
     yield put({ type: GET_WEATHER_FAILED, payload: error.message });
