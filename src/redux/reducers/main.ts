@@ -3,6 +3,7 @@ import {
   ACTIVATE_TAB,
   AUTH_DIALOG_OPEN,
   GET_MAIN_SUCCESS,
+  GET_WEATHER_FAILED,
   GET_WEATHER_SUCCESS,
   POST_LOGIN_FAILED,
   POST_LOGIN_SUCCESS,
@@ -39,6 +40,9 @@ export default function main(state: IMainState = initialState, action: IMain) {
 
     case GET_WEATHER_SUCCESS:
       return { ...state, weather: payload };
+
+    case GET_WEATHER_FAILED:
+      return { ...state, message: payload };
 
     case SET_LANG:
       return { ...state, prefLang: payload };

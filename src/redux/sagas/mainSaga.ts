@@ -40,7 +40,9 @@ function* getWeather() {
       payload: Math.trunc(weather.main.temp),
     });
   } catch (error: any) {
-    yield put({ type: GET_WEATHER_FAILED, payload: error.message });
+    console.log(error);
+
+    yield put({ type: GET_WEATHER_FAILED, payload: error });
   }
 }
 function* search(action: IMain) {
