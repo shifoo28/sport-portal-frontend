@@ -189,7 +189,7 @@ export async function filterGymsClubs(params: object) {
     throw error;
   }
 }
-export async function filterCompetitions(params: object) {
+export async function filterCompetitions(params: any) {
   try {
     const res = await axios.post(urlBack + "competition-page/filter", null, {
       params,

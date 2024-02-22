@@ -19,8 +19,8 @@ const List = () => {
         {competitions.length}
       </p>
       <div className="flex flex-wrap justify-between gap-y-14">
-        {competitions.map((c, i) => {
-          return <Item data={c} lang={prefLang} />;
+        {competitions.map((competition, index) => {
+          return <Item data={competition} lang={prefLang} key={index} />;
         })}
       </div>
       <div></div>

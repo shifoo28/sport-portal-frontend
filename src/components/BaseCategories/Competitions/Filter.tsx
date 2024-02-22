@@ -38,14 +38,16 @@ const Filter = () => {
       type: POST_COMPETITION_FILTER,
       payload: {
         lang: prefLang,
-        name: searchString,
+        name: searchString ? searchString : undefined,
         competitionTypes: competitionTypes.includes(filterType)
           ? filterType
           : undefined,
         locations: locations.includes(filterLocation)
           ? filterLocation
           : undefined,
-        date: filterDate,
+        startDate:
+          filterDate?.startDate != null ? filterDate?.startDate : undefined,
+        endDate: filterDate?.endDate != null ? filterDate?.endDate : undefined,
       },
     });
     window.scrollTo({ top: 950, behavior: "smooth" });
@@ -106,7 +108,6 @@ const Filter = () => {
         </button>
       </div>
       <div className="max-w-[314px] w-full">
-        {/* <Calendar /> */}
         <Datepicker
           useRange={false}
           value={filterDate}
