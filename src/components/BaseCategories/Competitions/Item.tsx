@@ -1,8 +1,8 @@
 import React from "react";
 import { ICompetition } from "../../../redux/interfaces/competitions";
-import competition from "./svg/competition.svg";
-import actitvity from "./svg/actitvity.svg";
-import training from "./svg/training.svg";
+import competition from "../../../assets/svg/competition.svg";
+import actitvity from "../../../assets/svg/actitvity.svg";
+import training from "../../../assets/svg/training.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { urlBack } from "../../../redux/apiCalls";
 

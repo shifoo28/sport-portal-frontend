@@ -14,7 +14,7 @@ interface Props {
   setName: (name: string) => void;
 }
 
-const arrow = (
+export const filterArrowIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="20"
@@ -37,8 +37,8 @@ export const Popover: FC<Props> = ({ name, all, items, setName }) => {
           type="button"
           className="p-0 bg-[#0088FF] flex justify-between max-w-[280px] w-full h-[45px] font-sofiasans text-base px-7 items-center"
         >
-          <p>{name}</p>
-          {arrow}
+          <p>{name || all}</p>
+          {filterArrowIcon}
         </button>
       </PopoverHandler>
       <PopoverContent
