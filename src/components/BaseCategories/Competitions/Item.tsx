@@ -51,15 +51,15 @@ const Item = ({ data, lang }: { data: ICompetition; lang: string }) => {
       <p className="text-[10px] text-start">
         {`${lang === "Tm" ? data.locationTm : data.locationRu}` +
           " - " +
-          new Date(data.dateStart).getDay() +
+          new Date(data.startDate).getDay() +
           "." +
-          new Date(data.dateStart).getMonth() +
+          new Date(data.endDate).getMonth() +
           "~" +
-          new Date(data.dateEnd).getDay() +
+          new Date(data.endDate).getDay() +
           "." +
-          new Date(data.dateEnd).getMonth() +
+          new Date(data.endDate).getMonth() +
           "." +
-          new Date(data.dateEnd).getFullYear()}
+          new Date(data.endDate).getFullYear()}
         {lang === "Tm" ? "ý" : "г"}
       </p>
       <p className="font-oswald text-sm text-left hover:underline hover:decoration-blue-500">

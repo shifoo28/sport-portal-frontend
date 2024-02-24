@@ -5,12 +5,12 @@ import {
   PATCH_SPORT_NEWS_VIEWS_SUCCESS,
 } from "../types";
 import { INewsDetails } from "../interfaces/newsDetails";
-import { patchNewsDetailsViews } from "../apiCalls";
+import { increaseNewsView } from "../apiCalls";
 
-function* patchNewsViews(action: INewsDetails) {
+function* updateViews(action: INewsDetails) {
   const { newsId, categoryId } = action.payload;
   try {
-    yield call(patchNewsDetailsViews, newsId, categoryId);
+    yield call(increaseNewsView, newsId, categoryId);
 
     yield put({ type: PATCH_SPORT_NEWS_VIEWS_SUCCESS });
   } catch (error: any) {
@@ -19,5 +19,5 @@ function* patchNewsViews(action: INewsDetails) {
 }
 
 export function* newsDetailsSaga() {
-  yield takeLatest(PATCH_SPORT_NEWS_VIEWS, patchNewsViews);
+  yield takeLatest(PATCH_SPORT_NEWS_VIEWS, updateViews);
 }

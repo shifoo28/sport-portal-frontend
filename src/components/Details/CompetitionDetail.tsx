@@ -34,7 +34,7 @@ const CompetitionDetail = () => {
   const linkToCompetitionDetail = (competitionId: string) => {
     navigate(pathname, { state: { competitionId } });
   };
-  const linkToAllCompetitions = (competitionId: number) => {
+  const linkToAllCompetitions = (competitionId?: number) => {
     navigate(pathname + COMPETITION_ALL, { state: { competitionId } });
   };
 
@@ -90,11 +90,11 @@ const CompetitionDetail = () => {
                   ? competition?.locationTm
                   : competition?.locationRu}
                 {" - "}
-                {new Date(competition?.dateStart || "1").getDay()}
+                {new Date(competition?.startDate || "1").getDay()}
                 {"-"}
-                {new Date(competition?.dateEnd || "1").getDay()}
-                {"/"} {new Date(competition?.dateEnd || "1").getMonth()}
-                {"/"} {new Date(competition?.dateEnd || "1").getFullYear()}
+                {new Date(competition?.endDate || "1").getDay()}
+                {"/"} {new Date(competition?.endDate || "1").getMonth()}
+                {"/"} {new Date(competition?.endDate || "1").getFullYear()}
                 {prefLang === "Tm" ? "ý" : "г"}
               </p>
             </div>
@@ -117,17 +117,20 @@ const CompetitionDetail = () => {
                   : "Похожие соревнования"}
               </p>
               <div className="border-b border-black w-full" />
-              <button className="bg-[#077EE6] text-white h-full w-56">
+              <button
+                className="bg-[#077EE6] text-white h-full w-56"
+                onClick={() => linkToAllCompetitions(competition?.typeId)}
+              >
                 {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
               </button>
             </div>
             <div className="flex justify-between pt-4">
-              {same_competitions?.slice(0,4).map((sc, index) => {
+              {same_competitions?.slice(0, 4).map((sc, index) => {
                 return (
                   <div
-                    className="flex flex-col w-[195px] gap-2"
+                    className="flex flex-col w-[195px] gap-2 cursor-pointer"
                     key={index}
-                    onClick={() => linkToAllCompetitions(sc.competitionType.id)}
+                    onClick={() => linkToCompetitionDetail(sc.id)}
                   >
                     <img
                       src={urlBack + sc.imagePath}
@@ -137,7 +140,7 @@ const CompetitionDetail = () => {
                     <p className="text-[10px] font-sofiasans">
                       {prefLang === "Tm" ? sc.locationTm : sc.locationRu}
                     </p>
-                    <p className="text-sm font-oswald font-semibol cursor-pointer">
+                    <p className="text-sm font-oswald font-semibol">
                       {prefLang === "Tm" ? sc.nameTm : sc.nameRu}
                     </p>
                   </div>

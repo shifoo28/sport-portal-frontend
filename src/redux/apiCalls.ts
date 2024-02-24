@@ -147,7 +147,7 @@ export async function fetchCompetitionFilters(lang: string) {
 }
 
 // PATCH REQUESTS
-export async function patchNewsDetailsViews(id: string, categoryId: string) {
+export async function increaseNewsView(id: string, categoryId: string) {
   try {
     const res = await axios.patch(urlBack + "news-details/" + id, null, {
       params: { categoryId },
