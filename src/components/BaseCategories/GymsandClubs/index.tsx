@@ -23,10 +23,10 @@ const GymsAndClubs = () => {
     return <GACDetail />;
   } else {
     return (
-      <div className="flex justify-center pt-9">
-        <div className="w-full flex flex-col items-center gap-20">
-          <div className="max-w-[1000px] w-full">
-            <p className="text-[#0F1A42] font-oswald text-[50px] text-center capitalize">
+      <div className="flex justify-center pt-8">
+        <div className="w-full flex flex-col items-center gap-16">
+          <div className="max-w-[700px] w-full">
+            <p className="text-[#0F1A42] font-oswald text-4xl text-center capitalize leading-normal font-semibold">
               {prefLang === "Tm"
                 ? "Türkmenistandaky ähli sport toplumlary we onda hereket edýän sport toparlary"
                 : "Все спортивные комплексы и спортивные команды, действующие в Туркменистане"}

@@ -15,12 +15,10 @@ const Map = () => {
   );
 
   // Function
-  const handleClick = () => {
-    window.scrollTo({ top: 2000, behavior: "smooth" });
-  };
+  const handleClick = () => {};
 
   return (
-    <MapContainer center={[37.9502, 58.3832]} zoom={12} scrollWheelZoom={false}>
+    <MapContainer center={[37.9312, 58.3874]} zoom={12} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -42,7 +42,7 @@ const List = () => {
     (b, i) => i >= paginate && i < paginate + 5
   );
   let paginator = [];
-  for (let i = 0; i < gymsclubs.length; i++) {
+  for (let i = 0; i < gymsclubs.length / 5; i++) {
     paginator.push(
       <button className="bg-[#0F1A42] px-2" onClick={() => setPaginate(i * 5)}>
         {i + 1}

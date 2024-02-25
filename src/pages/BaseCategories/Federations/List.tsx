@@ -39,7 +39,7 @@ const List = ({ indexComponent }: { indexComponent: number }) => {
         return (
           <Accordion
             open={open === federation.id}
-            className="border-b-2 border-r-2 border-blue-100 w-full bg-white"
+            className="border-b-2 border-r-[1px] border-blue-200 w-full bg-white" // 
             key={index}
             placeholder=""
           >

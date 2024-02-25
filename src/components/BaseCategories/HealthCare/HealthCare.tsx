@@ -55,13 +55,13 @@ const Component = () => {
       }
     />
   ) : (
-    <div className="flex justify-center pt-9">
+    <div className="flex justify-center pt-8">
       <div className="max-w-[1170px] w-full flex flex-col gap-10">
         <div className="px-16">
-          <p className="text-center font-oswald text-[50px] text-[#0F1A42] capitalize">
+          <p className="text-center font-oswald text-4xl text-[#0F1A42] capitalize leading-relaxed font-semibold">
             {prefLang === "Tm" ? "Sport lukmançylygy" : "Спортивная медицина"}
           </p>
-          <p className="font-sofiasans text-lg text-center">
+          <p className="font-sofiasans text-lg text-center max-w-[1000px]">
             {prefLang === "Tm" ? descriptionTm : descriptionRu}
           </p>
         </div>
