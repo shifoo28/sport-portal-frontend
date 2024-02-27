@@ -1,3 +1,5 @@
+import { monthsRu, monthsTm } from "./constants";
+
 export const DateTimeToPassedTime = (lang: string, datetime?: Date) => {
   const now = new Date().getTime();
   const updated = new Date(datetime || "").getTime();
@@ -17,4 +19,14 @@ export const DateTimeToPassedTime = (lang: string, datetime?: Date) => {
     : `${lang === "Tm" ? "1 minut öň" : "1 минуту назад"}`;
 
   return uploaded;
+};
+
+export const DateTimeFormation = (lang: string, date: Date): string => {
+  const day = new Date(date).getDate();
+  const month = new Date(date).getMonth();
+  const year = new Date(date).getFullYear();
+
+  return (
+    day + " " + (lang === "Tm" ? monthsTm[month] : monthsRu[month]) + " " + year
+  );
 };

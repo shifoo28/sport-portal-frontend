@@ -14,6 +14,7 @@ module.exports = {
         oswald: ["Oswald"],
         sofiasans: ["Sofia Sans"],
         sofia: ["Sofia"],
+        roboto: ["Roboto"],
       },
     },
     screens: {

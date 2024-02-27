@@ -5,6 +5,7 @@ import actitvity from "../../../assets/svg/actitvity.svg";
 import training from "../../../assets/svg/training.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { urlBack } from "../../../redux/apiCalls";
+import { monthsRu, monthsTm } from "../../../tools/constants";
 
 const icons = [
   { key: "bäsleşik", svg: competition },
@@ -52,17 +53,15 @@ const Item = ({ data, lang }: { data: ICompetition; lang: string }) => {
         {`${lang === "Tm" ? data.locationTm : data.locationRu}` +
           " - " +
           new Date(data.startDate).getDay() +
-          "." +
-          new Date(data.endDate).getMonth() +
-          "~" +
-          new Date(data.endDate).getDay() +
-          "." +
-          new Date(data.endDate).getMonth() +
-          "." +
-          new Date(data.endDate).getFullYear()}
+          " " +
+          (lang === "Tm"
+            ? monthsTm[new Date(data.startDate).getMonth()]
+            : monthsRu[new Date(data.startDate).getMonth()]) +
+          " " +
+          new Date(data.startDate).getFullYear()}
         {lang === "Tm" ? "ý" : "г"}
       </p>
-      <p className="font-oswald text-sm text-left hover:underline hover:decoration-blue-500">
+      <p className="font-oswald text-sm text-left text-shadow">
         {lang === "Tm" ? data.nameTm : data.nameRu}
       </p>
     </div>

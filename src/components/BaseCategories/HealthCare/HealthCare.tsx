@@ -57,15 +57,15 @@ const Component = () => {
   ) : (
     <div className="flex justify-center pt-8">
       <div className="max-w-[1170px] w-full flex flex-col gap-10">
-        <div className="px-16">
-          <p className="text-center font-oswald text-4xl text-[#0F1A42] capitalize leading-relaxed font-semibold">
+        <div className="px-16 text-shadow">
+          <p className="text-center font-oswald text-4xl text-[#0F1A42] capitalize leading-relaxed">
             {prefLang === "Tm" ? "Sport lukmançylygy" : "Спортивная медицина"}
           </p>
-          <p className="font-sofiasans text-lg text-center max-w-[1000px]">
+          <p className="font-roboto text-lg text-center max-w-[1000px]">
             {prefLang === "Tm" ? descriptionTm : descriptionRu}
           </p>
         </div>
-        <div className="text-[#182135] flex flex-col gap-5 font-sofiasans text-[25px] font-semibold">
+        <div className="text-[#182135] flex flex-col gap-5 font-sofiasans text-xl font-semibold">
           <p>
             {prefLang === "Tm" ? "Ýükläp al: " : "Скачать: "}
             Tälimçiler üçin Medisina barlagy
@@ -89,7 +89,7 @@ const Component = () => {
                   className="h-[73px] border-none"
                   placeholder=""
                 >
-                  <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase font-oswald font-semibold">
+                  <p className="text-[#0088FF] text-2xl flex items-center justify-center pl-8 uppercase font-oswald font-semibold">
                     {prefLang === "Tm" ? department.nameTm : department.nameRu}
                   </p>
                 </AccordionHeader>
@@ -161,7 +161,7 @@ const Component = () => {
                         );
                       })}
                     </div>
-                    <div className="flex justify-end pt-4 px-6">
+                    <div className="flex justify-end py-4 px-6">
                       <button
                         className="bg-[#077EE6] text-white h-11 font-oswald px-4"
                         onClick={() => linkToAllEmployees(department.id)}

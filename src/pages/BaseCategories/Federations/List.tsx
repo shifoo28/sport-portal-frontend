@@ -49,7 +49,7 @@ const List = ({ indexComponent }: { indexComponent: number }) => {
               placeholder=""
             >
               <div className="flex justify-between w-full">
-                <p className="text-[#0088FF] text-[25px] flex items-center justify-center pl-8 uppercase">
+                <p className="text-[#0088FF] text-2xl flex items-center justify-center pl-8 uppercase">
                   {prefLang === "Tm" ? federation.nameTm : federation.nameRu}
                 </p>
                 <img

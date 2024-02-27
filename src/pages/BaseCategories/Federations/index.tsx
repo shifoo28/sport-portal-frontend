@@ -59,7 +59,7 @@ const Federations = () => {
   ) : (
     <div className="w-full pt-8 font-oswald flex justify-center">
       <div className="max-w-[1170px] flex flex-col w-full items-center">
-        <p className="text-4xl text-center max-w-[800px] w-full capitalize text-[#0F1A42] font-semibold">
+        <p className="text-4xl text-center max-w-[800px] w-full capitalize text-[#0F1A42] text-shadow">
           {prefLang === "Tm"
             ? bcfInformation[indexComponent].titleTm
             : bcfInformation[indexComponent].titleRu}

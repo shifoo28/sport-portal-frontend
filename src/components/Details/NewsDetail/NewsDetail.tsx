@@ -6,6 +6,25 @@ import { urlBack } from "../../../redux/apiCalls";
 import { RootState } from "../../../redux/store";
 import { ILocalNews, IWorldNews } from "../../../redux/interfaces/home";
 
+const viewsIcon = (
+  <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
+    <path
+      d="M9.19529 6.07725C9.19529 7.29135 8.2142 8.27244 7.0001 8.27244C5.786 8.27244 4.80493 7.29135 4.80493 6.07725C4.80493 4.86315 5.786 3.88208 7.0001 3.88208C8.2142 3.88208 9.19529 4.86315 9.19529 6.07725Z"
+      stroke="#0088FF"
+      stroke-opacity="0.4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M7.00001 11.1482C9.16454 11.1482 11.1819 9.87277 12.5861 7.66531C13.138 6.80072 13.138 5.34748 12.5861 4.48288C11.1819 2.27542 9.16454 1 7.00001 1C4.83546 1 2.81809 2.27542 1.4139 4.48288C0.862034 5.34748 0.862034 6.80072 1.4139 7.66531C2.81809 9.87277 4.83546 11.1482 7.00001 11.1482Z"
+      stroke="#0088FF"
+      stroke-opacity="0.4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
 interface Props {
   news_data: ILocalNews | IWorldNews;
   same_news: ILocalNews[] | IWorldNews[];
@@ -32,44 +51,27 @@ const NewsDetail = ({ news_data, same_news, linkToNewsDetail }: Props) => {
   return (
     <div className="flex flex-col items-center justify-between gap-5 w-full">
       <div className="flex items-center">
-        <p className="text-[26px] font-oswald capitalize max-w-[570px] text-center text-[#0F1A42]">
+        <p className="text-[26px] font-oswald capitalize max-w-[570px] text-center text-[#0F1A42] text-shadow">
           {prefLang === "Tm" ? news_data?.nameTm : news_data?.nameRu}
         </p>
       </div>
-      <div className="">
+      <div>
         <div className="flex justify-between font-sofiasans text-xs">
           <p className="flex gap-1">
-            <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
-              <path
-                d="M9.19529 6.07725C9.19529 7.29135 8.2142 8.27244 7.0001 8.27244C5.786 8.27244 4.80493 7.29135 4.80493 6.07725C4.80493 4.86315 5.786 3.88208 7.0001 3.88208C8.2142 3.88208 9.19529 4.86315 9.19529 6.07725Z"
-                stroke="#0088FF"
-                stroke-opacity="0.4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M7.00001 11.1482C9.16454 11.1482 11.1819 9.87277 12.5861 7.66531C13.138 6.80072 13.138 5.34748 12.5861 4.48288C11.1819 2.27542 9.16454 1 7.00001 1C4.83546 1 2.81809 2.27542 1.4139 4.48288C0.862034 5.34748 0.862034 6.80072 1.4139 7.66531C2.81809 9.87277 4.83546 11.1482 7.00001 11.1482Z"
-                stroke="#0088FF"
-                stroke-opacity="0.4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            {viewsIcon}
             {news_data?.views}
           </p>
           <p>
             {prefLang === "Tm" ? news_data?.locationTm : news_data?.locationRu}
           </p>
         </div>
-        <div>
-          <img
-            src={urlBack + news_data?.imagePath}
-            className="object-cover max-w-[700px] object-center"
-            alt=""
-          />
-        </div>
+        <img
+          src={urlBack + news_data?.imagePath}
+          className="object-cover max-w-[500px] object-center"
+          alt=""
+        />
       </div>
-      <p className="w-full h-max text-justify font-sofiasans text-base whitespace-pre-line">
+      <p className="w-full h-max text-justify font-roboto text-base whitespace-pre-line leading-relaxed">
         {prefLang === "Tm" ? news_data?.textTm : news_data?.textRu}
       </p>
       <div className="flex flex-col w-full pt-20">
@@ -101,7 +103,7 @@ const NewsDetail = ({ news_data, same_news, linkToNewsDetail }: Props) => {
                 <p className="text-[10px] font-sofiasans">
                   {prefLang === "Tm" ? sn.locationTm : sn.locationRu}
                 </p>
-                <p className="text-sm font-oswald font-semibol">
+                <p className="text-sm font-oswald text-shadow">
                   {prefLang === "Tm" ? sn.nameTm : sn.nameRu}
                 </p>
               </div>

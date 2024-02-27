@@ -11,6 +11,7 @@ import { RootState } from "../../redux/store";
 import { ICompetition } from "../../redux/interfaces/competitions";
 import { urlBack } from "../../redux/apiCalls";
 import { activateTab } from "../../redux/actions/main";
+import { DateTimeFormation } from "../../tools/TimeConverter";
 
 const CompetitionDetail = () => {
   // Hooks
@@ -55,7 +56,7 @@ const CompetitionDetail = () => {
           />
         </div>
         <div className="w-full flex flex-col items-center gap-5">
-          <p className="font-oswald text-[26px] text-[#0F1A42] text-center max-w-[700px] capitalize">
+          <p className="font-oswald text-2xl text-[#0F1A42] text-center max-w-[700px] capitalize text-shadow">
             {prefLang === "Tm" ? competition?.nameTm : competition?.nameRu}
           </p>
           <div className="max-w-[700px]">
@@ -89,18 +90,15 @@ const CompetitionDetail = () => {
                 {prefLang === "Tm"
                   ? competition?.locationTm
                   : competition?.locationRu}
-                {" - "}
-                {new Date(competition?.startDate || "1").getDay()}
-                {"-"}
-                {new Date(competition?.endDate || "1").getDay()}
-                {"/"} {new Date(competition?.endDate || "1").getMonth()}
-                {"/"} {new Date(competition?.endDate || "1").getFullYear()}
+                {competition?.createdAt
+                  ? " - " + DateTimeFormation(prefLang, competition.createdAt)
+                  : ""}
                 {prefLang === "Tm" ? "ý" : "г"}
               </p>
             </div>
             <img src={urlBack + competition?.imagePath} alt="" />
           </div>
-          <p className="text-justify">
+          <p className="text-justify font-roboto">
             {prefLang === "Tm" ? competition?.textTm : competition?.textRu}
           </p>
           <button

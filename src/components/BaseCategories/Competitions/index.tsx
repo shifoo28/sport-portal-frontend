@@ -21,7 +21,7 @@ const Component = () => {
   return (
     <div className="flex justify-center pt-8">
       <div className="max-w-[1170px] w-full flex flex-col items-center gap-9">
-        <p className="text-[#0F1A42] font-oswald text-4xl font-semibold leading-normal text-center max-w-[650px] capitalize">
+        <p className="text-[#0F1A42] font-oswald text-4xl leading-normal text-center max-w-[650px] capitalize text-shadow">
           {prefLang === "Tm" ? titleTm : titleRu}
         </p>
         <Filter />

@@ -44,7 +44,7 @@ const GACDetail = () => {
     <div className="flex justify-center pt-9">
       <div className="flex flex-col max-w-[1170px] w-full">
         <div className="flex justify-end">
-          <p className="max-w-[850px] w-full text-center font-oswald text-[26px] text-[#0F1A42] px-72 capitalize font-semibold">
+          <p className="max-w-[850px] w-full text-center font-oswald text-[26px] text-[#0F1A42] px-72 capitalize text-shadow">
             {prefLang === "Tm" ? data?.nameTm : data?.nameRu}
           </p>
         </div>

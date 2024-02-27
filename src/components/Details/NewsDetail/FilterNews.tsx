@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { urlBack } from "../../../redux/apiCalls";
 import { ILocalNews, IWorldNews } from "../../../redux/interfaces/home";
+import { DateTimeFormation } from "../../../tools/TimeConverter";
 
 interface Props {
   data: ILocalNews[] | IWorldNews[];
@@ -67,9 +68,9 @@ const FilterNews = ({ data, linkToNewsDetail }: Props) => {
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">
                 <p className="font-sofiasans text-[8px]">
-                  {new Date(item.createdAt).toLocaleDateString()}
+                  {DateTimeFormation(prefLang, item.createdAt)}
                 </p>
-                <p className="font-oswald text-[14px] leading-4">
+                <p className="font-oswald text-[14px] leading-4 max-h-12 overflow-hidden">
                   {prefLang === "Tm" ? item.nameTm : item.nameRu}
                 </p>
               </div>

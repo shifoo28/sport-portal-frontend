@@ -19,3 +19,8 @@
   background: #077ee6;
   border-radius: 5px;
 }
+
+/* Custom CSS for text shadow */
+.text-shadow {
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); /* horizontal-offset vertical-offset blur-color opacity */
+}

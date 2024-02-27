@@ -43,11 +43,9 @@ const Filter = () => {
   // Hooks
   const dispatch = useDispatch();
   useEffect(() => {
-    setLocationsFilter(prefLang === "Tm" ? "Ýerleşýän ýeri" : "Местоположение");
-    setSportTypesFilter(prefLang === "Tm" ? "Sport görnüşler" : "Виды спорта");
-    setSportEnvironment(
-      prefLang === "Tm" ? "Sport desgalar" : "Спортивный комплекс"
-    );
+    setLocationsFilter(prefLang === "Tm" ? "Türkmenistan" : "Туркменистан");
+    setSportTypesFilter(prefLang === "Tm" ? "Hemmesi" : "Все виды");
+    setSportEnvironment(prefLang === "Tm" ? "Hemmesi" : "Все комплексы");
     setSearchString("");
   }, [prefLang]);
 
@@ -95,21 +93,21 @@ const Filter = () => {
           {/* LOCATIONS */}
           <Popover
             name={locationsFilter}
-            all={prefLang === "Tm" ? "Ýerleşýän ýeri" : "Местоположение"}
+            all={prefLang === "Tm" ? "Türkmenistan" : "Туркменистан"}
             items={locations}
             setName={setLocationsFilter}
           />
           {/* SPORT TYPES */}
           <Popover
             name={sportTypesFilter}
-            all={prefLang === "Tm" ? "Sport görnüşler" : "Виды спорта"}
+            all={prefLang === "Tm" ? "Hemmesi" : "Все виды"}
             items={sportTypes}
             setName={setSportTypesFilter}
           />
           {/* SPORT ENVIRONMENTS */}
           <Popover
             name={sportEnvironment}
-            all={prefLang === "Tm" ? "Sport desgalar" : "Спортивный комплекс"}
+            all={prefLang === "Tm" ? "Hemmesi" : "Все комплексы"}
             items={environments}
             setName={setSportEnvironment}
           />

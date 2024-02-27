@@ -26,7 +26,7 @@ const GymsAndClubs = () => {
       <div className="flex justify-center pt-8">
         <div className="w-full flex flex-col items-center gap-16">
           <div className="max-w-[700px] w-full">
-            <p className="text-[#0F1A42] font-oswald text-4xl text-center capitalize leading-normal font-semibold">
+            <p className="text-[#0F1A42] font-oswald text-4xl text-center capitalize leading-normal text-shadow">
               {prefLang === "Tm"
                 ? "Türkmenistandaky ähli sport toplumlary we onda hereket edýän sport toparlary"
                 : "Все спортивные комплексы и спортивные команды, действующие в Туркменистане"}

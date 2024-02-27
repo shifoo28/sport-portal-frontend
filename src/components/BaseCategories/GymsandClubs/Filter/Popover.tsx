@@ -35,7 +35,7 @@ export const Popover: FC<Props> = ({ name, all, items, setName }) => {
       <PopoverHandler>
         <button
           type="button"
-          className="p-0 bg-[#0088FF] flex justify-between max-w-[280px] w-full h-[45px] font-sofiasans text-base px-7 items-center"
+          className="p-0 bg-[#0088FF] flex justify-between max-w-[280px] w-full h-[45px] font-roboto text-base px-7 items-center"
         >
           <p>{name || all}</p>
           {filterArrowIcon}

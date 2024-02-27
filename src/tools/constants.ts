@@ -38,3 +38,50 @@ export const champshipNames = {
 };
 
 export const sp_local_user = "sp_local_user";
+
+export const monthsTm = [
+  "Ýanwar",
+  "Fewral",
+  "Mart",
+  "Aprel",
+  "Maý",
+  "Iýun",
+  "Iýul",
+  "Awgust",
+  "Sentýabr",
+  "Oktýabr",
+  "Noýabr",
+  "Dekabr",
+];
+export const monthsRu = [
+  "Январь",
+  "Февраль",
+  "Март",
+  "Апрель",
+  "Май",
+  "Июнь",
+  "Июль",
+  "Август",
+  "Сентябрь",
+  "Октябрь",
+  "Ноябрь",
+  "Декабрь",
+];
+export const daysTm = [
+  "Ýekşenbe",
+  "Duşenbe",
+  "Sişenbe",
+  "Çarşenbe",
+  "Penşenbe",
+  "Anna",
+  "Şenbe",
+];
+export const daysRu = [
+  "Воскресенье",
+  "Понедельник",
+  "Вторник",
+  "Среда",
+  "Четверг",
+  "Пятница",
+  "Суббота",
+];

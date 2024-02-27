@@ -61,7 +61,7 @@ const AboutUs = () => {
         </div>
 
         {/* Part 2 */}
-        <div className="w-full font-sofiasans text-center flex flex-col gap-6">
+        <div className="w-full font-roboto text-center flex flex-col gap-6">
           <p className="capitalize font-oswald text-5xl">
             {prefLang === "Tm" ? "Biz barada" : "О нас"}
           </p>

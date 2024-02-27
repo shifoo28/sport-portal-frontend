@@ -57,18 +57,18 @@ const List = () => {
     });
   };
 
-  return gymsclubs.length ? (
-    <div className="max-w-[1170px] w-full font-sofiasans text-[#182135]">
-      <p className="uppercase text-3xl px-8 py-10">
+  return (
+    <div className="max-w-[1170px] w-full font-sofiasans text-[#182135] font-semibold">
+      <p className="uppercase text-xl px-8 py-10 text-shadow">
         {prefLang === "Tm"
           ? "TAPYLAN SPORT DESGALARYŇ SANAWY:"
           : "СПИСОК НАЙДЕННЫХ СПОРТИВНЫХ ОБЪЕКТОВ:"}
       </p>
       <table className="border border-[#0088FF] w-full">
-        <thead className="bg-[#A9CFEF] h-[74px]">
+        <thead className="bg-[#A9CFEF] h-[74px] font-roboto">
           {theadersTm.map((header, index) => {
             return (
-              <th className="font-normal text-xl" key={index}>
+              <th className="" key={index}>
                 {prefLang === "Tm" ? header : theadersRu[index]}
               </th>
             );
@@ -77,56 +77,62 @@ const List = () => {
         <br />
         <br />
         <tbody>
-          {table_body.map((tb, index) => {
-            return (
-              <tr
-                key={index}
-                className={`${
-                  index % 2 !== 0 ? "bg-[#A9CFEF4D]" : ""
-                } cursor-pointer`}
-                onClick={() => linkToGACDetail(tb.id)}
-              >
-                <td>
-                  <p className="flex items-center justify-center">
-                    {index + 1}.
-                  </p>
-                </td>
-                <td className="border-l px-4 py-8 max-w-[220px]">
-                  <p className="flex items-center justify-center text-center">
-                    {prefLang === "Tm" ? tb.nameTm : tb.nameRu}
-                  </p>
-                </td>
-                <td className="border-l px-4 py-8 max-w-[220px]">
-                  <p className="flex items-center justify-center text-center">
-                    {prefLang === "Tm" ? tb.locationTm : tb.locationRu}
-                  </p>
-                </td>
-                <td className="border-l px-4 py-8">
-                  <p className="flex flex-col items-center justify-center">
-                    {tb.tel.map((t, i) => {
-                      return <p key={i}>{t}</p>;
-                    })}
-                  </p>
-                </td>
-                <td className="border-l max-w-[200px] px-4 py-8">
-                  <p className="text-center">
-                    {tb.sportsTm.map((s, i) => {
-                      return (prefLang === "Tm" ? s : tb.sportsRu[i]) + " ";
-                    })}
-                  </p>
-                </td>
-                <td className="border-l px-4 py-8">
-                  <p className="flex flex-col items-center justify-center">
-                    {tb.openAtTm.map((o, i) => {
-                      return (
-                        <p key={i}>{prefLang === "Tm" ? o : tb.openAtRu[i]}</p>
-                      );
-                    })}
-                  </p>
-                </td>
-              </tr>
-            );
-          })}
+          {table_body.length ? (
+            table_body.map((tb, index) => {
+              return (
+                <tr
+                  key={index}
+                  className={`${
+                    index % 2 !== 0 ? "bg-[#A9CFEF4D]" : ""
+                  } cursor-pointer`}
+                  onClick={() => linkToGACDetail(tb.id)}
+                >
+                  <td className=" min-w-[30px]">
+                    <p className="flex items-center justify-center">
+                      {index + 1}.
+                    </p>
+                  </td>
+                  <td className="border-l px-4 py-8 max-w-[220px]">
+                    <p className="flex items-center justify-center text-center">
+                      {prefLang === "Tm" ? tb.nameTm : tb.nameRu}
+                    </p>
+                  </td>
+                  <td className="border-l px-4 py-8 max-w-[220px]">
+                    <p className="flex items-center justify-center text-center">
+                      {prefLang === "Tm" ? tb.locationTm : tb.locationRu}
+                    </p>
+                  </td>
+                  <td className="border-l px-4 py-8">
+                    <p className="flex flex-col items-center justify-center">
+                      {tb.tel.map((t, i) => {
+                        return <p key={i}>{t}</p>;
+                      })}
+                    </p>
+                  </td>
+                  <td className="border-l max-w-[200px] px-4 py-8">
+                    <p className="text-center">
+                      {tb.sportsTm.map((s, i) => {
+                        return (prefLang === "Tm" ? s : tb.sportsRu[i]) + " ";
+                      })}
+                    </p>
+                  </td>
+                  <td className="border-l px-4 py-8">
+                    <p className="flex flex-col items-center justify-center">
+                      {tb.openAtTm.map((o, i) => {
+                        return (
+                          <p key={i}>
+                            {prefLang === "Tm" ? o : tb.openAtRu[i]}
+                          </p>
+                        );
+                      })}
+                    </p>
+                  </td>
+                </tr>
+              );
+            })
+          ) : (
+            <p className=" text-right">{prefLang === "Tm" ? "Maglumat ýok" : "Нет доступных данных"}</p>
+          )}
         </tbody>
         <tfoot>
           <th colSpan={6}>
@@ -161,8 +167,6 @@ const List = () => {
         </tfoot>
       </table>
     </div>
-  ) : (
-    <></>
   );
 };
 
