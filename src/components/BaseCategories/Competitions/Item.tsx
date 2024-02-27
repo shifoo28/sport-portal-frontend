@@ -6,6 +6,7 @@ import training from "../../../assets/svg/training.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { urlBack } from "../../../redux/apiCalls";
 import { monthsRu, monthsTm } from "../../../tools/constants";
+import { DateTimeFormation } from "../../../tools/TimeConverter";
 
 const icons = [
   { key: "bäsleşik", svg: competition },
@@ -35,7 +36,7 @@ const Item = ({ data, lang }: { data: ICompetition; lang: string }) => {
             }
             alt=""
           />
-          <p className="text-xl font-semibold">
+          <p className="font-semibold font-roboto">
             {lang === "Tm"
               ? data.competitionType?.nameTm
               : data.competitionType?.nameRu}
@@ -52,13 +53,7 @@ const Item = ({ data, lang }: { data: ICompetition; lang: string }) => {
       <p className="text-[10px] text-start">
         {`${lang === "Tm" ? data.locationTm : data.locationRu}` +
           " - " +
-          new Date(data.startDate).getDay() +
-          " " +
-          (lang === "Tm"
-            ? monthsTm[new Date(data.startDate).getMonth()]
-            : monthsRu[new Date(data.startDate).getMonth()]) +
-          " " +
-          new Date(data.startDate).getFullYear()}
+          DateTimeFormation(lang, data.createdAt)}
         {lang === "Tm" ? "ý" : "г"}
       </p>
       <p className="font-oswald text-sm text-left text-shadow">

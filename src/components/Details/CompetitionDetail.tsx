@@ -59,7 +59,7 @@ const CompetitionDetail = () => {
           <p className="font-oswald text-2xl text-[#0F1A42] text-center max-w-[700px] capitalize text-shadow">
             {prefLang === "Tm" ? competition?.nameTm : competition?.nameRu}
           </p>
-          <div className="max-w-[700px]">
+          <div className="">
             <div className="flex justify-between items-center text-xs">
               <p className="flex justify-center items-center gap-1">
                 <svg
@@ -96,9 +96,9 @@ const CompetitionDetail = () => {
                 {prefLang === "Tm" ? "ý" : "г"}
               </p>
             </div>
-            <img src={urlBack + competition?.imagePath} alt="" />
+            <img src={urlBack + competition?.imagePath} alt="" className="max-w-[500px] max-h-[285px]"/>
           </div>
-          <p className="text-justify font-roboto">
+          <p className="text-justify font-roboto leading-relaxed">
             {prefLang === "Tm" ? competition?.textTm : competition?.textRu}
           </p>
           <button
@@ -220,7 +220,7 @@ const Sorted = ({
                 <p className="font-sofiasans text-[8px]">
                   {prefLang === "Tm" ? e?.locationTm : e?.locationRu}
                 </p>
-                <p className="font-oswald text-[15px] leading-5">
+                <p className="font-oswald text-[15px] leading-5 max-h-16 overflow-hidden">
                   {prefLang === "Tm" ? e?.nameTm : e?.nameTm}
                 </p>
               </div>

@@ -11,6 +11,14 @@ export interface ICompetitionType {
   updatedAt: Date;
 }
 
+export interface IVenues {
+  id: number;
+  nameTm: string;
+  nameRu: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface ICompetition {
   id: string;
   views: number;
@@ -24,7 +32,8 @@ export interface ICompetition {
   imagePath: string;
   locationTm: string;
   locationRu: string;
-  competitionType: { id: number; nameTm: string; nameRu: string };
+  venues: IVenues;
+  competitionType: ICompetitionType;
   createdAt: Date;
   updatedAt: Date;
 }

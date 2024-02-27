@@ -15,14 +15,14 @@ const Filter = () => {
   const competitionTypes: string[] = useSelector(
     (state: RootState) => state.competitions.filters[0]?.filters
   );
-  const locations: string[] = useSelector(
+  const venues: string[] = useSelector(
     (state: RootState) => state.competitions.filters[1]?.filters
   );
 
   // useState
   const [searchString, setSearchString] = useState("");
   const [filterType, setFilterType] = useState("");
-  const [filterLocation, setFilterCountry] = useState("");
+  const [filterVenues, setFilterVenues] = useState("");
   const [filterDate, setFilterDate] = useState<DateValueType>({
     startDate: null,
     endDate: null,
@@ -42,9 +42,7 @@ const Filter = () => {
         competitionTypes: competitionTypes.includes(filterType)
           ? filterType
           : undefined,
-        locations: locations.includes(filterLocation)
-          ? filterLocation
-          : undefined,
+        venues: venues.includes(filterVenues) ? filterVenues : undefined,
         startDate:
           filterDate?.startDate != null ? filterDate?.startDate : undefined,
         endDate: filterDate?.endDate != null ? filterDate?.endDate : undefined,
@@ -94,10 +92,10 @@ const Filter = () => {
             setName={setFilterType}
           />
           <Popover
-            name={filterLocation}
+            name={filterVenues}
             all={prefLang === "Tm" ? "Türkmenistan" : "Туркменистан"}
-            items={locations}
-            setName={setFilterCountry}
+            items={venues}
+            setName={setFilterVenues}
           />
         </div>
         <button
