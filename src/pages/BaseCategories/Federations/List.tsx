@@ -39,7 +39,7 @@ const List = ({ indexComponent }: { indexComponent: number }) => {
         return (
           <Accordion
             open={open === federation.id}
-            className="border-b-2 border-r-[1px] border-blue-200 w-full bg-white" // 
+            className="border-b-2 border-r-[1px] border-blue-200 w-full bg-white" //
             key={index}
             placeholder=""
           >
@@ -59,18 +59,28 @@ const List = ({ indexComponent }: { indexComponent: number }) => {
                 />
               </div>
             </AccordionHeader>
-            <AccordionBody >
+            <AccordionBody>
               <div
                 className={`w-full h-max ${
                   open !== federation.id ? "hidden" : ""
                 }`}
               >
                 {indexComponent === 0 ? (
-                  <Sports data={federation.fsports} prefLang={prefLang} />
+                  federation.fsports != null ? (
+                    <Sports data={federation.fsports} prefLang={prefLang} />
+                  ) : (
+                    <></>
+                  )
                 ) : indexComponent === 1 ? (
-                  <Trainers federation={federation} />
-                ) : (
+                  federation.ftrainers.length ? (
+                    <Trainers federation={federation} />
+                  ) : (
+                    <></>
+                  )
+                ) : federation.fathlete.length ? (
                   <Athlete federation={federation} />
+                ) : (
+                  <></>
                 )}
               </div>
             </AccordionBody>
