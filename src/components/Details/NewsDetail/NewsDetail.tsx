@@ -56,7 +56,7 @@ const NewsDetail = ({ news_data, same_news, linkToNewsDetail }: Props) => {
         </p>
       </div>
       <div>
-        <div className="flex justify-between font-sofiasans text-xs">
+        <div className="flex justify-between font-alegreya text-xs">
           <p className="flex gap-1">
             {viewsIcon}
             {news_data?.views}
@@ -100,7 +100,7 @@ const NewsDetail = ({ news_data, same_news, linkToNewsDetail }: Props) => {
                   className="object-cover h-[145px]"
                   alt=""
                 />
-                <p className="text-[10px] font-sofiasans">
+                <p className="text-[10px] font-alegreya">
                   {prefLang === "Tm" ? sn.locationTm : sn.locationRu}
                 </p>
                 <p className="text-sm font-oswald text-shadow">

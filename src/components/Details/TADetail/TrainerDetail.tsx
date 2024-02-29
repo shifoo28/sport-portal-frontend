@@ -67,7 +67,7 @@ const TrainerDetail = () => {
                   stroke-linejoin="round"
                 />
               </svg>
-              <p className="font-sofiasans text-base h-max">{trainer?.views}</p>
+              <p className="font-alegreya text-base h-max">{trainer?.views}</p>
             </div>
             <img src="/images/bcfdetail/socials.png" alt="" />
           </div>
@@ -83,7 +83,7 @@ const TrainerDetail = () => {
               className="w-[57px] h-[65px]"
             />
           </div>
-          <div className="font-sofiasans text-2xl">
+          <div className="font-alegreya text-2xl">
             <p>{(prefLang === "Tm" ? "Ýaşy: " : "Возраст: ") + trainer?.age}</p>
             <p>
               {prefLang === "Tm"

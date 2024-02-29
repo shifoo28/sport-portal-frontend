@@ -67,7 +67,7 @@ const FilterNews = ({ data, linkToNewsDetail }: Props) => {
                 />
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">
-                <p className="font-sofiasans text-[8px]">
+                <p className="font-alegreya text-[8px]">
                   {DateTimeFormation(prefLang, item.createdAt)}
                 </p>
                 <p className="font-oswald text-[14px] leading-4 max-h-12 overflow-hidden">

@@ -12,9 +12,8 @@ module.exports = {
       },
       fontFamily: {
         oswald: ["Oswald"],
-        sofiasans: ["Sofia Sans"],
+        alegreya: ["Alegreya Sans"],
         sofia: ["Sofia"],
-        roboto: ["Roboto"],
       },
     },
     screens: {

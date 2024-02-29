@@ -34,7 +34,7 @@ const SelectLang = () => {
         <MenuHandler>
           <button className="flex items-center justify-center capitalize tracking-normal p-0 outline-none shadow-none rounded-none">
             <img src={lang?.flag} alt="" />
-            <p className="text-xs font-sofiasans text-black px-[2px] font-normal">
+            <p className="text-xs font-alegreya text-black px-[2px] font-normal">
               {lang?.name}
             </p>
             <svg
@@ -57,7 +57,7 @@ const SelectLang = () => {
           </button>
         </MenuHandler>
         <MenuList
-          className="overflow-visible p-1 gap-1 text-xs font-sofiasans outline-none rounded-none"
+          className="overflow-visible p-1 gap-1 text-xs font-alegreya outline-none rounded-none"
           placeholder=""
         >
           <MenuItem

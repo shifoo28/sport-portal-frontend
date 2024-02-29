@@ -4,7 +4,7 @@ import { IFSports } from "../../redux/interfaces/federations";
 const Sports = ({ data, prefLang }: { data: IFSports; prefLang: string }) => {
   return (
     <div
-      className={`w-full flex justify-between p-8 font-sofiasans text-xl gap-10`}
+      className={`w-full flex justify-between p-8 font-alegreya text-xl gap-10`}
     >
       <div className="flex w-full">
         <div className="flex flex-col justify-between w-full">

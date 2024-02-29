@@ -27,7 +27,7 @@ const AllEmployees = ({ department }: { department: IHCDepartment }) => {
             {prefLang === "Tm" ? department?.nameTm : department?.nameRu}
           </p>
         </div>
-        <div className="w-full min-h-screen font-sofiasans">
+        <div className="w-full min-h-screen font-alegreya">
           <table className="w-full">
             <thead>
               <tr className="h-[13px] text-[11px] border border-[#0088FF]">

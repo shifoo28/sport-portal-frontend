@@ -15,7 +15,7 @@ const AdsCard: FC<Props> = ({ imgLink, title }) => {
       />
       <div className="absolute inset-0 m-0 bg-gradient-to-t from-black/60 via-black/50" />
       <figcaption className="absolute text-white bottom-4 left-0 w-full max-w-[356px] cursor-pointer ml-2">
-        <p className="font-sofiasans text-[10px] max-w-[110px]">{title}</p>
+        <p className="font-alegreya text-[10px] max-w-[110px]">{title}</p>
       </figcaption>
     </figure>
   );

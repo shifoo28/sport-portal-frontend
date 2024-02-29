@@ -45,7 +45,7 @@ const SearchResult = () => {
     <div className="flex justify-center">
       <div className="max-w-[1170px] w-full pt-9 flex flex-col items-center gap-10">
         {/* Search String */}
-        <p className="w-full text-center font-sofiasans text-red-600 text-xl italic">
+        <p className="w-full text-center font-alegreya text-red-600 text-xl italic">
           {prefLang === "Tm"
             ? `"${state.searchString}" üçin gözleg netijeleri`
             : `Результаты поиска для "${state.searchString}"`}
@@ -74,7 +74,7 @@ const SearchResult = () => {
                     alt=""
                   />
                   <div className="pl-4">
-                    <p className="font-sofiasans text-[10px]">
+                    <p className="font-alegreya text-[10px]">
                       {prefLang === "Tm" ? item.locationTm : item.locationRu}
                     </p>
                     <p className="font-oswald text-[16px] max-w-[380px] capitalize">
@@ -117,7 +117,7 @@ const SearchResult = () => {
                       />
                     </div>
                   </div>
-                  <p className="pt-6 font-sofiasans text-[10px]">
+                  <p className="pt-6 font-alegreya text-[10px]">
                     {new Date(video?.updatedAt).toLocaleDateString()}
                   </p>
                   <p className="pt-1 font-oswald text-sm font-semibold">

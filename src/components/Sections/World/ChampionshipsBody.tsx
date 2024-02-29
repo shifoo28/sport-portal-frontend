@@ -22,7 +22,7 @@ const ChampionshipsBody: FC<Props> = ({ champIndex }) => {
   );
 
   return (
-    <div className="pt-6">
+    <div className="pt-6 font-alegreya">
       {chempionships?.map((chempionship, index) => {
         return (
           <Accordion
@@ -69,7 +69,7 @@ const ChampionshipsBody: FC<Props> = ({ champIndex }) => {
                   className="w-5 h-5"
                 />
               )}
-              <p className="font-sofiasans text-sm font-normal flex justify-start w-full ml-3">
+              <p className="text-sm font-normal flex justify-start w-full ml-3">
                 {prefLang === "Tm" ? chempionship.nameTm : chempionship.nameRu}
               </p>
             </AccordionHeader>
@@ -77,7 +77,7 @@ const ChampionshipsBody: FC<Props> = ({ champIndex }) => {
               <div
                 className={`${
                   open !== index ? "hidden" : ""
-                } font-sofiasans text-xs`}
+                } text-xs`}
               >
                 <div className="flex justify-between items-center text-[#636363] ml-2 mr-4">
                   <div>{prefLang === "Tm" ? "Toparlar" : "Команды"}</div>

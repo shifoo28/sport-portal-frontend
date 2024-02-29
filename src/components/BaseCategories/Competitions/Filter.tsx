@@ -53,7 +53,7 @@ const Filter = () => {
 
   return (
     <form
-      className="max-w-[1000px] w-full border border-[#0088FF] p-9 flex gap-7 font-sofiasans"
+      className="max-w-[1000px] w-full border border-[#0088FF] p-9 flex gap-7 font-alegreya"
       onSubmit={searchCompetition}
     >
       <div className="w-full flex flex-col gap-7">
@@ -66,7 +66,7 @@ const Filter = () => {
                 ? "Ýurdumyzda geçirilýän bäsleşikleri gözle..."
                 : "Поиск соревнований, проводимых в стране..."
             }
-            className="w-full font-sofiasans text-base outline-none"
+            className="w-full font-alegreya text-base outline-none"
             onChange={(e) => setSearchString(e.target.value)}
           />
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">

@@ -65,7 +65,7 @@ const Component = () => {
             {prefLang === "Tm" ? descriptionTm : descriptionRu}
           </p>
         </div>
-        <div className="text-[#182135] flex flex-col gap-5 font-sofiasans text-xl font-semibold">
+        <div className="text-[#182135] flex flex-col gap-5 font-alegreya text-xl font-semibold">
           <p>
             {prefLang === "Tm" ? "Ýükläp al: " : "Скачать: "}
             Tälimçiler üçin Medisina barlagy
@@ -114,7 +114,7 @@ const Component = () => {
                               className="w-[95px] h-full object-cover"
                               alt=""
                             />
-                            <div className="flex flex-col font-sofiasans text-[#0F1A42] justify-between h-full pl-2 pb-1 w-[250px]">
+                            <div className="flex flex-col font-alegreya text-[#0F1A42] justify-between h-full pl-2 pb-1 w-[250px]">
                               <p className="font-semibold text-left h-4 uppercase">
                                 {prefLang === "Tm"
                                   ? employee.nameTm

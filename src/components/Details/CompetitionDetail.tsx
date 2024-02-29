@@ -47,7 +47,7 @@ const CompetitionDetail = () => {
 
   return (
     <div className="flex justify-center pt-9">
-      <div className="max-w-[1170px] w-full flex gap-12 font-sofiasans">
+      <div className="max-w-[1170px] w-full flex gap-12 font-alegreya">
         <div>
           <Sorted
             prefLang={prefLang}
@@ -102,7 +102,7 @@ const CompetitionDetail = () => {
             {prefLang === "Tm" ? competition?.textTm : competition?.textRu}
           </p>
           <button
-            className="uppercase bg-[#0F1A42] text-white font-sofiasans font-semibold h-11 px-5"
+            className="uppercase bg-[#0F1A42] text-white font-alegreya font-semibold h-11 px-5"
             onClick={linkToSports}
           >
             {prefLang === "Tm" ? "GATNAŞMAK ÜÇIN" : "ДЛЯ УЧАСТИЯ"}
@@ -135,7 +135,7 @@ const CompetitionDetail = () => {
                       className="object-cover h-[145px]"
                       alt=""
                     />
-                    <p className="text-[10px] font-sofiasans">
+                    <p className="text-[10px] font-alegreya">
                       {prefLang === "Tm" ? sc.locationTm : sc.locationRu}
                     </p>
                     <p className="text-sm font-oswald font-semibol">
@@ -217,7 +217,7 @@ const Sorted = ({
                 />
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">
-                <p className="font-sofiasans text-[8px]">
+                <p className="font-alegreya text-[8px]">
                   {prefLang === "Tm" ? e?.locationTm : e?.locationRu}
                 </p>
                 <p className="font-oswald text-[15px] leading-5 max-h-16 overflow-hidden">
