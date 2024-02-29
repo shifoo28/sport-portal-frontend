@@ -48,6 +48,7 @@ export interface ITeam {
   nameTm: string;
   nameRu: string;
   imagePath: string;
+  played: number;
   win: number;
   draw: number;
   loss: number;

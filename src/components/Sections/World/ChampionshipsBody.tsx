@@ -74,14 +74,13 @@ const ChampionshipsBody: FC<Props> = ({ champIndex }) => {
               </p>
             </AccordionHeader>
             <AccordionBody>
-              <div
-                className={`${
-                  open !== index ? "hidden" : ""
-                } text-xs`}
-              >
+              <div className={`${open !== index ? "hidden" : ""} text-xs`}>
                 <div className="flex justify-between items-center text-[#636363] ml-2 mr-4">
                   <div>{prefLang === "Tm" ? "Toparlar" : "Команды"}</div>
                   <div className="flex">
+                    <p className="flex justify-center items-center w-[23px]">
+                      {prefLang === "Tm" ? "O" : "И"}
+                    </p>
                     <p className="flex justify-center items-center w-[23px]">
                       {prefLang === "Tm" ? "Ý" : "В"}
                     </p>
@@ -123,6 +122,9 @@ const ChampionshipsBody: FC<Props> = ({ champIndex }) => {
                             </p>
                           </div>
                           <div className="flex justify-between items-center pr-1">
+                            <p className="flex justify-center items-center w-[23px]">
+                              {team.played}
+                            </p>
                             <p className="flex justify-center items-center w-[23px]">
                               {team.win}
                             </p>
