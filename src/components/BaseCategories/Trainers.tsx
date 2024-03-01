@@ -40,13 +40,17 @@ const Trainers = ({ federation }: { federation: IFederations }) => {
                   className="object-cover w-[95px] h-[112px] object-center"
                   alt=""
                 />
-                <div className="font-alegreya text-[#182135] flex flex-col justify-between w-full h-full overflow-hidden">
+                <div className="font-poppins text-[#182135] flex flex-col justify-between w-full h-full overflow-hidden">
                   <p className="font-semibold text-left truncate">
                     {prefLang === "Tm" ? trainer.nameTm : trainer.nameRu}
                   </p>
                   <div className="text-[10px]">
                     <p className="h-[14px] flex items-center">
-                      {(prefLang === "Tm" ? "Ýaşy:" : "Возраст:") + trainer.age}
+                      {(prefLang === "Tm" ? "Ýaşy:" : "Возраст:") +
+                        (trainer.birthday != null
+                          ? new Date().getFullYear() -
+                            new Date(trainer.birthday).getFullYear()
+                          : "-")}
                     </p>
                     <p className="h-[14px] flex items-center">
                       <p className="min-w-max">

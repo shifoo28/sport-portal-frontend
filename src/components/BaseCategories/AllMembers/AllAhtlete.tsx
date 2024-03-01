@@ -28,7 +28,7 @@ const AllAhtlete = ({ athletes }: { athletes: IFAthletes[] }) => {
   };
 
   return (
-    <div className="w-full min-h-screen font-alegreya">
+    <div className="w-full min-h-screen font-poppins">
       <table className="w-full">
         <thead>
           <tr className="h-[13px] text-[11px] border border-[#0088FF]">

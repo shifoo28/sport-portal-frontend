@@ -72,7 +72,7 @@ const FilterNews = ({ data }: Props) => {
                 />
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">
-                <p className="font-alegreya text-[8px]">
+                <p className="font-poppins text-[8px]">
                   {new Date(video.createdAt).toLocaleDateString()}
                 </p>
                 <p className="font-oswald text-[14px] leading-4 text-ellipsis overflow-hidden h-8">

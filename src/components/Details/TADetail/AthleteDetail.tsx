@@ -31,12 +31,12 @@ const AthleteDetail = () => {
     navigate(pathname + "/../all", { state: { federationId: federation?.id } });
   };
 
-  return (
+  return athlete ? (
     <div className="flex justify-center pt-9">
       <div className="flex justify-between max-w-[1170px] w-full">
         <div className="flex flex-col gap-2">
           <img
-            src={urlBack + athlete?.imagePath}
+            src={urlBack + athlete.imagePath}
             className="w-[210px] h-[235px] object-cover object-center"
             alt=""
           />
@@ -67,7 +67,7 @@ const AthleteDetail = () => {
                   stroke-linejoin="round"
                 />
               </svg>
-              <p className="font-alegreya text-base h-max">{athlete?.views}</p>
+              <p className="font-poppins text-base h-max">{athlete.views}</p>
             </div>
             <img src="/images/bcfdetail/socials.png" alt="" />
           </div>
@@ -75,7 +75,7 @@ const AthleteDetail = () => {
         <div className="max-w-[900px] w-full flex flex-col gap-5">
           <div className="flex justify-between">
             <p className="font-oswald text-[50px] text-[#0088FF] uppercase">
-              {prefLang === "Tm" ? athlete?.nameTm : athlete?.nameRu}
+              {prefLang === "Tm" ? athlete.nameTm : athlete.nameRu}
             </p>
             <img
               src={urlBack + federation?.imagePath}
@@ -83,27 +83,33 @@ const AthleteDetail = () => {
               className="w-[57px] h-[65px] object-center"
             />
           </div>
-          <div className="font-alegreya text-2xl">
-            <p>{(prefLang === "Tm" ? "Ýaşy: " : "Возраст: ") + athlete?.age}</p>
+          <div className="font-poppins text-2xl">
             <p>
-              {prefLang === "Tm"
-                ? `Doglan ýeri: ${athlete?.birthPlaceTm}`
-                : `Место рождения: ${athlete?.birthPlaceRu}`}
+              {(prefLang === "Tm" ? "Ýaşy: " : "Возраст: ") +
+                (athlete.birthday != null
+                  ? new Date().getFullYear() -
+                    new Date(athlete.birthday).getFullYear()
+                  : "-")}
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Iş tejribesi: ${athlete?.experience} ýyl`
-                : `Опыт работы: ${athlete?.experience} лет.`}
+                ? `Doglan ýeri: ${athlete.birthPlaceTm}`
+                : `Место рождения: ${athlete.birthPlaceRu}`}
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Sport derejesi: ${athlete?.sportLevelTm}`
-                : `Спортивный уровень: ${athlete?.sportLevelRu}`}
+                ? `Iş tejribesi: ${athlete.experience} ýyl`
+                : `Опыт работы: ${athlete.experience} лет.`}
+            </p>
+            <p>
+              {prefLang === "Tm"
+                ? `Sport derejesi: ${athlete.sportLevelTm}`
+                : `Спортивный уровень: ${athlete.sportLevelRu}`}
             </p>
             <div className="flex justify-between">
               <p>{prefLang === "Tm" ? "Işlän ýerleri:" : "Места работы:"}</p>
               <div className="max-w-[680px] w-full">
-                {athlete?.workedAtTm.map((wa, index) => {
+                {athlete.workedAtTm.map((wa, index) => {
                   return (
                     <p key={index}>
                       {prefLang === "Ru" ? athlete.workedAtRu[index] : wa}
@@ -115,7 +121,7 @@ const AthleteDetail = () => {
             <div className="flex justify-between">
               <p>{prefLang === "Tm" ? "Baýraklary:" : "Награды:"}</p>
               <div className="max-w-[680px] w-full">
-                {athlete?.badgesTm.map((badge, index) => {
+                {athlete.badgesTm.map((badge, index) => {
                   return (
                     <p key={index}>
                       {prefLang === "Ru" ? athlete.badgesRu[index] : badge}
@@ -127,15 +133,15 @@ const AthleteDetail = () => {
             <div className="flex justify-between">
               <p>{prefLang === "Tm" ? "Iş wezipesi:" : "Должность:"}</p>
               <div className="max-w-[680px] w-full">
-                <p>{prefLang === "Tm" ? athlete?.jobTm : athlete?.jobRu}</p>
+                <p>{prefLang === "Tm" ? athlete.jobTm : athlete.jobRu}</p>
               </div>
             </div>
           </div>
           <div className="flex justify-between pt-3">
             <p className="bg-[#CAE4D6] text-[#00843D] uppercase text-[32px] px-5 rounded-sm font-semibold">
-              {prefLang === "Tm" ? athlete?.madeTm : athlete?.madeRu}
+              {prefLang === "Tm" ? athlete.madeTm : athlete.madeRu}
             </p>
-            <Rating value={athlete?.rating || 0} />
+            <Rating value={athlete.rating || 0} />
             <button
               className="bg-[#077EE6] text-white font-oswald text-lg px-3"
               onClick={linkToAllAthletes}
@@ -146,6 +152,8 @@ const AthleteDetail = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 

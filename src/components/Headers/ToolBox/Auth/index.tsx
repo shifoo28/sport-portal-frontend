@@ -28,7 +28,7 @@ const Authentication: FC = () => {
       className="bg-black/70 shadow-none rounded-none h-screen backdrop-blur-sm"
       placeholder=""
     >
-      <div className="flex justify-center items-center flex-col h-full w-full min-w-[300px] font-alegreya gap-6">
+      <div className="flex justify-center items-center flex-col h-full w-full min-w-[300px] font-poppins gap-6">
         <SignIn linkToGoogleAuth={linkToGoogleAuth} />
       </div>
     </Dialog>

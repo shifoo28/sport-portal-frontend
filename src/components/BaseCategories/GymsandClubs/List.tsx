@@ -58,7 +58,7 @@ const List = () => {
   };
 
   return (
-    <div className="max-w-[1170px] w-full font-alegreya text-[#182135] font-semibold">
+    <div className="max-w-[1170px] w-full font-poppins text-[#182135] font-semibold">
       <p className="uppercase text-xl px-8 py-10 text-shadow">
         {prefLang === "Tm"
           ? "TAPYLAN SPORT DESGALARYŇ SANAWY:"

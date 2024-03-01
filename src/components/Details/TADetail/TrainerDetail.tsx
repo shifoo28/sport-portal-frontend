@@ -31,12 +31,12 @@ const TrainerDetail = () => {
     navigate(pathname + "/../all", { state: { federationId: federation?.id } });
   };
 
-  return (
+  return trainer ? (
     <div className="flex justify-center pt-9">
       <div className="flex justify-between max-w-[1170px] w-full">
         <div className="flex flex-col gap-2">
           <img
-            src={urlBack + trainer?.imagePath}
+            src={urlBack + trainer.imagePath}
             className="w-[210px] h-[235px] object-cover object-center"
             alt=""
           />
@@ -67,7 +67,7 @@ const TrainerDetail = () => {
                   stroke-linejoin="round"
                 />
               </svg>
-              <p className="font-alegreya text-base h-max">{trainer?.views}</p>
+              <p className="font-poppins text-base h-max">{trainer.views}</p>
             </div>
             <img src="/images/bcfdetail/socials.png" alt="" />
           </div>
@@ -75,7 +75,7 @@ const TrainerDetail = () => {
         <div className="max-w-[900px] w-full flex flex-col gap-5">
           <div className="flex justify-between">
             <p className="font-oswald text-[50px] text-[#0088FF] uppercase">
-              {prefLang === "Tm" ? trainer?.nameTm : trainer?.nameRu}
+              {prefLang === "Tm" ? trainer.nameTm : trainer.nameRu}
             </p>
             <img
               src={urlBack + federation?.imagePath}
@@ -83,27 +83,33 @@ const TrainerDetail = () => {
               className="w-[57px] h-[65px]"
             />
           </div>
-          <div className="font-alegreya text-2xl">
-            <p>{(prefLang === "Tm" ? "Ýaşy: " : "Возраст: ") + trainer?.age}</p>
+          <div className="font-poppins text-2xl">
             <p>
-              {prefLang === "Tm"
-                ? `Doglan ýeri: ${trainer?.birthPlaceTm}`
-                : `Место рождения: ${trainer?.birthPlaceRu}`}
+              {(prefLang === "Tm" ? "Ýaşy: " : "Возраст: ") +
+                (trainer.birthday != null
+                  ? new Date().getFullYear() -
+                    new Date(trainer.birthday).getFullYear()
+                  : "-")}
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Iş tejribesi: ${trainer?.experience} ýyl`
-                : `Опыт работы: ${trainer?.experience} лет.`}
+                ? `Doglan ýeri: ${trainer.birthPlaceTm}`
+                : `Место рождения: ${trainer.birthPlaceRu}`}
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Sport derejesi: ${trainer?.sportLevelTm}`
-                : `Спортивный уровень: ${trainer?.sportLevelRu}`}
+                ? `Iş tejribesi: ${trainer.experience} ýyl`
+                : `Опыт работы: ${trainer.experience} лет.`}
+            </p>
+            <p>
+              {prefLang === "Tm"
+                ? `Sport derejesi: ${trainer.sportLevelTm}`
+                : `Спортивный уровень: ${trainer.sportLevelRu}`}
             </p>
             <div className="flex justify-between">
               <p>{prefLang === "Tm" ? "Işlän ýerleri:" : "Места работы:"}</p>
               <div className="max-w-[680px] w-full">
-                {trainer?.workedAtTm.map((wa, index) => {
+                {trainer.workedAtTm.map((wa, index) => {
                   return (
                     <p key={index}>
                       {prefLang === "Ru" ? trainer.workedAtRu[index] : wa}
@@ -115,7 +121,7 @@ const TrainerDetail = () => {
             <div className="flex justify-between">
               <p>{prefLang === "Tm" ? "Baýraklary:" : "Награды:"}</p>
               <div className="max-w-[680px] w-full">
-                {trainer?.badgesTm.map((badge, index) => {
+                {trainer.badgesTm.map((badge, index) => {
                   return (
                     <p key={index}>
                       {prefLang === "Ru" ? trainer.badgesRu[index] : badge}
@@ -127,15 +133,15 @@ const TrainerDetail = () => {
             <div className="flex justify-between">
               <p>{prefLang === "Tm" ? "Iş wezipesi:" : "Должность:"}</p>
               <div className="max-w-[680px] w-full">
-                <p>{prefLang === "Tm" ? trainer?.jobTm : trainer?.jobRu}</p>
+                <p>{prefLang === "Tm" ? trainer.jobTm : trainer.jobRu}</p>
               </div>
             </div>
           </div>
           <div className="flex justify-between pt-3">
             <p className="bg-[#CAE4D6] text-[#00843D] uppercase text-[32px] px-5 rounded-sm font-semibold">
-              {prefLang === "Tm" ? trainer?.madeTm : trainer?.madeRu}
+              {prefLang === "Tm" ? trainer.madeTm : trainer.madeRu}
             </p>
-            <Rating value={trainer?.rating || 0} />
+            <Rating value={trainer.rating || 0} />
             <button
               className="bg-[#077EE6] text-white font-oswald text-lg px-3"
               onClick={linkToAllTrainers}
@@ -146,6 +152,8 @@ const TrainerDetail = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 

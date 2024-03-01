@@ -53,7 +53,7 @@ const GACDetail = () => {
             <p className="uppercase text-[#0088FF] font-oswald text-sm h-6 px-5">
               {prefLang === "Tm" ? "Habarlaşmak üçin" : "Контакты"}
             </p>
-            <div className="flex flex-col border border-[#0088FF] p-5 font-alegreya gap-7">
+            <div className="flex flex-col border border-[#0088FF] p-5 font-poppins gap-7">
               <p className="flex text-sm gap-7 text-[#182135]">
                 <img src={location} alt="" />
                 {prefLang === "Tm" ? data?.locationTm : data?.locationRu}
@@ -110,7 +110,7 @@ const GACDetail = () => {
             </div>
           </div>
           <div className="max-w-[850px] w-full">
-            <p className="font-alegreya text-base flex items-center gap-2 h-6">
+            <p className="font-poppins text-base flex items-center gap-2 h-6">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"

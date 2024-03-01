@@ -15,7 +15,7 @@ const Footer = () => {
 
   return (
     <div className="pt-20">
-      <div className="bg-[#393939] text-[#FFFFFF] flex flex-col items-center font-alegreya">
+      <div className="bg-[#393939] text-[#FFFFFF] flex flex-col items-center font-poppins">
         <div className="w-full flex mt-5">
           <div className="w-full border-b" />
           <p className="font-oswald text-2xl text-center border-b border-[#0088FF] min-w-[200px]">
@@ -23,7 +23,7 @@ const Footer = () => {
           </p>
           <div className="w-full border-b" />
         </div>
-        <div className="flex flex-col justify-between items-center my-5 gap-5 font-alegreya">
+        <div className="flex flex-col justify-between items-center my-5 gap-5 font-poppins">
           {/* Information */}
           <div className="flex flex-wrap gap-3">
             <div className="flex justify-center items-center gap-1">

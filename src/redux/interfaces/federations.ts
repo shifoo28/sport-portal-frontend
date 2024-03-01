@@ -36,7 +36,7 @@ export interface IFTrainers {
   rating: number;
   experience: number;
   views: number;
-  age: number;
+  birthday: Date;
   jobTm: string;
   jobRu: string;
   nameTm: string;
@@ -59,25 +59,25 @@ export interface IFTrainers {
 }
 export interface IFAthletes {
   id: string;
-  jobTm: null;
-  jobRu: null;
-  age: number;
+  jobTm: string;
+  jobRu: string;
+  birthday: Date;
   club: string;
   views: number;
   links: string;
-  nameTm: null;
-  nameRu: null;
-  madeTm: null;
-  madeRu: null;
+  nameTm: string;
+  nameRu: string;
+  madeTm: string;
+  madeRu: string;
   rating: number;
   imagePath: string;
-  positionTm: null;
-  positionRu: null;
+  positionTm: string;
+  positionRu: string;
   experience: number;
-  birthPlaceTm: null;
-  birthPlaceRu: null;
-  sportLevelTm: null;
-  sportLevelRu: null;
+  birthPlaceTm: string;
+  birthPlaceRu: string;
+  sportLevelTm: string;
+  sportLevelRu: string;
   workedAtTm: string[];
   workedAtRu: string[];
   badgesTm: string[];

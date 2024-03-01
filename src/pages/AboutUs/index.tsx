@@ -32,7 +32,7 @@ const AboutUs = () => {
                 : "Платформа, охватывающая всё, что связано со спортом."}
             </p>
           </div>
-          <table className="text-white bg-[#0088FF] w-full text-center font-alegreya">
+          <table className="text-white bg-[#0088FF] w-full text-center font-poppins">
             <tr>
               <td className="text-3xl p-3 font-semibold">512</td>
               <td className="text-start pl-2">

@@ -65,7 +65,7 @@ const Component = () => {
             {prefLang === "Tm" ? descriptionTm : descriptionRu}
           </p>
         </div>
-        <div className="text-[#182135] flex flex-col gap-5 font-alegreya text-xl font-semibold">
+        <div className="text-[#182135] flex flex-col gap-5 font-poppins text-xl font-semibold">
           <p>
             {prefLang === "Tm" ? "Ýükläp al: " : "Скачать: "}
             Tälimçiler üçin Medisina barlagy
@@ -114,7 +114,7 @@ const Component = () => {
                               className="w-[95px] h-full object-cover"
                               alt=""
                             />
-                            <div className="flex flex-col font-alegreya text-[#0F1A42] justify-between h-full pl-2 pb-1 w-[250px]">
+                            <div className="flex flex-col font-poppins text-[#0F1A42] justify-between h-full pl-2 pb-1 w-[250px]">
                               <p className="font-semibold text-left h-4 uppercase">
                                 {prefLang === "Tm"
                                   ? employee.nameTm
@@ -122,9 +122,15 @@ const Component = () => {
                               </p>
                               <div className="w-full">
                                 <p className="h-[14px] text-[10px] text-left overflow-hidden w-full">
-                                  {prefLang === "Tm"
-                                    ? `Ýaşy: ${employee.age}`
-                                    : `Возраст: ${employee.age}`}
+                                  {(prefLang === "Tm"
+                                    ? `Ýaşy: `
+                                    : `Возраст: `) +
+                                    (employee.birthday != null
+                                      ? new Date().getFullYear() -
+                                        new Date(
+                                          employee.birthday
+                                        ).getFullYear()
+                                      : "-")}
                                 </p>
                                 <p className="h-[14px] text-[10px] text-left truncate w-full">
                                   {prefLang === "Tm"

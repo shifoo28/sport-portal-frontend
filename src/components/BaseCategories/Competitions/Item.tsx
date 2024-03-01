@@ -23,7 +23,7 @@ const Item = ({ data, lang }: { data: ICompetition; lang: string }) => {
 
   return (
     <div
-      className="flex flex-col w-[260px] text-center font-alegreya gap-3 cursor-pointer"
+      className="flex flex-col w-[260px] text-center font-poppins gap-3 cursor-pointer"
       onClick={linkTo}
     >
       <div className="border border-black ">

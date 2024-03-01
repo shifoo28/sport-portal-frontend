@@ -72,7 +72,7 @@ const Filter = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border border-[#0088FF] w-full max-w-[1000px] p-9 font-alegreya flex flex-col gap-7"
+      className="border border-[#0088FF] w-full max-w-[1000px] p-9 font-poppins flex flex-col gap-7"
     >
       <label htmlFor="" className="flex border border-[#0088FF] px-8 py-5">
         <input
@@ -82,13 +82,13 @@ const Filter = () => {
               ? "Desgalaryň we sport görnüşleriniň adyny giriz..."
               : "Введите название учреждения и спорта..."
           }
-          className="w-full font-alegreya text-base outline-none"
+          className="w-full font-poppins text-base outline-none"
           value={searchString}
           onChange={(e) => setSearchString(e.target.value)}
         />
         {search}
       </label>
-      <div className="py-3 text-white font-alegreya flex justify-between">
+      <div className="py-3 text-white font-poppins flex justify-between">
         <div className="w-full flex flex-wrap justify-between">
           {/* LOCATIONS */}
           <Popover
@@ -115,7 +115,7 @@ const Filter = () => {
       </div>
       <button
         type="submit"
-        className="uppercase text-white bg-[#0F1A42] h-16 font-alegreya text-[32px] font-semibold"
+        className="uppercase text-white bg-[#0F1A42] h-16 font-poppins text-[32px] font-semibold"
       >
         {prefLang === "Tm" ? "Gözlemek" : "Поиск"}
       </button>

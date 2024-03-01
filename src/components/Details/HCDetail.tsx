@@ -15,7 +15,7 @@ const HCDetail = () => {
   useEffect(() => {
     dispatch(activateTab(5));
   }, []);
-  
+
   // useSelector
   const prefLang = useSelector((state: any) => state.main.prefLang);
   const departments: IHCDepartment[] = useSelector(
@@ -32,17 +32,17 @@ const HCDetail = () => {
     navigate(pathname + "/../all", { state: { departmentId } });
   };
 
-  return (
+  return employee ? (
     <div className="flex items-center justify-center pt-9">
       <div className="max-w-[1100px] flex justify-between w-full">
         <div className="flex flex-col gap-2">
           <img
-            src={urlBack + employee?.imagePath}
+            src={urlBack + employee.imagePath}
             className="w-[210px] h-[235px] object-cover object-center"
             alt=""
           />
           <div className="flex justify-between items-center">
-            <p className="font-alegreya text-base flex items-center gap-2 h-6">
+            <p className="font-poppins text-base flex items-center gap-2 h-6">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -68,25 +68,27 @@ const HCDetail = () => {
                   stroke-linejoin="round"
                 />
               </svg>
-              {employee?.views}
+              {employee.views}
             </p>
-            <img src={"/images/bcfdetail/socials.png"} alt=""/>
+            <img src={"/images/bcfdetail/socials.png"} alt="" />
           </div>
         </div>
         <div className="max-w-[850px] w-full flex flex-col">
           <p className="font-oswald text-[50px] text-[#0088FF] uppercase">
-            {prefLang === "Tm" ? employee?.nameTm : employee?.nameRu}
+            {prefLang === "Tm" ? employee.nameTm : employee.nameRu}
           </p>
-          <div className="font-alegreya text-3xl">
+          <div className="font-poppins text-3xl">
             <p>
-              {prefLang === "Tm"
-                ? `Ýaşy: ${employee?.age}`
-                : `Возраст: ${employee?.age}`}
+              {(prefLang === "Tm" ? `Ýaşy: ` : `Возраст: `) +
+                (employee.birthday != null
+                  ? new Date().getFullYear() -
+                    new Date(employee.birthday).getFullYear()
+                  : "-")}
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Iş ýeri: ${employee?.workAtTm}`
-                : `Место работы: ${employee?.workAtRu}`}
+                ? `Iş ýeri: ${employee.workAtTm}`
+                : `Место работы: ${employee.workAtRu}`}
             </p>
             <p>
               {prefLang === "Tm"
@@ -95,18 +97,18 @@ const HCDetail = () => {
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Iş tejribesi: ${employee?.experience}ýyl`
-                : `Опыт работы: ${employee?.experience}г`}
+                ? `Iş tejribesi: ${employee.experience}ýyl`
+                : `Опыт работы: ${employee.experience}г`}
             </p>
             <p>
               {prefLang === "Tm"
-                ? `Iş wezipesi: ${employee?.jobTm}`
-                : `Должность: ${employee?.jobRu}`}
+                ? `Iş wezipesi: ${employee.jobTm}`
+                : `Должность: ${employee.jobRu}`}
             </p>
           </div>
           <div className="flex justify-between pt-10">
             <span></span>
-            <Rating value={employee?.rating || 0} />
+            <Rating value={employee.rating || 0} />
             <button
               className="bg-[#077EE6] text-white h-11 font-oswald px-4"
               onClick={linkToAllEmployees}
@@ -117,6 +119,8 @@ const HCDetail = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 

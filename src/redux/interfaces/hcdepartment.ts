@@ -4,7 +4,7 @@ export interface IHealthCare {
 }
 export interface IHCEmployee {
   id: string;
-  age: number;
+  birthday: Date;
   jobTm: null;
   jobRu: null;
   nameTm: null;

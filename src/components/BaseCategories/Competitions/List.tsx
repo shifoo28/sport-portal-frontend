@@ -12,7 +12,7 @@ const List = () => {
 
   return (
     <div className="flex flex-col w-full mt-5 gap-14">
-      <p className="uppercase ml-16 font-alegreya text-2xl text-[#182135] text-shadow font-semibold">
+      <p className="uppercase ml-16 font-poppins text-2xl text-[#182135] text-shadow font-semibold">
         {prefLang === "Tm"
           ? "Tapylan sport bäsleşikleriň netijesi:"
           : "Результаты спортивных соревнований найдены:"}{" "}
