@@ -45,7 +45,7 @@ const SecondaryCard: FC<Props> = ({ video, prefLang, linkToVideoDetail }) => {
           </p>
         </div>
       </div>
-      <p className="pt-6 font-poppins text-[10px]">
+      <p className="pt-6 font-inter text-[10px]">
         {new Date(video?.updatedAt).toLocaleDateString()}
       </p>
       <p className="pt-1 font-oswald text-sm font-semibold">

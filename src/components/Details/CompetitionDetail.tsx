@@ -47,7 +47,7 @@ const CompetitionDetail = () => {
 
   return (
     <div className="flex justify-center pt-9">
-      <div className="max-w-[1170px] w-full flex gap-12 font-poppins">
+      <div className="max-w-[1170px] w-full flex gap-12 font-inter">
         <div>
           <Sorted
             prefLang={prefLang}
@@ -98,11 +98,11 @@ const CompetitionDetail = () => {
             </div>
             <img src={urlBack + competition?.imagePath} alt="" className="max-w-[500px] max-h-[285px]"/>
           </div>
-          <p className="text-justify font-roboto leading-relaxed">
+          <p className="text-justify font-inter leading-relaxed">
             {prefLang === "Tm" ? competition?.textTm : competition?.textRu}
           </p>
           <button
-            className="uppercase bg-[#0F1A42] text-white font-poppins font-semibold h-11 px-5"
+            className="uppercase bg-[#0F1A42] text-white font-inter font-semibold h-11 px-5"
             onClick={linkToSports}
           >
             {prefLang === "Tm" ? "GATNAŞMAK ÜÇIN" : "ДЛЯ УЧАСТИЯ"}
@@ -135,7 +135,7 @@ const CompetitionDetail = () => {
                       className="object-cover h-[145px]"
                       alt=""
                     />
-                    <p className="text-[10px] font-poppins">
+                    <p className="text-[10px] font-inter">
                       {prefLang === "Tm" ? sc.locationTm : sc.locationRu}
                     </p>
                     <p className="text-sm font-oswald font-semibol">
@@ -217,7 +217,7 @@ const Sorted = ({
                 />
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">
-                <p className="font-poppins text-[8px]">
+                <p className="font-inter text-[8px]">
                   {prefLang === "Tm" ? e?.locationTm : e?.locationRu}
                 </p>
                 <p className="font-oswald text-[15px] leading-5 max-h-16 overflow-hidden">

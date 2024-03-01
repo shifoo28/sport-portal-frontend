@@ -54,7 +54,7 @@ const Body = () => {
           </div>
         </div>
         <div className="flex flex-col pt-6">
-          <p className="pb-[6px] font-poppins text-[10px]">
+          <p className="pb-[6px] font-inter text-[10px]">
             {prefLang === "Tm"
               ? world_news_main?.locationTm
               : world_news_main?.locationRu}
@@ -64,7 +64,7 @@ const Body = () => {
               ? world_news_main?.nameTm
               : world_news_main?.nameRu}
           </p>
-          <p className="font-poppins text-sm text-ellipsis overflow-hidden h-[60px]">
+          <p className="font-inter text-sm text-ellipsis overflow-hidden h-[60px]">
             {prefLang === "Tm"
               ? world_news_main?.textTm
               : world_news_main?.textRu}
@@ -85,7 +85,7 @@ const Body = () => {
                 alt=""
               />
               <div className="pl-4">
-                <p className="font-poppins text-[10px]">
+                <p className="font-inter text-[10px]">
                   {prefLang === "Tm" ? wn.locationTm : wn.locationRu}
                 </p>
                 <p className="font-oswald text-[16px] max-w-[280px] capitalize text-ellipsis overflow-hidden h-12">

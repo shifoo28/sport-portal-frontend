@@ -77,7 +77,7 @@ const NewsCard: React.FC<CardData> = ({ news, cardSize, prefLang }) => {
           bottom + " " + titleMaxWidth
         } left-0 w-full ml-4`}
       >
-        <p className="font-poppins text-[10px] max-w-[131px]">
+        <p className="font-inter text-[10px] max-w-[131px]">
           {prefLang === "Tm" ? news?.locationTm : news?.locationRu}
         </p>
         <p className={`font-oswald capitalize ${textSize}`}>

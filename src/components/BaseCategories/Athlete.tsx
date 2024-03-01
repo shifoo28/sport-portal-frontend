@@ -33,7 +33,7 @@ const Athlete = ({ federation }: { federation: IFederations }) => {
   };
 
   return (
-    <div className="text-[#0F1A42] font-poppins px-8 pt-8">
+    <div className="text-[#0F1A42] font-inter px-8 pt-8">
       <div className="w-full h-[410px] overflow-auto">
         <table className="w-full max-w-[99%]">
           <thead className="">

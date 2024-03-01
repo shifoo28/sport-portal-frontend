@@ -12,8 +12,7 @@ module.exports = {
       },
       fontFamily: {
         oswald: ["Oswald"],
-        poppins: ["Poppins"],
-        sofia: ["Sofia"],
+        inter: ["Inter"],
       },
     },
     screens: {

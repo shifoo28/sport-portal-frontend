@@ -43,7 +43,7 @@ const VideoDetail = () => {
         </p>
         <div className="w-full">
           <div className="flex w-full justify-between">
-            <p className="font-poppins text-base flex justify-center items-center gap-2">
+            <p className="font-inter text-base flex justify-center items-center gap-2">
               <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
                 <path
                   d="M13.2931 8.61587C13.2931 10.437 11.8214 11.9087 10.0003 11.9087C8.17912 11.9087 6.70752 10.437 6.70752 8.61587C6.70752 6.79472 8.17912 5.32312 10.0003 5.32312C11.8214 5.32312 13.2931 6.79472 13.2931 8.61587Z"
@@ -64,7 +64,7 @@ const VideoDetail = () => {
               </svg>
               {video?.views}
             </p>
-            <p className="font-poppins text-base">{uploadedAt}</p>
+            <p className="font-inter text-base">{uploadedAt}</p>
           </div>
           <video
             src={urlBack + video?.videoPath}
@@ -109,7 +109,7 @@ const VideoDetail = () => {
                   alt=""
                 />
               </div>
-              <p className="text-xs font-poppins">
+              <p className="text-xs font-inter">
                 {new Date(same_video_main?.createdAt).toLocaleDateString()}
               </p>
               <p className="font-semibold max-w-[550px]">
@@ -139,7 +139,7 @@ const VideoDetail = () => {
                       />
                     </div>
                     <div className="flex flex-col justify-center gap-4">
-                      <p className="text-xs font-poppins">
+                      <p className="text-xs font-inter">
                         {new Date(sv.createdAt).toLocaleDateString()}
                       </p>
                       <p className="max-w-[290px] font-semibold">

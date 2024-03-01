@@ -57,15 +57,15 @@ const Component = () => {
   ) : (
     <div className="flex justify-center pt-8">
       <div className="max-w-[1170px] w-full flex flex-col gap-10">
-        <div className="px-16 text-shadow">
-          <p className="text-center font-oswald text-4xl text-[#0F1A42] capitalize leading-relaxed">
+        <div className="px-16">
+          <p className="text-center text-shadow font-oswald text-4xl text-[#0F1A42] capitalize leading-relaxed">
             {prefLang === "Tm" ? "Sport lukmançylygy" : "Спортивная медицина"}
           </p>
-          <p className="font-roboto text-lg text-center max-w-[1000px]">
+          <p className="font-inter text-lg text-center max-w-[1000px]">
             {prefLang === "Tm" ? descriptionTm : descriptionRu}
           </p>
         </div>
-        <div className="text-[#182135] flex flex-col gap-5 font-poppins text-xl font-semibold">
+        <div className="text-[#182135] flex flex-col gap-5 font-inter text-xl font-semibold">
           <p>
             {prefLang === "Tm" ? "Ýükläp al: " : "Скачать: "}
             Tälimçiler üçin Medisina barlagy
@@ -114,7 +114,7 @@ const Component = () => {
                               className="w-[95px] h-full object-cover"
                               alt=""
                             />
-                            <div className="flex flex-col font-poppins text-[#0F1A42] justify-between h-full pl-2 pb-1 w-[250px]">
+                            <div className="flex flex-col font-inter text-[#0F1A42] justify-between h-full pl-2 pb-1 w-[250px]">
                               <p className="font-semibold text-left h-4 uppercase">
                                 {prefLang === "Tm"
                                   ? employee.nameTm

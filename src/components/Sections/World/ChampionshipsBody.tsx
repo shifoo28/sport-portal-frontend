@@ -22,7 +22,7 @@ const ChampionshipsBody: FC<Props> = ({ champIndex }) => {
   );
 
   return (
-    <div className="pt-6 font-poppins">
+    <div className="pt-6 font-inter">
       {chempionships?.map((chempionship, index) => {
         return (
           <Accordion

@@ -42,7 +42,7 @@ const HCDetail = () => {
             alt=""
           />
           <div className="flex justify-between items-center">
-            <p className="font-poppins text-base flex items-center gap-2 h-6">
+            <p className="font-inter text-base flex items-center gap-2 h-6">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -77,7 +77,7 @@ const HCDetail = () => {
           <p className="font-oswald text-[50px] text-[#0088FF] uppercase">
             {prefLang === "Tm" ? employee.nameTm : employee.nameRu}
           </p>
-          <div className="font-poppins text-3xl">
+          <div className="font-inter text-3xl">
             <p>
               {(prefLang === "Tm" ? `Ýaşy: ` : `Возраст: `) +
                 (employee.birthday != null

@@ -32,7 +32,7 @@ const AboutUs = () => {
                 : "Платформа, охватывающая всё, что связано со спортом."}
             </p>
           </div>
-          <table className="text-white bg-[#0088FF] w-full text-center font-poppins">
+          <table className="text-white bg-[#0088FF] w-full text-center font-inter">
             <tr>
               <td className="text-3xl p-3 font-semibold">-</td>
               <td className="text-start pl-2">
@@ -61,7 +61,7 @@ const AboutUs = () => {
         </div>
 
         {/* Part 2 */}
-        <div className="w-full font-roboto text-center flex flex-col gap-6">
+        <div className="w-full font-inter text-center flex flex-col gap-6">
           <p className="capitalize font-oswald text-5xl">
             {prefLang === "Tm" ? "Biz barada" : "О нас"}
           </p>

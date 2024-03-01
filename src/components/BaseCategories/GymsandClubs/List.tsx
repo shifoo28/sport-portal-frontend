@@ -58,14 +58,14 @@ const List = () => {
   };
 
   return (
-    <div className="max-w-[1170px] w-full font-poppins text-[#182135] font-semibold">
+    <div className="max-w-[1170px] w-full font-inter text-[#182135] font-semibold">
       <p className="uppercase text-xl px-8 py-10 text-shadow">
         {prefLang === "Tm"
           ? "TAPYLAN SPORT DESGALARYŇ SANAWY:"
           : "СПИСОК НАЙДЕННЫХ СПОРТИВНЫХ ОБЪЕКТОВ:"}
       </p>
       <table className="border border-[#0088FF] w-full">
-        <thead className="bg-[#A9CFEF] h-[74px] font-roboto">
+        <thead className="bg-[#A9CFEF] h-[74px] font-inter">
           {theadersTm.map((header, index) => {
             return (
               <th className="" key={index}>

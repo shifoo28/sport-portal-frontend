@@ -29,7 +29,7 @@ const ToolBox = () => {
   };
 
   return (
-    <section className="w-full h-16 font-poppins text-xs flex justify-center">
+    <section className="w-full h-16 font-inter text-xs flex justify-center">
       <div className="flex justify-between max-w-[1170px] w-full h-full">
         <div className="flex flex-col justify-around w-full">
           <p>{day + ", " + date + " " + month + " " + year}</p>

@@ -40,7 +40,7 @@ const Trainers = ({ federation }: { federation: IFederations }) => {
                   className="object-cover w-[95px] h-[112px] object-center"
                   alt=""
                 />
-                <div className="font-poppins text-[#182135] flex flex-col justify-between w-full h-full overflow-hidden">
+                <div className="font-inter text-[#182135] flex flex-col justify-between w-full h-full overflow-hidden">
                   <p className="font-semibold text-left truncate">
                     {prefLang === "Tm" ? trainer.nameTm : trainer.nameRu}
                   </p>

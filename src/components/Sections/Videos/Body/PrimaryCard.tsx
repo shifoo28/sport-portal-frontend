@@ -16,7 +16,7 @@ const PrimaryCard: FC<Props> = ({ video, prefLang, linkToVideoDetail }) => {
 
   return (
     <div
-      className="relative h-[400px] w-full font-poppins cursor-pointer overflow-hidden transform"
+      className="relative h-[400px] w-full font-inter cursor-pointer overflow-hidden transform"
       onClick={() => linkToVideoDetail(video.id)}
       onMouseEnter={() => setScaleImage("scale-125")}
       onMouseLeave={() => setScaleImage("scale-100")}
@@ -46,7 +46,7 @@ const PrimaryCard: FC<Props> = ({ video, prefLang, linkToVideoDetail }) => {
       <div
         className={`absolute text-white bottom-6 max-w-[60%] left-0 w-full ml-6`}
       >
-        <p className="font-poppins text-[10px] max-w-[131px]">
+        <p className="font-inter text-[10px] max-w-[131px]">
           {new Date(video?.updatedAt).toLocaleDateString()}
         </p>
         <p className={`font-oswald text-4xl`}>

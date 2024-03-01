@@ -28,7 +28,7 @@ const FilterNews = ({ data, linkToNewsDetail }: Props) => {
   };
 
   return (
-    <div className="w-[270px] min-w-[270px]">
+    <div className="w-[270px] min-w-[270px] font-inter">
       <div className="flex justify-between h-11 font-oswald cursor-pointer">
         <div
           className={`flex items-center border-b text-sm w-full ${
@@ -67,7 +67,7 @@ const FilterNews = ({ data, linkToNewsDetail }: Props) => {
                 />
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">
-                <p className="font-poppins text-[8px]">
+                <p className="text-[8px]">
                   {DateTimeFormation(prefLang, item.createdAt)}
                 </p>
                 <p className="font-oswald text-[14px] leading-4 max-h-12 overflow-hidden">

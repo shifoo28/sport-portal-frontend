@@ -49,14 +49,14 @@ const NewsDetail = ({ news_data, same_news, linkToNewsDetail }: Props) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between gap-5 w-full">
+    <div className="flex flex-col items-center justify-between gap-5 w-full font-inter">
       <div className="flex items-center">
         <p className="text-[26px] font-oswald capitalize max-w-[570px] text-center text-[#0F1A42] text-shadow">
           {prefLang === "Tm" ? news_data?.nameTm : news_data?.nameRu}
         </p>
       </div>
       <div>
-        <div className="flex justify-between font-poppins text-xs">
+        <div className="flex justify-between font-inter text-xs">
           <p className="flex gap-1">
             {viewsIcon}
             {news_data?.views}
@@ -71,7 +71,7 @@ const NewsDetail = ({ news_data, same_news, linkToNewsDetail }: Props) => {
           alt=""
         />
       </div>
-      <p className="w-full h-max text-justify font-roboto text-base whitespace-pre-line leading-relaxed">
+      <p className="w-full h-max text-justify text-base whitespace-pre-line leading-relaxed">
         {prefLang === "Tm" ? news_data?.textTm : news_data?.textRu}
       </p>
       <div className="flex flex-col w-full pt-20">
@@ -100,7 +100,7 @@ const NewsDetail = ({ news_data, same_news, linkToNewsDetail }: Props) => {
                   className="object-cover h-[145px]"
                   alt=""
                 />
-                <p className="text-[10px] font-poppins">
+                <p className="text-[10px]">
                   {prefLang === "Tm" ? sn.locationTm : sn.locationRu}
                 </p>
                 <p className="text-sm font-oswald text-shadow">

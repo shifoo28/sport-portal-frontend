@@ -67,7 +67,7 @@ const AthleteDetail = () => {
                   stroke-linejoin="round"
                 />
               </svg>
-              <p className="font-poppins text-base h-max">{athlete.views}</p>
+              <p className="font-inter text-base h-max">{athlete.views}</p>
             </div>
             <img src="/images/bcfdetail/socials.png" alt="" />
           </div>
@@ -83,7 +83,7 @@ const AthleteDetail = () => {
               className="w-[57px] h-[65px] object-center"
             />
           </div>
-          <div className="font-poppins text-2xl">
+          <div className="font-inter text-2xl">
             <p>
               {(prefLang === "Tm" ? "Ýaşy: " : "Возраст: ") +
                 (athlete.birthday != null
