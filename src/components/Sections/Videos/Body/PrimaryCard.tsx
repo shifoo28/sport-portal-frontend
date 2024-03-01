@@ -3,6 +3,7 @@ import { IVideoNews } from "../../../../redux/interfaces/home";
 import { urlBack } from "../../../../redux/apiCalls";
 import playVideoSvg from "../../../../assets/svg/playvideo.svg";
 import { BG_COLORS } from "../../../../tools/constants";
+import { DateTimeFormation } from "../../../../tools/TimeConverter";
 
 interface Props {
   video: IVideoNews;
@@ -14,7 +15,7 @@ const PrimaryCard: FC<Props> = ({ video, prefLang, linkToVideoDetail }) => {
   // Hooks
   const [scaleImage, setScaleImage] = useState("scale-100");
 
-  return (
+  return video ? (
     <div
       className="relative h-[400px] w-full font-inter cursor-pointer overflow-hidden transform"
       onClick={() => linkToVideoDetail(video.id)}
@@ -22,7 +23,7 @@ const PrimaryCard: FC<Props> = ({ video, prefLang, linkToVideoDetail }) => {
       onMouseLeave={() => setScaleImage("scale-100")}
     >
       <img
-        src={urlBack + video?.imagePath}
+        src={urlBack + video.imagePath}
         className={`object-cover h-full w-full ${scaleImage} transition duration-300`}
         alt=""
       />
@@ -33,9 +34,7 @@ const PrimaryCard: FC<Props> = ({ video, prefLang, linkToVideoDetail }) => {
         } w-max text-white text-[9px] flex items-center`}
       >
         <p className="px-3">
-          {prefLang === "Tm"
-            ? video?.category?.nameTm
-            : video?.category?.nameRu}
+          {prefLang === "Tm" ? video.category?.nameTm : video.category?.nameRu}
         </p>
       </div>
       <img
@@ -47,13 +46,15 @@ const PrimaryCard: FC<Props> = ({ video, prefLang, linkToVideoDetail }) => {
         className={`absolute text-white bottom-6 max-w-[60%] left-0 w-full ml-6`}
       >
         <p className="font-inter text-[10px] max-w-[131px]">
-          {new Date(video?.updatedAt).toLocaleDateString()}
+          {DateTimeFormation(prefLang, video.createdAt)}
         </p>
         <p className={`font-oswald text-4xl`}>
-          {prefLang === "Tm" ? video?.nameTm : video?.nameRu}
+          {prefLang === "Tm" ? video.nameTm : video.nameRu}
         </p>
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 

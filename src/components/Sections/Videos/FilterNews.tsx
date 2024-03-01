@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { VIDEO_DETAILS_PAGE } from "../../../tools/links";
 import { IVideoNews } from "../../../redux/interfaces/home";
 import { RootState } from "../../../redux/store";
+import { DateTimeFormation } from "../../../tools/TimeConverter";
 
 interface Props {
   data: IVideoNews[];
@@ -33,7 +34,7 @@ const FilterNews = ({ data }: Props) => {
   };
 
   return (
-    <div className="w-[270px] min-w-[270px]">
+    <div className="w-[270px] min-w-[270px] font-inter">
       <div className="flex justify-between h-11 font-oswald cursor-pointer">
         <div
           className={`flex items-center border-b text-sm w-full ${
@@ -72,8 +73,8 @@ const FilterNews = ({ data }: Props) => {
                 />
               </div>
               <div className="flex flex-col justify-around max-w-[185px] w-full">
-                <p className="font-inter text-[8px]">
-                  {new Date(video.createdAt).toLocaleDateString()}
+                <p className="text-[8px]">
+                  {DateTimeFormation(prefLang, video.createdAt)}
                 </p>
                 <p className="font-oswald text-[14px] leading-4 text-ellipsis overflow-hidden h-8">
                   {prefLang === "Tm" ? video.nameTm : video.nameRu}

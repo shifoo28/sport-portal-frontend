@@ -3,6 +3,7 @@ import { urlBack } from "../../../../redux/apiCalls";
 import playVideoSvg from "../../../../assets/svg/playvideo.svg";
 import { IVideoNews } from "../../../../redux/interfaces/home";
 import { BG_COLORS } from "../../../../tools/constants";
+import { DateTimeFormation } from "../../../../tools/TimeConverter";
 
 interface Props {
   video: IVideoNews;
@@ -14,9 +15,9 @@ const SecondaryCard: FC<Props> = ({ video, prefLang, linkToVideoDetail }) => {
   // Hooks
   const [scaleImage, setScaleImage] = useState("scale-100");
 
-  return (
+  return video ? (
     <div
-      className="flex flex-col w-full max-w-[270px] cursor-pointer"
+      className="flex flex-col w-full max-w-[270px] cursor-pointer font-inter"
       onClick={() => linkToVideoDetail(video.id)}
       onMouseEnter={() => setScaleImage("scale-125")}
       onMouseLeave={() => setScaleImage("scale-100")}
@@ -39,19 +40,19 @@ const SecondaryCard: FC<Props> = ({ video, prefLang, linkToVideoDetail }) => {
           } w-max text-white text-[9px] flex items-center`}
         >
           <p className="px-3">
-            {prefLang === "Tm"
-              ? video?.category?.nameTm
-              : video?.category?.nameRu}
+            {prefLang === "Tm" ? video.category.nameTm : video.category.nameRu}
           </p>
         </div>
       </div>
-      <p className="pt-6 font-inter text-[10px]">
-        {new Date(video?.updatedAt).toLocaleDateString()}
+      <p className="pt-6 text-[10px]">
+        {DateTimeFormation(prefLang, video.createdAt)}
       </p>
       <p className="pt-1 font-oswald text-sm font-semibold">
         {prefLang === "Tm" ? video.nameTm : video.nameRu}
       </p>
     </div>
+  ) : (
+    <></>
   );
 };
 

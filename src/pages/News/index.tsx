@@ -46,7 +46,7 @@ const NewsAll = () => {
   };
 
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full flex justify-center font-inter">
       <div className="w-full max-w-[1170px] flex justify-between gap-8 pt-8">
         <div className="w-[445px]">
           <ChampionshipStats />
@@ -79,7 +79,7 @@ const NewsAll = () => {
                     className="w-[195px] h-[145px] object-cover"
                     alt=""
                   />
-                  <p className="text-[10px] font-inter">
+                  <p className="text-[10px]">
                     {prefLang === "Tm" ? item.locationTm : item.locationRu}
                   </p>
                   <p className="text-sm font-oswald">

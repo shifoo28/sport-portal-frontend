@@ -8,6 +8,7 @@ import { VIDEO_DETAILS_PAGE } from "../../tools/links";
 import { urlBack } from "../../redux/apiCalls";
 import { BG_COLORS } from "../../tools/constants";
 import { GET_VIDEO_NEWS } from "../../redux/types";
+import { DateTimeFormation } from "../../tools/TimeConverter";
 
 const VideoNewsAll = () => {
   // Hooks
@@ -38,8 +39,8 @@ const VideoNewsAll = () => {
     navigate("/../" + VIDEO_DETAILS_PAGE, { state: { videoId } });
   };
 
-  return (
-    <div className="flex justify-center pt-9">
+  return videos ? (
+    <div className="flex justify-center pt-9 font-inter">
       <div className="max-w-[1170px] flex flex-col w-full">
         <div className="flex">
           <p className="border-b border-[#077EE6] text-[#077EE6] w-full max-w-xs font-oswald text-2xl">
@@ -54,7 +55,7 @@ const VideoNewsAll = () => {
           <p className="w-full border-b border-black"></p>
         </div>
         <div className="flex flex-wrap gap-5 pt-3 justify-center">
-          {videos?.map((video, index) => {
+          {videos.map((video, index) => {
             return (
               <div
                 className="flex flex-col max-w-[270px] w-full cursor-pointer"
@@ -81,14 +82,16 @@ const VideoNewsAll = () => {
                     } w-max text-white text-[9px] flex items-center`}
                   >
                     <p className="px-3">
-                      {prefLang === "Tm"
-                        ? video?.category?.nameTm
-                        : video?.category?.nameRu}
+                      {video.category
+                        ? prefLang === "Tm"
+                          ? video.category.nameTm
+                          : video.category.nameRu
+                        : ""}
                     </p>
                   </div>
                 </div>
-                <p className="pt-6 font-inter text-[10px]">
-                  {new Date(video?.updatedAt).toLocaleDateString()}
+                <p className="pt-6 text-[10px]">
+                  {DateTimeFormation(prefLang, video.createdAt)}
                 </p>
                 <p className="pt-1 font-oswald text-sm font-semibold">
                   {prefLang === "Tm" ? video.nameTm : video.nameRu}
@@ -99,6 +102,8 @@ const VideoNewsAll = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 

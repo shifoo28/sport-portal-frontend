@@ -41,7 +41,7 @@ const GACDetail = () => {
   ];
 
   return (
-    <div className="flex justify-center pt-9">
+    <div className="flex justify-center pt-9 font-inter">
       <div className="flex flex-col max-w-[1170px] w-full">
         <div className="flex justify-end">
           <p className="max-w-[850px] w-full text-center font-oswald text-[26px] text-[#0F1A42] px-72 capitalize text-shadow">
@@ -53,7 +53,7 @@ const GACDetail = () => {
             <p className="uppercase text-[#0088FF] font-oswald text-sm h-6 px-5">
               {prefLang === "Tm" ? "Habarlaşmak üçin" : "Контакты"}
             </p>
-            <div className="flex flex-col border border-[#0088FF] p-5 font-inter gap-7">
+            <div className="flex flex-col border border-[#0088FF] p-5 gap-7">
               <p className="flex text-sm gap-7 text-[#182135]">
                 <img src={location} alt="" />
                 {prefLang === "Tm" ? data?.locationTm : data?.locationRu}
@@ -85,7 +85,7 @@ const GACDetail = () => {
             <div className="flex flex-col bg-[#0088FF] text-white py-5 gap-4 font-semibold">
               <div className="flex">
                 <p className="flex justify-center items-center max-w-[70px] w-full">
-                  {data?.sportsTm.length}
+                  {data?.sportsTm.length ? data.sportsTm.length : "-"}
                 </p>
                 <p className="w-full">
                   {prefLang === "Tm" ? "Sport görnüşi" : "Видов спорта"}
@@ -93,7 +93,7 @@ const GACDetail = () => {
               </div>
               <div className="flex">
                 <p className="flex justify-center items-center max-w-[70px] w-full">
-                  23
+                  -
                 </p>
                 <p className="w-full">
                   {prefLang === "Tm" ? "Tälimçileriň sany" : "Тренеров"}
@@ -101,7 +101,7 @@ const GACDetail = () => {
               </div>
               <div className="flex">
                 <p className="flex justify-center items-center max-w-[70px] w-full">
-                  812
+                  -
                 </p>
                 <p className="w-full">
                   {prefLang === "Tm" ? "Türgenleriň sany" : "Спортсменов"}
@@ -110,7 +110,7 @@ const GACDetail = () => {
             </div>
           </div>
           <div className="max-w-[850px] w-full">
-            <p className="font-inter text-base flex items-center gap-2 h-6">
+            <p className="text-base flex items-center gap-2 h-6">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -141,7 +141,7 @@ const GACDetail = () => {
             <div className="relative max-w-[850px] border border-[#0088FF]">
               <img
                 src={urlBack + images[indexImage]}
-                className="w-[850px] h-[600px] object-contain"
+                className="h-[500px] object-cover"
                 alt=""
               />
               <button
@@ -162,11 +162,11 @@ const GACDetail = () => {
               </button>
             </div>
             <div className="flex justify-between w-full pt-5">
-              {images.map((im, i) => {
+              {images.map((image, index) => {
                 return (
-                  i !== indexImage && (
+                  index !== indexImage && (
                     <img
-                      src={urlBack + im}
+                      src={urlBack + image}
                       className="w-[195px] h-[145px] object-cover"
                       alt=""
                     />

@@ -5,7 +5,10 @@ import { urlBack } from "../../redux/apiCalls";
 import playvideo from "../../assets/svg/playvideo.svg";
 import { IVideoNews } from "../../redux/interfaces/home";
 import { RootState } from "../../redux/store";
-import { DateTimeToPassedTime } from "../../tools/TimeConverter";
+import {
+  DateTimeFormation,
+  DateTimeToPassedTime,
+} from "../../tools/TimeConverter";
 import { VIDEO_NEWS_ALL } from "../../tools/links";
 
 const VideoDetail = () => {
@@ -36,14 +39,14 @@ const VideoDetail = () => {
   };
 
   return (
-    <div className="flex justify-center w-full pt-9">
+    <div className="flex justify-center w-full pt-9 font-inter">
       <div className="flex items-center w-full flex-col text-[#0F1A42] max-w-[1170px]">
         <p className="font-oswald text-[50px] max-w-[90%] text-center">
           {prefLang === "Tm" ? video?.nameTm : video?.nameRu}
         </p>
         <div className="w-full">
           <div className="flex w-full justify-between">
-            <p className="font-inter text-base flex justify-center items-center gap-2">
+            <p className="text-base flex justify-center items-center gap-2">
               <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
                 <path
                   d="M13.2931 8.61587C13.2931 10.437 11.8214 11.9087 10.0003 11.9087C8.17912 11.9087 6.70752 10.437 6.70752 8.61587C6.70752 6.79472 8.17912 5.32312 10.0003 5.32312C11.8214 5.32312 13.2931 6.79472 13.2931 8.61587Z"
@@ -64,7 +67,7 @@ const VideoDetail = () => {
               </svg>
               {video?.views}
             </p>
-            <p className="font-inter text-base">{uploadedAt}</p>
+            <p className="text-base">{uploadedAt}</p>
           </div>
           <video
             src={urlBack + video?.videoPath}
@@ -79,7 +82,7 @@ const VideoDetail = () => {
         </div>
         <div className="w-full pt-24 flex flex-col gap-8">
           <div className="flex justify-between font-oswald">
-            <div className="border-b border-[#F65050] w-56">
+            <div className="border-b border-[#F65050] w-60">
               <p className="text-2xl text-[#F65050] my-1">
                 {prefLang === "Tm" ? "Meňzeş täzelikler" : "Подобные новости"}
               </p>
@@ -92,7 +95,7 @@ const VideoDetail = () => {
               {prefLang === "Tm" ? "Hemmesini görmek" : "Посмотреть все"}
             </button>
           </div>
-          <div className="flex justify-between font-oswald text-2xl">
+          <div className="flex justify-between text-2xl">
             <div
               className="flex flex-col justify-between cursor-pointer"
               onClick={() => linkToVideoDetail(same_video_main?.id)}
@@ -109,10 +112,10 @@ const VideoDetail = () => {
                   alt=""
                 />
               </div>
-              <p className="text-xs font-inter">
-                {new Date(same_video_main?.createdAt).toLocaleDateString()}
+              <p className="text-xs">
+                {DateTimeFormation(prefLang, same_video_main.createdAt)}
               </p>
-              <p className="font-semibold max-w-[550px]">
+              <p className="font-semibold max-w-[550px] font-oswald">
                 {prefLang === "Tm"
                   ? same_video_main?.nameTm
                   : same_video_main?.nameRu}
@@ -139,10 +142,10 @@ const VideoDetail = () => {
                       />
                     </div>
                     <div className="flex flex-col justify-center gap-4">
-                      <p className="text-xs font-inter">
-                        {new Date(sv.createdAt).toLocaleDateString()}
+                      <p className="text-xs">
+                        {DateTimeFormation(prefLang, sv.createdAt)}
                       </p>
-                      <p className="max-w-[290px] font-semibold">
+                      <p className="max-w-[290px] font-semibold font-oswald">
                         {prefLang === "Tm" ? sv.nameTm : sv.nameRu}
                       </p>
                     </div>
