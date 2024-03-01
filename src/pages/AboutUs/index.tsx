@@ -34,25 +34,25 @@ const AboutUs = () => {
           </div>
           <table className="text-white bg-[#0088FF] w-full text-center font-poppins">
             <tr>
-              <td className="text-3xl p-3 font-semibold">512</td>
+              <td className="text-3xl p-3 font-semibold">-</td>
               <td className="text-start pl-2">
                 {prefLang === "Tm" ? "Sport toplum" : "Спорт комплексы"}
               </td>
             </tr>
             <tr>
-              <td className="text-3xl p-3 font-semibold">108</td>
+              <td className="text-3xl p-3 font-semibold">-</td>
               <td className="text-start pl-2">
                 {prefLang === "Tm" ? "Sport mekdep" : "Спорт школы"}
               </td>
             </tr>
             <tr>
-              <td className="text-3xl p-3 font-semibold">45</td>
+              <td className="text-3xl p-3 font-semibold">-</td>
               <td className="text-start pl-2">
                 {prefLang === "Tm" ? "Sport görnüş" : "Тип спорта"}
               </td>
             </tr>
             <tr>
-              <td className="text-3xl p-3 font-semibold">221</td>
+              <td className="text-3xl p-3 font-semibold">-</td>
               <td className="text-start pl-2">
                 {prefLang === "Tm" ? "Türgenleşik zal" : "Тренажерные залы"}
               </td>
@@ -65,7 +65,7 @@ const AboutUs = () => {
           <p className="capitalize font-oswald text-5xl">
             {prefLang === "Tm" ? "Biz barada" : "О нас"}
           </p>
-          <p className="text-justify text-2xl whitespace-pre-line">
+          <p className="text-justify text-xl whitespace-pre-line leading-relaxed">
             {prefLang === "Tm" ? textTm : textRu}
           </p>
         </div>

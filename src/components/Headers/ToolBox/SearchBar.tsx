@@ -31,7 +31,7 @@ const SearchBar = ({ prefLang }: { prefLang: string }) => {
       onSubmit={search}
     >
       <input
-        className="focus:w-full w-[50px] pr-4 focus:outline-none focus:bg-[#F7F5F9] placeholder:text-[#393939] bg-transparent"
+        className="focus:w-full w-[60px] pr-4 focus:outline-none focus:bg-[#F7F5F9] placeholder:text-[#393939] bg-transparent"
         placeholder={prefLang === "Tm" ? "Gözleg..." : "Поиск..."}
         type="text"
         value={searchString}
