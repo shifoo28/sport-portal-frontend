@@ -44,7 +44,7 @@ const SelectLang = () => {
               fill="none"
               className={`${
                 open ? "rotate-180" : ""
-              } h-max w-3 transition-transform`}
+              } h-max w-3 transition-transform duration-300`}
             >
               <path
                 d="M1 0.400635L4 1.95617L7 0.400635"

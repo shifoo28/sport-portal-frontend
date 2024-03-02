@@ -40,12 +40,12 @@ const GACDetail = () => {
     data?.imagePath5,
   ];
 
-  return (
+  return data ? (
     <div className="flex justify-center pt-9 font-inter">
       <div className="flex flex-col max-w-[1170px] w-full">
         <div className="flex justify-end">
           <p className="max-w-[850px] w-full text-center font-oswald text-[26px] text-[#0F1A42] px-72 capitalize text-shadow">
-            {prefLang === "Tm" ? data?.nameTm : data?.nameRu}
+            {prefLang === "Tm" ? data.nameTm : data.nameRu}
           </p>
         </div>
         <div className="flex w-full justify-between">
@@ -56,36 +56,36 @@ const GACDetail = () => {
             <div className="flex flex-col border border-[#0088FF] p-5 gap-7">
               <p className="flex text-sm gap-7 text-[#182135]">
                 <img src={location} alt="" />
-                {prefLang === "Tm" ? data?.locationTm : data?.locationRu}
+                {prefLang === "Tm" ? data.locationTm : data.locationRu}
               </p>
               <p className="flex text-sm gap-7 text-[#182135]">
                 <img src={call} alt="" />
                 <div>
-                  {data?.tel.map((t, i) => {
+                  {data.tel.map((t, i) => {
                     return <p key={i}>{t}</p>;
                   })}
                 </div>
               </p>
               <p className="flex text-sm gap-7 text-[#182135]">
                 <img src={email} alt="" />
-                {data?.email}
+                {data.email}
               </p>
               <p className="flex text-sm gap-7 text-[#182135]">
                 <img src={link} alt="" />
                 <a
-                  href={data?.link}
+                  href={data.link}
                   className="hover:underline truncate"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {data?.link}
+                  {data.link}
                 </a>
               </p>
             </div>
             <div className="flex flex-col bg-[#0088FF] text-white py-5 gap-4 font-semibold">
               <div className="flex">
                 <p className="flex justify-center items-center max-w-[70px] w-full">
-                  {data?.sportsTm.length ? data.sportsTm.length : "-"}
+                  {data.sportsTm.length > 0 ? data.sportsTm.length : "-"}
                 </p>
                 <p className="w-full">
                   {prefLang === "Tm" ? "Sport görnüşi" : "Видов спорта"}
@@ -136,30 +136,30 @@ const GACDetail = () => {
                   stroke-linejoin="round"
                 />
               </svg>
-              {data?.views}
+              {data.views}
             </p>
-            <div className="relative max-w-[850px] border border-[#0088FF]">
+            <div className="relative max-w-[850px]">
               <img
-                src={urlBack + images[indexImage]}
-                className="h-[500px] object-cover"
                 alt=""
+                src={urlBack + images[indexImage]}
+                className="h-[550px] w-full object-cover"
               />
-              <button
-                className="absolute top-[50%] left-10"
+              <img
+                alt=""
+                src={right}
                 onClick={() =>
                   setIndexImage(
                     indexImage < 1 ? images.length - 1 : indexImage - 1
                   )
                 }
-              >
-                <img src={right} alt="" />
-              </button>
-              <button
-                className="absolute top-[50%] right-10"
+                className="absolute top-[50%] left-10 cursor-pointer hover:scale-125 transition-transform duration-300"
+              />
+              <img
+                alt=""
+                src={left}
                 onClick={() => setIndexImage((indexImage + 1) % 5)}
-              >
-                <img src={left} alt="" />
-              </button>
+                className="absolute top-[50%] right-10 cursor-pointer hover:scale-125 transition-transform duration-300"
+              />
             </div>
             <div className="flex justify-between w-full pt-5">
               {images.map((image, index) => {
@@ -181,6 +181,8 @@ const GACDetail = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 
