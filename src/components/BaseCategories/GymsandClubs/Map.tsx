@@ -1,13 +1,17 @@
 import React from "react";
 import "./css/Map.css";
 import { TileLayer, MapContainer, Marker, Popup } from "react-leaflet";
-import { Icon } from "leaflet";
+import { Icon, Point } from "leaflet";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { IGymsAndClubs } from "../../../redux/interfaces/gymsclubs";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const markerIcon = new Icon({ iconUrl: "/icons/gymsclubs/location.png" });
+// const markerIcon = new Icon({ iconUrl: "/icons/gymsclubs/location.png" });
+const markerIcon = new Icon({
+  iconUrl: "/icons/gymsclubs/location.png",
+  iconSize: [26, 26],
+});
 
 const Map = () => {
   // Hooks
