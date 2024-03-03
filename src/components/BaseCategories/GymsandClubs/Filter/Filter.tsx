@@ -21,7 +21,7 @@ const search = (
   </svg>
 );
 
-const Filter = () => {
+const Filter = ({ setListed }: { setListed: (isIt: boolean) => void }) => {
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const sportTypes: string[] = useSelector(
@@ -52,6 +52,7 @@ const Filter = () => {
   // Functions
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setListed(true);
     dispatch({
       type: POST_GYMS_AND_CLUBS_FILTER,
       payload: {

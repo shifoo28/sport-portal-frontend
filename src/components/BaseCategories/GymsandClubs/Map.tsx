@@ -5,17 +5,23 @@ import { Icon } from "leaflet";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { IGymsAndClubs } from "../../../redux/interfaces/gymsclubs";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const markerIcon = new Icon({ iconUrl: "/icons/gymsclubs/location.png" });
 
 const Map = () => {
+  // Hooks
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const gymsclubs: IGymsAndClubs[] = useSelector(
     (state: RootState) => state.gymsclubs.gymsclubs
   );
 
   // Function
-  const handleClick = () => {};
+  const linkToGACDetail = (gymsclubsId: string) => {
+    navigate(pathname + "/detail", { state: { gymsclubsId } });
+  };
 
   return (
     <MapContainer
@@ -33,11 +39,12 @@ const Map = () => {
             key={index}
             alt=""
             riseOnHover
-            eventHandlers={{
-              click: handleClick,
-            }}
           >
-            <Popup>{prefLang === "Tm" ? gc.nameTm : gc.nameRu}</Popup>
+            <Popup>
+              <button type="button" onClick={() => linkToGACDetail(gc.id)}>
+                {prefLang === "Tm" ? gc.nameTm : gc.nameRu}
+              </button>
+            </Popup>
           </Marker>
         );
       })}

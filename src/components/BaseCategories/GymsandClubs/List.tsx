@@ -23,7 +23,7 @@ const theadersRu = [
   "Рабочее время",
 ];
 
-const List = () => {
+const List = ({ isListed }: { isListed: boolean }) => {
   // Hooks
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ const List = () => {
     });
   };
 
-  return (
+  return isListed ? (
     <div className="max-w-[1170px] w-full font-inter text-[#182135] font-semibold">
       <p className="uppercase text-xl px-8 py-10 text-shadow">
         {prefLang === "Tm"
@@ -131,7 +131,9 @@ const List = () => {
               );
             })
           ) : (
-            <p className=" text-right">{prefLang === "Tm" ? "Maglumat ýok" : "Нет доступных данных"}</p>
+            <p className=" text-right">
+              {prefLang === "Tm" ? "Maglumat ýok" : "Нет доступных данных"}
+            </p>
           )}
         </tbody>
         <tfoot>
@@ -167,6 +169,8 @@ const List = () => {
         </tfoot>
       </table>
     </div>
+  ) : (
+    <></>
   );
 };
 

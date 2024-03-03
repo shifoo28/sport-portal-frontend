@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Filter from "./Filter/Filter";
 import ListofFacility from "./List";
@@ -13,6 +13,7 @@ import { RootState } from "../../../redux/store";
 
 const GymsAndClubs = () => {
   const { pathname } = useLocation();
+  const [isListed, setListed] = useState(false);
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
   const dispatch = useDispatch();
   dispatch({ type: GET_GYMS_AND_CLUBS_FILTER, payload: prefLang });
@@ -32,9 +33,9 @@ const GymsAndClubs = () => {
                 : "Все спортивные комплексы и спортивные команды, действующие в Туркменистане"}
             </p>
           </div>
-          <Filter />
+          <Filter setListed={setListed} />
           <OpenStreetMap />
-          <ListofFacility />
+          <ListofFacility isListed={isListed} />
         </div>
       </div>
     );

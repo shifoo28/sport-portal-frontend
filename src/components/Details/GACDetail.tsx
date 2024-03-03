@@ -177,7 +177,7 @@ const GACDetail = () => {
           </div>
         </div>
         <div className="pt-10">
-          <List />
+          <List isListed />
         </div>
       </div>
     </div>
