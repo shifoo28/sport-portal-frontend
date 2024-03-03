@@ -22,12 +22,13 @@ const FilterNews = ({ data }: Props) => {
   // Hooks
   const navigate = useNavigate();
   useEffect(() => {
-    setNews(data?.reverse());
-  }, [data, activeTab]);
+    setNews(data);
+  }, [data]);
 
   // Function
   const changeTab = (activate: boolean) => {
     setActiveTab(activate);
+    setNews(data?.reverse());
   };
   const linkToVideoDetail = (videoId: string) => {
     navigate(VIDEO_DETAILS_PAGE, { state: { videoId } });

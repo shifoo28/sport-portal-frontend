@@ -16,15 +16,11 @@ const FilterNews = ({ data, linkToNewsDetail }: Props) => {
   // useState
   const [activeTab, setActiveTab] = useState(false);
   const [news, setNews] = useState(data);
-
-  // Hooks
-  useEffect(() => {
-    setNews(data?.reverse());
-  }, [data, activeTab]);
-
+  
   // Function
   const changeTab = (activate: boolean) => {
     setActiveTab(activate);
+    setNews(data?.reverse());
   };
 
   return (
