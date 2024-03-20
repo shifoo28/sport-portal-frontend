@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import userIcon from "../../../assets/svg/user.svg";
-import Authentication from "./Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { authDialogOpen } from "../../../redux/actions/main";
 import { sp_local_user } from "../../../tools/constants";
 import { IUser } from "../../../redux/interfaces/main";
+import Authentication from "../../Auth";
 
 const Account = () => {
   // Hooks

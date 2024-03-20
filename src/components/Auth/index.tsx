@@ -3,9 +3,9 @@ import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import SignIn from "./SignIn";
 import { useDispatch, useSelector } from "react-redux";
-import { authDialogOpen } from "../../../../redux/actions/main";
-import { RootState } from "../../../../redux/store";
-import { urlBack } from "../../../../redux/apiCalls";
+import { authDialogOpen } from "../../redux/actions/main";
+import { urlBack } from "../../redux/apiCalls";
+import { RootState } from "../../redux/store";
 
 const Authentication: FC = () => {
   // Hooks

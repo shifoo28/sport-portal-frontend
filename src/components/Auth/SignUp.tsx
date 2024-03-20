@@ -1,37 +1,25 @@
-import React, { FC, FormEvent, useState } from "react";
+import React, { FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { authDialogOpen } from "../../../../redux/actions/main";
-import { RootState } from "../../../../redux/store";
-import { POST_LOGIN } from "../../../../redux/types";
+import { authDialogOpen } from "../../redux/actions/main";
+import { RootState } from "../../redux/store";
 
-interface Props {
-  linkToGoogleAuth: () => void;
-}
-
-const SignIn: FC<Props> = ({ linkToGoogleAuth }) => {
+const SignUp = () => {
   // Hooks
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [plainPassword, setPlainPassword] = useState("");
 
   // useSelector
   const prefLang = useSelector((state: RootState) => state.main.prefLang);
-  const auth_message = useSelector(
-    (state: RootState) => state.main.auth_message
-  );
 
   // Function
-  const postSignIn = (e: FormEvent) => {
+  const postSignUp = (e: FormEvent) => {
     e.preventDefault();
-    dispatch({ type: POST_LOGIN, payload: { email, plainPassword } });
-    setPlainPassword("");
   };
 
   return (
     <>
       <form
         className="relative flex flex-col justify-center items-center bg-white p-8 gap-6 max-w-[472px] w-full"
-        onSubmit={(e: FormEvent<HTMLFormElement>) => postSignIn(e)}
+        onSubmit={(e: FormEvent<HTMLFormElement>) => postSignUp(e)}
       >
         <img
           src={process.env.REACT_APP_ADDRESS + "icons/toolbox/x50.png"}
@@ -56,7 +44,7 @@ const SignIn: FC<Props> = ({ linkToGoogleAuth }) => {
         </div>
         <button
           className="flex justify-center items-center border text-[#181E25] w-full h-10"
-          onClick={() => linkToGoogleAuth()}
+          // onClick={() => linkToGoogleAuth()}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -86,40 +74,35 @@ const SignIn: FC<Props> = ({ linkToGoogleAuth }) => {
             ? "Google bilen baglan"
             : "Зарегистрируйтесь через Google"}
         </button>
-        <p className="text-sm text-red-600 text-start w-full">{auth_message}</p>
         <div className="flex flex-col items-center w-full gap-1">
           <p className="text-sm text-[#181E25] w-full">
             {prefLang === "Tm"
-              ? "Elektron poçta"
+              ? "E-mail (*ýa-da telefon nomer)"
               : "Email (*или номер телефона)"}
           </p>
           <input
             type="email"
             name="email"
             id="email"
-            value={email}
-            onChange={(e) => setEmail(e.currentTarget.value)}
             className="border w-full h-10 outline-none px-3"
-            required
+            //   required
           />
         </div>
         <div className="flex flex-col justify-between items-center w-full gap-1">
           <div className="w-full flex justify-between items-center">
             <p className="text-sm text-[#181E25]">
-              {prefLang === "Tm" ? "Açar sözi" : "Пароль"}
+              {prefLang === "Tm" ? "Parol" : "Пароль"}
             </p>
             <p className="text-sm text-[#117DF9] cursor-pointer">
-              {prefLang === "Tm" ? "Ýatdan çykardym?" : "Забыли пароль?"}
+              {prefLang === "Tm" ? "Paroly ýatdan çykardym?" : "Забыли пароль?"}
             </p>
           </div>
           <input
             type="password"
             name="password"
             id="password"
-            value={plainPassword}
-            onChange={(e) => setPlainPassword(e.currentTarget.value)}
             className="border w-full h-10 outline-none px-3"
-            required
+            //   required
           />
         </div>
         <button type="submit" className="bg-[#4938C3] text-white w-full h-10">
@@ -136,4 +119,4 @@ const SignIn: FC<Props> = ({ linkToGoogleAuth }) => {
   );
 };
 
-export default SignIn;
+export default SignUp;

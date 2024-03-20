@@ -8,6 +8,7 @@ import {
   BASE_CATEGORIES,
   NEWS_ALL,
   NEWS_DETAILS_PAGE,
+  PRIVACY,
   SEARCH,
   VIDEO_DETAILS_PAGE,
   VIDEO_NEWS_ALL,
@@ -19,7 +20,7 @@ import ToolBox from "./components/Headers/ToolBox";
 import NewsAll from "./pages/News";
 import { useDispatch } from "react-redux";
 import { GET_MAIN, GET_WEATHER } from "./redux/types";
-import AboutUs from "./pages/AboutUs";
+import Info from "./pages/Info";
 import BaseCategories from "./pages/BaseCategories";
 import VideoNewsAll from "./pages/VideoNews";
 import VideoNewsDetails from "./pages/VideoNews/VideoNewsDetails";
@@ -45,10 +46,18 @@ const App = () => {
       <Route
         element={
           <TemplateApp>
-            <AboutUs />
+            <Info />
           </TemplateApp>
         }
         path={ABOUTUS}
+      />
+      <Route
+        element={
+          <TemplateApp>
+            <Info privacy />
+          </TemplateApp>
+        }
+        path={PRIVACY}
       />
       <Route
         element={

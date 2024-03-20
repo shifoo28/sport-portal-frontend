@@ -27,7 +27,7 @@ const Filter = ({ setListed }: { setListed: (isIt: boolean) => void }) => {
   const sportTypes: string[] = useSelector(
     (state: RootState) => state.gymsclubs.filters[0]?.filters
   );
-  const locations: string[] = useSelector(
+  const venues: string[] = useSelector(
     (state: RootState) => state.gymsclubs.filters[1]?.filters
   );
   const environments: string[] = useSelector(
@@ -37,13 +37,13 @@ const Filter = ({ setListed }: { setListed: (isIt: boolean) => void }) => {
   // useState
   const [searchString, setSearchString] = useState("");
   const [sportTypesFilter, setSportTypesFilter] = useState("");
-  const [locationsFilter, setLocationsFilter] = useState("");
+  const [venuesFilter, setVenuesFilter] = useState("");
   const [sportEnvironment, setSportEnvironment] = useState("");
 
   // Hooks
   const dispatch = useDispatch();
   useEffect(() => {
-    setLocationsFilter(prefLang === "Tm" ? "Türkmenistan" : "Туркменистан");
+    setVenuesFilter(prefLang === "Tm" ? "Türkmenistan" : "Туркменистан");
     setSportTypesFilter(prefLang === "Tm" ? "Hemmesi" : "Все виды");
     setSportEnvironment(prefLang === "Tm" ? "Hemmesi" : "Все комплексы");
     setSearchString("");
@@ -56,18 +56,16 @@ const Filter = ({ setListed }: { setListed: (isIt: boolean) => void }) => {
     dispatch({
       type: POST_GYMS_AND_CLUBS_FILTER,
       payload: {
-        name: searchString,
+        name: searchString != "" ? searchString : undefined,
         sports: sportTypes.includes(sportTypesFilter)
           ? sportTypesFilter
           : undefined,
-        locations: locations.includes(locationsFilter)
-          ? locationsFilter
-          : undefined,
+        venues: venues.includes(venuesFilter) ? venuesFilter : undefined,
         lang: prefLang,
       },
     });
     setSearchString("");
-    window.scrollTo({ top: 1100, behavior: "smooth" });
+    window.scrollTo({ top: 850, behavior: "smooth" });
   };
 
   return (
@@ -93,10 +91,10 @@ const Filter = ({ setListed }: { setListed: (isIt: boolean) => void }) => {
         <div className="w-full flex flex-wrap justify-between">
           {/* LOCATIONS */}
           <Popover
-            name={locationsFilter}
+            name={venuesFilter}
             all={prefLang === "Tm" ? "Türkmenistan" : "Туркменистан"}
-            items={locations}
-            setName={setLocationsFilter}
+            items={venues}
+            setName={setVenuesFilter}
           />
           {/* SPORT TYPES */}
           <Popover

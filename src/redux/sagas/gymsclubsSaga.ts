@@ -14,7 +14,7 @@ function* getGymsClubsFilter(action: IGymsClubs) {
   try {
     // @ts-ignore
     const filters = yield call(fetchGymsClubsFilters, action.payload);
-    
+
     yield put({ type: GET_GYMS_AND_CLUBS_FILTER_SUCCESS, payload: filters });
   } catch (error: any) {
     yield put({

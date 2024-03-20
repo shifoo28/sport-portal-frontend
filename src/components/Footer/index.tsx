@@ -7,7 +7,7 @@ import location from "../../assets/footer/location.svg";
 import mail from "../../assets/footer/mail.svg";
 import tel from "../../assets/footer/tel.svg";
 import { useNavigate } from "react-router-dom";
-import { ABOUTUS } from "../../tools/links";
+import { ABOUTUS, PRIVACY } from "../../tools/links";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col justify-between items-center my-5 gap-5 font-inter">
           {/* Information */}
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 justify-center max-w-5xl">
             <div className="flex justify-center items-center gap-1">
               <img src={location} alt="" />
               <p>
@@ -47,9 +47,7 @@ const Footer = () => {
             <div className="flex justify-center items-center gap-1">
               <img src={clock} alt="" />
               <p>
-                {prefLang === "Tm"
-                  ? "Iş wagty: 24/7"
-                  : "Время работы: 24/7"}
+                {prefLang === "Tm" ? "Iş wagty: 24/7" : "Время работы: 24/7"}
                 {/* {prefLang === "Tm"
                   ? "Du-Ýe: 9:00 - 22:00"
                   : "Пон-Вос: 9:00 - 22:00"} */}
@@ -61,6 +59,17 @@ const Footer = () => {
             >
               <img src={info} alt="" />
               <p>{prefLang === "Tm" ? "Biz barada" : "О нас"}</p>
+            </div>
+            <div
+              className="flex justify-center items-center gap-1 cursor-pointer"
+              onClick={() => navigate(PRIVACY)}
+            >
+              <img src={info} alt="" />
+              <p>
+                {prefLang === "Tm"
+                  ? "Gizlinlik syýasaty"
+                  : "Политика конфиденциальности"}
+              </p>
             </div>
           </div>
 
@@ -84,8 +93,8 @@ const Footer = () => {
           {/* Policy */}
           <p className="text-sm">
             {prefLang === "Tm"
-              ? "© Copyright 2023. Ähli hukuklar goralan."
-              : "© Copyright 2023. Все права защищены."}
+              ? "© Copyright 2024. Ähli hukuklar goralan."
+              : "© Copyright 2024. Все права защищены."}
           </p>
         </div>
       </div>
