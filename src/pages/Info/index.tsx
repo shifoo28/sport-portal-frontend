@@ -15,18 +15,18 @@ const Info: FC<Props> = ({ privacy }) => {
     <div className="flex justify-center font-inter">
       <div className="max-w-[1170px] flex pt-9 gap-20">
         {/* Part 1 */}
-        <div className="min-w-[270px] flex flex-col items-center gap-4 pt-10">
+        <div className="min-w-[270px] flex flex-col items-center gap-5 pt-10">
           <img
             src="images/aboutus.png"
             alt=""
             className="w-[270px] h-[190px]"
           />
-          <div className="text-center max-w-[90%]">
+          <div className="text-center max-w-[]">
             <p className="font-semibold">SPORTPORTAL</p>
             <p>
               {prefLang === "Tm"
-                ? "Sport bilen bagly ähli zatlary özünde jemleýän platforma."
-                : "Платформа, охватывающая всё, что связано со спортом."}
+                ? "Ýurdumyzyň ilkinji sport platformasy"
+                : "Первая спортивная платформа страны"}
             </p>
           </div>
           <table className="text-white bg-[#0088FF] w-full text-center">
