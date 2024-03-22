@@ -126,10 +126,10 @@ const SignIn: FC<Props> = ({ linkToGoogleAuth }) => {
           {prefLang === "Tm" ? "Içeri gir" : "Войти"}
         </button>
       </form>
-      <p className="text-white flex gap-1 cursor-pointer">
-        {prefLang === "Tm" ? "Ulanyjyň öň bolamasa? " : "У Вас еще нет? "}
-        <p className="text-[#117DF9]">
-          {prefLang === "Tm" ? "Agaza bol" : "Зарегистрироваться"}
+      <p className="text-white flex gap-1">
+        {prefLang === "Tm" ? "Ulanyjyň öň bolamasa?" : "У Вас еще нет?"}
+        <p className="text-[#117DF9] cursor-pointer">
+          {prefLang === "Tm" ? "Agza bol" : "Зарегистрироваться"}
         </p>
       </p>
     </>

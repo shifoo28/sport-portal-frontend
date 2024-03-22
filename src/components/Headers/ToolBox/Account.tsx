@@ -24,7 +24,7 @@ const Account = () => {
         className="flex justify-center items-center gap-1 outline-none"
         onClick={() => dispatch(authDialogOpen(true))}
       >
-        {localStorage.length ? (
+        {localStorage[sp_local_user] ? (
           <p>{user?.name + " " + user?.surname}</p>
         ) : (
           <p>{prefLang === "Tm" ? "Içeri gir" : "Войти"}</p>
