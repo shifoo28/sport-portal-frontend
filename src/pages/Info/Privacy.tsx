@@ -5,7 +5,14 @@ const Privacy = () => {
   return (
     <div className="w-full">
       <p className="text-justify space-y-5">
-        <Typography className="text-xl font-semibold text-center leading-loose">
+        <Typography
+          className="text-xl font-semibold text-center leading-loose"
+          placeholder={undefined}
+          onResize={undefined}
+          onResizeCapture={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           ÝAŞYRYNLYK SYÝASATY
         </Typography>
         Şu şahsy maglumatlaryň ýaşyrynlyk syýasaty (mundan beýläk – Ýaşyrynlyk
@@ -15,7 +22,14 @@ const Privacy = () => {
         domenleri we mobil goşundylary – mundan beýläk - Saýt) ulanylanda
         Ulanyjy, onuň programmalary we onuň önümleri baradaky ähli maglumata
         degişlilikde hereket edýär.  
-        <Typography className="text-xl font-semibold text-center leading-loose">
+        <Typography
+          className="text-xl font-semibold text-center leading-loose"
+          placeholder={undefined}
+          onResize={undefined}
+          onResizeCapture={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           1. ADALGALARYŇ KESGITLEMESI
         </Typography>
         1.1. Şu ýaşyrynlyk syýasatynda aşakdaky adalgalar ulanylýar: <br />
@@ -51,7 +65,14 @@ const Privacy = () => {
         saklanylýan maglumatlaryň uly bolmadyk bölümi. <br />
         1.1.9. “IP-salgy” – degişlilikde Ulanyjynyň Operatora bolan
         elýeterliligi alýan kompýuter torundaky ýeke-täk tor salgysy.
-        <Typography className="text-xl font-semibold text-center leading-loose">
+        <Typography
+          className="text-xl font-semibold text-center leading-loose"
+          placeholder={undefined}
+          onResize={undefined}
+          onResizeCapture={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           2. UMUMY DÜZGÜNLER
         </Typography>
         2.1. Ulanyjy tarapyndan «SPORTPORTAL» saýtynyň ulanylmagy şu Ýaşyrynlyk
@@ -65,7 +86,14 @@ const Privacy = () => {
         jogapkärçilik çekmeýärler. <br />
         2.4. Dolandyryş bölümi Ulanyjy tarapyndan berilýän şahsy maglumatlaryň
         dogrulygyny barlamaýar.
-        <Typography className="text-xl font-semibold text-center leading-loose">
+        <Typography
+          className="text-xl font-semibold text-center leading-loose"
+          placeholder={undefined}
+          onResize={undefined}
+          onResizeCapture={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           3. ÝAŞYRYNLYK SYÝASATYNYŇ MAZMUNY
         </Typography>
         3.1. Şu Ýaşyrynlyk syýasaty Ulanyjynyň «SPORTPORTAL» saýtynda bellige
@@ -100,7 +128,14 @@ const Privacy = () => {
         syýasatynyň <br />
         5.2 k.b. göz öňünde tutulan ýagdaýlardan daşary ýagdaýlarda ykjam
         saklanylmaga we ýaýradylmazlyga degişli.
-        <Typography className="text-xl font-semibold text-center leading-loose">
+        <Typography
+          className="text-xl font-semibold text-center leading-loose"
+          placeholder={undefined}
+          onResize={undefined}
+          onResizeCapture={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           4. ULANYJYNYŇ ŞAHSY MAGLUMATLARYNY ÝYGNAMAGYŇ MAKSATLARY
         </Typography>
         4.1. Ulanyjynyň şahsy maglumatlaryny Dolandyryş bölümi aşakdaky
@@ -141,7 +176,14 @@ const Privacy = () => {
         <br />
         4.1.13. Ulanyja onuň razylygy bilen «SPORTPORTAL» saýtyň adyndan ýörite
         teklipleri, täzelikleri, salgylanmalary we gaýry maglumatlary bermek.
-        <Typography className="text-xl font-semibold text-center leading-loose">
+        <Typography
+          className="text-xl font-semibold text-center leading-loose"
+          placeholder={undefined}
+          onResize={undefined}
+          onResizeCapture={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           5. ŞAHSY MAGLUMATLARY GAÝTADAN IŞLEMEGIŇ USULLARY WE MÖHLETLERI
         </Typography>
         5.1. Ulanyjynyň şahsy maglumatlary möhleti çäklendirmezden, islendik
@@ -168,7 +210,14 @@ const Privacy = () => {
         ýylyň dowamynda «SPORTPORTAL» saýtyny ulanmagyň çäginde Ulanyjy
         tarapyndan amala aşyrylýan hereketler baradaky log-faýllary saklamaga
         hukukly.
-        <Typography className="text-xl font-semibold text-center leading-loose">
+        <Typography
+          className="text-xl font-semibold text-center leading-loose"
+          placeholder={undefined}
+          onResize={undefined}
+          onResizeCapture={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           6. TARAPLARYŇ HUKUKLARY WE BORÇLARY
         </Typography>
         6.1. Ulanyjy aşakdakylara hukukly: <br />
@@ -211,7 +260,14 @@ const Privacy = () => {
         hukuklaryny goramak boýunça ygtyýarlandyrylan edaranyň ýüzlenen ýa-da
         talap eden möhletinden barlag döwründe nädogry şahsy maglumat ýa-da
         bikanun hereket ýüze çykan ýagdaýynda beklemäge.
-        <Typography className="text-xl font-semibold text-center leading-loose">
+        <Typography
+          className="text-xl font-semibold text-center leading-loose"
+          placeholder={undefined}
+          onResize={undefined}
+          onResizeCapture={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           7. TARAPLARYŇ JOGAPKÄRÇILIGI
         </Typography>
         7.1. Öz borçlaryny ýerine ýetirmedik Dolandyryş bölümi şu Ýaşyrynlyk
@@ -228,7 +284,14 @@ const Privacy = () => {
         tarapdan alnan bolsa.
         <br />
         7.2.3. Ulanyjynyň razylygy bilen ýaýradylan bolsa.
-        <Typography className="text-xl font-semibold text-center leading-loose">
+        <Typography
+          className="text-xl font-semibold text-center leading-loose"
+          placeholder={undefined}
+          onResize={undefined}
+          onResizeCapture={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           8. JEDELLERI ÇÖZMEK
         </Typography>
         8.1. Ulanyjynyň we Dolandyryş bölüminiň arasyndaky gatnaşyklardan ýüze
@@ -244,7 +307,14 @@ const Privacy = () => {
         8.4. Şu Ýaşyrynlyk syýasatyna we Ulanyjynyň we Dolandyryş bölüminiň
         arasyndaky gatnaşyklara degişlilikde Türkmenistanyň hereket edýän
         kanunçylygy hereket edýär.
-        <Typography className="text-xl font-semibold text-center leading-loose">
+        <Typography
+          className="text-xl font-semibold text-center leading-loose"
+          placeholder={undefined}
+          onResize={undefined}
+          onResizeCapture={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           9. GOŞMAÇA ŞERTLER
         </Typography>
         9.1. Dolandyryş bölümi şu Ýaşyrynlyk syýasatyna Ulanyjynyň rugsady

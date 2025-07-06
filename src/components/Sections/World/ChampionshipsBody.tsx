@@ -56,11 +56,19 @@ const ChampionshipsBody: FC<Props> = ({ champIndex }) => {
               </svg>
             }
             placeholder=""
+            onResize={undefined}
+            onResizeCapture={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
           >
             <AccordionHeader
               className="border-0 p-0"
               onClick={() => handleOpen(index)}
               placeholder=""
+              onResize={undefined}
+              onResizeCapture={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
             >
               {chempionship.imagePath && (
                 <img

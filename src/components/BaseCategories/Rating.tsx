@@ -52,6 +52,10 @@ const Rating = ({ value, className, gap, readonly }: Props) => {
       className={`flex h-full ${gap || "gap-3"}`}
       readonly={readonly}
       placeholder=""
+      onResize={undefined}
+      onResizeCapture={undefined}
+      onPointerEnterCapture={undefined}
+      onPointerLeaveCapture={undefined}
     />
   );
 };

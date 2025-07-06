@@ -64,11 +64,19 @@ const SportNewsList = ({ activeTab }: { activeTab: number }) => {
       </PopoverHandler>
       <PopoverContent
         className="bg-white border max-w-[116px] w-full flex justify-center rounded-none"
-        placeholder=""
+        placeholder={undefined}
+        onResize={undefined}
+        onResizeCapture={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
       >
         <List
           className="text-xs font-oswald max-h-[400px] overflow-hidden overflow-y-scroll"
           placeholder=""
+          onResize={() => {}}
+          onResizeCapture={() => {}}
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
         >
           {categories.map((sc, index) => {
             return (
@@ -77,8 +85,12 @@ const SportNewsList = ({ activeTab }: { activeTab: number }) => {
                 className="hover:text-[#08F] p-1 hover:underline"
                 onClick={() => linkToAllNews(sc.id)}
                 placeholder=""
+                onResize={() => {}}
+                onResizeCapture={() => {}}
+                onPointerEnterCapture={() => {}}
+                onPointerLeaveCapture={() => {}}
               >
-                · {prefLang === "Tm" ? sc.nameTm : sc.nameRu}
+                {"· " + (prefLang === "Tm" ? sc.nameTm : sc.nameRu)}
               </ListItem>
             );
           })}

@@ -27,6 +27,10 @@ const Authentication: FC = () => {
       handler={() => dispatch(authDialogOpen(!open))}
       className="bg-black/70 shadow-none rounded-none h-screen backdrop-blur-sm"
       placeholder=""
+      onResize={() => {}}
+      onResizeCapture={() => {}}
+      onPointerEnterCapture={() => {}}
+      onPointerLeaveCapture={() => {}}
     >
       <div className="flex justify-center items-center flex-col h-full w-full min-w-[300px] font-inter gap-6">
         <SignIn linkToGoogleAuth={linkToGoogleAuth} />

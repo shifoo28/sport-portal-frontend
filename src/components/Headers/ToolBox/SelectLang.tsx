@@ -59,11 +59,19 @@ const SelectLang = () => {
         <MenuList
           className="overflow-visible p-1 gap-1 text-xs font-inter outline-none rounded-none"
           placeholder=""
+          onResize={undefined}
+          onResizeCapture={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
         >
           <MenuItem
             className="hover:text-[#08F] rounded-none flex items-center justify-center"
             onClick={() => setPrefLang(0)}
             placeholder=""
+            onResize={undefined}
+            onResizeCapture={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
           >
             TM
           </MenuItem>
@@ -71,6 +79,10 @@ const SelectLang = () => {
             className="hover:text-[#08F] rounded-none flex items-center justify-center"
             onClick={() => setPrefLang(1)}
             placeholder=""
+            onResize={undefined}
+            onResizeCapture={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
           >
             RU
           </MenuItem>

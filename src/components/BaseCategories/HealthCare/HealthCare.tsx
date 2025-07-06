@@ -83,11 +83,19 @@ const Component = () => {
                 className="border-b-2 border-r-2 border-blue-100 w-full bg-white"
                 key={index}
                 placeholder=""
+                onResize={undefined}
+                onResizeCapture={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
               >
                 <AccordionHeader
                   onClick={() => handleOpen(department.id)}
                   className="h-[73px] border-none"
                   placeholder=""
+                  onResize={undefined}
+                  onResizeCapture={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
                 >
                   <p className="text-[#0088FF] text-2xl flex items-center justify-center pl-8 uppercase font-oswald font-semibold">
                     {prefLang === "Tm" ? department.nameTm : department.nameRu}

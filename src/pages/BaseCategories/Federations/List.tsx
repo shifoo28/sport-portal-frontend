@@ -39,14 +39,22 @@ const List = ({ indexComponent }: { indexComponent: number }) => {
         return (
           <Accordion
             open={open === federation.id}
-            className="border-b-2 border-r-[1px] border-blue-200 w-full bg-white" //
+            className="border-b-2 border-r-[1px] border-blue-200 w-full bg-white"
             key={index}
-            placeholder=""
+            placeholder={undefined}
+            onResize={() => {}}
+            onResizeCapture={() => {}}
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}}
           >
             <AccordionHeader
               onClick={() => handleOpen(federation.id)}
               className="h-[73px] border-none"
-              placeholder=""
+              placeholder={undefined}
+              onResize={() => {}}
+              onResizeCapture={() => {}}
+              onPointerEnterCapture={() => {}}
+              onPointerLeaveCapture={() => {}}
             >
               <div className="flex justify-between w-full">
                 <p className="text-[#0088FF] text-2xl flex items-center justify-center pl-8 uppercase">

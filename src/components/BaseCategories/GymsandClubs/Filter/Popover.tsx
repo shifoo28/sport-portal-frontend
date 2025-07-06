@@ -44,14 +44,29 @@ export const Popover: FC<Props> = ({ name, all, items, setName }) => {
       </PopoverHandler>
       <PopoverContent
         className="rounded-none max-w-[280px] w-full border border-[#0088FF]"
-        placeholder=""
+        placeholder={undefined}
+        onResize={undefined}
+        onResizeCapture={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
       >
-        <List className="p-0" placeholder="">
+        <List
+          className="p-0"
+          placeholder={undefined}
+          onResize={undefined}
+          onResizeCapture={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           <ListItem
             key={items?.length}
             onClick={() => setName(all)}
             className="hover:bg-blue-100 rounded-none w-full px-2"
             placeholder=""
+            onResize={undefined}
+            onResizeCapture={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
           >
             {all}
           </ListItem>
@@ -62,6 +77,10 @@ export const Popover: FC<Props> = ({ name, all, items, setName }) => {
                 onClick={() => setName(item)}
                 className="hover:bg-blue-100 rounded-none w-full px-2"
                 placeholder=""
+                onResize={undefined}
+                onResizeCapture={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
               >
                 {item}
               </ListItem>
